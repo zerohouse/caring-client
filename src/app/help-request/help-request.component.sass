@@ -1,0 +1,35 @@
+@import "section.button"
+
+
+.help
+  text-align: center
+  background-color: rgba(222, 222, 222, 0.5)
+
+  .form-box
+    margin-top: 40px
+    padding: 40px 30px
+    display: inline-block
+    max-width: 500px
+    width: 100%
+    border-radius: 35px
+    box-shadow: 0 8px 23px 0 rgba(0, 0, 0, 0.15)
+    background-color: #ffffff
+
+    .input-box
+      font-size: 22px
+      font-weight: bold
+      text-align: left
+      @include lt-sm
+        font-size: 18px
+
+    input[type=text]
+      margin: 2px 2px 10px
+      padding: 10px
+      width: 100%
+      display: block
+      border: none
+      background: #f4edea
+
+
+@import "checbox"
+@import "select"

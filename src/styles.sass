@@ -1,14 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles/reset.css"
+@import "responsive"
+
 
 body
   font-family: 'Noto Sans', sans-serif
   line-height: 1.6
   color: #292d33
 
+h1
+  font-size: 35px
+  font-weight: bold
+  @include lt-sm
+    font-size: 28px
+
+
 h2
   font-size: 29px
   font-weight: bold
+  @include lt-sm
+    font-size: 22px
+
+h3
+  font-size: 22px
+  font-weight: bold
+  @include lt-sm
+    font-size: 18px
 
 .container
   position: relative
+
+b
+  font-weight: bolder
+
+swiper > .swiper.s-wrapper .swiper-wrapper .swiper-slide
+  overflow: hidden !important

@@ -34,8 +34,14 @@
       "prefix": "cr",
       "architect": {
         "build": {
+
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src/styles"
+              ]
+            },
             "outputPath": "dist/caring-client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,7 +55,9 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@linways/table-to-excel/dist/tableToExcel.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -101,6 +109,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "caring-client"
 }

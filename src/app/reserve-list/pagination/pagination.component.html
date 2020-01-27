@@ -1,0 +1,25 @@
+<nav *ngIf="pages.length">
+  <ul>
+    <li (click)="startZero()">
+      <a [class.disabled]="!startMinusAble">«</a>
+    </li>
+    <li (click)="startMinus()" style="margin-right: 14px; padding-top: 4px">
+      <a [class.disabled]="!startMinusAble">
+        <
+      </a>
+    </li>
+    <li *ngFor="let i of pages  | slice : start : start + paginationLimit" (click)="change(i-1)"
+        [class.active]="i -1 === pageable?.pageNumber">
+      <a>{{i}}</a>
+    </li>
+    <li (click)="startPlus()" style="margin-left: 8px; padding-top: 5px">
+      <a [class.disabled]="!startPlusAble">
+        >
+      </a>
+    </li>
+    <li (click)="startEnd()">
+      <a [class.disabled]="!startPlusAble">»</a>
+    </li>
+  </ul>
+</nav>
+

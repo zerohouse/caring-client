@@ -1,9 +1,31 @@
-<div class="container">
-    <div routerLink="/">
+<div *showItSizes="{min:601}" class="pc">
+    <div class="container">
+    <span routerLink="/">
         <img src="./../assets/img/logo.png" class="logo"
              style="width: 40px;margin-left: -20px;    margin-bottom: -6px;">
-        <span style="font-size: 20px;font-weight: bold;display: inline-block;margin-left: 4px;margin-top: 3px">
-                                케어링
-                            </span>
+        <span class="logo">케어링</span>
+    </span>
+        <ul>
+            <li ngx-scroll-to="#help">무료 상담</li>
+            <li ngx-scroll-to="#info">서비스안내</li>
+            <li ngx-scroll-to="#qna">자주묻는 질문</li>
+        </ul>
     </div>
 </div>
+<div *showItSizes="{max:600}">
+    <div class="mobile">
+        <div class="container">
+            <span routerLink="/">
+                <img src="./../assets/img/logo.png" class="logo"
+                     style="width: 40px;margin-left: -20px;    margin-bottom: -6px;">
+                <span class="logo">케어링</span>
+            </span>
+        </div>
+    </div>
+    <ul class="m">
+        <li ngx-scroll-to="#help">무료 상담</li>
+        <li ngx-scroll-to="#info">서비스안내</li>
+        <li ngx-scroll-to="#qna">자주묻는 질문</li>
+    </ul>
+</div>
+

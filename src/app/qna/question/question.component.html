@@ -1,0 +1,8 @@
+<div class="q" (click)="open = !open">
+    Q. {{qna.q}}
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7">
+        <path fill="none" fill-rule="evenodd" stroke="#292D33" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M1 1l5.542 5L12 1"/>
+    </svg>
+</div>
+<div class="a" *ngIf="open">A. {{qna.a}}</div>

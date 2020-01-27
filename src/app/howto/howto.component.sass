@@ -1,0 +1,77 @@
+@import "../../styles/responsive"
+
+
+
+drag-scroll
+  margin-top: 30px
+
+  div
+    font-size: 24px
+    @include lt-sm
+      font-size: 16px
+    display: inline-block
+    margin-right: 45px
+    font-weight: bold
+    color: rgba(41, 45, 51, 0.4)
+
+    &.active
+      color: black
+
+
+.desc
+  margin-top: 20px
+  background: rgba(247, 227, 213, 0.5)
+
+
+.number
+  width: 56px
+  height: 56px
+  background: #292d33
+  display: inline-block
+  color: white
+  line-height: 56px
+  text-align: center
+  border-radius: 5px
+  font-size: 24px
+  margin-top: 50px
+  margin-bottom: 60px
+
+p
+  margin-top: 20px
+  font-size: 20px
+  line-height: 29px
+  font-weight: 600
+  @include lt-sm
+    font-size: 16px
+
+
+.slide-desc
+  position: relative
+  @include gt-sm
+    min-height: 600px
+
+  img
+    max-width: 100%
+    margin: 60px auto auto
+    display: block
+    @include gt-sm
+      position: absolute
+      right: 0
+      bottom: 0
+
+
+.buttons
+  font-size: 30px
+  font-weight: bold
+  display: flex
+  align-items: center
+  flex-direction: column
+
+  a
+    margin-top: 40px
+
+  @include gt-sm
+    align-items: center
+    flex-direction: row
+    a
+      margin-top: 0
