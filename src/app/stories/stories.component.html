@@ -1,31 +1,15 @@
 <div id="story">
-    <section *showItSizes="{min:601}">
+    <section *showItSizes="{min:1023}">
         <div class="container">
             <h2 class="mb-4">케어링과<br>함께한 이야기</h2>
-            <div class="card-review">
-                <img>
-                <h3><b>윤지선</b> 님</h3>
-                <p>
-                    케어링 처음으로 이용해봤는데 요양보호사님께서 저희 어머니를 아주 친절하고 세심하게 돌보아주셔서 진짜진짜 좋았습니다. 케어링 추천합니다아아. 추우처언.
-                </p>
-            </div>
-            <div class="card-review">
-                <img>
-                <h3><b>이미숙</b> 님</h3>
-                <p>
-                    케어링 처음으로 이용해봤는데 요양보호사님께서 저희 어머니를 아주 친절하고 세심하게 돌보아주셔서 진짜진짜 좋았습니다. 케어링 추천합니다아아. 추우처언.
-                </p>
-            </div>
-            <div class="card-review">
-                <img>
-                <h3><b>박용현</b> 님</h3>
-                <p>
-                    케어링 처음으로 이용해봤는데 요양보호사님께서 저희 어머니를 아주 친절하고 세심하게 돌보아주셔서 진짜진짜 좋았습니다. 케어링 추천합니다아아. 추우처언.
-                </p>
+            <div class="card-review" *ngFor="let story of stories" (click)="moveTo(story.href)">
+                <img [src]="'../assets/img/'+story.img">
+                <h3><b>{{story.name}}</b> 님</h3>
+                <p [innerHTML]="story.story"></p>
             </div>
         </div>
     </section>
-    <section *showItSizes="{max:600}" >
+    <section *showItSizes="{max:1024}">
         <div class="container">
             <h2 class="mb-4">케어링과<br>함께한 이야기</h2>
             <div class="navi">
@@ -33,13 +17,11 @@
                       *ngFor="let story of stories; let i = index"></span>
             </div>
             <swiper [(index)]="index" [config]="{autoHeight:true}">
-                <div *ngFor="let story of stories">
+                <div *ngFor="let story of stories" (click)="moveTo(story.href)">
                     <div class="review-m">
-                        <img><br>
+                        <img [src]="'../assets/img/'+story.img"><br>
                         <b>{{story.name}}</b> 님
-                        <p>
-                            {{story.story}}
-                        </p>
+                        <p [innerHTML]="story.story"></p>
                     </div>
                 </div>
             </swiper>

@@ -10,6 +10,8 @@ footer
 .cover-card
   margin: 40px 0
   height: 350px
+  @include lt-md
+    height: 400px
   border-radius: 35px
   background-color: #f4edea
   position: relative
@@ -17,12 +19,11 @@ footer
 
   .content
     padding: 40px
-    position: absolute
-    left: 0
-    right: 0
-    top: 0
-    bottom: 0
+    position: relative
+    height: 100%
     z-index: 2
+    @include lt-sm
+      padding: 30px
 
 
   &.blue
@@ -50,25 +51,30 @@ footer
     font-size: 22px
     font-weight: bold
 
+
     &.close-btn
       right: 40px
       left: initial
       border-radius: 50%
-      width: 80px
+      width: 70px
       padding: 0
       text-align: center
-      height: 80px
+      height: 70px
       border: 1px solid white
       background: transparent
       color: white
+      @include lt-sm
+        width: 50px
+        height: 50px
 
     @include lt-sm
       width: 80%
       left: 10%
-      padding-top: 10px
-      padding-bottom: 10px
-      font-size: 18px
+      padding: 10px 0
+      font-size: 16px
       bottom: 30px
+      &.open
+        width: calc(80% - 100px)
 
   p
     font-size: 14px
@@ -98,6 +104,8 @@ section.call
 
 
 .animated
+  text-align: justify
+
   .background
     position: absolute
     left: 0
@@ -108,13 +116,12 @@ section.call
     z-index: 0
 
   .back
-    position: absolute
-    left: 0
-    right: 0
-    top: 0
-    bottom: 0
+    height: 100%
+    position: relative
     z-index: 1
     padding: 40px
+    @include lt-sm
+      padding: 30px
   position: absolute
   left: 0
   right: 0
@@ -122,6 +129,7 @@ section.call
   bottom: 0
   color: white
   transition: .3s
+
 
 .blue .animated .background
   background: #5b5e82
@@ -134,3 +142,35 @@ section.call
 
 b
   font-weight: bold
+
+.help-row
+  > div
+    vertical-align: top
+    padding-top: 10px
+
+    &:last-child
+      margin-left: 4%
+      position: relative
+
+      &:before
+        position: absolute
+        left: 0
+        display: block
+        content: ''
+        width: 40px
+        height: 1px
+        background: white
+        top: 0
+
+
+    width: 48%
+    display: inline-block
+
+    @include lt-md
+      font-size: 14px
+      width: initial
+      display: block
+      &:last-child
+        margin-left: 0
+        padding-top: 20px
+        margin-top: 30px

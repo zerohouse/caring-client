@@ -17,8 +17,7 @@
               disableOnInteraction: false
             }}" (indexChange)="setIndex($event)">
             <div class="slide-desc">
-                <span class="number">1</span>
-                <h2>장기요양보험 신청</h2>
+                <h2>1. 장기요양보험 신청</h2>
                 <p>
                     장기요양보험 등급, 받으셨나요?<br>
                     먼저 케어링에 전화하셔서<br>
@@ -43,8 +42,7 @@
                 <img src="./../../assets/img/step-1.png">
             </div>
             <div class="slide-desc">
-                <span class="number">2</span>
-                <h2>케어 컨설팅</h2>
+                <h2>2. 케어 컨설팅</h2>
                 <p>
                     다년간의 경험을 쌓은 케어링 전속<br>
                     베테랑 컨설턴트가 어르신께 가장 적합한<br>
@@ -53,8 +51,7 @@
                 <img src="./../../assets/img/step-2.png">
             </div>
             <div class="slide-desc">
-                <span class="number">3</span>
-                <h2>가정 방문 및 요양보호사 매칭</h2>
+                <h2>3. 가정 방문 및 요양보호사 매칭</h2>
                 <p>
                     케어링 직속 센터장이 가정에 방문하여<br>
                     12가지 기준에 따라 어르신께 꼭 맞는<br>
@@ -63,8 +60,7 @@
                 <img src="./../../assets/img/step-3.png">
             </div>
             <div class="slide-desc">
-                <span class="number">4</span>
-                <h2>케어링 서비스 시작</h2>
+                <h2>4. 케어링 서비스 시작</h2>
                 <p>
                     철저한 교육을 통해 선별된<br>
                     케어링 요양보호사가 숙련된 경험으로<br>
@@ -73,5 +69,8 @@
                 <img src="./../../assets/img/step-4.png">
             </div>
         </swiper>
+        <button class="nav" *ngIf="index !== 0" (click)="index= index-1"><img src="./../../assets/img/before.svg"> 이전</button>
+        <button class="nav next" *ngIf="index !== 3" (click)="index= index+1">다음 <img src="./../../assets/img/next.svg"></button>
     </div>
+
 </div>

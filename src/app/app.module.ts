@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, EventManager} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,8 +18,9 @@ import {StoriesComponent} from './stories/stories.component';
 import {HelpRequestComponent} from './help-request/help-request.component';
 import {FormsModule} from '@angular/forms';
 import {NgxSpringModule} from '../../ngxSpring/ngx.spring.module';
-import { ReserveListComponent } from './reserve-list/reserve-list.component';
+import {ReserveListComponent} from './reserve-list/reserve-list.component';
 import {PaginationComponent} from './reserve-list/pagination/pagination.component';
+import {PointerEventManager} from './pointer-event-manager';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import {PaginationComponent} from './reserve-list/pagination/pagination.componen
         ResponsiveModule.forRoot(),
         FormsModule
     ],
-    providers: [],
+    providers: [
+        {provide: EventManager, useClass: PointerEventManager}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
