@@ -1,5 +1,18 @@
 @import "responsive"
 
+\:host
+  display: block
+  height: 50px
+  @include lt-sm
+    height: 102px
+
+  > div
+    position: fixed
+    width: 100%
+    background: white
+    z-index: 1
+
+
 .pc, .mobile
   background: white
   padding: 10px 20px
@@ -10,7 +23,7 @@
   display: block
 
 .pc
-  height: 50px
+  box-shadow: 0 2px 2px silver
 
   ul
     display: inline-block
