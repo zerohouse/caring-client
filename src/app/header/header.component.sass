@@ -1,61 +1,48 @@
 @import "responsive"
 
-\:host
-  display: block
-  height: 50px
-  @include lt-sm
-    height: 102px
-
-  > div
-    position: fixed
-    width: 100%
-    background: white
-    z-index: 1
-
-
-.pc, .mobile
-  background: white
-  padding: 10px 20px
-  left: 0
-  top: 0
-  right: 0
+.header
+  position: fixed
+  width: 100%
   z-index: 100
-  display: block
+  background-color: #ffffff
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15)
+  padding-top: 10px
+  padding-bottom: 10px
 
-.pc
-  box-shadow: 0 2px 2px silver
+span
+  vertical-align: middle
 
-  ul
-    display: inline-block
-    margin-left: 40px
-
-    li
-      display: inline-block
-      margin-left: 30px
-      font-size: 14px
-      font-weight: bolder
-      vertical-align: middle
-
-
-ul.m
-  display: flex
-  border-top: 1px solid rgba(151, 151, 151, 0.5)
-  padding: 10px
-  box-shadow: 0 2px 2px silver
-  margin-bottom: 2px
+ul
+  display: inline-block
+  margin-left: 41px
 
   li
-    text-align: center
-    flex: 1 1 auto
+    display: inline-block
+    margin-left: 40px
+    font-size: 16px
     font-weight: bolder
     vertical-align: middle
-    font-size: 16px
 
+//
+//ul.m
+//  display: flex
+//  border-top: 1px solid rgba(151, 151, 151, 0.5)
+//  padding: 10px
+//  box-shadow: 0 2px 2px silver
+//  margin-bottom: 2px
+//
+//  li
+//    text-align: center
+//    flex: 1 1 auto
+//    font-weight: bolder
+//    vertical-align: middle
+//    font-size: 16px
+//
 
-.logo
-  font-size: 20px
-  font-weight: bold
-  display: inline-block
-  margin-left: 4px
-  margin-top: 3px
-  vertical-align: middle
+//.logo
+//  font-size: 20px
+//  font-weight: bold
+//  display: inline-block
+//  margin-left: 4px
+//  margin-top: 3px
+//  vertical-align: middle

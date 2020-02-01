@@ -1,0 +1,172 @@
+@import "responsive"
+
+@mixin paddings
+  padding-top: 50px
+  padding-left: 62px
+  @include lt-sm
+    padding-top: 40px
+    padding-left: 52px
+  @include lt-xs
+    padding-top: 22px
+    padding-left: 30px
+
+
+.cover-card
+  margin: 40px 0
+  height: 550px
+  @include lt-md
+    height: 400px
+  border-radius: 35px
+  background-color: #f4edea
+  position: relative
+  overflow: hidden
+
+  .content
+    @include paddings
+    position: relative
+    height: calc(100% - 40px)
+    @include lt-xs
+      height: calc(100% - 20px)
+    z-index: 2
+
+
+  &.blue
+    background-color: #e6ecf7
+
+
+  img.illust
+    width: 595px
+    position: absolute
+    right: -20px
+    bottom: -65px
+    @include lt-xs
+      width: 250px
+      right: 0
+      bottom: 0
+
+  button
+    position: absolute
+    bottom: 50px
+    left: 64px
+    @include lt-sm
+      left: 54px
+      bottom: 0
+      right: 0
+    padding: 22px 43px
+    border-radius: 50px
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15)
+    background-color: #ffffff
+    border: none
+    font-size: 22px
+    font-weight: bold
+    @include lt-xs
+      left: 10%
+      font-size: 14px
+      width: 80%
+      padding-top: 12px
+      padding-bottom: 10px
+      margin-bottom: 11px
+      cursor: pointer
+      bottom: 10px
+
+    &.close-btn
+      right: 40px
+      left: initial
+      border-radius: 50%
+      width: 70px
+      padding: 0
+      text-align: center
+      height: 70px
+      border: 1px solid white
+      background: transparent
+      color: white
+  //
+  //@include lt-sm
+  //  width: 80%
+  //  left: 10%
+  //  padding: 10px 0
+  //  font-size: 16px
+  //  bottom: 30px
+  //  &.open
+  //    width: calc(80% - 100px)
+
+  p
+    margin-top: 16px
+
+
+.animated
+  text-align: justify
+
+  .background
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    background: #7a5a58
+    z-index: 0
+
+  .back
+    height: calc(100% - 50px)
+    @include lt-xs
+      height: calc(100% - 20px)
+    position: relative
+    z-index: 1
+
+    @include lt-sm
+      button
+        bottom: 40px
+
+    @include paddings
+
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  color: white
+  transition: .3s
+
+
+.blue .animated .background
+  background: #5b5e82
+
+
+.help-row
+
+  button
+    bottom: 40px
+
+  .first
+    width: 418px
+    margin-right: 100px
+    @include lt-xs
+      width: calc(100% - 30px)
+
+  b
+    margin-bottom: 22px
+    display: inline-block
+
+  > div
+    font-size: 24px
+    vertical-align: top
+    padding-top: 10px
+    @include lt-xs
+      font-size: 14px
+
+    &:last-child
+      font-size: 20px
+      position: relative
+      @include lt-xs
+        font-size: 14px
+      &:before
+        position: absolute
+        left: 0
+        display: block
+        content: ''
+        width: 52px
+        height: 1px
+        background: white
+        top: 0
+
+    display: inline-block

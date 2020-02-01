@@ -1,0 +1,330 @@
+<section style="padding-top: 111px;padding-bottom: 115px" *showItSizes="{min:1440}">
+    <div class="container">
+        <h3>케어링만의 특별한<br>
+            요양 서비스를 알아보세요</h3>
+        <div class="cover-card">
+            <img class="illust" src="../../assets/img/main_img_03_dark.png">
+            <div class="content">
+                <h2>홈케어</h2>
+                <p>
+                    내 집에서 편안하게<br>
+                    프리미엄 요양을 시작하세요.
+                </p>
+                <button (click)="open[0] = !open[0]">더 알아보기</button>
+                <div class="animated" *ngIf="open[0]">
+                    <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>홈케어</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[0],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 집에 방문하여 보호자님 대신 어르신을 돌보아 드립니다. 주변 정리, 식사 도움, 정서 지원 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[0],params:{delay:800}}">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신의 건강이 악화되어 혼자서 모시기에
+                                    힘든 보호자님
+                                </div>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 도움을 필요로 하신 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[0] = !open[0]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-card blue">
+            <img class="illust" src="../../assets/img/main_img_01_dark.png">
+            <div class="content">
+                <h2>외출동행</h2>
+                <p>
+                    케어링 선생님과 함께<br>
+                    원하시는 곳으로 안전하게 외출하세요.
+                </p>
+                <button (click)="open[1] = !open[1]">더 알아보기</button>
+                <div class="animated" *ngIf="open[1]">
+                    <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>외출동행</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[1],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 어르신을 모시고 보호자님 대신 병원 등 외부에 방문해 드립니다. 외출 도움, 병원 처방 안내, 약 복용 안내 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[1],params:{delay:800}}">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을 내시기 어려운
+                                    보호자님
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[1] = !open[1]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="padding-top: 81px;padding-bottom: 115px" *showItSizes="{min:900,max:1439}">
+    <div class="container">
+        <h3>케어링만의 특별한<br>
+            요양 서비스를 알아보세요</h3>
+        <div class="cover-card" style="height: 590px">
+            <img class="illust" src="../../assets/img/main_img_03_dark.png">
+            <div class="content">
+                <h2>홈케어</h2>
+                <p>
+                    내 집에서 편안하게<br>
+                    프리미엄 요양을 시작하세요.
+                </p>
+                <button (click)="open[0] = !open[0]">더 알아보기</button>
+                <div class="animated" *ngIf="open[0]">
+                    <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>홈케어</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[0],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 집에 방문하여 보호자님 대신 어르신을 돌보아 드립니다. 주변 정리, 식사 도움, 정서 지원 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[0],params:{delay:800}}" style="margin-top: 20px">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신의 건강이 악화되어 혼자서 모시기에
+                                    힘든 보호자님
+                                </div>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 도움을 필요로 하신 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[0] = !open[0]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-card blue" style="height: 590px">
+            <img class="illust" src="../../assets/img/main_img_01_dark.png">
+            <div class="content">
+                <h2>외출동행</h2>
+                <p>
+                    케어링 선생님과 함께<br>
+                    원하시는 곳으로 안전하게 외출하세요.
+                </p>
+                <button (click)="open[1] = !open[1]">더 알아보기</button>
+                <div class="animated" *ngIf="open[1]">
+                    <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>외출동행</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[1],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 어르신을 모시고 보호자님 대신 병원 등 외부에 방문해 드립니다. 외출 도움, 병원 처방 안내, 약 복용 안내 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[1],params:{delay:800}}" style="margin-top: 20px">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을 내시기 어려운
+                                    보호자님
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[1] = !open[1]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="padding-top: 61px;padding-bottom: 100px" *showItSizes="{min:600,max:899}">
+    <div class="container">
+        <h3>케어링만의 특별한<br>
+            요양 서비스를 알아보세요</h3>
+        <div class="cover-card" style="height: 600px">
+            <img class="illust" src="../../assets/img/main_img_03_dark.png" style="    width: 581px;right: -128px;">
+            <div class="content">
+                <h2>홈케어</h2>
+                <p>
+                    내 집에서 편안하게<br>
+                    프리미엄 요양을 시작하세요.
+                </p>
+                <button (click)="open[0] = !open[0]">더 알아보기</button>
+                <div class="animated" *ngIf="open[0]">
+                    <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>홈케어</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[0],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 집에 방문하여 보호자님 대신 어르신을 돌보아 드립니다. 주변 정리, 식사 도움, 정서 지원 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[0],params:{delay:800}}" style="margin-top: 20px">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신의 건강이 악화되어 혼자서<br>
+                                    모시기에
+                                    힘든 보호자님
+                                </div>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 도움을 필요로 하신 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[0] = !open[0]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-card blue" style="height: 600px">
+            <img class="illust" src="../../assets/img/main_img_01_dark.png">
+            <div class="content">
+                <h2>외출동행</h2>
+                <p>
+                    케어링 선생님과 함께<br>
+                    원하시는 곳으로 안전하게 외출하세요.
+                </p>
+                <button (click)="open[1] = !open[1]">더 알아보기</button>
+                <div class="animated" *ngIf="open[1]">
+                    <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>외출동행</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[1],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 어르신을 모시고 보호자님 대신 병원 등 외부에 방문해 드립니다. 외출 도움, 병원 처방 안내, 약 복용 안내 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[1],params:{delay:800}}" style="margin-top: 20px">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을<br> 내시기
+                                    어려운
+                                    보호자님
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button ngx-scroll-to="#help" class="open">상담예약하기</button>
+                        <button (click)="open[1] = !open[1]" class="close-btn">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="padding-top: 35px;padding-bottom: 52px" *showItSizes="{max:599}">
+    <div class="container">
+        <h3>케어링만의 특별한<br>
+            요양 서비스를 알아보세요</h3>
+        <div class="cover-card" style="height: 346px">
+            <img class="illust" src="../../assets/img/main_img_03_dark.png">
+            <div class="content">
+                <h2>홈케어</h2>
+                <p>
+                    내 집에서 편안하게<br>
+                    프리미엄 요양을 시작하세요.
+                </p>
+                <button (click)="open[0] = !open[0]">더 알아보기</button>
+                <div class="animated" *ngIf="open[0]">
+                    <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>홈케어</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[0],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 집에 방문하여 보호자님 대신 어르신을 돌보아 드립니다. 주변 정리, 식사 도움, 정서 지원 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[0],params:{delay:800}}" style="margin-top: 20px">
+                                <b>이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신의 건강이 악화되어 혼자서<br>
+                                    모시기에
+                                    힘든 보호자님
+                                </div>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 도움을 필요로 하신 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button style="bottom: 10px;    width: calc(100% - 130px);" ngx-scroll-to="#help" class="open">
+                            상담예약하기
+                        </button>
+                        <button style="height: 40px;
+    width: 40px;
+    bottom: 10px;
+" (click)="open[0] = !open[0]" class="close-btn">닫기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-card blue" style="height: 356px">
+            <img class="illust" src="../../assets/img/main_img_01_dark.png">
+            <div class="content">
+                <h2>외출동행</h2>
+                <p>
+                    케어링 선생님과 함께<br>
+                    원하시는 곳으로 안전하게 외출하세요.
+                </p>
+                <button (click)="open[1] = !open[1]">더 알아보기</button>
+                <div class="animated" *ngIf="open[1]">
+                    <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
+                    <div class="back">
+                        <h2>외출동행</h2>
+                        <div class="help-row">
+                            <div [@fadeIn]="{value:open[1],params:{delay:400}}" class="first">
+                                <div>
+                                    검증된 요양보호사님이 어르신을 모시고 보호자님 대신 병원 등 외부에 방문해 드립니다. 외출 도움, 병원 처방 안내, 약 복용 안내 활동들을 수행합니다.
+                                </div>
+                            </div>
+                            <div [@fadeIn]="{value:open[1],params:{delay:800}}" style="margin-top: 20px">
+                                <b style="margin-bottom: 10px">이런 분들께 추천합니다!</b>
+                                <div>
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을<br> 내시기
+                                    어려운
+                                    보호자님
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
+                                </div>
+                            </div>
+                        </div>
+                        <button style="bottom: 10px;    width: calc(100% - 130px);" ngx-scroll-to="#help" class="open">
+                            상담예약하기
+                        </button>
+                        <button style="width: 40px;height: 40px;bottom: 10px" (click)="open[1] = !open[1]"
+                                class="close-btn">닫기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

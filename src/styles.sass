@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles/reset.css"
+@import "container"
 @import "responsive"
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css)
 
@@ -9,30 +10,42 @@ body
   line-height: 1.6
   color: #292d33
 
-h1
-  font-size: 35px
-  font-weight: bold
-  @include lt-sm
-    font-size: 28px
 
+b
+  font-weight: bold
 
 h2
-  font-size: 29px
+  font-size: 46px
   font-weight: bold
   @include lt-sm
+    font-size: 40px
+
+  @include lt-xs
     font-size: 22px
 
 h3
-  font-size: 22px
+  font-size: 32px
   font-weight: bold
-  @include lt-sm
-    font-size: 18px
+  @include lt-xs
+    font-size: 20px
 
-.container
-  position: relative
+h4
+  font-size: 24px
+  font-weight: bold
 
-b
-  font-weight: bolder
+p
+  font-size: 24px
+  font-weight: 500
+  @include lt-xs
+    font-size: 14px
 
-swiper > .swiper.s-wrapper .swiper-wrapper .swiper-slide
+
+swiper:not(.visible) > .swiper.s-wrapper .swiper-wrapper .swiper-slide
   overflow: hidden !important
+
+swiper.visible
+  .swiper.s-wrapper
+    overflow: visible !important
+
+  .swiper-slide
+    overflow: visible !important

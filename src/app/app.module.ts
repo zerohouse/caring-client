@@ -21,6 +21,9 @@ import {NgxSpringModule} from '../../ngxSpring/ngx.spring.module';
 import {ReserveListComponent} from './reserve-list/reserve-list.component';
 import {PaginationComponent} from './reserve-list/pagination/pagination.component';
 import {PointerEventManager} from './pointer-event-manager';
+import { InfoComponent } from './info/info.component';
+import { FooterComponent } from './footer/footer.component';
+import { BannerComponent } from './banner/banner.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import {PointerEventManager} from './pointer-event-manager';
         StoriesComponent,
         HelpRequestComponent,
         ReserveListComponent,
-        PaginationComponent
+        PaginationComponent,
+        InfoComponent,
+        FooterComponent,
+        BannerComponent
     ],
     imports: [
         NgxSpringModule,

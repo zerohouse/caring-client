@@ -1,9 +1,8 @@
-<div *showItSizes="{min:601}" class="pc">
+<div class="header" *showItSizes="{min:900}">
     <div class="container">
     <span routerLink="/">
-        <img src="./../assets/img/logo.png" class="logo"
-             style="width: 40px;margin-left: -20px;    margin-bottom: -6px;">
-        <span class="logo">케어링</span>
+        <img src="./../assets/img/logo-title.svg" class="logo"
+             style="width: 152px;margin-left: -20px;    margin-bottom: -6px;">
     </span>
         <ul>
             <li ngx-scroll-to="#help">무료 상담</li>
@@ -12,20 +11,29 @@
         </ul>
     </div>
 </div>
-<div *showItSizes="{max:600}">
-    <div class="mobile">
-        <div class="container">
-            <span routerLink="/">
-                <img src="./../assets/img/logo.png" class="logo"
-                     style="width: 40px;margin-left: -20px;    margin-bottom: -6px;">
-                <span class="logo">케어링</span>
-            </span>
-        </div>
+<div class="header" *showItSizes="{min:600,max:899}">
+    <div class="container">
+    <span routerLink="/">
+        <img src="./../assets/img/logo-title.svg" class="logo"
+             style="width: 152px;margin-left: -20px;    margin-bottom: -6px;">
+    </span>
+        <ul style="margin-left: 35px">
+            <li ngx-scroll-to="#help">무료 상담</li>
+            <li ngx-scroll-to="#info">서비스안내</li>
+            <li style="margin-right: 0" ngx-scroll-to="#qna">자주묻는 질문</li>
+        </ul>
     </div>
-    <ul class="m">
+</div>
+<div class="header" *showItSizes="{max:599}">
+    <div class="container">
+    <span routerLink="/">
+        <img src="./../assets/img/logo-title.svg" class="logo"
+             style="width: 152px">
+    </span>
+    </div>
+    <ul style="display: block;margin-left: 0;border-top:1px solid rgba(151, 151, 151, 0.5);padding-top: 7px">
         <li ngx-scroll-to="#help">무료 상담</li>
         <li ngx-scroll-to="#info">서비스안내</li>
         <li ngx-scroll-to="#qna">자주묻는 질문</li>
     </ul>
 </div>
-

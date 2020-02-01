@@ -1,3 +1,12 @@
+//@mixin md
+//  @media screen and (min-width: 1440px)
+//    @content
+
+@mixin lg
+  @media screen and (min-width: 1440px)
+    @content
+
+
 @mixin xs
   @media screen and (max-width: 599px)
     @content
@@ -10,16 +19,17 @@
   @media screen and (min-width: 960px) and (max-width: 1279px)
     @content
 
-@mixin lg
-  @media screen and (min-width: 1280px) and (max-width: 1919px)
-    @content
 
 @mixin xl
   @media screen and (min-width: 1920px) and (max-width: 5000px)
     @content
 
-@mixin lt-sm
+@mixin lt-xs
   @media screen and (max-width: 600px)
+    @content
+
+@mixin lt-sm
+  @media screen and (max-width: 899px)
     @content
 
 @mixin lt-md
