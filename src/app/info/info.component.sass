@@ -46,7 +46,7 @@
 
   button
     position: absolute
-    bottom: 50px
+    bottom: 60px
     left: 64px
     @include lt-sm
       left: 54px
@@ -70,6 +70,7 @@
       bottom: 10px
 
     &.close-btn
+      box-shadow: none
       right: 40px
       left: initial
       border-radius: 50%
@@ -95,6 +96,7 @@
 
 
 .animated
+  display: none
   text-align: justify
 
   .background
@@ -159,6 +161,7 @@
       position: relative
       @include lt-xs
         font-size: 14px
+
       &:before
         position: absolute
         left: 0
