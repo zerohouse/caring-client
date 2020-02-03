@@ -11,7 +11,7 @@
                     프리미엄 요양을 시작하세요.
                 </p>
                 <button (click)="open[0] = !open[0]">더 알아보기</button>
-                <div class="animated" *ngIf="open[0]">
+                <div class="animated" *ngIf="open[0]" @outAnimation>
                     <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>홈케어</h2>
@@ -48,7 +48,7 @@
                     원하시는 곳으로 안전하게 외출하세요.
                 </p>
                 <button (click)="open[1] = !open[1]">더 알아보기</button>
-                <div class="animated" *ngIf="open[1]">
+                <div class="animated" *ngIf="open[1]" @outAnimation>
                     <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>외출동행</h2>
@@ -61,8 +61,7 @@
                             <div [@fadeIn]="{value:open[1],params:{delay:800}}">
                                 <b>이런 분들께 추천합니다!</b>
                                 <div>
-                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을 내시기 어려운
-                                    보호자님
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 동행할 시간이 없는 보호자님
                                 </div>
                                 <div style="margin-top: 5px">
                                     <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
@@ -90,7 +89,7 @@
                     프리미엄 요양을 시작하세요.
                 </p>
                 <button (click)="open[0] = !open[0]">더 알아보기</button>
-                <div class="animated" *ngIf="open[0]">
+                <div class="animated" *ngIf="open[0]" @outAnimation>
                     <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>홈케어</h2>
@@ -127,7 +126,7 @@
                     원하시는 곳으로 안전하게 외출하세요.
                 </p>
                 <button (click)="open[1] = !open[1]">더 알아보기</button>
-                <div class="animated" *ngIf="open[1]">
+                <div class="animated" *ngIf="open[1]" @outAnimation>
                     <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>외출동행</h2>
@@ -140,8 +139,7 @@
                             <div [@fadeIn]="{value:open[1],params:{delay:800}}" style="margin-top: 20px">
                                 <b>이런 분들께 추천합니다!</b>
                                 <div>
-                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 함께 외출할 시간을 내시기 어려운
-                                    보호자님
+                                    <img src="./../../assets/img/checked.svg" class="check-icon">어르신과 동행할 시간이 없는 보호자님
                                 </div>
                                 <div style="margin-top: 5px">
                                     <img src="./../../assets/img/checked.svg" class="check-icon">정기적으로 외출하셔야 하는 어르신
@@ -169,7 +167,7 @@
                     프리미엄 요양을 시작하세요.
                 </p>
                 <button (click)="open[0] = !open[0]">더 알아보기</button>
-                <div class="animated" *ngIf="open[0]">
+                <div class="animated" *ngIf="open[0]" @outAnimation>
                     <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>홈케어</h2>
@@ -207,7 +205,7 @@
                     원하시는 곳으로 안전하게 외출하세요.
                 </p>
                 <button (click)="open[1] = !open[1]">더 알아보기</button>
-                <div class="animated" *ngIf="open[1]">
+                <div class="animated" *ngIf="open[1]" @outAnimation>
                     <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>외출동행</h2>
@@ -250,7 +248,7 @@
                     프리미엄 요양을 시작하세요.
                 </p>
                 <button (click)="open[0] = !open[0]">더 알아보기</button>
-                <div class="animated" *ngIf="open[0]">
+                <div class="animated" *ngIf="open[0]" @outAnimation>
                     <div [@fadeIn]="{value:open[0],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>홈케어</h2>
@@ -294,7 +292,7 @@
                     원하시는 곳으로 안전하게 외출하세요.
                 </p>
                 <button (click)="open[1] = !open[1]">더 알아보기</button>
-                <div class="animated" *ngIf="open[1]">
+                <div class="animated" *ngIf="open[1]" @outAnimation>
                     <div [@fadeIn]="{value:open[1],params:{delay:0}}" class="background"></div>
                     <div class="back">
                         <h2>외출동행</h2>

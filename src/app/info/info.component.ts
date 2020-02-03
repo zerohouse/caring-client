@@ -17,7 +17,20 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
                 style({opacity: 1}),
                 animate(200, style({opacity: 0}))
             ])
-        ])
+        ]),
+        trigger(
+            'outAnimation',
+            [
+                transition(
+                    ':leave',
+                    [
+                        style({opacity: 1}),
+                        animate('300ms ease-in',
+                            style({opacity: 0}))
+                    ]
+                )
+            ]
+        )
     ]
 })
 export class InfoComponent implements OnInit {

@@ -1,3 +1,4 @@
+@import "responsive"
 
 select
   -webkit-appearance: none
@@ -12,34 +13,32 @@ select
 select::-ms-expand
   display: none
 
+
 .select
   position: relative
-  display: flex
-  //width: 20em
-  //height: 2em
-  line-height: 2.5
-  //background: #f4edea
-  //padding: 10px 0
-  overflow: hidden
-//border-radius: .25em
-
+  margin-bottom: 40px
+  @include lt-xs
+    margin-bottom: 20px
 
 select
+  line-height: 2.5
+  position: relative
+  width: 100%
   font-size: 20px
-  flex: 1
   cursor: pointer
-  padding: 12px 16px
-  margin-bottom: 40px
+  padding: 0 16px
+  overflow: hidden
 
 .select::after
   content: '\25BC'
   position: absolute
   right: 0
-  height: 50px
+  top: 0
+  bottom: 0
   text-align: center
   width: 50px
   background: rgba(222, 222, 222, 0.5)
-
+  line-height: 50px
   cursor: pointer
   pointer-events: none
   -webkit-transition: .25s all ease

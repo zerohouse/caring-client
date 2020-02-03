@@ -16,6 +16,7 @@ export class HelpRequestComponent implements OnInit {
 
     constructor(private api: ApiService) {
         this.reserved = localStorage.getItem('reservedDate') === String(new Date().getUTCDate());
+        // this.reserved = true;
     }
 
     ngOnInit() {
