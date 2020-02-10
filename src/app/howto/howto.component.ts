@@ -18,7 +18,9 @@ export class HowtoComponent implements OnInit {
     set index(i) {
         const el = $('.drag-scroll-content');
         if (el) {
-            el.scrollLeft($($('.swiperindex')[i]).offset().left);
+            const value = $($('.swiperindex')[i]).offset().left + el.scrollLeft() - 20;
+            // el.scrollLeft(value);
+            $(el).animate({scrollLeft: value}, 200);
         }
         this.indexValue = i;
     }
@@ -52,6 +54,12 @@ export class HowtoComponent implements OnInit {
             image: './../../assets/img/step-4.png'
         }
     ];
+    swiperConfig = {
+        autoplay: {
+            delay: 3000
+        },
+        height: 535
+    };
 
     constructor() {
     }

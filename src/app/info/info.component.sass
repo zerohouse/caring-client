@@ -22,6 +22,8 @@
   overflow: hidden
 
   .content
+    border-radius: 35px
+    overflow: hidden
     @include paddings
     position: relative
     height: calc(100% - 40px)
@@ -67,7 +69,7 @@
       padding-bottom: 10px
       margin-bottom: 11px
       cursor: pointer
-      bottom: 10px
+      bottom: 20px
 
     &.close-btn
       box-shadow: none
@@ -95,6 +97,7 @@
     margin-top: 16px
 
 .check-icon
+  margin-top: 3px
   margin-right: 10px
 
 .animated
@@ -137,6 +140,11 @@
 
 
 .help-row
+
+  .text-block
+    display: inline-block
+    vertical-align: top
+    margin-bottom: 10px
 
   button
     bottom: 40px

@@ -17,9 +17,7 @@
     <!--    }-->
     <div class="desc">
         <div class="container">
-            <swiper [(index)]="index" [config]="{
-            height:535
-            }">
+            <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
                     <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 27px;display: inline-block">
@@ -62,15 +60,9 @@
             <div class="swiperindex" [class.active]="index === 3" (click)="index=3">4. 케어링 서비스 시작</div>
         </drag-scroll>
     </div>
-    <!--    autoplay: {-->
-    <!--    delay: 3000,-->
-    <!--    disableOnInteraction: false-->
-    <!--    }-->
     <div class="desc">
         <div class="container">
-            <swiper [(index)]="index" [config]="{
-            height:535
-            }">
+            <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
                     <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 27px;display: inline-block">
@@ -118,9 +110,7 @@
     <!--    }-->
     <div class="desc">
         <div class="container">
-            <swiper [(index)]="index" [config]="{
-            height:535
-            }">
+            <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
                     <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 27px;display: inline-block">
@@ -162,15 +152,10 @@
             <div class="swiperindex" [class.active]="index === 3" (click)="index=3">4. 케어링 서비스 시작</div>
         </drag-scroll>
     </div>
-    <!--    autoplay: {-->
-    <!--    delay: 3000,-->
-    <!--    disableOnInteraction: false-->
-    <!--    }-->
+
     <div class="desc">
         <div class="container">
-            <swiper [(index)]="index" [config]="{
-            height:535
-            }">
+            <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
                     <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 18px;
@@ -189,7 +174,7 @@
     bottom: 20px;
     display: block;">
                 <button class="nav" *ngIf="index !== 0" (click)="index= index-1"
-                 style="cursor: pointer;
+                        style="cursor: pointer;
     font-size: 18px;
     padding: 18px 20px;
     position: absolute;
