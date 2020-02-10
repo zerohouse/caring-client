@@ -24,25 +24,34 @@ ul
     font-weight: bolder
     vertical-align: middle
 
-//
-//ul.m
-//  display: flex
-//  border-top: 1px solid rgba(151, 151, 151, 0.5)
-//  padding: 10px
-//  box-shadow: 0 2px 2px silver
-//  margin-bottom: 2px
-//
-//  li
-//    text-align: center
-//    flex: 1 1 auto
-//    font-weight: bolder
-//    vertical-align: middle
-//    font-size: 16px
-//
+
+ul.m
+  //display: block
+  margin-left: 0
+  //padding-left: 15px
+  //padding-right: 15px
+  display: inline-block
+  //width: 100%
+
+  //width: calc(100% - 30px)
+
+  li
+    //width: 33.333%
+    margin-left: 40px
+    &:first-child
+      margin-left: 0
+    text-align: center
+    //display: table-cell
+    font-weight: bolder
+    vertical-align: middle
+    font-size: 16px
+
 
 .logo
   padding-top: 10px
   padding-bottom: 5px
+  @include lt-xs
+    padding-top: 0
 //  font-size: 20px
 //  font-weight: bold
 //  display: inline-block

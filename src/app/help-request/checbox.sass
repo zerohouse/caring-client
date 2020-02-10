@@ -1,3 +1,4 @@
+@import "responsive"
 
 .container-checkbox
   margin-top: 8px !important
@@ -12,6 +13,11 @@
   -ms-user-select: none
   user-select: none
   font-weight: normal
+  @include lt-xs
+    padding-left: 32px
+    font-size: 18px !important
+    margin-top: 7px !important
+
 
   input
     position: absolute
@@ -26,6 +32,10 @@
     width: 25px
     //background-color: #
     border: 2px solid black
+    @include lt-xs
+      top: 4px
+      height: 18px
+      width: 18px
 
   &:hover input ~ .checkmark
     background-color: white
@@ -52,3 +62,6 @@
     -webkit-transform: rotate(45deg)
     -ms-transform: rotate(45deg)
     transform: rotate(45deg)
+    @include lt-xs
+      left: 4px
+      top: -3px

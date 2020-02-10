@@ -28,14 +28,16 @@
     <div class="container">
     <span routerLink="/">
         <img src="./../assets/img/logo-title.svg" class="logo"
-             style="width: 152px">
+             style="width: 132px">
     </span>
     </div>
-    <ul style="display: block;margin-left: 0;border-top:1px solid rgba(151, 151, 151, 0.5);padding-top: 7px">
-        <li ngx-scroll-to="#help">무료 상담</li>
-        <li ngx-scroll-to="#info">서비스안내</li>
-        <li ngx-scroll-to="#qna">자주묻는 질문</li>
-    </ul>
+    <div style="text-align: center;border-top: 1px solid rgba(151, 151, 151, 0.5); padding-top: 7px">
+        <ul class="m">
+            <li ngx-scroll-to="#help">무료 상담</li>
+            <li ngx-scroll-to="#info">서비스안내</li>
+            <li ngx-scroll-to="#qna">자주묻는 질문</li>
+        </ul>
+    </div>
 </div>
 <div class="block" style="height: 76px" *showItSizes="{min:600}"></div>
-<div class="block" style="height: 117px" *showItSizes="{max:599}"></div>
+<div class="block" style="height: 100px" *showItSizes="{max:599}"></div>

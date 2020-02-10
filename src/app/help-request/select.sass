@@ -28,7 +28,9 @@ select
   cursor: pointer
   padding: 0 16px
   overflow: hidden
-
+  @include lt-xs
+    font-size: 18px
+    
 .select::after
   content: '\25BC'
   position: absolute
