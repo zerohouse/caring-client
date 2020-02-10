@@ -14,14 +14,16 @@
         <tbody *ngFor="let item of data?.content">
         <tr>
             <td>{{item.id}}</td>
-            <td>{{item.createdAt | date}}</td>
+            <td>{{item.createdAt | date : 'yyyy-MM-dd HH:mm'}}</td>
             <td>{{item.name}}</td>
             <td>{{item.phone}}</td>
             <td>
-                <img src="./../../assets/img/checked.svg" *ngIf="item.optionHome" class="check-icon">
+                <!--                <img src="./../../assets/img/checked.svg" *ngIf="item.optionHome" class="check-icon">-->
+                <span *ngIf="item.optionHome">o</span>
             </td>
             <td>
-                <img src="./../../assets/img/checked.svg" *ngIf="item.optionGoWith" class="check-icon">
+                <!--                <img src="./../../assets/img/checked.svg" *ngIf="item.optionGoWith" class="check-icon">-->
+                <span *ngIf="item.optionGoWith">o</span>
             </td>
             <td [ngSwitch]="item.optionTime">
                 <span *ngSwitchCase="0">오전</span>

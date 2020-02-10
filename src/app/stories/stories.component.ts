@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class StoriesComponent implements OnInit {
     stories = [
         {
-            name: '남순화',
+            name: '남춘화',
             img: 'story-1.png',
             href: 'https://blog.naver.com/caring_official/221780557907',
             story: ' 7년이 넘도록 일을 했지만 보호사라는 생각을 저는 한번도 안 해 봤어요. 어르신들을 모시겠다는 생각으로 일을 시작했지요. ' +
