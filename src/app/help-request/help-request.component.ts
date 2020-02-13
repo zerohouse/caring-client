@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../ngxSpring/api.service';
 
+declare var wcs;
+
 @Component({
     selector: 'cr-help-request',
     templateUrl: './help-request.component.html',
@@ -45,6 +47,8 @@ export class HelpRequestComponent implements OnInit {
             optionTime: this.time,
             phone: this.phone
         }).subscribe(() => {
+            const _nasa = {};
+            _nasa['cnv'] = wcs.cnv('1', '10'); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
             localStorage.setItem('reservedDate', String(new Date().getUTCDate()));
             // alert('예약되었습니다.');
             this.reserved = true;
@@ -54,6 +58,12 @@ export class HelpRequestComponent implements OnInit {
     reserveCancel() {
         localStorage.clear();
         this.reserved = false;
-
     }
 }
+
+// <!-- 전환페이지 설정 -->
+// <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+//     <script type="text/javascript">
+// var _nasa={};
+// _nasa["cnv"] = wcs.cnv("1","10"); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
+// </script>

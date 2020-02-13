@@ -13,6 +13,51 @@ export class ReserveListComponent implements OnInit {
     data: Page<Reserve>;
 
     constructor(private api: ApiService) {
+        const el = document.createElement('script');
+        el.innerText = '  (function () {\n' +
+            '            var w = window;\n' +
+            '            if (w.ChannelIO) {\n' +
+            '                return (window.console.error || window.console.log || function () {\n' +
+            '                })(\'ChannelIO script included twice.\');\n' +
+            '            }\n' +
+            '            var d = window.document;\n' +
+            '            var ch = function () {\n' +
+            '                ch.c(arguments);\n' +
+            '            };\n' +
+            '            ch.q = [];\n' +
+            '            ch.c = function (args) {\n' +
+            '                ch.q.push(args);\n' +
+            '            };\n' +
+            '            w.ChannelIO = ch;\n' +
+            '\n' +
+            '            function l() {\n' +
+            '                if (w.ChannelIOInitialized) {\n' +
+            '                    return;\n' +
+            '                }\n' +
+            '                w.ChannelIOInitialized = true;\n' +
+            '                var s = document.createElement(\'script\');\n' +
+            '                s.type = \'text/javascript\';\n' +
+            '                s.async = true;\n' +
+            '                s.src = \'https://cdn.channel.io/plugin/ch-plugin-web.js\';\n' +
+            '                s.charset = \'UTF-8\';\n' +
+            '                var x = document.getElementsByTagName(\'script\')[0];\n' +
+            '                x.parentNode.insertBefore(s, x);\n' +
+            '            }\n' +
+            '\n' +
+            '            if (document.readyState === \'complete\') {\n' +
+            '                l();\n' +
+            '            } else if (window.attachEvent) {\n' +
+            '                window.attachEvent(\'onload\', l);\n' +
+            '            } else {\n' +
+            '                window.addEventListener(\'DOMContentLoaded\', l, false);\n' +
+            '                window.addEventListener(\'load\', l, false);\n' +
+            '            }\n' +
+            '        })();\n' +
+            '        ChannelIO(\'boot\', {\n' +
+            '            \'pluginKey\': \'7db0ec34-0797-4661-ae24-20fef1cb8ccf\'\n' +
+            '        });';
+
+        document.body.append(el)
     }
 
     ngOnInit() {
