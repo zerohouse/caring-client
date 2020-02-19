@@ -22,7 +22,15 @@ export class ReserveController {
     return this.http.get<Page<Reserve>>('/api/reserve/list', {page: page, size: size});
   }
 
-  saveReserve(reserve: Reserve): Observable<Reserve> {
+  newReserve(reserve: Reserve): Observable<Reserve> {
+    return this.http.post<Reserve>('/api/reserve/new', reserve);
+  }
+
+  save(reserve: Reserve): Observable<Reserve> {
     return this.http.post<Reserve>('/api/reserve', reserve);
+  }
+
+  updateMemo(id: number, memo: string): Observable<void> {
+    return this.http.post<void>('/api/reserve/updateMemo', null, {id: id, memo: memo});
   }
 }

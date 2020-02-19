@@ -9,10 +9,12 @@
             <th>홈케어</th>
             <th>외출동행</th>
             <th>연락시간</th>
+            <th>메모</th>
+            <th></th>
         </tr>
         </thead>
         <tbody *ngFor="let item of data?.content">
-        <tr>
+        <tr *ngIf="item.id">
             <td>{{item.id}}</td>
             <td>{{item.createdAt | date : 'yyyy-MM-dd HH:mm'}}</td>
             <td>{{item.name}}</td>
@@ -30,9 +32,47 @@
                 <span *ngSwitchCase="1">오후</span>
                 <span *ngSwitchCase="2">무관</span>
             </td>
+            <td>
+                <input [(ngModel)]="item.memo" (ngModelChange)="update(item)">
+            </td>
+            <td>
+                <button (click)="delete(item)">-</button>
+            </td>
+        </tr>
+        <tr *ngIf="!item.id">
+            <td colspan="2">
+                <button (click)="save(item)">저장하기</button>
+            </td>
+            <td>
+                <input [(ngModel)]="item.name">
+            </td>
+            <td>
+                <input [(ngModel)]="item.phone">
+            </td>
+            <td>
+                <!--                <img src="./../../assets/img/checked.svg" *ngIf="item.optionHome" class="check-icon">-->
+                <input type="checkbox" [(ngModel)]="item.optionHome">
+            </td>
+            <td>
+                <!--                <img src="./../../assets/img/checked.svg" *ngIf="item.optionGoWith" class="check-icon">-->
+                <input type="checkbox" [(ngModel)]="item.optionGoWith">
+            </td>
+            <td>
+                <select [(ngModel)]="item.optionTime">
+                    <option [value]="0">오전</option>
+                    <option [value]="1">오후</option>
+                    <option [value]="2">무관</option>
+                </select>
+            </td>
+            <td>
+                <input [(ngModel)]="item.memo">
+            </td>
+            <td>
+            </td>
         </tr>
         </tbody>
     </table>
     <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
+    <button (click)="new()">새 상담 기록</button>
     <button (click)="download(table)">다운로드</button>
 </div>

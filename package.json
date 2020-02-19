@@ -22,6 +22,7 @@
     "@linways/table-to-excel": "^1.0.4",
     "@nicky-lenaers/ngx-scroll-to": "^3.0.1",
     "ngx-responsive": "^8.0.1",
+    "ngx-script-loader": "^1.3.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

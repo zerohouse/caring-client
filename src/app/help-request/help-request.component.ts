@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../ngxSpring/api.service';
+import {ScriptService} from 'ngx-script-loader';
 
 declare var wcs;
+declare var _nasa;
 
 @Component({
     selector: 'cr-help-request',
@@ -16,7 +18,7 @@ export class HelpRequestComponent implements OnInit {
     time = 0;
     reserved;
 
-    constructor(private api: ApiService) {
+    constructor(private api: ApiService, private scriptService: ScriptService) {
         this.reserved = localStorage.getItem('reservedDate') === String(new Date().getUTCDate());
         // this.reserved = true;
     }
@@ -38,20 +40,21 @@ export class HelpRequestComponent implements OnInit {
             return;
         }
 
-        this.api.reserve.saveReserve({
+        this.api.reserve.newReserve({
             createdAt: null,
             id: null,
             name: this.name,
             optionGoWith: this.goWith,
             optionHome: this.home,
             optionTime: this.time,
-            phone: this.phone
+            phone: this.phone,
+            memo: null
         }).subscribe(() => {
-            const _nasa = {};
-            _nasa['cnv'] = wcs.cnv('1', '10'); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
             localStorage.setItem('reservedDate', String(new Date().getUTCDate()));
-            // alert('예약되었습니다.');
             this.reserved = true;
+            this.scriptService.loadScript('https://wcs.naver.net/wcslog.js').subscribe(() => {
+                _nasa['cnv'] = wcs.cnv('1', '10'); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
+            });
         });
     }
 

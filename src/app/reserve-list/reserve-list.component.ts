@@ -4,6 +4,10 @@ import {Page, Reserve} from '../../../ngxSpring/api.model';
 
 declare var TableToExcel;
 
+export function checkAuthority() {
+    return prompt('암호?') === '1515';
+}
+
 @Component({
     selector: 'cr-reserve-list',
     templateUrl: './reserve-list.component.html',
@@ -57,7 +61,7 @@ export class ReserveListComponent implements OnInit {
             '            \'pluginKey\': \'7db0ec34-0797-4661-ae24-20fef1cb8ccf\'\n' +
             '        });';
 
-        document.body.append(el)
+        document.body.append(el);
     }
 
     ngOnInit() {
@@ -74,6 +78,30 @@ export class ReserveListComponent implements OnInit {
             sheet: {
                 name: '상담요청'
             }
+        });
+    }
+
+    update(item) {
+        this.api.reserve.updateMemo(item.id, item.memo).subscribe();
+    }
+
+    delete(item) {
+        if (!checkAuthority()) {
+            return;
+        }
+        this.api.reserve.deleteReserve(item.id).subscribe(() => {
+            this.data.content.remove(item);
+        });
+    }
+
+    new() {
+        this.data.content.unshift({} as Reserve);
+    }
+
+    save(item: Reserve) {
+        this.api.reserve.save(item).subscribe(i => {
+            item.id = i.id;
+            item.createdAt = i.createdAt;
         });
     }
 }
