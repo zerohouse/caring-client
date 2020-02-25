@@ -43,6 +43,7 @@ export class HelpRequestComponent implements OnInit {
         this.api.reserve.newReserve({
             createdAt: null,
             id: null,
+            direct: false,
             name: this.name,
             optionGoWith: this.goWith,
             optionHome: this.home,

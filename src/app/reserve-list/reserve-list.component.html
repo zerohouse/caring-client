@@ -9,6 +9,7 @@
             <th>홈케어</th>
             <th>외출동행</th>
             <th>연락시간</th>
+            <th>전화접수</th>
             <th>메모</th>
             <th></th>
         </tr>
@@ -33,7 +34,10 @@
                 <span *ngSwitchCase="2">무관</span>
             </td>
             <td>
-                <input [(ngModel)]="item.memo" (ngModelChange)="update(item)">
+                <span *ngIf="item.direct">o</span>
+            </td>
+            <td>
+                <textarea [(ngModel)]="item.memo" (ngModelChange)="update(item)"></textarea>
             </td>
             <td>
                 <button (click)="delete(item)">-</button>
@@ -65,7 +69,10 @@
                 </select>
             </td>
             <td>
-                <input [(ngModel)]="item.memo">
+                <input type="checkbox" [(ngModel)]="item.direct">
+            </td>
+            <td>
+                <textarea [(ngModel)]="item.memo"></textarea>
             </td>
             <td>
             </td>

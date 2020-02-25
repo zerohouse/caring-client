@@ -7,11 +7,12 @@ export interface Reserve extends CreateTable {
     optionGoWith: boolean;
     optionTime: number;
     memo: string;
+    direct: boolean;
 }
 
 export interface Page<T> extends Slice<T> {
-    totalPages: number;
     totalElements: number;
+    totalPages: number;
 }
 
 export interface CreateTable extends IdTable {
@@ -19,17 +20,17 @@ export interface CreateTable extends IdTable {
 }
 
 export interface Sort extends Streamable<Order>, Serializable {
-    unsorted: boolean;
     sorted: boolean;
+    unsorted: boolean;
 }
 
 export interface Pageable {
     offset: number;
     sort: Sort;
-    pageSize: number;
-    pageNumber: number;
     paged: boolean;
+    pageSize: number;
     unpaged: boolean;
+    pageNumber: number;
 }
 
 export interface IdTable {
@@ -43,10 +44,10 @@ export interface Slice<T> extends Streamable<T> {
     number: number;
     size: number;
     content: T[];
-    numberOfElements: number;
     sort: Sort;
-    first: boolean;
+    numberOfElements: number;
     pageable: Pageable;
+    first: boolean;
     last: boolean;
 }
 
@@ -59,8 +60,8 @@ export interface Order extends Serializable {
     property: string;
     ignoreCase: boolean;
     nullHandling: NullHandling;
-    descending: boolean;
     ascending: boolean;
+    descending: boolean;
 }
 
 export interface Iterable<T> {
