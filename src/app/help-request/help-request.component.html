@@ -28,39 +28,39 @@
                     <span>이전으로</span></span>
             </div>
             <div class="input-box" *ngIf="!reserved">
-                <label>
-                    성함
-                </label>
-                <input placeholder="성함을 입력해주세요." type="text" [(ngModel)]="name">
-                <label>
+                <!--                <label>-->
+                <!--                    성함-->
+                <!--                </label>-->
+                <!--                <input placeholder="성함을 입력해주세요." type="text" [(ngModel)]="name">-->
+                <label style="margin-top: 180px">
                     전화번호
                 </label>
                 <input placeholder="전화번호를 입력해주세요." type="text" [(ngModel)]="phone">
-                <label>
-                    상담을 원하는 서비스 <span class="choose_double">(중복선택가능)</span>
-                </label>
-                <div>
-                    <label class="container-checkbox" style="margin-right: 28px">홈케어
-                        <input type="checkbox" [(ngModel)]="home">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container-checkbox">외출동행
-                        <input type="checkbox" [(ngModel)]="goWith">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <label>
-                    상담가능 시간대
-                </label>
+                <!--                <label>-->
+                <!--                    상담을 원하는 서비스 <span class="choose_double">(중복선택가능)</span>-->
+                <!--                </label>-->
+                <!--                <div>-->
+                <!--                    <label class="container-checkbox" style="margin-right: 28px">홈케어-->
+                <!--                        <input type="checkbox" [(ngModel)]="home">-->
+                <!--                        <span class="checkmark"></span>-->
+                <!--                    </label>-->
+                <!--                    <label class="container-checkbox">외출동행-->
+                <!--                        <input type="checkbox" [(ngModel)]="goWith">-->
+                <!--                        <span class="checkmark"></span>-->
+                <!--                    </label>-->
+                <!--                </div>-->
+                <!--                <label>-->
+                <!--                    상담가능 시간대-->
+                <!--                </label>-->
 
-                <div class="select">
-                    <select [(ngModel)]="time">
-                        <option [value]="0">오전</option>
-                        <option [value]="1">오후</option>
-                        <option [value]="2">오전, 오후 모두가능</option>
-                    </select>
-                </div>
-                <div style="text-align: center">
+                <!--                <div class="select">-->
+                <!--                    <select [(ngModel)]="time">-->
+                <!--                        <option [value]="0">오전</option>-->
+                <!--                        <option [value]="1">오후</option>-->
+                <!--                        <option [value]="2">오전, 오후 모두가능</option>-->
+                <!--                    </select>-->
+                <!--                </div>-->
+                <div style="text-align: center;margin-top: 50px">
                     <button class="brown" (click)="reserve()">상담 예약하기</button>
                 </div>
             </div>

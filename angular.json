@@ -34,7 +34,6 @@
       "prefix": "cr",
       "architect": {
         "build": {
-
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "stylePreprocessorOptions": {
@@ -113,5 +112,8 @@
       }
     }
   },
-  "defaultProject": "caring-client"
+  "defaultProject": "caring-client",
+  "cli": {
+    "analytics": "7038eb1b-4622-4bd3-b7fd-012dffdc2ca5"
+  }
 }
