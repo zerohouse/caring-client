@@ -27,11 +27,15 @@ export class HelpRequestComponent implements OnInit {
     }
 
     reserve() {
-        
+
         if (!this.phone) {
             alert('휴대폰 번호를 입력해주세요.');
             return;
+        } else {
+            alert('상담 예약이 되었습니다.');
+            return;
         }
+
         this.api.reserve.newReserve({
             createdAt: null,
             id: null,
