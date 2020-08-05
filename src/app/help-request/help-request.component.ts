@@ -27,19 +27,11 @@ export class HelpRequestComponent implements OnInit {
     }
 
     reserve() {
-        // if (!this.name) {
-        //     alert('이름을 입력해주세요.');
-        //     return;
-        // }
+        
         if (!this.phone) {
-            alert('연락처를 입력해주세요.');
+            alert('휴대폰 번호를 입력해주세요.');
             return;
         }
-        // if (!this.goWith && !this.home) {
-        //     alert('상담 내용을 선택해주세요.');
-        //     return;
-        // }
-
         this.api.reserve.newReserve({
             createdAt: null,
             id: null,

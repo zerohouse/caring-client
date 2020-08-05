@@ -1,8 +1,11 @@
-<section style="padding-top: 109px" *showItSizes="{min:1440}">
+<section style="padding-top: 71px" *showItSizes="{min:1440}">
     <div class="container">
-        <h3>케어링<br>
-            이렇게 시작하세요.
-        </h3>
+        <div class="container" style="width: 75%; height: 256px; margin-bottom: 134px; background-image: url(../../assets/img/shop-banner.png);
+         cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
+        </div>
+
+        <h2>케어링의 요양 시스템</h2>
+        <p style="width: 568px;">풍부한 경험을 갖춘 요양 전문가가 체계적으로 맞춤 설계합니다. 각 단계를 클릭하여 더 자세히 알아보세요.</p>
 
         <div style="margin-top: 68px;">
             <div class="swiperindex" [class.active]="index === 0" (click)="index=0">1. 장기요양보험 신청</div>
@@ -19,23 +22,13 @@
         <div class="container">
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
-                    <span class="number">{{i + 1}}</span>
-                    <div style="margin-left: 27px;display: inline-block">
-                        <h2 style="font-size: 38px">{{slide.title}}</h2>
+                    <div style="margin-left: 27px; display: inline-block">
+                        <h2 style="width: 380px; font-size: 38px" [innerHTML]="slide.title"></h2>
                         <p [innerHTML]="slide.body"></p>
                     </div>
-                    <img [src]="slide.image">
+                    <img [src]="slide.image" style="width: 450px; height: 480px">
                 </div>
             </swiper>
-            <div class="buttons">
-                <button class="nav" *ngIf="index !== 0" (click)="index= index-1"><img
-                        src="./../../assets/img/before.svg">
-                    이전
-                </button>
-                <button class="nav next" *ngIf="index !== 3" (click)="index= index+1">다음 <img
-                        src="./../../assets/img/next.svg">
-                </button>
-            </div>
         </div>
     </div>
 </section>
@@ -43,10 +36,12 @@
 
 <section style="padding-top: 86px" *showItSizes="{min:900,max:1439}">
     <div class="container">
-        <h3>케어링<br>
-            이렇게 시작하세요.
-        </h3>
+        <div class="container" style="width: 100%; height: 200px; margin-bottom: 134px; background-image: url(../../assets/img/shop-banner.png); background-size: 100%;
+            cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
+        </div>
 
+        <h2>케어링의 요양 시스템</h2>
+        <p style="width: 568px;">풍부한 경험을 갖춘 요양 전문가가 체계적으로 맞춤 설계합니다. 각 단계를 클릭하여 더 자세히 알아보세요.</p>
         <drag-scroll style="margin-top: 68px;" [scrollbar-hidden]="true">
             <div class="swiperindex" style="margin-right: 70px" [class.active]="index === 0" (click)="index=0">1. 장기요양보험
                 신청
@@ -64,12 +59,11 @@
         <div class="container">
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
-                    <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 27px;display: inline-block">
-                        <h2 style="font-size: 38px">{{slide.title}}</h2>
+                        <h2 style="font-size: 38px" [innerHTML]="slide.title"></h2>
                         <p [innerHTML]="slide.body"></p>
                     </div>
-                    <img [src]="slide.image">
+                    <img [src]="slide.image" style="width: 350px;">
                 </div>
             </swiper>
             <div class="buttons" style="left: 100px">
@@ -87,9 +81,9 @@
 
 <section style="padding-top: 66px" *showItSizes="{min:600,max:899}">
     <div class="container">
-        <h3>케어링<br>
-            이렇게 시작하세요.
-        </h3>
+        <div class="container" style="width: 100%; height: 150px; margin-bottom: 134px; background-image: url(../../assets/img/shop-banner.png); background-size: 100%;
+            cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
+        </div>
 
         <drag-scroll style="margin-top: 68px;" [scrollbar-hidden]="true">
             <div class="swiperindex" style="margin-right: 70px" [class.active]="index === 0" (click)="index=0">1. 장기요양보험
@@ -112,9 +106,8 @@
         <div class="container">
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
-                    <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 27px;display: inline-block">
-                        <h2 style="font-size: 38px">{{slide.title}}</h2>
+                        <h2 style="font-size: 38px;" [innerHTML]="slide.title"></h2>
                         <p [innerHTML]="slide.body"></p>
                     </div>
                     <img [src]="slide.image" style="width: 250px">
@@ -133,11 +126,12 @@
     </div>
 </section>
 
-<section style="padding-top: 38px" *showItSizes="{max:599}">
-    <div class="container">
-        <h3>케어링<br>
-            이렇게 시작하세요.
-        </h3>
+<section style="padding-top: 17px;" *showItSizes="{max:599}">
+    <div class="container" >
+        <div class="container" style="width: 250px; height: 77px; margin-left: auto; margin-right: auto; margin-bottom: 51px; background-image: url(../../assets/img/shop-banner-02.png);
+        cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')"></div>
+        <h2 style="margin-left: 36px; font-size: 20px;">케어링의 요양 서비스</h2>
+        <p style="margin: 26px 36px;">풍부한 경험을 갖춘 요양 전문가가 체계적으<br>로 맞춤 설계합니다. 각 단계를 클릭하여 더<br> 자세히 알아보세요.</p>
 
         <drag-scroll style="margin-top: 30px;" [scrollbar-hidden]="true">
             <div class="swiperindex" style="margin-right: 70px" [class.active]="index === 0" (click)="index=0">1. 장기요양보험
@@ -152,16 +146,18 @@
             <div class="swiperindex" [class.active]="index === 3" (click)="index=3">4. 케어링 서비스 시작</div>
         </drag-scroll>
     </div>
-
+    <!--    autoplay: {-->
+    <!--    delay: 3000,-->
+    <!--    disableOnInteraction: false-->
+    <!--    }-->
     <div class="desc">
         <div class="container">
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
-                    <span class="number">{{i + 1}}</span>
                     <div style="margin-left: 18px;
     display: inline-block;
     width: calc(100% - 51px);">
-                        <h2 style="font-size: 22px">{{slide.title}}</h2>
+                        <h2 style="font-size: 22px" [innerHTML]="slide.title"></h2>
                         <p [innerHTML]="slide.body"></p>
                     </div>
                     <img [src]="slide.image" style="width: 80%;left:0;max-height: 250px;object-fit: contain;

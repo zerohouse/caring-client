@@ -2,22 +2,44 @@
 
 
 .help
-  background-color: rgba(222, 222, 222, 0.3)
 
   .form-box
-    margin-top: 40px
-    padding: 40px 30px 23px
+    margin-top: 51px
     @include lt-xs
       margin-top: 20px
       padding: 20px 20px 20px
       width: calc(100% - 40px)
     display: inline-block
-    max-width: 500px
-    width: calc(100% - 80px)
-    border-radius: 35px
-    box-shadow: 0 8px 23px 0 rgba(0, 0, 0, 0.15)
-    background-color: #ffffff
+    border: 1px solid #ced4da
+    width: 552px
+    height: 326px
+    border-radius: 10px
 
+    h3
+      font-size: 28px
+      font-weight: 550
+      margin-top: 60px
+      margin-bottom: 10px
+    
+    p
+      font-size: 20px
+      font-weight: 400
+      margin-bottom: 41px
+
+    a
+      font-size: 30px
+      background-color: #d68b6b
+      text-align: center
+      padding: 9px 110px 14px 110px
+      border-radius: 35px
+      font-weight: bold
+      color: #ffffff
+
+      &:hover
+        box-shadow: 0 5px 8px 0 rgba(214, 139, 107, 0.6)
+
+      &:active
+        background-color:#bf7657      
 
     .input-box
       font-size: 22px
@@ -36,19 +58,37 @@
         margin-top: 28px
 
     input[type=text]
-      padding: 12px 16px
+      position: relative
+      padding-left:25px
+      margin-right: 10px 
       font-size: 20px
-      font-weight: 500
-      width: calc(100% - 32px)
-      display: block
-      border: none
+      font-weight: 550
+      width: 307px
+      height: 68px
+      display: inline-block
+      border: 1px solid #adb5bd
       background: #f4edea
+      border-radius: 35px
       @include lt-xs
         font-size: 18px
 
-.choose_double
-  font-size: 95%
-  color: #838383
-  font-weight: normal
-@import "checbox"
-@import "select"
+      &:hover
+        border: 2px solid #ea6a3d
+
+      &:focus
+        border: 2px solid #ea6a3d
+
+
+.button
+  background-color: #d68b6b
+  color: #ffffff
+  cursor: pointer
+  width: 121px
+  font-size: 24px
+  padding: 14px 23px 18px 22px
+
+  &:hover
+    box-shadow: 0 5px 8px 0 rgba(214, 139, 107, 0.6)
+    
+  &:active
+    background-color:#bf7657  

@@ -1,0 +1,54 @@
+@import "responsive"
+
+select
+  -webkit-appearance: none
+  -moz-appearance: none
+  -ms-appearance: none
+  appearance: none
+  outline: 0
+  box-shadow: none
+  border: 0 !important
+  background: #f4edea none
+
+select::-ms-expand
+  display: none
+
+
+.select
+  position: relative
+  margin-bottom: 40px
+  @include lt-xs
+    margin-bottom: 20px
+
+select
+  line-height: 2.5
+  position: relative
+  width: 100%
+  font-size: 20px
+  cursor: pointer
+  padding: 0 16px
+  overflow: hidden
+  @include lt-xs
+    font-size: 18px
+    
+.select::after
+  content: '\25BC'
+  position: absolute
+  right: 0
+  top: 0
+  bottom: 0
+  text-align: center
+  width: 50px
+  background: rgba(222, 222, 222, 0.5)
+  line-height: 50px
+  cursor: pointer
+  pointer-events: none
+  -webkit-transition: .25s all ease
+  -o-transition: .25s all ease
+  transition: .25s all ease
+
+//select option:hover
+//  box-shadow: 0 0 10px 100px #1882A8 inset
+//.select:hover::after
+//  color: #f39c12
+

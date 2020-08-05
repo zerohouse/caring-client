@@ -1,0 +1,59 @@
+@import "responsive"
+
+.container-checkbox
+  margin-top: 8px !important
+  display: inline-block
+  position: relative
+  padding-left: 60px
+  margin-bottom: 19px
+  cursor: pointer
+  font-size: 28px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  font-weight: bold
+  color: white
+  @include lt-xs
+    padding-left: 32px
+    font-size: 18px !important
+    margin-top: 7px !important
+
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    
+
+  .checkmark
+    position: absolute
+    top: 5px
+    left: 0
+    height: 41px
+    width: 41px
+    margin-right: 16px
+    background-image: url('../../assets/img/rectangle-copy-9.svg') 
+    @include lt-xs
+      top: 4px
+      height: 18px
+      width: 18px
+
+    &:hover
+      background-color: rgba(255, 255, 255, 0.15)
+
+  input:checked ~ .checkmark
+    background-image: url('../../assets/img/group-4.svg')
+
+  .checkmark:after
+    content: ""
+    position: absolute
+    display: none
+
+  input:checked ~ .checkmark:after
+    display: block
+
+  .checkmark:after
+    -webkit-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    transform: rotate(45deg)

@@ -1,0 +1,67 @@
+<section *showItSizes="{min:1440}" style="padding-top: 146px; padding-bottom: 151px;">
+    <div class="container">
+        <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:4.0,spaceBetween:20}">
+            <div *ngFor="let news of newss" (click)="moveTo(news.href)">
+                <div class="card-review" style="width: initial;">
+                    <img [src]="'../assets/img/'+news.img">
+                    <p><b>{{news.name}}</b></p>
+                    <p style="width: 206px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
+                </div>
+            </div>
+        </swiper>
+    </div>
+</section>
+
+<section *showItSizes="{min:900,max:1439}" style="padding-top: 111px; padding-bottom: 98px">
+    <div class="container" style="overflow-x: hidden;padding-bottom: 30px">
+        <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:2.5,spaceBetween:10}">
+            <div *ngFor="let news of newss" (click)="moveTo(news.href)">
+                <div class="card-review" style="width: initial;">
+                    <img [src]="'../assets/img/'+news.img">
+                    <p><b>{{news.name}}</b></p>
+                    <p style="width: 206px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
+                </div>
+            </div>
+        </swiper>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 2" (click)="index= index+1"></div>
+	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
+    </div>
+</section>
+
+
+<section *showItSizes="{min:600,max:899}" style="padding-top: 111px; padding-bottom: 98px">
+    <div class="container" style="overflow-x: hidden;padding-bottom: 30px">
+        <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.8,spaceBetween:20}">
+            <div *ngFor="let news of newss" (click)="moveTo(news.href)">
+                <div class="card-review" style="width: initial;">
+                    <img [src]="'../assets/img/'+news.img">
+                    <p><b>{{news.name}}</b></p>
+                    <p style="width: 206px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
+                </div>
+            </div>
+        </swiper>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 2" (click)="index= index+1"></div>
+	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
+    </div>
+</section>
+
+
+<section *showItSizes="{max:599}" style="padding-top: 45px; padding-bottom: 38px;">
+    <div class="container" style="width: 320px; overflow-x: hidden; padding-bottom: 30px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: 20px; margin-bottom: 20px">케어링 소식</h2>
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.5,spaceBetween:15}">
+            <div *ngFor="let news of newss">
+                <div class="review-m" (click)="moveTo(news.href)">
+                    <img [src]="'../assets/img/'+news.img"><br>
+                    <p style="font-weight: bold;">{{news.name}}</p>
+                    <p style="width: 158px; height: 85px;" [innerHTML]="news.story"></p>
+                </div>
+            </div>
+        </swiper>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 3" (click)="index= index+1"></div>
+	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
+    </div>
+</section>

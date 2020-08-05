@@ -1,0 +1,75 @@
+<section style="padding-top: 136px; padding-bottom: 160px" *showItSizes="{min:1440}">
+    <div class="container">
+        <h2 style="font-size: 40px;margin-bottom: 20px">케어링의 요양 서비스<br></h2>
+        <div style="font-size: 20px">어르신과 보호자님께 꼭 맞는 유형의 요양을 선택하실 수 있습니다.</div>
+        <div class="head" *ngFor="let service of services">
+            <img [src]="'../assets/img/'+ service.img">
+            <h4 style="font-size: 28px;">{{service.name}}</h4>
+            <p [innerHTML]="service.story"></p>
+            <div class=" card-review">
+                <h4 style="font-size: 20px; margin-bottom: 13px;">{{service.title}}</h4>
+                <span [innerHTML]="service.contents1"></span>
+                <span style="color: #51cf66; font-weight: 700;" [innerHTML]="service.contents_green"></span>
+                <span [innerHTML]="service.contents2"></span>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
+<section style="padding-top: 100px; padding-bottom: 160px" *showItSizes="{min:900, max:1439}">
+    <div class="container">
+        <h2 style="font-size: 40px;margin-bottom: 10px">케어링의 요양 서비스<br></h2>
+        <div style="font-size: 20px; margin-bottom: 20px">어르신과 보호자님께 꼭 맞는 유형의 요양을 선택하실 수 있습니다.</div>
+        <div class="head" *ngFor="let service of services" style="width: 334px; margin-right: 35px;">
+            <img [src]="'../assets/img/'+ service.img" style="width: 334px; height: 256px;">
+            <h4 style="font-size: 22px;">{{service.name}}</h4>
+            <p style="width: 319px; font-size: 18px;" [innerHTML]="service.story"></p>
+            <div class=" card-review" style="width: 266px;">
+                <h4 style="font-size: 22px;">{{service.title}}</h4>
+                <span style="font-size: 16px;" [innerHTML]="service.contents1"></span>
+                <span style="color: #51cf66; font-size: 16px; font-weight: bold;" [innerHTML]="service.contents_green"></span>
+                <span style="font-size: 16px;" [innerHTML]="service.contents2"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding-top: 50px; padding-bottom: 85px" *showItSizes="{min:600, max:899}">
+    <div class="container">
+        <h2 style="font-size: 28px;margin-bottom: 10px">케어링의 요양 서비스<br></h2>
+        <div style="font-size: 18px; ">어르신과 보호자님께 꼭 맞는 유형의 요양을 <br> 선택하실 수 있습니다.</div>
+        <div class="head" *ngFor="let service of services">
+            <img [src]="'../assets/img/'+ service.img" style="width: 450px;">
+            <h4>{{service.name}}</h4>
+            <p style="width: 450px; padding-bottom: 80px;" [innerHTML]="service.story"></p>
+            <div class="card-review" style="width: 382px; top: -80px;">
+                <h4>{{service.title}}</h4>
+                <span [innerHTML]="service.contents1"></span>
+                <span style="color: #51cf66; font-weight: bold;" [innerHTML]="service.contents_green"></span>
+                <span [innerHTML]="service.contents2"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="text-align: left; padding-top: 40px; padding-bottom: 30px;" *showItSizes="{max:599}">
+    <div class="container" style="width: 248px; margin-left:auto; margin-right:auto; line-height: 21px;">
+        <h2 style="font-size: 20px;margin-bottom: 10px; margin-left: 20px">케어링의 요양 서비스<br></h2>
+        <div style="font-size: 14px; margin-left: 20px">어르신과 보호자님께 꼭 맞는 유형의 요양을 선택하실 수 있습니다.</div>
+        <div class="head" *ngFor="let service of services" style="width: 248px; height: 458px; padding-bottom: 60px; margin-left: 20px;">
+            <img style="width: 248px; height: 176px;" [src]="'../assets/img/'+ service.img">
+            <h4 style="font-size: 18px;">{{service.name}}</h4>
+            <p style="width: 248px; font-size: 14px;" [innerHTML]="service.story"></p>
+            <div class="card-review" style="width: 248px; height: 119px; padding: 0px;">
+                <h4 style="font-size: 16px; margin-top: 10px; margin-left: 16px;">{{service.title}}</h4>
+                <div style="width: 222px; margin-left: 16px;">
+                    <span style="font-size: 14px;" [innerHTML]="service.contents1"></span>
+                    <span style="font-size: 14px; color: #51cf66; font-weight: 700;" [innerHTML]="service.contents_green"></span>
+                    <span style="font-size: 14px;" [innerHTML]="service.contents2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

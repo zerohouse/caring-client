@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="591" height="262" viewBox="0 0 591 262">
+    <defs>
+        <filter id="ctd81tyi7a" width="125.4%" height="122.4%" x="-12.7%" y="-11.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="12" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="12"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="#FFF" filter="url(#ctd81tyi7a)" transform="translate(24 -387)">
+        <path d="M19.393 197.179L38.786 216.571 58.179 197.179 77.571 216.571 96.964 197.179 116.357 216.571 135.75 197.179 155.143 216.571 174.536 197.179 193.929 216.571 213.321 197.179 232.714 216.571 252.107 197.179 271.5 216.571 290.893 197.179 310.286 216.571 329.679 197.179 349.071 216.571 368.464 197.179 387.857 216.571 407.25 197.179 426.643 216.571 446.036 197.179 465.429 216.571 484.821 197.179 504.214 216.571 523.607 197.179 543 216.571 543 0 0 0 0 216.571z" transform="translate(0 399)"/>
+    </g>
+</svg>

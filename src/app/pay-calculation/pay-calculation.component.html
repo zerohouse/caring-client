@@ -1,0 +1,285 @@
+<section style="padding-top: 77px; height: 711px" class="head" *showItSizes="{min:1440}">
+    <div class="container">
+        <div class="box"></div>
+        <img src="../../assets/img/group-9.svg" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px">
+        <h2 style="font-size: 40px; color: white; width: 478px; margin-bottom: 18px;">
+            받을 수 있는 급여와 지원금을 미리 계산해보세요
+        </h2>
+        <p style="margin-bottom: 38px">
+            먼저, 원하시는 요양서비스를 선택하세요.
+        </p>
+        <form>
+            <label class="container-checkbox">
+                <input type="radio" name="check_in" value="family" checked="checked">가족 요양
+                <span class="checkmark"></span>
+            </label>
+            <br>
+            <label class="container-checkbox">
+                <input type="radio" name="check_in" value="pro">방문 요양
+                <span class="checkmark"></span>
+            </label>
+        </form>
+        <div class="content-box">
+            <label>어르신의 노인장기요양보험 등급</label>
+            <div class="radio-toolbar">
+                <input type="radio" id="radio1" name="radiolevel" value="level1" checked>
+                <label for="radio1">1등급</label>
+            
+                <input type="radio" id="radio2" name="radiolevel" value="level2">
+                <label for="radio2">2등급</label>
+            
+                <input type="radio" id="radio3" name="radiolevel" value="level3">
+                <label for="radio3">3등급</label> 
+
+                <input type="radio" id="radio4" name="radiolevel" value="level4">
+                <label for="radio4">4등급</label> 
+
+                <input type="radio" id="radio5" name="radiolevel" value="level5">
+                <label for="radio5">5등급</label> 
+            </div>
+            <label>요양보호사 돌봄 횟수</label>
+            <div class="select">
+                <select>
+                    <option [value]="0">24회 (주6회 x 4주)</option>
+                    <option [value]="1">20회 (주5회 x 4주)</option>
+                </select>
+            </div>
+            <label>돌봄 시간 (하루 기준)</label>
+            <h4>4시간 (240분)</h4>
+        </div>
+        <div class="bill">
+            <span style="border-bottom: 1px solid #979797;">개인 부담금</span>
+            <span style="margin: 45px 60px 0px 328px; font-size: 24px; font-weight: 500;"> 월</span>
+            <span style="margin: 42px 60px 0px 358px; font-size: 28px;"> 160,000원</span>
+            <br><br><br>
+            <span style="color: #51cf66;">국가 지원금</span>
+            <span style="margin: 45px 60px 0px 328px; font-size: 24px; font-weight: 500;"> 월</span>
+            <span style="margin: 42px 60px 0px 358px;font-size: 28px; color: #51cf66;"> 868,000원</span>
+        </div>
+        <div class="content-box">
+            <label>가족 요양 돌봄 시간 (하루 기준)</label>
+            <form class="radio-toolbar" id="mainForm" name="mainForm">
+                <input type="radio" id="60min" name="minute" value="21000원" checked>
+                <label for="60min" style="padding: 5px 20% 0px 20%;">60분</label>
+
+                <input type="radio" id="90min" name="minute" value="28000원">
+                <label for="90min" style="padding: 5px 20% 0px 20%;" >90분</label>
+            </form>
+            <label style="margin-bottom: 10px;">가족 요양 돌봄 횟수</label>
+            <h4 style="font-size: 24px; border-bottom: 1px solid #979797; margin-bottom: 40px;">31회</h4>
+            <label>1회당 가족 요양 급여</label>
+            <h5 id="demo" style="font-size: 24px; border-bottom: 1px solid #979797;">28000원</h5>
+        </div>
+        <div class="bill">
+            <span style="border-bottom: 1px solid #979797;">받으실 수 있는 <br> 가족 요양 급여</span>
+            <span style="margin: 45px 60px 0px 328px; font-size: 24px; font-weight: 500;"> 월
+                <span style="margin: -5px 0px 0px 10px; font-size: 28px; color: #51cf66;"> 868,000원<br></span>
+            </span>
+            <span style="margin: 85px 60px 0px 270px; font-size: 17px; color: #979797; font-weight: 500;">(28,000원 x 31회 = 868,000원)</span>
+        </div>
+    </div>
+</section>
+
+
+<section style="padding-top: 85px;padding-bottom: 81px; text-align: left;" class="head" *showItSizes="{min:900,max:1439}">
+    <div class="container">
+        <div class="box" style="left: 402.5px; width: 530px;"></div>
+        <img src="../../assets/img/group-9.svg" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px">
+        <h2 style="font-size: 32px; color: white; width: 386px; margin-bottom: 18px;">
+            받을 수 있는 급여와 지원금을 미리 계산해보세요
+        </h2>
+        <p style="font-size: 20px; margin-bottom: 38px">
+            먼저, 원하시는 요양서비스를 선택하세요.
+        </p>
+        <div>
+            <label class="container-checkbox">
+                <input type="radio" name="check_in" value="family" checked="checked">가족 요양
+                <span class="checkmark"></span>
+            </label>
+            <br>
+            <label class="container-checkbox">
+                <input type="radio" name="check_in" value="pro">방문 요양
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="content-box" style="left: 500px; width: 400px;">
+            <label>어르신의 노인장기요양보험 등급</label>
+            <div class="radio-toolbar-900">
+                <input type="radio" id="radio1" name="radiolevel" value="level1" checked>
+                <label for="radio1">1등급</label>
+            
+                <input type="radio" id="radio2" name="radiolevel" value="level2">
+                <label for="radio2">2등급</label>
+            
+                <input type="radio" id="radio3" name="radiolevel" value="level3">
+                <label for="radio3">3등급</label> 
+
+                <input type="radio" id="radio4" name="radiolevel" value="level4">
+                <label for="radio4">4등급</label> 
+
+                <input type="radio" id="radio5" name="radiolevel" value="level5">
+                <label for="radio5">5등급</label> 
+            </div>
+            <label>요양보호사 돌봄 횟수</label>
+            <div class="select">
+                <select>
+                    <option [value]="0">24회 (주6회 x 4주)</option>
+                    <option [value]="2">20회 (주5회 x 4주)</option>
+                </select>
+            </div>
+            <label>돌봄 시간 (하루 기준)</label>
+            <p>4시간 (240분)</p>
+        </div>
+        <div class="bill" style="position: relative; width: 507px; height: 232px; left: 403px; top: -78px;">
+            <span style="width: 400px; border-bottom: 1px solid #979797;">개인 부담금</span>
+            <span style="margin: 45px 60px 0px 308px; font-size: 24px; font-weight: 500;"> 월</span>
+            <br><br><br>
+            <span style="color: #51cf66;">국가 지원금</span>
+            <span style="margin: 45px 60px 0px 308px; font-size: 24px; font-weight: 500;"> 월</span>
+        </div>
+    </div>
+</section>
+
+
+<section style="padding-top: 47px; padding-bottom: 25px;text-align: center" class="head"
+         *showItSizes="{min:600,max:899}">
+        <div class="container">
+        <img src="../../assets/img/group-9.svg" style="position: static; width: 61px;height: 61px; margin-bottom: 19px;">
+        <h2 style="font-size: 32px; color: white; margin-bottom: 23px;">
+            받을 수 있는 급여와 지원금을 <br>미리 계산해보세요
+        </h2>
+        <p style="font-size: 24px; margin-bottom: 36px;">
+            먼저, 원하시는 요양서비스를 선택하세요.
+        </p>
+        <div style="margin-bottom: 53px;">
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="family" checked="checked">가족 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;" ></span>
+            </label>
+            <br>
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="pro">방문 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
+            </label>
+        </div>
+        <div class="box_m" style="width: 450px;"></div>
+        <div class="content-box_m" style="width: 400px;text-align: left; padding-left: 8px;">
+            <label style="font-size: 18px;">어르신의 노인장기요양보험 등급</label>
+            <div class="radio-toolbar_m-600">
+                <input type="radio" id="radio1" name="radiolevel" value="level1" checked>
+                <label for="radio1">1등급</label>
+            
+                <input type="radio" id="radio2" name="radiolevel" value="level2">
+                <label for="radio2">2등급</label>
+            
+                <input type="radio" id="radio3" name="radiolevel" value="level3">
+                <label for="radio3">3등급</label> 
+
+                <input type="radio" id="radio4" name="radiolevel" value="level4">
+                <label for="radio4">4등급</label> 
+
+                <input type="radio" id="radio5" name="radiolevel" value="level5">
+                <label for="radio5">5등급</label> 
+            </div>
+            <label style="font-size: 18px;">요양보호사 돌봄 시간 (하루 기준)</label>
+            <div class="radio-toolbar_m-600">
+                <input type="radio" id="90min" name="minute" value="90" checked>
+                <label for="90min" style="padding: 5px 17.5% 5px 17.5%;" >90분</label>
+            
+                <input type="radio" id="60min" name="minute" value="60">
+                <label for="60min" style="padding: 5px 17.5% 5px 17.5%;">60분</label>
+            </div>
+            <label style="font-size: 18px;">돌봄 횟수</label>
+            <div class="radio-toolbar_m-600">
+                <input type="radio" id="24times" name="time" value="24" checked>
+                <label for="24times" style="padding: 5px 15% 5px 15%;">24회()</label>
+            
+                <input type="radio" id="20times" name="time" value="20">
+                <label for="20times" style="padding: 5px 15% 5px 15%;">20회()</label>
+            </div>
+        </div>
+        <div class="bill-600">
+            <br>
+            <span style="padding-right: 90px; border-bottom: 1px solid #979797;">개인 부담금</span>
+            <span style="font-weight: 500; border-bottom: 1px solid #979797;"> 월</span>
+            <br><br>
+            <span style="padding-right: 90px; color: #51cf66;">국가 지원금</span>
+            <span style="font-weight: 500;"> 월</span>
+        </div>
+        <!-- 
+        <span style="width: 119px; font-size: 14px; color: #51cf66;"> 국가 지원금</span>
+        <span style="font-size: 14px; width: 23px; font-weight: 500;"> 월</span>-->
+    </div>
+</section>
+
+
+<section class="head text-center" style="padding-top: 43px; padding-bottom: 86px;text-align: center"
+        *showItSizes="{max:599}">
+    <div class="container">
+        <img src="../../assets/img/group-9.svg" style="position: static; width: 41px;height: 41px; margin-bottom: 19px;">
+        <h2 style="font-size: 18px; color: white; margin-bottom: 23px;">
+            받을 수 있는 급여와 지원금을 <br>미리 계산해보세요
+        </h2>
+        <p style="font-size: 14px; margin-bottom: 36px;">
+            먼저, 원하시는 요양서비스를 선택하세요.
+        </p>
+        <div style="margin-bottom: 53px;">
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="family" checked="checked">가족 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;" ></span>
+            </label>
+            <br>
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="pro">방문 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
+            </label>
+        </div>
+        <div class="box_m" style="border: 1px solid black;"></div>
+        <div class="content-box_m" style="text-align: left; padding-left: 8px;">
+            <label>어르신의 노인장기요양보험 등급</label>
+            <div class="radio-toolbar_m">
+                <input type="radio" id="radio1" name="radiolevel" value="level1" checked>
+                <label for="radio1">1등급</label>
+            
+                <input type="radio" id="radio2" name="radiolevel" value="level2">
+                <label for="radio2">2등급</label>
+            
+                <input type="radio" id="radio3" name="radiolevel" value="level3">
+                <label for="radio3">3등급</label> 
+
+                <input type="radio" id="radio4" name="radiolevel" value="level4">
+                <label for="radio4">4등급</label> 
+
+                <input type="radio" id="radio5" name="radiolevel" value="level5">
+                <label for="radio5">5등급</label> 
+            </div>
+            <label>요양보호사 돌봄 시간 (하루 기준)</label>
+            <div class="radio-toolbar_m">
+                <input type="radio" id="90min" name="minute" value="90" checked>
+                <label for="90min" style="padding: 5px 17.5% 0px 17.5%;" >90분</label>
+            
+                <input type="radio" id="60min" name="minute" value="60">
+                <label for="60min" style="padding: 5px 17.5% 0px 17.5%;">60분</label>
+            </div>
+            <label>돌봄 횟수</label>
+            <div class="radio-toolbar_m">
+                <input type="radio" id="24times" name="time" value="24" checked>
+                <label for="24times" style="padding: 5px 15% 0px 15%;">24회()</label>
+            
+                <input type="radio" id="20times" name="time" value="20">
+                <label for="20times" style="padding: 5px 15% 0px 15%;">20회()</label>
+            </div>
+        </div>
+        <div class="bill_m" style="text-align: left;">
+            <br>
+            <span style="margin-left: 40px; padding-right: 60px; border-bottom: 1px solid #979797;">개인 부담금</span>
+            <span style="font-weight: 500; border-bottom: 1px solid #979797;"> 월</span>
+            <br><br>
+            <span style="margin-left: 40px; padding-right: 60px; color: #51cf66;">국가 지원금</span>
+            <span style="font-weight: 500;"> 월</span>
+        </div>
+       <!-- 
+        <span style="width: 119px; font-size: 14px; color: #51cf66;"> 국가 지원금</span>
+        <span style="font-size: 14px; width: 23px; font-weight: 500;"> 월</span>-->
+    </div>
+</section>

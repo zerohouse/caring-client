@@ -1,0 +1,51 @@
+<section style="text-align: center; padding-top: 135px; padding-bottom: 126px" *showItSizes="{min:1440}">
+    <div class="container">
+        <div style="margin-bottom: 50px"></div>
+        <div style="font-size: 29px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
+        <h2 style="font-size: 40px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
+        <div class="card-review" *ngFor="let why of whys" >
+            <img [src]="'../assets/img/'+ why.img">
+            <h4 style="margin-top: 33px;">{{why.name}}</h4>
+            <p style="margin-bottom: 33px" [innerHTML]="why.story"></p>
+        </div>
+    </div>
+</section>
+
+
+<section style="text-align: center; padding-bottom: 50px" *showItSizes="{min:900, max:1439}">
+    <div class="container">
+        <div style="margin-bottom: 50px"></div>
+        <div style="font-size: 25px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
+        <h2 style="font-size: 36px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
+        <div class="card-review" *ngFor="let why of whys" style="width: 236px; padding-left: 0px;">
+            <img [src]="'../assets/img/'+ why.img" style="width: 200px; height: 200px">
+            <h4 style="margin-top: 29px;">{{why.name}}</h4>
+            <p style="font-size: 16px; margin-bottom: 29px" [innerHTML]="why.story"></p>
+        </div>
+    </div>
+</section>
+
+<section style="text-align: center; padding-bottom: 53px" *showItSizes="{min:600, max:899}">
+    <div class="container">
+        <div style="margin-bottom: 50px"></div>
+        <div style="font-size: 25px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
+        <h2 style="font-size: 36px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
+        <div class="card-review" *ngFor="let why of whys" >
+            <img [src]="'../assets/img/'+ why.img">
+            <h4 style="margin-top: 33px;">{{why.name}}</h4>
+            <p style="margin-bottom: 33px" [innerHTML]="why.story"></p>
+        </div>
+    </div>
+</section>
+
+<section style="text-align: center; padding-top: 54px; padding-bottom: 193px" *showItSizes="{max:599}">
+    <div class="container">
+        <div style="font-size: 14px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
+        <h2 style="font-size: 20px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
+        <div class="card-review" *ngFor="let why of whys" style="width: 245px; height: 338px;" >
+            <img style="width: 228px; height: 225px;" [src]="'../assets/img/'+ why.img">
+            <h4 style="margin-top: 19px; font-size: 16px;">{{why.name}}</h4>
+            <p style="margin-top: 7px; font-size: 14px;" [innerHTML]="why.story"></p>
+        </div>
+    </div>
+</section>

@@ -24,6 +24,13 @@ import {PointerEventManager} from './pointer-event-manager';
 import {InfoComponent} from './info/info.component';
 import {FooterComponent} from './footer/footer.component';
 import {BannerComponent} from './banner/banner.component';
+import {Why_caringComponent} from './why_caring/why_caring.component';
+import { Country_subsidyComponent } from './country_subsidy/country_subsidy.component';
+import { HelpcaringComponent } from './help-caring/help-caring.component';
+import { Nursing_servicesComponent } from './nursing-services/nursing-services.component';
+import { Pay_calculationComponent } from './pay-calculation/pay-calculation.component';
+import { Caring_newsComponent } from './caring-news/caring_news.component';
+import { NationwideComponent } from './nationwide/nationwide.component';
 
 
 @NgModule({
@@ -41,6 +48,13 @@ import {BannerComponent} from './banner/banner.component';
         PaginationComponent,
         InfoComponent,
         FooterComponent,
+        Why_caringComponent,
+        Country_subsidyComponent,
+        HelpcaringComponent,
+        Nursing_servicesComponent,
+        Pay_calculationComponent,
+        Caring_newsComponent,
+        NationwideComponent,
         BannerComponent
     ],
     imports: [
