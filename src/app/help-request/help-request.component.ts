@@ -31,9 +31,6 @@ export class HelpRequestComponent implements OnInit {
         if (!this.phone) {
             alert('휴대폰 번호를 입력해주세요.');
             return;
-        } else {
-            alert('상담 예약이 되었습니다.');
-            return;
         }
 
         this.api.reserve.newReserve({
@@ -47,6 +44,7 @@ export class HelpRequestComponent implements OnInit {
             phone: this.phone,
             memo: null
         }).subscribe(() => {
+            alert('상담 예약이 되었습니다.');
             localStorage.setItem('reservedDate', String(new Date().getUTCDate()));
             this.reserved = true;
             this.scriptService.loadScript('https://wcs.naver.net/wcslog.js').subscribe(() => {
