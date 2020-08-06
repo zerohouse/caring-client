@@ -61,8 +61,6 @@ export class HelpRequestComponent implements OnInit {
     }
 }
 
-}
-
 // <!-- 전환페이지 설정 -->
 // <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 //     <script type="text/javascript">
