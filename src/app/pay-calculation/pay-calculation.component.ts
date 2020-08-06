@@ -8,7 +8,12 @@ import {Component, OnInit} from '@angular/core';
 
 
 export class Pay_calculationComponent implements OnInit {
-  
+
+  type = true;
+  minute: any;
+  level: any;
+  count: any;
+
   constructor() { }
 
   ngOnInit() {

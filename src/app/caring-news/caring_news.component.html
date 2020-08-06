@@ -32,9 +32,9 @@
 
 
 <section *showItSizes="{min:600,max:899}" style="padding-top: 111px; padding-bottom: 98px">
-    <div class="container" style="overflow-x: hidden;padding-bottom: 30px">
+    <div class="container" style="width:86%; overflow-x: hidden;padding-bottom: 30px;">
         <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
-        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.8,spaceBetween:20}">
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.8,spaceBetween:10}">
             <div *ngFor="let news of newss" (click)="moveTo(news.href)">
                 <div class="card-review" style="width: initial;">
                     <img [src]="'../assets/img/'+news.img">
