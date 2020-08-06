@@ -52,11 +52,11 @@ export class HelpRequestComponent implements OnInit {
             });
         });
     }
-
+/*
     reserveCancel() {
         localStorage.clear();
         this.reserved = false;
-    }
+    }*/
 }
 
 // <!-- 전환페이지 설정 -->
