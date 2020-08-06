@@ -50,13 +50,14 @@ export class HelpRequestComponent implements OnInit {
             this.scriptService.loadScript('https://wcs.naver.net/wcslog.js').subscribe(() => {
                 _nasa['cnv'] = wcs.cnv('1', '10'); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
             });
+            return;
         });
     }
-/*
+
     reserveCancel() {
         localStorage.clear();
         this.reserved = false;
-    }*/
+    }
 }
 
 // <!-- 전환페이지 설정 -->
