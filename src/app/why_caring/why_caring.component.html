@@ -38,14 +38,16 @@
     </div>
 </section>
 
-<section style="text-align: center; padding-top: 54px; padding-bottom: 193px" *showItSizes="{max:599}">
-    <div class="container">
+<section style="text-align: center; padding-top: 54px;" *showItSizes="{max:599}">
+    <div class="container" style="width: 100%; padding: 0px">
         <div style="font-size: 14px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
         <h2 style="font-size: 20px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
-        <div class="card-review" *ngFor="let why of whys" style="width: 245px; height: 338px;" >
-            <img style="width: 228px; height: 225px;" [src]="'../assets/img/'+ why.img">
-            <h4 style="margin-top: 19px; font-size: 16px;">{{why.name}}</h4>
-            <p style="margin-top: 7px; font-size: 14px;" [innerHTML]="why.story"></p>
+        <div class="card-review_m" *ngFor="let why of whys">
+            <img [src]="'../assets/img/'+ why.img">
+            <h4 style="font-size: 16px;">{{why.name}}</h4>
+            <p [innerHTML]="why.story"></p>
+            <br>
         </div>
     </div>
+    <img src="../../assets/img/img-money.png" style=" position: relative; width: 55%; height: auto; left: 15%; top: 100px">
 </section>

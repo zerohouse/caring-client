@@ -54,21 +54,21 @@
     </div>
 </section>
 
-<section style="text-align: left; padding-top: 40px; padding-bottom: 30px;" *showItSizes="{max:599}">
-    <div class="container" style="width: 248px; margin-left:auto; margin-right:auto; line-height: 21px;">
-        <h2 style="font-size: 20px;margin-bottom: 10px; margin-left: 20px">케어링의 요양 서비스<br></h2>
-        <div style="font-size: 14px; margin-left: 20px">어르신과 보호자님께 꼭 맞는 유형의 요양을 선택하실 수 있습니다.</div>
-        <div class="head" *ngFor="let service of services" style="width: 248px; height: 458px; padding-bottom: 60px; margin-left: 20px;">
-            <img style="width: 248px; height: 176px;" [src]="'../assets/img/'+ service.img">
-            <h4 style="font-size: 18px;">{{service.name}}</h4>
-            <p style="width: 248px; font-size: 14px;" [innerHTML]="service.story"></p>
-            <div class="card-review" style="width: 248px; height: 119px; padding: 0px;">
-                <h4 style="font-size: 16px; margin-top: 10px; margin-left: 16px;">{{service.title}}</h4>
-                <div style="width: 222px; margin-left: 16px;">
-                    <span style="font-size: 14px;" [innerHTML]="service.contents1"></span>
-                    <span style="font-size: 14px; color: #51cf66; font-weight: 700;" [innerHTML]="service.contents_green"></span>
-                    <span style="font-size: 14px;" [innerHTML]="service.contents2"></span>
-                </div>
+<section style="width: 100%; padding-top: 40px; padding-bottom: 55px" *showItSizes="{max:599}">
+    <div class="container" style="width: 100%; padding: 0px">
+        <h2 style="width: 80%; font-size: 20px; margin: 0px auto 10px auto;">케어링의 요양 서비스<br></h2>
+        <div style="width: 80%; font-size: 14px; margin-left: auto; margin-right: auto;">어르신과 보호자님께 꼭 맞는 유형의 요양을 선택하실 수 있습니다.</div>
+        <div class="head_m" *ngFor="let service of services">
+            <img [src]="'../assets/img/'+ service.img">
+            <h4 style="padding-top: 20px; padding-bottom: 7px">{{service.name}}</h4>
+            <p [innerHTML]="service.story"></p>
+            <div class="card-review_m">
+                <h4 style="font-size: 16px; margin-top: 10px; padding-left: 16px;">{{service.title}}</h4>
+                <h4 style="padding-left: 16px; padding-right: 10px; font-weight: normal; line-height: 21px">
+                    <span [innerHTML]="service.contents1"></span>
+                    <span style="color: #51cf66; font-weight: bold;" [innerHTML]="service.contents_green"></span>
+                    <span [innerHTML]="service.contents2"></span>
+                </h4>
             </div>
         </div>
     </div>
