@@ -6,7 +6,7 @@
             <span style="position: relative; top: -15px;">무료 상담</span>
         </div>
 
-        <div class="form-box" style="text-align: center; margin-right: 51px">
+        <div class="form-box" style="text-align: center; margin-right: 41px">
             <h3>전화로 편하게 물어보세요</h3>
             <p>아래 버튼을 클릭하시면 상담원과 전화연결이 됩니다.</p>
             <a href="tel:1522-6585" style="text-decoration: none;">
@@ -16,7 +16,7 @@
         <div class="form-box" style="text-align: center;">
             <h3>상담 예약도 가능합니다</h3>
             <p>고객님의 연락처로 상담원이 24시간 이내에 전화드립니다.</p>
-            <div class="input-box" *ngIf="!reserved">
+            <div class="input-box">
                 <input type="text" style="margin-left: 57px;" placeholder="휴대폰 번호를 입력해주세요." [(ngModel)]="phone">
                 <button class="button"(click)="reserve()">완료</button>
             </div>
@@ -41,7 +41,7 @@
         <div class="form-box" style="width: 760px; height: 300px; text-align: center;">
             <h3 style="margin-top: 25px; font-size: 35px;">상담 예약도 가능합니다</h3>
             <p style="font-size: 25px;">고객님의 연락처로 상담원이 24시간 이내에 전화드립니다.</p>
-            <div class="input-box" *ngIf="!reserved" style="text-align: center;">
+            <div class="input-box" style="text-align: center;">
                 <input type="text" style="width: 380px; height: 80px; font-size: 25px; text-align: center;" placeholder="휴대폰 번호를 입력해주세요." [(ngModel)]="phone">
                 <button class="button" style="font-size: 25px; padding: 5px; width: 180px; height: 80px;" (click)="reserve()">완료</button>
             </div>
@@ -67,7 +67,7 @@
             <div class="form-box" style="width: 490px; height: 200px; text-align: center;">
                 <h3 style="margin-top: 20px; font-size: 25px;">상담 예약도 가능합니다</h3>
                 <p style="font-size: 20px; margin-bottom: 21px">고객님의 연락처로 상담원이 24시간 이내에 전화드립니다.</p>
-                <div class="input-box" *ngIf="!reserved" style="text-align: center;">
+                <div class="input-box" style="text-align: center;">
                     <input type="text" style="width: 300px; height: 60px; margin-left: 17px; padding: 5px 0px 5px 10px; font-size: 18px; text-align: center;" placeholder="휴대폰 번호를 입력해주세요." [(ngModel)]="phone">
                     <button class="button" style="font-size: 18px; padding: 5px 5px 5px 5px; width: 100px; height: 60px;" (click)="reserve()">완료</button>
                 </div>
@@ -77,7 +77,7 @@
 
 <section class="help" style="padding-top: 38px;padding-bottom: 39px;position: relative;"
          *showItSizes="{max:599}">
-    <div class="container" style="margin-right: auto; margin-left: auto; width: 320px;">
+    <div class="container" style="margin-right: auto; margin-left: auto; width: 80%;">
         <div style="font-size: 40px;font-weight: bold;">
             <img src="../../assets/img/icon-phone.svg" style="width: 21px; height: 21px; margin-right: 9px;">
             <span style="font-size: 20px; position: relative; top: -5px;">무료 상담</span>
@@ -86,15 +86,15 @@
         <div class="form-box" style="text-align: center; padding-bottom: 22px; height: 172px;">
             <h3 style="margin-top: 22px; font-size: 16px;">전화로 편하게 물어보세요</h3>
             <p style="font-size: 12px; margin-bottom: 22px;">아래 버튼을 클릭하시면 상담원과 전화<br>연결이 됩니다.</p>
-            <a href="tel:1522-6585" style="width: 224px; padding: 9px 35px 12px 35px; font-size: 16px; text-decoration: none;">
+            <a href="tel:1522-6585" style="padding: 9px 15% 12px 15%; font-size: 16px; text-decoration: none;">
                 무료 상담 전화하기
             </a>
         </div>
         <div class="form-box" style="text-align: center; height: 230px;">
             <h3 style="margin-top: 22px; font-size: 16px;">상담 예약도 가능합니다</h3>
             <p style="font-size: 12px; margin-bottom: 22px;">고객님의 연락처로 상담원이 24시간<br> 이내에 전화드립니다.</p>
-            <div class="input-box" *ngIf="!reserved" style="text-align: center;">
-                <input type="text" style="padding: 3px 3px 3px 3px; width: 224px; height: 45px; font-size: 14px; text-align: center; margin-bottom: 17px;"
+            <div class="input-box" style="text-align: center;">
+                <input type="text" style="padding: 3px 3px 3px 3px; width: 80%; height: 45px; font-size: 14px; text-align: center; margin-bottom: 17px;"
                  placeholder="휴대폰 번호를 입력해주세요." [(ngModel)]="phone">
                 <button class="button"(click)="reserve()" style="font-size: 16px; width: 78px; height: 45px; border-radius: 22px; padding: 5px;">완료</button>
             </div>

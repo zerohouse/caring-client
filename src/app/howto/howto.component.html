@@ -81,9 +81,8 @@
 
 <section style="padding-top: 66px" *showItSizes="{min:600,max:899}">
     <div class="container" style="width: 85%;">
-        <div class="container" style="width: 98%; height: 150px; left:-40px; margin-bottom: 134px; background-image: url(../../assets/img/shop-banner.png); background-size: 100%;
-            cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
-        </div>
+        <img src="../../assets/img/shop-banner.png" style="width: 100%; height: auto; margin-left: auto; margin-right: auto; margin-bottom: 134px;
+        cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
 
         <drag-scroll style="margin-top: 68px;" [scrollbar-hidden]="true">
             <div class="swiperindex" style="margin-right: 70px" [class.active]="index === 0" (click)="index=0">1. 장기요양보험
@@ -126,11 +125,11 @@
     </div>
 </section>
 
-<section style="padding-top: 17px;" *showItSizes="{max:599}">
+<section style="background-color: #465072;" *showItSizes="{max:599}">
     <div class="container" >
-        <div class="container" style="width: 250px; height: 77px; margin-left: auto; margin-right: auto; margin-bottom: 51px; background-image: url(../../assets/img/shop-banner-02.png);
-        cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')"></div>
-        <h2 style="margin-left: 36px; font-size: 20px;">케어링의 요양 서비스</h2>
+        <img src="../../assets/img/shop-banner-02.png" style="width: 100%; height: auto; margin-left: auto; margin-right: auto; margin-bottom: 17px;
+        cursor: pointer;" onclick="window.open('https://smartstore.naver.com/caringmart')">
+        <!--<h2 style="margin-left: 36px; font-size: 20px;">케어링의 요양 서비스</h2>
         <p style="margin: 26px 36px;">풍부한 경험을 갖춘 요양 전문가가 체계적으<br>로 맞춤 설계합니다. 각 단계를 클릭하여 더<br> 자세히 알아보세요.</p>
 
         <drag-scroll style="margin-top: 30px;" [scrollbar-hidden]="true">
@@ -144,13 +143,13 @@
                 매칭
             </div>
             <div class="swiperindex" [class.active]="index === 3" (click)="index=3">4. 케어링 서비스 시작</div>
-        </drag-scroll>
+        </drag-scroll>-->
     </div>
     <!--    autoplay: {-->
     <!--    delay: 3000,-->
     <!--    disableOnInteraction: false-->
     <!--    }-->
-    <div class="desc">
+    <!--<div class="desc">
         <div class="container">
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
@@ -192,5 +191,5 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>-->
 </section>

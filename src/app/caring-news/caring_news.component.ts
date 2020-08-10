@@ -8,6 +8,12 @@ import {Component, OnInit} from '@angular/core';
 export class Caring_newsComponent implements OnInit {
     newss = [
         {
+            name: '한국경제',
+            img: 'news-5.PNG',
+            href: 'https://n.news.naver.com/article/015/0004393778',
+            story: ' 케어링 앤 컴퍼니, 요양보호사 급여 대폭 올려..'
+        },
+        {
             name: '조선일보',
             img: 'news-1.PNG',
             href: 'https://news.chosun.com/site/data/html_dir/2020/05/24/2020052401794.html',
@@ -30,12 +36,6 @@ export class Caring_newsComponent implements OnInit {
             img: 'news-4.PNG',
             href: 'https://biz.chosun.com/site/data/html_dir/2020/01/08/2020010802355.html',
             story: ' 케어링 앤 컴퍼니, 서울광역푸드뱅크 센터에 한방차 700박스 기부'
-        },
-        {
-            name: '한국경제',
-            img: 'news-5.PNG',
-            href: 'https://n.news.naver.com/article/015/0004393778',
-            story: ' 케어링 앤 컴퍼니, 요양보호사 급여 대폭 올려..'
         }
     ];
     index = 0;

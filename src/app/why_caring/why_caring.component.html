@@ -13,7 +13,7 @@
 
 
 <section style="text-align: center; padding-bottom: 50px" *showItSizes="{min:900, max:1439}">
-    <div class="container">
+    <div class="container" style="margin-left: auto; margin-right: auto">
         <div style="margin-bottom: 50px"></div>
         <div style="font-size: 25px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
         <h2 style="font-size: 36px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
@@ -30,7 +30,7 @@
         <div style="margin-bottom: 50px"></div>
         <div style="font-size: 25px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
         <h2 style="font-size: 36px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
-        <div class="card-review" *ngFor="let why of whys" >
+        <div class="card-review" *ngFor="let why of whys" style="margin-right: 0;">
             <img [src]="'../assets/img/'+ why.img">
             <h4 style="margin-top: 33px;">{{why.name}}</h4>
             <p style="margin-bottom: 33px" [innerHTML]="why.story"></p>
