@@ -114,8 +114,8 @@
             </span>
             <label *ngIf="minute != null">1회당 가족 요양 급여</label>
             <span style="width: 1px" [ngSwitch]="minute">
-                    <h4 *ngSwitchCase="'60min'">21000원</h4>
-                    <h4 *ngSwitchCase="'90min'">28000원</h4>
+                    <h4 *ngSwitchCase="'60min'">21,000원</h4>
+                    <h4 *ngSwitchCase="'90min'">28,000원</h4>
             </span>
         </div>
         <div class="bill" *ngIf="type == 'family'">
@@ -251,8 +251,8 @@
             </span>
             <label *ngIf="minute != null">1회당 가족 요양 급여</label>
             <span [ngSwitch]="minute" style="width: 1px">
-                    <h4 *ngSwitchCase="'60min'">21000원</h4>
-                    <h4 *ngSwitchCase="'90min'">28000원</h4>
+                    <h4 *ngSwitchCase="'60min'">21,000원</h4>
+                    <h4 *ngSwitchCase="'90min'">28,000원</h4>
             </span>
         </div>
         <div class="bill" *ngIf="type == 'family'" style="position: relative; width: 377px; height: 232px; left: 403px; top: -78px;">
@@ -391,8 +391,8 @@
             </span>
             <label *ngIf="minute != null" style="margin-left: 8px">1회당 가족 요양 급여</label>
             <span style="width: 1px" [ngSwitch]="minute">
-                <h5 *ngSwitchCase="'60min'">21000원</h5>
-                <h5 *ngSwitchCase="'90min'">28000원</h5>
+                <h5 *ngSwitchCase="'60min'">21,000원</h5>
+                <h5 *ngSwitchCase="'90min'">28,000원</h5>
             </span>
         </div>
         <div class="bill-600" *ngIf="type == 'family'">
@@ -464,11 +464,11 @@
             </div>
             <label>돌봄 시간 (하루 기준)</label>
             <span [ngSwitch]="level">
-                <h5 style="width: 95%; margin-left: 0px;" *ngSwitchCase="'level1'">4시간 (240분)</h5>
-                <h5 style="width: 95%; margin-left: 0px;" *ngSwitchCase="'level2'">4시간 (240분)</h5>
-                <h5 style="width: 95%; margin-left: 0px;" *ngSwitchCase="'level3'">3시간 (180분)</h5>
-                <h5 style="width: 95%; margin-left: 0px;" *ngSwitchCase="'level4'">3시간 (180분)</h5>
-                <h5 style="width: 95%; margin-left: 0px;" *ngSwitchCase="'level5'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0px;" *ngSwitchCase="'level1'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0px;" *ngSwitchCase="'level2'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0px;" *ngSwitchCase="'level3'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0px;" *ngSwitchCase="'level4'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0px;" *ngSwitchCase="'level5'">3시간 (180분)</h5>
             </span>
         </div>
         <div class="bill_m" style="text-align: left; top: 5px;" *ngIf="type == 'pro'" >
@@ -532,17 +532,17 @@
             </span>
             <label *ngIf="minute != null">1회당 가족 요양 급여</label>
             <span [ngSwitch]="minute">
-                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">21000원</h5>
-                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">28000원</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">21,000원</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">28,000원</h5>
             </span>
         </div>
         <div class="bill_m" style="text-align: justify;" *ngIf="type == 'family'">
             <br>
             <span style="position: relative; top: -5px; line-height: 19px">받으실 수 있는 <br> 가족 요양 급여</span>
-            <p style="top: -40px;text-align: right; font-weight: 500;">월
+            <p style="top: -40px; text-align: right; font-size: 16px; font-weight: 500;">월
                 <span [ngSwitch]="minute" style="width: 1px">
-                    <span style=" color: #51cf66;" *ngSwitchCase="'60min'">420,000원</span>
-                    <span style=" color: #51cf66;" *ngSwitchCase="'90min'">868,000원</span>
+                    <span style="font-size: 16px; color: #51cf66;" *ngSwitchCase="'60min'">420,000원</span>
+                    <span style="font-size: 16px; color: #51cf66;" *ngSwitchCase="'90min'">868,000원</span>
                 </span>
             </p>
             <p style="width: 100%; top: -25px; border-bottom: 1px solid #979797"></p>
