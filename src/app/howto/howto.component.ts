@@ -18,7 +18,7 @@ export class HowtoComponent implements OnInit {
     set index(i) {
         const el = $('.drag-scroll-content');
         if (el) {
-            const value = $($('.swiperindex')[i]).offset().left + el.scrollLeft() - 100;
+            const value = $($('.swiperindex')[i]).offset().left + el.scrollLeft() - 300;
             // el.scrollLeft(value);
             $(el).animate({scrollLeft: value}, 200);
         }

@@ -11,7 +11,7 @@ import {Component, OnInit} from '@angular/core';
 export class Pay_calculationComponent implements OnInit {
 
     type: any = 'family';
-    minute: any = '60min';
+    minute: any = '90min';
     level: any = 'level1';
     count: any =  'four';
 
