@@ -15,6 +15,10 @@
             </label>
         </p>
     </div>
+    <div class="layer" *ngIf="type=='show'">
+        <img src="assets/img/Leaflet.png">
+        <a href="#" class="close" (click)="type='hide'">닫기</a>
+    </div>
 </section>
 
 <section style="padding-top: 124px;padding-bottom: 30px" class="head" *showItSizes="{min:900,max:1439}">
@@ -35,6 +39,10 @@
                 </label>
             </p>
         </div>
+    </div>
+    <div class="layer" style="width: 600px" *ngIf="type=='show'">
+        <img src="assets/img/Leaflet.png">
+        <a href="#" class="close" style="top: 852px" (click)="type='hide'">닫기</a>
     </div>
 </section>
 
@@ -57,6 +65,10 @@
             </label>
         </div>
         <img src="../../assets/img/main_img_03_dark.png" style="position: relative; width: 400px; margin-left: auto; margin-right: auto; top: 6px;">
+    </div>
+    <div class="layer" style="width: 450px; margin-top: 80px" *ngIf="type=='show'">
+        <img src="assets/img/Leaflet.png">
+        <a href="#" class="close" style="top: 640px; left: 0" (click)="type='hide'">닫기</a>
     </div>
 </section>
 
@@ -88,6 +100,9 @@
                 background-size: contain;
                 background-position: bottom center;
                 background-repeat: no-repeat;">
-
+    </div>
+    <div class="layer" style="width: 330px; margin-top: 18px" *ngIf="type=='show'">
+        <img src="assets/img/Leaflet.png">
+        <a href="#" class="close" style="top: 469px; font-size: 20px" (click)="type='hide'">닫기</a>
     </div>
 </section>

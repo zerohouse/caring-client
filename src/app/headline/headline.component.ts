@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeadlineComponent implements OnInit {
 
+  type: any = 'show';
+
   constructor() { }
 
   ngOnInit() {
