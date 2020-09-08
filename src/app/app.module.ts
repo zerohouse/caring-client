@@ -31,6 +31,7 @@ import { Nursing_servicesComponent } from './nursing-services/nursing-services.c
 import { Pay_calculationComponent } from './pay-calculation/pay-calculation.component';
 import { Caring_newsComponent } from './caring-news/caring_news.component';
 import { NationwideComponent } from './nationwide/nationwide.component';
+import { adminComponent } from './caring-admin/caring-admin';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { NationwideComponent } from './nationwide/nationwide.component';
         Pay_calculationComponent,
         Caring_newsComponent,
         NationwideComponent,
-        BannerComponent
+        BannerComponent,
+        adminComponent
     ],
     imports: [
         NgxSpringModule,
