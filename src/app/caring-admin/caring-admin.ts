@@ -46,31 +46,29 @@ export class adminComponent {
   rlevel: string = '등급선택';
   rnumber: string;
   rcenter: string = '센터선택';
-  centernumber: string;
   rphone: string;
   day: number = 0;
-  rtime: string = '시간선택';
   firstday: string = '';
   firststime: string = '';
-  firstetime: string = '';
+  firsttime: string = '';
   secondday: string = '';
   secondstime: string = '';
-  secondetime: string = '';
+  secondtime: string = '';
   thirdday: string = '';
   thirdstime: string = '';
-  thirdetime: string = '';
+  thirdtime: string = '';
   fourthday: string = '';
   fourthstime: string = '';
-  fourthetime: string = '';
+  fourthtime: string = '';
   fifthday: string = '';
   fifthstime: string = '';
-  fifthetime: string = '';
+  fifthtime: string = '';
   sixthday: string = '';
   sixthstime: string = '';
-  sixthetime: string = '';
+  sixthtime: string = '';
   seventhday: string = '';
   seventhstime: string = '';
-  seventhetime: string = '';
+  seventhtime: string = '';
 
   public downloadCaregiver(name: string, center: string, time: string, address: string, phone: string, start: string, end: string): void {
     const caregiver = new docGiver();
@@ -94,9 +92,9 @@ export class adminComponent {
     });
   }
 
-  public downloadRecordpaper(name: string, birth: string, level: string, number: string, center: string, centernumber: string, phone: string, time: string, firstday: string, firststime: string, firstetime: string, secondday: string, secondstime: string, secondetime: string, thirdday: string, thirdstime: string, thirdetime: string, fourthday: string, fourthstime: string, fourthetime: string, fifthday: string, fifthstime: string, fifthetime: string, sixthday: string, sixthstime: string, sixthetime: string, seventhday: string, seventhstime: string, seventhetime: string): void {
+  public downloadRecordpaper(name: string, birth: string, level: string, number: string, center: string, phone: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): void {
     const record = new docRecord();
-    const doc = record.createRecordpaper(name, birth, level, number, center, centernumber, phone, time, firstday, firststime, firstetime, secondday, secondstime, secondetime, thirdday, thirdstime, thirdetime, fourthday, fourthstime, fourthetime, fifthday, fifthstime, fifthetime, sixthday, sixthstime, sixthetime, seventhday, seventhstime, seventhetime);
+    const doc = record.createRecordpaper(name, birth, level, number, center, phone, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);

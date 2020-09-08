@@ -25,16 +25,48 @@ function keep(month: string): string{
     return "2.유지"
 }  //기록지 변화상태 기록 함수
 
-function times(time: string, day: string): string{
-    if (day===""){
+function centernumber(center: string): string{
+    if (center==="강남"){
+        return "3-11680-00280"
+    } else if (center==="논현"){
+        return "3-11680-00276"
+    } else if (center==="서초방문요양"){
         return ""
     }
-    return time
+    return ""
+}  //기록지 변화상태 기록 함수
+
+function endtime(time: string, starttime: string): string{
+    let hour: number = Number(starttime.slice(0, 2));
+    let min: number = Number(starttime.slice(3, 5));
+
+    if (time===""){
+        return ""
+    } else{
+        let addtime = Number(time);
+
+        if(addtime>=60){
+            hour += Math.floor(addtime / 60);
+            min += (addtime % 60);
+            if (min>=60){
+                hour += 1;
+                min -= 60;
+            }
+            return `${hour}:${min}`
+        } else {
+            min += addtime;
+            if (min>=60){
+                hour += 1;
+                min -= 60;
+            }
+            return `${hour}:${min}`
+        }
+    }
 }  //기록지 총시간 기록 함수
 
 export class docRecord {
 
-    public createRecordpaper(name: string, birth: string, level: string, number: string, center: string, centernumber: string, phone: string, time: string, firstday: string, firststime: string, firstetime: string, secondday: string, secondstime: string, secondetime: string, thirdday: string, thirdstime: string, thirdetime: string, fourthday: string, fourthstime: string, fourthetime: string, fifthday: string, fifthstime: string, fifthetime: string, sixthday: string, sixthstime: string, sixthetime: string, seventhday: string, seventhstime: string, seventhetime: string): Document {
+    public createRecordpaper(name: string, birth: string, level: string, number: string, center: string, phone: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): Document {
         const document = new Document();
         const record = {
             user: {
@@ -237,7 +269,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children:[
                                     new TextRun({
-                                        text: `${centernumber}`,
+                                        text: `${centernumber(center)}`,
                                         size: 22,
                                         bold: true,
                                     })
@@ -441,49 +473,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, firstday)}분`,
+                                text: `${firsttime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, secondday)}분`,
+                                text: `${secondtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, thirdday)}분`,
+                                text: `${thirdtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, fourthday)}분`,
+                                text: `${fourthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, fifthday)}분`,
+                                text: `${fifthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, sixthday)}분`,
+                                text: `${sixthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, seventhday)}분`,
+                                text: `${seventhtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {
@@ -644,49 +676,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${firstetime}`,
+                                text: `${endtime(firsttime, firststime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${secondetime}`,
+                                text: `${endtime(secondtime, secondstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${thirdetime}`,
+                                text: `${endtime(thirdtime, thirdstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${fourthetime}`,
+                                text: `${endtime(fourthtime, fourthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${fifthetime}`,
+                                text: `${endtime(fifthtime, fifthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${sixthetime}`,
+                                text: `${endtime(sixthtime, sixthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${seventhetime}`,
+                                text: `${endtime(seventhtime, seventhstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {
@@ -1588,49 +1620,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, firstday)}분`,
+                                text: `${firsttime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, secondday)}분`,
+                                text: `${secondtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, thirdday)}분`,
+                                text: `${thirdtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, fourthday)}분`,
+                                text: `${fourthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, fifthday)}분`,
+                                text: `${fifthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, sixthday)}분`,
+                                text: `${sixthtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${times(time, seventhday)}분`,
+                                text: `${seventhtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {

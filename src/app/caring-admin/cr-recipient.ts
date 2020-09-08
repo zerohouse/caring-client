@@ -26,9 +26,9 @@ export class docRec {
             user: {
                 birth: birth.replace(/-/g, "."),
                 starthour: usestime.slice(0, 2),
-                startmin: usestime.slice(4, 5),
+                startmin: usestime.slice(3, 5),
                 endhour: useetime.slice(0, 2),
-                endmin: useetime.slice(4, 5),
+                endmin: useetime.slice(3, 5),
             },
             protector:{
                 birth: pbirth.replace(/-/g, "."),
