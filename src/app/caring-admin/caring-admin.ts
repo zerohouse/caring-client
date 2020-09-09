@@ -9,19 +9,23 @@ import { docRecord } from "./cr-recordpaper";
 @Component({
   selector: "caring_admin",
   templateUrl: "./caring-admin.html",
-  styleUrls: ["./caring-admin.css"]
+  styleUrls: ["./caring-admin.sass"]
 })
 
 export class adminComponent {
+  worker: boolean = false;
   client: boolean = false;
+  record: boolean = false;
 
   name: string;
   center: string = '센터선택';
   time: string = '시간선택';
   address: string;
+  place: string;
   phone: string;
   start: string;
   end: string;
+  contract: string;
 
   recname: string;
   reclevel: string = '등급선택';
@@ -72,9 +76,9 @@ export class adminComponent {
   seventhstime: string = '';
   seventhtime: string = '';
 
-  public downloadCaregiver(name: string, center: string, time: string, address: string, phone: string, start: string, end: string): void {
+  public downloadCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, end: string, contract: string): void {
     const caregiver = new docGiver();
-    const doc = caregiver.createCaregiver(name, center, time, address, phone, start, end);
+    const doc = caregiver.createCaregiver(name, center, time, address, place, phone, start, end, contract);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);
@@ -94,13 +98,13 @@ export class adminComponent {
     });
   }
 
-  public downloadRecordpaper(name: string, birth: string, level: string, number: string, center: string, phone: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): void {
+  public downloadRecordpaper(name: string, birth: string, level: string, number: string, center: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): void {
     const record = new docRecord();
-    const doc = record.createRecordpaper(name, birth, level, number, center, phone, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime);
+    const doc = record.createRecordpaper(name, birth, level, number, center, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);
-      saveAs(blob, name + "요보사님" + firstday + "부터 기록지.docx");
+      saveAs(blob, name + "요보사님 " + firstday + "부터 기록지.docx");
       console.log("Document created successfully");
     });
   }

@@ -468,6 +468,14 @@ export class docRec {
                                     new TextRun({
                                         text: `국민기초생활 수급권자`,
                                         size: 24,
+                                    }),
+                                    new TextRun({
+                                        text: ` ${etc(sortation, "의료")} `,
+                                        size: 40,
+                                    }),
+                                    new TextRun({
+                                        text: `의료 급여`,
+                                        size: 24,
                                     })
                                 ],
                             })],
@@ -2442,7 +2450,7 @@ export class docRec {
                 this.createRecAgreetop(),
                 this.createRecAgreetitle("개인정보 제공 및 활용 동의서"),
                 this.createRecAgreetext(""),
-                this.createRecAgreetext(`   성 명  : ${name} (생  년  월  일  :${contract.user.birth})`),
+                this.createRecAgreetext(`   성 명  : ${name}                                                        (생  년  월  일  :${contract.user.birth})`),
                 this.createRecAgreetext(`   주 소  : ${address}`),
                 this.createRecAgreetext(""),
                 this.createRecAgreetext(""),
@@ -2580,7 +2588,7 @@ export class docRec {
             alignment: AlignmentType.CENTER,
             children: [
                 new TextRun({
-                    text: "(방문요양)",
+                    text: `(방문 요양. 방문 목욕)`,
                     size: 34,
                 })
             ],

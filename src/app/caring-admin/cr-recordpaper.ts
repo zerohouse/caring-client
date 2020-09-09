@@ -59,6 +59,9 @@ function endtime(time: string, starttime: string): string{
                 hour += 1;
                 min -= 60;
             }
+            if(min==0){
+                return `${hour}:00`
+            }
             return `${hour}:${min}`
         }
     }
@@ -66,7 +69,7 @@ function endtime(time: string, starttime: string): string{
 
 export class docRecord {
 
-    public createRecordpaper(name: string, birth: string, level: string, number: string, center: string, phone: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): Document {
+    public createRecordpaper(name: string, birth: string, level: string, number: string, center: string, firstday: string, firststime: string, firsttime: string, secondday: string, secondstime: string, secondtime: string, thirdday: string, thirdstime: string, thirdtime: string, fourthday: string, fourthstime: string, fourthtime: string, fifthday: string, fifthstime: string, fifthtime: string, sixthday: string, sixthstime: string, sixthtime: string, seventhday: string, seventhstime: string, seventhtime: string): Document {
         const document = new Document();
         const record = {
             user: {
@@ -101,6 +104,7 @@ export class docRecord {
                 month: seventhday.slice(5, 7),
                 day: seventhday.slice(8, 10),
             },
+
 
         };  //기록지에서 사용되는 변수
         const Rtable1 = new Table({
@@ -466,7 +470,7 @@ export class docRecord {
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             width: {
-                                size: 34,
+                                size: 18,
                                 type: WidthType.PERCENTAGE,
                             },
                         }),
@@ -1620,49 +1624,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${firsttime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${secondtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${thirdtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${fourthtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${fifthtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${sixthtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${seventhtime}분`,
+                                text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {
@@ -2254,7 +2258,10 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `개인활동지원(외출시 동행 등)`,
+                                text: `개인활동지원`,
+                            }),new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                text: `(외출시 동행 등)`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -3031,7 +3038,8 @@ export class docRecord {
                             columnSpan: 2,
                         }),
                         new TableCell({
-                            children: [new Paragraph({
+                            children: [new Paragraph("")
+                                ,new Paragraph({
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
@@ -3045,7 +3053,7 @@ export class docRecord {
                                         text: "(서명)"
                                     }),
                                 ],
-                            })],
+                            }),new Paragraph("")]
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -3096,7 +3104,8 @@ export class docRecord {
                             columnSpan: 2,
                         }),
                         new TableCell({
-                            children: [new Paragraph({
+                            children: [new Paragraph("")
+                                ,new Paragraph({
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
@@ -3110,7 +3119,7 @@ export class docRecord {
                                         text: "(서명)"
                                     }),
                                 ],
-                            })],
+                            }),new Paragraph("")],
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -3147,7 +3156,9 @@ export class docRecord {
         document.addSection({
             margins: {
                 top: -1,
-                bottom: 0,
+                bottom: -1,
+                right: 500,
+                left: 500,
             },
             children: [
                 this.createText8("■ 노인장기요양보험법 시행규칙   [별지 제12호서식]   <개정 2019. 6. 12.>"),

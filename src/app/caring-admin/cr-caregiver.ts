@@ -1,16 +1,18 @@
 import {
     AlignmentType,
     Document,
+    Media,
     Paragraph,
     TextRun,
 } from "docx";
 
 export class docGiver {
 
-    public createCaregiver(name: string, center: any, time: any, address: any, phone: any, start: any, end: any): Document {
+    public createCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, end: string, contract: string): Document {
 
-        const date= new Date();
         const document = new Document();
+
+        //const gangnam = Media.addImage(document, "../assets/img/Seocho.jpg;base64,", 400, 400);
 
         const caregiver = {
             name : name,
@@ -30,16 +32,17 @@ export class docGiver {
                 month: end.slice(5, 7),
                 day: end.slice(8, 10),
             },
-            Today: {
-                year: date.getFullYear(),
-                month: date.getMonth()+1,
-                day: date.getDate(),
+            contract: {
+                year: contract.slice(0, 4),
+                month: contract.slice(5, 7),
+                day: contract.slice(8, 10),
             },
 
         };  //요양보호사 계약서에서 사용되는 변수
 
         document.addSection({
             children: [
+               // new Paragraph(gangnam),
                 this.createTitle(),
                 this.createContactInfo(caregiver),
                 this.createFirst(caregiver),
@@ -47,7 +50,7 @@ export class docGiver {
                 this.createSecond(),
                 this.createReason(),
                 this.createTitletext("3. 근로조건"),
-                this.createText("   - 근무장소 : 기관 / 수급자 소재지 / 수급자 거주지 및 생활 범위 지역 내"),
+                this.createPlace(place),
                 this.createText("   - 근로일 및 근로시간 : 1일 8시간 / 1주 40시간 범위 내 단시간 근로 (급여제공계획서에 의함)"),
                 this.createText("   매주 일 (또는 매일단위) 근무, 주휴일 매주 요일"),
                 this.createBsinfo(caregiver),
@@ -83,7 +86,7 @@ export class docGiver {
                 this.createText("이 계약에 정함이 없는 사항은 취업규칙, 운영규정, 근로기준법 및 노동관계법에 의함. "),
                 this.createText(""),
                 this.createToday(caregiver),
-                this.createText("\t\t\t\t\t       대 표 자 : 김태성 (서명 / 인)"),
+                this.createText(`(기 관) 기 관 명 : 케어링 ${caregiver.center}센터                                                    대 표 자 : 김태성 (서명 / 인)`),
                 this.createAddress(caregiver),
                 this.createPhone(caregiver),
                 this.createText(""),
@@ -165,7 +168,13 @@ export class docGiver {
                     bold: true,
                     underline: {},
                 }),
-                new TextRun(` (이하"기관")과(와) ${caregiver.name} 이하 ("근로자")은(는) 다음과 같이 근로계약을 체결한다.`)
+                new TextRun(` (이하"기관")과(와)`),
+                new TextRun({
+                    text: `${caregiver.name} 이하`,
+                    bold: true,
+                    underline: {},
+                }),
+                new TextRun(` ("근로자")은(는) 다음과 같이 근로계약을 체결한다.`),
             ],
         });
     }   //요양보호사 계약서 센터작성 함수
@@ -325,6 +334,22 @@ export class docGiver {
         });
     }   //요양보호사 계약서 7번 적용제외 작성 함수
 
+    public createPlace(place: string): Paragraph {
+        return new Paragraph({
+            children: [
+                new TextRun({
+                    text: `   - 근무장소 :`,
+                    size: 18,
+                }),
+                new TextRun({
+                    text: ` ${place}`,
+                    underline: {},
+                    size: 18,
+                }),
+            ],
+        });
+    }  //글자크기: 9 텍스트밑줄
+
     public createText(text: string): Paragraph {
         return new Paragraph({
             children: [
@@ -356,7 +381,7 @@ export class docGiver {
                     size: 18,
                 }),
                 new TextRun({
-                    text: "□",
+                    text: "■",
                     size: 30,
                 }),
                 new TextRun({
@@ -439,7 +464,7 @@ export class docGiver {
             alignment: AlignmentType.CENTER,
             children: [
                 new TextRun({
-                    text: `${caregiver.Today.year}  년   ${caregiver.Today.month}월   ${caregiver.Today.day}일 (기 관) 기 관 명 : 케어링 ${caregiver.center}센터`,
+                    text: `${caregiver.contract.year}  년   ${caregiver.contract.month}월   ${caregiver.contract.day}일`,
                 }),
             ],
         });

@@ -2,9 +2,11 @@
     <div style="margin-bottom: 50px"></div>
     <h1 style="font-size: 30px">케어링 관리자 모드</h1>
     <div>
+        <button [(ngModel)]="client" (click)="worker=true" *ngIf="worker == false">요양 보호사 근로 계약서</button>
         <button [(ngModel)]="client" (click)="client=true" *ngIf="client == false">수급자 계약서</button>
+        <button [(ngModel)]="client" (click)="record=true" *ngIf="record == false">기록지</button>
     </div>
-    <div class="inputs" style="border: 1px solid black;">
+    <div class="inputs" style="border: 1px solid black;" *ngIf="worker == true">
         <h3>요양 보호사 근로 계약서</h3>
         <label>성명 :
             <input type="text" size="40" [(ngModel)]="name">
@@ -12,6 +14,10 @@
         <br>
         <label>주소 :
             <input type="text" size="40" [(ngModel)]="address">
+        </label>
+        <br>
+        <label>근무장소 :
+            <input type="text" size="40" style="width: 60%;" [(ngModel)]="place">
         </label>
         <br>
         <label>센터 :
@@ -26,8 +32,10 @@
         <label>시간 :
             <select [(ngModel)]="time">
                 <option value="시간선택">시간선택</option>
-                <option value="180">3시간</option>
-                <option value="240">4시간</option>
+                <option value="60">60분</option>
+                <option value="90">90분</option>
+                <option value="180">180분</option>
+                <option value="240">240분</option>
             </select>
         </label>
         <br>
@@ -36,14 +44,18 @@
         </label>
         <br>
         <label>근로 시작일 :
-            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01">
+            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
         </label>
         <br>
         <label>근로 종료일 :
-            <input type="date" style="width: 50%;" [(ngModel)]="end" min="2015-01-01">
+            <input type="date" style="width: 50%;" [(ngModel)]="end" min="2015-01-01" max="2050-12-31">
         </label>
         <br>
-        <button (click)="downloadCaregiver(name, center, time, address, phone, start, end)">요보사 계약서</button>
+        <label>근로 계약일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, end, contract)">요보사 계약서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="client == true">
@@ -51,7 +63,6 @@
         <label>성명 :
             <input type="text" size="40" [(ngModel)]="recname"><br>
         </label>
-
         <label>장기요양등급 :
             <select style="width: 51%;" [(ngModel)]="reclevel">
                 <option value="등급선택">등급선택</option>
@@ -78,6 +89,7 @@
                 <option value="50%">감경 50%</option>
                 <option value="60%">감경 60%</option>
                 <option value="국민">국민기초생활</option>
+                <option value="의료">의료급여</option>
             </select><br>
         </label>
         <label>센터 :
@@ -137,7 +149,7 @@
         <button (click)="downloadRecipient(recname, reclevel, recbirth, recaddress, recphone, etc, reccenter, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date)">수급자 계약서</button>
     </div>
 
-    <div class="inputs" style="border: 1px solid black;">
+    <div class="inputs" style="border: 1px solid black;" *ngIf="record == true">
         <h3>기록지</h3>
         <label>성명 :
             <input type="text" size="40" style="width: 76%" [(ngModel)]="rname"><br>
@@ -165,9 +177,6 @@
                 <option value="강남">강남</option>
                 <option value="서초방문요양">서초방문요양</option>
             </select><br>
-        </label>
-        <label>핸드폰 번호 :
-            <input type="text" size="40" style="width: 57%;" placeholder="ex)010-0000-0000" [(ngModel)]="rphone"><br>
         </label>
         <label>총제공일 :
             <select style="width: 65%;" [(ngModel)]="day">
@@ -207,7 +216,7 @@
                 </select><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="firststime"><br>
+                <input type="time" style="width: 65%" [(ngModel)]="firststime">
             </label>
         </p>
         <p *ngIf="day > 1">
@@ -384,7 +393,7 @@
                 <input type="time" style="width: 65%" [(ngModel)]="seventhstime"><br>
             </label>
         </p>
-        <button style="float: right" (click)="downloadRecordpaper(rname, rbirth, rlevel, rnumber, rcenter, rphone, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime)">기록지 다운로드</button>
+        <button style="float: right" (click)="downloadRecordpaper(rname, rbirth, rlevel, rnumber, rcenter, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime)">기록지 다운로드</button>
     </div>
 </div>
 
