@@ -1,7 +1,9 @@
 <div class="container" style="text-align: center; vertical-align: center">
     <div style="margin-bottom: 50px"></div>
     <h1 style="font-size: 30px">케어링 관리자 모드</h1>
-
+    <div>
+        <button [(ngModel)]="client" (click)="client=true" *ngIf="client == false">수급자 계약서</button>
+    </div>
     <div class="inputs" style="border: 1px solid black;">
         <h3>요양 보호사 근로 계약서</h3>
         <label>성명 :
@@ -44,7 +46,7 @@
         <button (click)="downloadCaregiver(name, center, time, address, phone, start, end)">요보사 계약서</button>
     </div>
 
-    <div class="inputs" style="border: 1px solid black;">
+    <div class="inputs" style="border: 1px solid black;" *ngIf="client == true">
         <h3>수급자 계약서</h3>
         <label>성명 :
             <input type="text" size="40" [(ngModel)]="recname"><br>

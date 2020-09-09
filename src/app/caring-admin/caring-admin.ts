@@ -13,6 +13,8 @@ import { docRecord } from "./cr-recordpaper";
 })
 
 export class adminComponent {
+  client: boolean = false;
+
   name: string;
   center: string = '센터선택';
   time: string = '시간선택';
