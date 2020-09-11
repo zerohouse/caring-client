@@ -12,11 +12,6 @@ import {
     WidthType,
 } from "docx";
 
-
-
-
-
-
 export class docRec {
 
     public createRecipient(name: string, level: string, birth: string, address: string, phone: string, sortation: string, center: string, pname: string, relation: string, pbirth: string, pphone: string, paddress: string, contract_start: string, contract_end: string, useday: string, usestime: string, useetime: string, contract_date: string): Document {

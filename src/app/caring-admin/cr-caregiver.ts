@@ -1,7 +1,6 @@
 import {
     AlignmentType,
     Document,
-    Media,
     Paragraph,
     TextRun,
 } from "docx";
@@ -11,8 +10,6 @@ export class docGiver {
     public createCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, end: string, contract: string): Document {
 
         const document = new Document();
-
-        //const gangnam = Media.addImage(document, "../assets/img/Seocho.jpg;base64,", 400, 400);
 
         const caregiver = {
             name : name,
@@ -42,7 +39,6 @@ export class docGiver {
 
         document.addSection({
             children: [
-               // new Paragraph(gangnam),
                 this.createTitle(),
                 this.createContactInfo(caregiver),
                 this.createFirst(caregiver),
