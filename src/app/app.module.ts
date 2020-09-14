@@ -33,6 +33,8 @@ import { Caring_newsComponent } from './caring-news/caring_news.component';
 import { NationwideComponent } from './nationwide/nationwide.component';
 import { adminComponent } from './caring-admin/caring-admin';
 import {loginComponent} from './caring-admin/login/login';
+import {admin_mainComponent} from "./caring-admin/admin_main/admin_main.component";
+import {admin_HeadlineComponent} from "./caring-admin/admin_header/admin_headline.component";
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import {loginComponent} from './caring-admin/login/login';
         NationwideComponent,
         BannerComponent,
         adminComponent,
-        loginComponent
+        loginComponent,
+        admin_mainComponent,
+        admin_HeadlineComponent
     ],
     imports: [
         NgxSpringModule,
