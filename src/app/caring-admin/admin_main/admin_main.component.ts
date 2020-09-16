@@ -7,6 +7,9 @@ import { Component } from "@angular/core";
 })
 
 export class admin_mainComponent {
-
-
+  btn: string;
+  information: string;
+  record_parameter: string;
+  contract_type: string;
+  message: string;
 }

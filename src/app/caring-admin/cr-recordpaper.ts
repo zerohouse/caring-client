@@ -10,21 +10,21 @@ import {
     VerticalAlign,
     WidthType,
 } from "docx";
-
+/*
 function check(month: string): string{
     if (month===""){
         return "□"
     }
     return "■"
 } //기록지 신체활동지원 체크 함수
-
+*//*
 function keep(month: string): string{
     if (month===""){
         return ""
     }
     return "2.유지"
 }  //기록지 변화상태 기록 함수
-
+*/
 function centernumber(center: string): string{
     if (center==="강남"){
         return "3-11680-00280"
@@ -135,13 +135,6 @@ export class docRecord {
                                 size: 25,
                                 type: WidthType.PERCENTAGE,
                             },
-                            borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                }
-                            },
                         }),
                         new TableCell({
                             children: [new Paragraph({
@@ -217,13 +210,6 @@ export class docRecord {
                                 size: 25,
                                 type: WidthType.PERCENTAGE,
                             },
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                }
-                            },
                         }),
                     ],
                 }),
@@ -253,13 +239,6 @@ export class docRecord {
                                 size: 50,
                                 type: WidthType.PERCENTAGE,
                             },
-                            borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                }
-                            },
                         }),
                         new TableCell({
                             children: [new Paragraph({
@@ -285,13 +264,6 @@ export class docRecord {
                                 size: 50,
                                 type: WidthType.PERCENTAGE,
                             },
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                }
-                            },
                         }),
                     ],
                 }),
@@ -309,11 +281,6 @@ export class docRecord {
                                 type: WidthType.PERCENTAGE,
                             },
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -409,13 +376,6 @@ export class docRecord {
                                 size: 8,
                                 type: WidthType.PERCENTAGE,
                             },
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //()년 월/일
@@ -428,11 +388,6 @@ export class docRecord {
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -522,13 +477,6 @@ export class docRecord {
                                 text: `${seventhtime}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //총시간
@@ -541,11 +489,6 @@ export class docRecord {
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -632,13 +575,6 @@ export class docRecord {
                                 text: `${seventhstime}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //시작시간
@@ -647,11 +583,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -725,13 +656,6 @@ export class docRecord {
                                 text: `${endtime(seventhtime, seventhstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //종료시간
@@ -740,11 +664,64 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
+                                top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
                                     color: "000000",
                                 },
+                                bottom: {
+                                    style: BorderStyle.NONE,
+                                    size: 10,
+                                    color: "000000",
+                                }
+                            },
+                        }),
+                        new TableCell({
+                            children: [new Paragraph(""),new Paragraph("")],
+                            borders: {
+                                bottom: {
+                                    style: BorderStyle.NONE,
+                                    size: 10,
+                                    color: "000000",
+                                },
+                                top: {
+                                    style: BorderStyle.NONE,
+                                    size: 10,
+                                    color: "000000",
+                                },
+                            },
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                        new TableCell({
+                            children: [new Paragraph("")]
+                        }),
+                    ],
+                }),
+                new TableRow({
+                    children: [
+                        new TableCell({
+                            children: [new Paragraph("")],
+                            borders: {
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -787,7 +764,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.first.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -799,7 +776,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.second.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -811,7 +788,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.third.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -823,7 +800,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fourth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -835,7 +812,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fifth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -847,7 +824,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.sixth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -859,19 +836,12 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.seventh.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //개인위생
@@ -880,11 +850,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1002,13 +967,6 @@ export class docRecord {
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //몸씻기도움
@@ -1017,11 +975,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1064,7 +1017,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.first.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1076,7 +1029,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.second.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1088,7 +1041,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.third.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1100,7 +1053,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fourth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1112,7 +1065,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fifth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1124,7 +1077,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.sixth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1136,19 +1089,12 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.seventh.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //식사도움
@@ -1157,11 +1103,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1204,7 +1145,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.first.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1216,7 +1157,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.second.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1228,7 +1169,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.third.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1240,7 +1181,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fourth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1252,7 +1193,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.fifth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1264,7 +1205,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.sixth.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
@@ -1276,19 +1217,12 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `${check(record.seventh.month)}`,
+                                        text: `□`,
                                         size: 40,
                                     }),
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //체위변경
@@ -1303,11 +1237,6 @@ export class docRecord {
                                 text: `비`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1432,13 +1361,6 @@ export class docRecord {
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //이동도움
@@ -1450,11 +1372,6 @@ export class docRecord {
                                 text: `스`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1572,13 +1489,6 @@ export class docRecord {
                                 ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //화장실이용
@@ -1587,11 +1497,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1669,13 +1574,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //제공시간
@@ -1687,11 +1585,6 @@ export class docRecord {
                                 text: `제`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1772,13 +1665,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //인지자극활동
@@ -1790,11 +1676,6 @@ export class docRecord {
                                 text: `공`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1875,13 +1756,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //일상생활 함께하기
@@ -1890,11 +1764,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -1968,13 +1837,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //인지행동변화 관리
@@ -1983,11 +1845,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2065,13 +1922,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //의사소통 도움
@@ -2080,11 +1930,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2204,13 +2049,6 @@ export class docRecord {
                                 ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //식사 준비
@@ -2219,11 +2057,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2348,13 +2181,6 @@ export class docRecord {
                                 ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //개인활동지원
@@ -2363,11 +2189,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2440,13 +2261,6 @@ export class docRecord {
                                 text: `분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //제공시간
@@ -2455,11 +2269,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2483,58 +2292,87 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.first.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
+
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.second.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.third.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fourth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fifth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.sixth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.seventh.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //신체기능
@@ -2546,11 +2384,6 @@ export class docRecord {
                                 text: `변화`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2579,58 +2412,86 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.first.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.second.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.third.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fourth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fifth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.sixth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.seventh.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //식사기능
@@ -2642,11 +2503,6 @@ export class docRecord {
                                 text: `상태`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2675,58 +2531,86 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.first.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.second.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text:`${keep(record.third.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fourth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.fifth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.sixth.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${keep(record.seventh.month)}`,
+                                children: [
+                                    new TextRun({
+                                        text: "①②③",
+                                        size: 24,
+                                    }),
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //인지기능
@@ -2735,11 +2619,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2820,13 +2699,6 @@ export class docRecord {
                                 text: `회`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //대변실수
@@ -2835,11 +2707,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2915,13 +2782,6 @@ export class docRecord {
                                 text: `회`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //소변실수기능
@@ -2933,11 +2793,6 @@ export class docRecord {
                                 text: `특이`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -2960,13 +2815,6 @@ export class docRecord {
                             children: [new Paragraph("")],
                             columnSpan: 8,
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //특이사항
@@ -2978,11 +2826,6 @@ export class docRecord {
                                 text: `사항`,
                             })],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -3005,13 +2848,6 @@ export class docRecord {
                             children: [new Paragraph("")],
                             columnSpan: 8,
                             verticalAlign: VerticalAlign.CENTER,
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //특이사항
@@ -3024,11 +2860,6 @@ export class docRecord {
                             })],
                             verticalAlign: VerticalAlign.BOTTOM,
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 bottom: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -3038,8 +2869,7 @@ export class docRecord {
                             columnSpan: 2,
                         }),
                         new TableCell({
-                            children: [new Paragraph("")
-                                ,new Paragraph({
+                            children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
@@ -3053,7 +2883,7 @@ export class docRecord {
                                         text: "(서명)"
                                     }),
                                 ],
-                            }),new Paragraph("")]
+                            })]
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -3075,13 +2905,6 @@ export class docRecord {
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //요양요원서명
@@ -3090,11 +2913,6 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph("")],
                             borders: {
-                                left: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
                                 top: {
                                     style: BorderStyle.NONE,
                                     size: 10,
@@ -3104,8 +2922,7 @@ export class docRecord {
                             columnSpan: 2,
                         }),
                         new TableCell({
-                            children: [new Paragraph("")
-                                ,new Paragraph({
+                            children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
@@ -3119,7 +2936,7 @@ export class docRecord {
                                         text: "(서명)"
                                     }),
                                 ],
-                            }),new Paragraph("")],
+                            })],
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -3141,13 +2958,6 @@ export class docRecord {
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
-                            borders: {
-                                right: {
-                                    style: BorderStyle.NONE,
-                                    size: 10,
-                                    color: "000000",
-                                },
-                            },
                         }),
                     ],
                 }),  //수급자서명
@@ -3161,6 +2971,8 @@ export class docRecord {
                 left: 500,
             },
             children: [
+                this.createText(""),
+                this.createText(""),
                 this.createText8("■ 노인장기요양보험법 시행규칙   [별지 제12호서식]   <개정 2019. 6. 12.>"),
                 this.createText16B("장기요양급여 제공기록지(방문요양)"),
                 this.createText(""),

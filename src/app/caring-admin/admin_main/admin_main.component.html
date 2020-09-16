@@ -1,0 +1,85 @@
+<section class="header">
+    <div class="container">
+        <span routerLink="/admin">
+            <img src="./../assets/img/logo-title.svg" class="logo"
+                 style="width: 152px;margin-left: -20px;" alt="">
+        </span><br>
+        <button class="main_btn" style="width: 203px" (click)="btn='administration'">수급자 / 요양보호사 관리</button>
+        <button class="main_btn" (click)="btn='upload'">일정 자료 업로드</button>
+        <button class="main_btn" (click)="btn='record'">기록지 자동 생성</button>
+        <button class="main_btn" (click)="btn='contract'">계약서 작성</button>
+        <button class="main_btn" (click)="btn='message'">전체문자 발송</button>
+    </div>
+</section>
+
+<!--두번째 섹션-->
+<section class="header" style="padding-top: 30px">
+    <div class="container" *ngIf="btn==='administration'">
+        <button class="main_btn" style="width: 203px" (click)="information='beneficiary'">수급자 정보</button>
+        <button class="main_btn" (click)="information='care_worker'">요양보호사 정보</button><br>
+        <p>
+            1. 신규등록하고 싶은 경우에는 '신규 등록'을 기존 수급자, 요보사의 정보 확인 및 수정의 경우에는 이름을 눌러주세요.<br>
+            (등록, 수정후에는 꼭 '자료저장' 버튼을 눌러주셔야 합니다.)<br>
+            2. 기록지 생성이나 전체문자 발송을 위해서는 수급자, 요보사 정보를 꼭 업로드 해주셔야 합니다.
+        </p>
+    </div>
+    <div class="container" *ngIf="btn==='upload'">
+        <p style="color: hotpink">
+            공단메뉴 : [기타] > [엑셀다운로드] > 급여제공월설정 > [일정계획] > [엑셀다운로드] > [다른 이름으로 저장]
+        </p>
+        <p>
+            화면의 하단에 있는 '엑셀 업로드' 버튼을 눌러주시고, 다운로드 받으신 파일을 선택해주세요.<br>
+            그러면 요양보호사 분들의 일정이 자동으로 입력됩니다.
+        </p>
+        <div style="text-align: center">
+            <button class="main_btn" style="width: 161px; background-color: rgb(94, 94, 94); color: white; cursor: pointer;">엑셀 업로드</button>
+        </div>
+    </div>
+    <div class="container" *ngIf="btn==='record'">
+        <button class="main_btn" style="width: 203px" (click)="record_parameter='Tag_details'">태그내역 업로드</button>
+        <button class="main_btn" (click)="record_parameter='record_list'">기록지 목록</button><br>
+        <div *ngIf="record_parameter==='Tag_details'">
+            <p>
+                공단메뉴 : [RFID] > [전송내역] > [요양요원전송내역] > 급여제공일설정 > [조회] > [출력] > 파일형식지정(*.xlsx) > [저장]
+            </p>
+            <p>
+                화면의 하단에 있는 '엑셀 업로드' 버튼을 눌러주시고, 다운로드 받으신 파일을 선택해주세요.<br>
+                그러면 요양보호사 분들의 RFID 정보가 자동으로 입력됩니다.
+            </p>
+        </div>
+        <div *ngIf="record_parameter==='record_list'" style="text-align: center">
+
+        </div>
+    </div>
+    <div class="container" *ngIf="btn==='contract'">
+        <button class="main_btn" style="width: 203px" (click)="contract_type='beneficiary'">수급자 서비스 계약서</button>
+        <button class="main_btn" style="width: 203px" (click)="contract_type='care_giver'">요양보호사 근로 계약서</button><br>
+    </div>
+
+    <div class="container" *ngIf="btn==='message'">
+        <button class="main_btn" (click)="message='schedule'">근무일정표</button>
+        <button class="main_btn" (click)="message='salary'">급여명세서</button><br>
+    </div>
+</section>
+
+<!--세번째 섹션-->
+<section class="header" style="padding-top: 30px">
+    <div class="container" *ngIf="btn==='administration'&&information==='beneficiary'">
+        <p style="font-size: 24px">
+            수급자 정보
+        </p>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white">신규 등록</button>
+    </div>
+    <div class="container" *ngIf="btn==='administration'&&information==='care_worker'">
+        <p style="font-size: 24px">
+            요양보호사 정보
+        </p>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white;">신규 등록</button>
+    </div>
+    <div class="container" *ngIf="btn==='record'&&record_parameter==='record_list'" style="text-align: center">
+        <button class="main_btn" style="width: auto">한번에 모든 요양보호사 기록지 다운로드</button>
+        <div>
+
+        </div>
+    </div>
+</section>

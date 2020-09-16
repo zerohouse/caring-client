@@ -35,6 +35,7 @@ import { adminComponent } from './caring-admin/caring-admin';
 import {loginComponent} from './caring-admin/login/login';
 import {admin_mainComponent} from "./caring-admin/admin_main/admin_main.component";
 import {admin_HeadlineComponent} from "./caring-admin/admin_header/admin_headline.component";
+import {administrationComponent} from "./caring-admin/administration/administration.component";
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {admin_HeadlineComponent} from "./caring-admin/admin_header/admin_headlin
         adminComponent,
         loginComponent,
         admin_mainComponent,
-        admin_HeadlineComponent
+        admin_HeadlineComponent,
+        administrationComponent
     ],
     imports: [
         NgxSpringModule,
