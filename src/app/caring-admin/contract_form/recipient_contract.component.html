@@ -1,0 +1,69 @@
+<div class="container" style="padding: 0">
+    <div style="overflow:auto; width:100px; height:614px; padding:5px; background-color:gold; display: block; float: left; margin-right: 20px">
+        <table>
+            <th>수급자 명</th>
+            <tr>
+                <td>첫번째 칸</td>
+            </tr>
+            <tr>
+                <td>첫번째 칸</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: block;">
+        <label>센터 :
+            <select [(ngModel)]="reccenter" style="width: 200px;">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+            </select><br>
+        </label>
+        <label>계약 시작일 :
+            <input type="date" style="width: 180px;" [(ngModel)]="contract_start" min="2015-01-01" max="2050-12-31"> ~ 계약 종료일 :
+            <input type="date" style="width: 180px;" [(ngModel)]="contract_end" min="2015-01-01" max="2050-12-31"><br>
+        </label>
+        <label>이용시간 (1) :
+            <input type="text" style="width: 250px" [(ngModel)]="useday1" placeholder = "ex)버튼을 클릭해주세요"><br>
+            <button (click)="useday1 = useday1 + '월'">월</button>
+            <button (click)="useday1 = useday1 + '화'">화</button>
+            <button (click)="useday1 = useday1 + '수'">수</button>
+            <button (click)="useday1 = useday1 + '목'">목</button>
+            <button (click)="useday1 = useday1 + '금'">금</button>
+            <button (click)="useday1 = useday1 + '토'">토</button>
+            <button (click)="useday1 = useday1 + '일'">일</button><br>
+            <button (click)="useday1 = '월화수목금'">평일</button>
+            <button (click)="useday1 = '토일'">주말</button>
+            <button (click)="useday1 = '월화수목금토일'">매일</button><br>
+        </label>
+        <label>
+            <input type="time" style="width: 140px" [(ngModel)]="usestime1"> ~
+            <input type="time" style="width: 140px" [(ngModel)]="useetime1"><br><br>
+        </label>
+        <label>이용시간 (2) :
+            <input type="text" style="width: 250px" [(ngModel)]="useday2" placeholder = "ex)버튼을 클릭해주세요"><br>
+            <button (click)="useday2 = useday2 + '월'">월</button>
+            <button (click)="useday2 = useday2 + '화'">화</button>
+            <button (click)="useday2 = useday2 + '수'">수</button>
+            <button (click)="useday2 = useday2 + '목'">목</button>
+            <button (click)="useday2 = useday2 + '금'">금</button>
+            <button (click)="useday2 = useday2 + '토'">토</button>
+            <button (click)="useday2 = useday2 + '일'">일</button><br>
+            <button (click)="useday2 = '월화수목금'">평일</button>
+            <button (click)="useday2 = '토일'">주말</button>
+            <button (click)="useday2 = '월화수목금토일'">매일</button><br>
+        </label>
+        <label>
+            <input type="time" style="width: 140px" [(ngModel)]="usestime2"> ~
+            <input type="time" style="width: 140px" [(ngModel)]="useetime2"><br><br>
+        </label>
+        <label>계약체결일 :
+            <input type="date" style="width: 180px" [(ngModel)]="contract_date" min="2015-01-01" max="2050-12-31"><br>
+        </label>
+    </div><br>
+    <div style="text-align: center; display: block">
+    <button (click)="downloadRecipient(recname, reclevel, recnumber, recbirth, recaddress, recphone, etc, reccenter, pname,
+            relation, pbirth, pphone, paddress, contract_start, contract_end, useday1, usestime1, useetime1, contract_date)">계약서 저장 및 다운로드</button>
+    </div>
+</div>
+

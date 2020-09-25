@@ -15,18 +15,16 @@ db.query(`SELECT * FROM recipient`, function (error,list){
 })
 */
 @Component({
-  selector: "admin_login",
-  templateUrl: "./admin_main.component.html",
-  styleUrls: ["./admin_main.component.sass"]
+    selector: "giver_info",
+    templateUrl: "./giver_info.component.html",
+    styleUrls: ["./giver_info.component.sass"]
 })
 
-export class admin_mainComponent {
-  btn: string;
-  information: string;
-  record_parameter: string;
-  contract_type: string;
-  message: string;
-  new: string = 'default';
+export class giver_infoComponent {
+    btn: string;
+    information: string;
+    contract_type: string;
+    new: string = 'default';
 }
 /*
 function creatrecipient(){

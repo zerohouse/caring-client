@@ -1,0 +1,181 @@
+<!--세번째 섹션-->
+<section class="header" style="padding-top: 30px">
+    <div class="container" style="padding: 0; margin: 0">
+        <p style="font-size: 24px">
+            요양보호사 정보
+        </p>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white;" (click)="new='registration'" >신규 등록</button>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" *ngIf="new==='registration'" (click)="new='default'" >저장하기</button>
+        <div>
+            <div style="overflow:auto; width:400px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 20px">
+                <table>
+                    <th>
+                        <input type="checkbox">
+                    </th>
+                    <th>보호사 명</th>
+                    <th>생년월일</th>
+                    <th>입사일자</th>
+                    <th>근무경력</th>
+                    <th>현상태</th>
+                    <tr>
+                        <td>첫번째 칸</td>
+                        <td>두번째 칸</td>
+                    </tr>
+                    <tr>
+                        <td>첫번째 칸</td>
+                        <td>두번째 칸</td>
+                    </tr>
+                </table>
+            </div>
+            <!--<div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="new==='default'">
+                <div >
+                    <p>
+                        장기요양 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        욕구/낙상/욕창/정신 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
+                    </p>
+                </div>
+            </div>-->
+            <div style="display: inline-block; float: left; padding-top: 30px" *ngIf="new==='registration'">
+                <table style="margin-bottom: 30px">
+                    <tr><!-- 첫번째 줄 시작 -->
+                        <td>보호사명</td>
+                        <td>
+                            <input type="text" style="width: 200px">
+                        </td>
+                        <td>생년월일</td>
+                        <td>
+                            <input type="text" style="width: 210px">
+                            <label>
+                                <input type="radio" name="gender" value="M" checked>남
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="W">여
+                            </label>
+                        </td>
+                    </tr><!-- 첫번째 줄 끝 -->
+                    <tr><!-- 두번째 줄 시작 -->
+                        <td>재가업무</td>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="chk_info" value="요양" checked="checked">요양
+                            </label>
+                            <label>
+                                <input type="checkbox" name="chk_info" value="목욕">목욕
+                            </label>
+                            <label>
+                                <input type="checkbox" name="chk_info" value="간호">간호
+                            </label>
+                            <label>
+                                <input type="checkbox" name="chk_info" value="보호">보호
+                            </label>
+                        </td>
+                        <td>입사 및 퇴사일자</td>
+                        <td>
+                            <label>
+                                <input type="date" style="font-size: 15px" min="2015-01-01" max="2050-12-31">~
+                            </label>
+                            <input type="date" style="font-size: 15px" min="2015-01-01" max="2050-12-31">
+                        </td>
+                    </tr><!-- 두번째 줄 끝 -->
+                    <tr><!-- 세번째 줄 시작 -->
+                        <td rowspan="2">자격증보유</td>
+                        <td colspan="3">
+                            <select name="level">
+                                <option value="1등급">요양보호사1급</option>
+                                <option value="2등급">요양보호사2급</option>
+                                <option value="3등급">3등급</option>
+                                <option value="4등급">4등급</option>
+                                <option value="5등급">5등급</option>
+                            </select>
+                            <label>증번호 :
+                                <input type="text" style="width: 160px">
+                            </label>
+                            <label>발급일 :
+                                <input type="date" style="font-size: 15px" min="2015-01-01" max="2050-12-31">
+                            </label>
+                        </td>
+                    </tr><!-- 세번째 줄 끝 -->
+                    <tr><!-- 세번째 줄 시작 -->
+                        <td colspan="3">
+                            <select name="level">
+                                <option value="1등급">요양보호사1급</option>
+                                <option value="2등급">요양보호사2급</option>
+                                <option value="3등급">3등급</option>
+                                <option value="4등급">4등급</option>
+                                <option value="5등급">5등급</option>
+                            </select>
+                            <label>증번호 :
+                                <input type="text" style="width: 160px">
+                            </label>
+                            <label>발급일 :
+                                <input type="date" style="font-size: 15px" min="2015-01-01" max="2050-12-31">
+                            </label>
+                        </td>
+                    </tr><!-- 세번째 줄 끝 -->
+                    <tr><!-- 다섯번째 줄 시작 -->
+                        <td>주소</td>
+                        <td colspan="3">
+
+                        </td>
+                    </tr><!-- 다섯번째 줄 끝 -->
+                    <tr><!-- 다섯번째 줄 시작 -->
+                        <td>이메일주소</td>
+                        <td>
+                            <label>
+                                <input type="email" style="width: 200px">
+                            </label>
+                        </td>
+                        <td>자택/휴대전화</td>
+                        <td>
+                            <label>
+                                <input type="text" style="width: 130px"> /
+                            </label>
+                            <input type="text" style="width: 130px">
+                        </td>
+                    </tr><!-- 다섯번째 줄 끝 -->
+                </table>
+
+                <table>
+                    <tr><!-- 두번째 테이블 첫번째 줄 시작 -->
+                        <td>교육이수사항</td>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="chk_info" value="true" checked="checked">인지치매교육
+                            </label>
+                        </td>
+                        <td>참고사항</td>
+                        <td>
+                            <input type="text" style="width: 100px">
+                        </td>
+                    </tr><!-- 두번째 테이블 첫번째 줄 끝 -->
+                </table>
+                <table>
+                    <tr><!-- 두번째 테이블 세번째 줄 시작 -->
+                        <td>일정배정유무</td>
+                        <td>
+                            <input type="" style="width: 80px">
+                        </td>
+                        <td>
+                            <button>01월</button>
+                            <button>02월</button>
+                            <button>03월</button>
+                            <button>04월</button>
+                            <button>05월</button>
+                            <button>06월</button>
+                            <button>07월</button>
+                            <button>08월</button>
+                            <button>09월</button>
+                            <button>10월</button>
+                            <button>11월</button>
+                            <button>12월</button>
+                        </td>
+                    </tr><!-- 두번째 테이블 세번째 줄 끝 -->
+                </table><br>
+            </div>
+        </div>
+    </div>
+</section>

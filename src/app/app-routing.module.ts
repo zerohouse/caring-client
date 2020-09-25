@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './main/main.component';
 import {ReserveListComponent} from './reserve-list/reserve-list.component';
 import {ReserveListGuardGuard} from './reserve-list-guard.guard';
-import {adminComponent} from "./caring-admin/caring-admin";
+import {adminComponent} from "./caring-admin/contract_form/caring-admin";
 import {admin_mainComponent} from  "./caring-admin/admin_main/admin_main.component";
 
 

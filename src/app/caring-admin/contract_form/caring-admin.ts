@@ -24,14 +24,14 @@ export class adminComponent {
   place: string;
   phone: string;
   start: string;
-  end: string;
   contract: string;
 
   recname: string;
   reclevel: string = '등급선택';
   recbirth: string;
   recaddress: string;
-  recphone: string;
+  recphone: string = '';
+  recnumber: string;
   etc: string = '일반';
   reccenter: string = '센터선택';
   pname: string = '';
@@ -41,7 +41,7 @@ export class adminComponent {
   paddress: string = '';
   contract_start: string;
   contract_end: string;
-  useday: string;
+  useday: string = '';
   usestime: string;
   useetime: string;
   contract_date: string;
@@ -52,7 +52,6 @@ export class adminComponent {
   rlevel: string = '등급선택';
   rnumber: string;
   rcenter: string = '센터선택';
-  rphone: string;
   day: number = 0;
   firstday: string = '';
   firststime: string = '';
@@ -76,9 +75,9 @@ export class adminComponent {
   seventhstime: string = '';
   seventhtime: string = '';
 
-  public downloadCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, end: string, contract: string): void {
+  public downloadCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, contract: string): void {
     const caregiver = new docGiver();
-    const doc = caregiver.createCaregiver(name, center, time, address, place, phone, start, end, contract);
+    const doc = caregiver.createCaregiver(name, center, time, address, place, phone, start, contract);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);
@@ -87,9 +86,9 @@ export class adminComponent {
     });
   }
 
-  public downloadRecipient(name: string, level: string, birth: string, address: string, phone: string, etc: string, center: string, pname: string, relation: string, pbirth: string, pphone: string, paddress: string, contract_start: string, contract_end: string, useday: string, usestime: string, useetime: string, contract_date: string): void {
+  public downloadRecipient(name: string, level: string, number:string, birth: string, address: string, phone: string, etc: string, center: string, pname: string, relation: string, pbirth: string, pphone: string, paddress: string, contract_start: string, contract_end: string, useday: string, usestime: string, useetime: string, contract_date: string): void {
     const recipient = new docRec();
-    const doc = recipient.createRecipient(name, level, birth, address, phone, etc, center, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date);
+    const doc = recipient.createRecipient(name, level, number, birth, address, phone, etc, center, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);

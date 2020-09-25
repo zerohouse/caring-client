@@ -31,11 +31,17 @@ import { Nursing_servicesComponent } from './nursing-services/nursing-services.c
 import { Pay_calculationComponent } from './pay-calculation/pay-calculation.component';
 import { Caring_newsComponent } from './caring-news/caring_news.component';
 import { NationwideComponent } from './nationwide/nationwide.component';
-import { adminComponent } from './caring-admin/caring-admin';
+import { adminComponent } from './caring-admin/contract_form/caring-admin';
 import {loginComponent} from './caring-admin/login/login';
 import {admin_mainComponent} from "./caring-admin/admin_main/admin_main.component";
 import {admin_HeadlineComponent} from "./caring-admin/admin_header/admin_headline.component";
 import {administrationComponent} from "./caring-admin/administration/administration.component";
+import {reci_infoComponent} from "./caring-admin/reci_giver_management/reci_info.component";
+import {giver_infoComponent} from "./caring-admin/reci_giver_management/giver_info.component";
+import {caregiver_contractComponent} from "./caring-admin/contract_form/caregiver_contract.component";
+import {recipient_contractComponent} from "./caring-admin/contract_form/recipient_contract.component";
+import {workScheduleComponent} from "./caring-admin/message/workSchedule.component";
+import {paystubComponent} from "./caring-admin/message/paystub.component";
 
 
 @NgModule({
@@ -65,7 +71,13 @@ import {administrationComponent} from "./caring-admin/administration/administrat
         loginComponent,
         admin_mainComponent,
         admin_HeadlineComponent,
-        administrationComponent
+        administrationComponent,
+        reci_infoComponent,
+        giver_infoComponent,
+        caregiver_contractComponent,
+        recipient_contractComponent,
+        workScheduleComponent,
+        paystubComponent,
     ],
     imports: [
         NgxSpringModule,

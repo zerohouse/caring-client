@@ -6,11 +6,11 @@
                 <div class="card-review" style="width: initial;">
                     <img [src]="'../assets/img/'+news.img">
                     <p><b>{{news.name}}</b></p>
-                    <p style="width: 206px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
+                    <p style="width: 210px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 1" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 2" (click)="index= index+1"></div>
         <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -23,11 +23,11 @@
                 <div class="card-review" style="width: initial;">
                     <img [src]="'../assets/img/'+news.img">
                     <p><b>{{news.name}}</b></p>
-                    <p style="width: 206px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
+                    <p style="width: 210px; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 3" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 4" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -36,16 +36,16 @@
 <section *showItSizes="{min:600,max:899}" style="padding-top: 111px; padding-bottom: 98px">
     <div class="container" style="width:86%; overflow-x: hidden;padding-bottom: 30px;">
         <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
-        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.8,spaceBetween:10}">
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:2.4,spaceBetween:5}">
             <div *ngFor="let news of newss" (click)="moveTo(news.href)">
-                <div class="card-review" style="width: 90%">
+                <div class="card-review" style="width: 90%;">
                     <img [src]="'../assets/img/'+news.img" style="width: 100%; height: 50%">
                     <p><b>{{news.name}}</b></p>
                     <p style="width: 80%; height: 124px; line-height: 31px;" [innerHTML]="news.story"></p>
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 3" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 4" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -54,7 +54,7 @@
 <section *showItSizes="{max:599}" style="padding: 45px 0 38px 0;">
     <div class="container" style="width: 80%; overflow-x: hidden; padding-bottom: 30px; margin: 0 auto 0 auto;">
         <h2 style="font-size: 20px; margin-bottom: 20px">케어링 소식</h2>
-        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.3,spaceBetween:15}">
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.6,spaceBetween:15}">
             <div *ngFor="let news of newss">
                 <div class="review-m" (click)="moveTo(news.href)">
                     <img [src]="'../assets/img/'+news.img"><br>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 4" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 5" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>

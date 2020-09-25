@@ -1,3 +1,4 @@
+
 <div class="container" style="text-align: center; vertical-align: center">
     <div style="margin-bottom: 50px"></div>
     <h1 style="font-size: 30px">케어링 관리자 모드</h1>
@@ -17,7 +18,7 @@
         </label>
         <br>
         <label>근무장소 :
-            <input type="text" size="40" style="width: 60%;" [(ngModel)]="place">
+            <input type="text" size="40" style="width: 55%;" [(ngModel)]="place">
         </label>
         <br>
         <label>센터 :
@@ -40,28 +41,24 @@
         </label>
         <br>
         <label>핸드폰 번호 :
-            <input type="text" size="40" style="width: 50%;" class="phone" maxlength="13" placeholder="ex)010-0000-0000" [(ngModel)]="phone">
+            <input type="text" size="40" style="width: 50%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="phone">
         </label>
         <br>
         <label>근로 시작일 :
             <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
         </label>
         <br>
-        <label>근로 종료일 :
-            <input type="date" style="width: 50%;" [(ngModel)]="end" min="2015-01-01" max="2050-12-31">
-        </label>
-        <br>
         <label>근로 계약일 :
             <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
         </label>
         <br>
-        <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, end, contract)">요보사 계약서</button>
+        <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, contract)">요보사 계약서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="client == true">
         <h3>수급자 계약서</h3>
         <label>성명 :
-            <input type="text" size="40" [(ngModel)]="recname"><br>
+            <input type="text" size="40" style="width: 69%" [(ngModel)]="recname"><br>
         </label>
         <label>장기요양등급 :
             <select style="width: 51%;" [(ngModel)]="reclevel">
@@ -73,17 +70,20 @@
                 <option value="5등급">5등급</option>
             </select><br>
         </label>
+        <label>장기요양인정번호 :
+            <input type="text" size="40" style="width: 40%;" placeholder="숫자만 입력해주세요" [(ngModel)]="recnumber"><br>
+        </label>
         <label>생년월일 :
-            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 63%" [(ngModel)]="recbirth"><br>
+            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 61%" [(ngModel)]="recbirth"><br>
         </label>
         <label>주소 :
-            <input type="text" size="40" [(ngModel)]="recaddress"><br>
+            <input type="text" size="40" style="width: 70%" [(ngModel)]="recaddress"><br>
         </label>
         <label>핸드폰 번호 :
-            <input type="text" size="40" style="width: 55%;" class="phone" maxlength="13" placeholder="ex)010-0000-0000" [(ngModel)]="recphone"><br>
+            <input type="text" size="40" style="width: 54%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="recphone"><br>
         </label>
         <label>수급구분 :
-            <select style="width: 63%;" [(ngModel)]="etc">
+            <select style="width: 62%;" [(ngModel)]="etc">
                 <option value="일반">일반대상</option>
                 <option value="40%">감경 40%</option>
                 <option value="50%">감경 50%</option>
@@ -93,7 +93,7 @@
             </select><br>
         </label>
         <label>센터 :
-            <select [(ngModel)]="reccenter">
+            <select [(ngModel)]="reccenter" style="width: 72%;">
                 <option value="센터선택">센터선택</option>
                 <option value="논현">논현</option>
                 <option value="강남">강남</option>
@@ -102,10 +102,10 @@
         </label>
         <label>보호자</label><br>
         <label>성명 :
-            <input type="text" size="40" style="width: 73%;" [(ngModel)]="pname"><br>
+            <input type="text" size="40" style="width: 70%;" [(ngModel)]="pname"><br>
         </label>
         <label>이용자와의 관계 :
-            <select style="width: 43%;" [(ngModel)]="relation">
+            <select style="width: 46%;" [(ngModel)]="relation">
                 <option value="">관계선택</option>
                 <option value="배우자">배우자</option>
                 <option value="자녀">자녀</option>
@@ -122,19 +122,29 @@
             <input type="date" size="40" style="width: 61%;" [(ngModel)]="pbirth" min="1910-01-01" max="2020-01-01"><br>
         </label>
         <label>연락처 :
-            <input type="text" size="40" style="width: 67%;" placeholder="ex)010-0000-0000" [(ngModel)]="pphone"><br>
+            <input type="text" size="40" style="width: 65%;" placeholder="숫자만 입력해주세요" [(ngModel)]="pphone"><br>
         </label>
         <label>주소 :
-            <input type="text" size="40" style="width: 73%;" [(ngModel)]="paddress"><br>
+            <input type="text" size="40" style="width: 70%;" [(ngModel)]="paddress"><br>
         </label><br>
         <label>계약 시작일 :
-            <input type="date" style="width: 55%;" [(ngModel)]="contract_start" min="2015-01-01" max="2100-01-01"><br>
+            <input type="date" style="width: 55%;" [(ngModel)]="contract_start" min="2015-01-01" max="2050-01-01"><br>
         </label>
         <label>계약 종료일 :
-            <input type="date" style="width: 55%;" [(ngModel)]="contract_end" min="2015-01-01" max="2100-01-01"><br>
+            <input type="date" style="width: 55%;" [(ngModel)]="contract_end" min="2015-01-01" max="2050-01-01"><br>
         </label>
         <label>이용일 :
-            <input type="text" style="width: 69%;" [(ngModel)]="useday" placeholder = "ex)월화수"><br>
+            <input type="text" style="width: 65%;" [(ngModel)]="useday" placeholder = "ex)버튼을 클릭해주세요"><br>
+            <button (click)="useday = useday + '월'">월</button>
+            <button (click)="useday = useday + '화'">화</button>
+            <button (click)="useday = useday + '수'">수</button>
+            <button (click)="useday = useday + '목'">목</button>
+            <button (click)="useday = useday + '금'">금</button>
+            <button (click)="useday = useday + '토'">토</button>
+            <button (click)="useday = useday + '일'">일</button>
+            <button (click)="useday = useday + '월화수목금'">평일</button>
+            <button (click)="useday = useday + '토일'">주말</button>
+            <button (click)="useday = '월화수목금토일'">매일</button><br>
         </label>
         <label>시작시간 :
             <input type="time" style="width: 63%" [(ngModel)]="usestime"><br>
@@ -143,19 +153,19 @@
             <input type="time" style="width: 63%" [(ngModel)]="useetime"><br>
         </label>
         <label>계약일 :
-            <input type="date" style="width: 69%;" [(ngModel)]="contract_date" min="2015-01-01" max="2100-01-01"><br>
+            <input type="date" style="width: 68%;" [(ngModel)]="contract_date" min="2015-01-01" max="2100-01-01"><br>
         </label>
 
-        <button (click)="downloadRecipient(recname, reclevel, recbirth, recaddress, recphone, etc, reccenter, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date)">수급자 계약서</button>
+        <button (click)="downloadRecipient(recname, reclevel, recnumber, recbirth, recaddress, recphone, etc, reccenter, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date)">수급자 계약서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="record == true">
         <h3>기록지</h3>
         <label>성명 :
-            <input type="text" size="40" style="width: 76%" [(ngModel)]="rname"><br>
+            <input type="text" size="40" style="width: 70%" [(ngModel)]="rname"><br>
         </label>
         <label>생년월일 :
-            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 64%" [(ngModel)]="rbirth"><br>
+            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 61%" [(ngModel)]="rbirth"><br>
         </label>
         <label>장기요양등급 :
             <select style="width: 52%;" [(ngModel)]="rlevel">
@@ -168,7 +178,7 @@
             </select><br>
         </label>
         <label>장기요양인정번호 :
-            <input type="text" size="40" style="width: 40%;" [(ngModel)]="rnumber"><br>
+            <input type="text" size="40" style="width: 40%;" placeholder="숫자만 입력해주세요" [(ngModel)]="rnumber"><br>
         </label>
         <label>장기요양기관명 :
             <select style="width: 47%;" [(ngModel)]="rcenter">
@@ -179,7 +189,7 @@
             </select><br>
         </label>
         <label>총제공일 :
-            <select style="width: 65%;" [(ngModel)]="day">
+            <select style="width: 62%;" [(ngModel)]="day">
                 <option value=0>제공일 선택</option>
                 <option value=1>1일</option>
                 <option value=2>2일</option>
@@ -192,10 +202,10 @@
         </label>
         <p *ngIf="day > 0">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="firstday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="firstday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="firsttime">
+                <select style="width: 45%;" [(ngModel)]="firsttime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -213,18 +223,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="secondtime=firsttime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="firststime">
+                <input type="time" style="width: 39%" [(ngModel)]="firststime">
+                <button (click)="secondstime=firststime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 1">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="secondday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="secondday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="secondtime">
+                <select style="width: 45%;" [(ngModel)]="secondtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -242,18 +254,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="thirdtime=secondtime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="secondstime"><br>
+                <input type="time" style="width: 39%" [(ngModel)]="secondstime">
+                <button (click)="thirdstime=secondstime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 2">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="thirdday" ><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="thirdday" ><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="thirdtime">
+                <select style="width: 45%;" [(ngModel)]="thirdtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -271,18 +285,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="fourthtime=thirdtime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="thirdstime"><br>
+                <input type="time" style="width: 39%" [(ngModel)]="thirdstime">
+                <button (click)="fourthstime=thirdstime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 3">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="fourthday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="fourthday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="fourthtime">
+                <select style="width: 45%;" [(ngModel)]="fourthtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -300,18 +316,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="fifthtime=fourthtime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="fourthstime"><br>
+                <input type="time" style="width: 39%" [(ngModel)]="fourthstime">
+                <button (click)="fifthstime=fourthstime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 4">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="fifthday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="fifthday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="fifthtime">
+                <select style="width: 45%;" [(ngModel)]="fifthtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -329,18 +347,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="sixthtime=fifthtime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="fifthstime"><br>
+                <input type="time" style="width: 39%" [(ngModel)]="fifthstime">
+                <button (click)="sixthstime=fifthstime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 5">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="sixthday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 66%" [(ngModel)]="sixthday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="sixthtime">
+                <select style="width: 45%;" [(ngModel)]="sixthtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -358,18 +378,20 @@
                     <option value="420">420분</option>
                     <option value="450">450분</option>
                     <option value="480">480분</option>
-                </select><br>
+                </select>
+                <button (click)="seventhtime=sixthtime" style="margin: 0">시간 고정</button><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="sixthstime"><br>
+                <input type="time" style="width: 39%" [(ngModel)]="sixthstime">
+                <button (click)="seventhstime=sixthstime" style="margin: 0 0 20px 0">시간 고정</button>
             </label>
         </p>
         <p *ngIf="day > 6">
             <label>제공일 :
-                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 71%" [(ngModel)]="seventhday"><br>
+                <input type="date" min="2020-01-01" max="2022-12-31" style="width: 67%" [(ngModel)]="seventhday"><br>
             </label>
             <label>총시간 :
-                <select style="width: 71%;" [(ngModel)]="seventhtime">
+                <select style="width: 68%;" [(ngModel)]="seventhtime">
                     <option value="">시간선택</option>
                     <option value="30">30분</option>
                     <option value="60">60분</option>
@@ -390,7 +412,7 @@
                 </select><br>
             </label>
             <label>시작시간 :
-                <input type="time" style="width: 65%" [(ngModel)]="seventhstime"><br>
+                <input type="time" style="width: 62%" [(ngModel)]="seventhstime"><br>
             </label>
         </p>
         <button style="float: right" (click)="downloadRecordpaper(rname, rbirth, rlevel, rnumber, rcenter, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime)">기록지 다운로드</button>

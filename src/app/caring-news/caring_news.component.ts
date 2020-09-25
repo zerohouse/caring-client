@@ -8,6 +8,15 @@ import {Component, OnInit} from '@angular/core';
 export class Caring_newsComponent implements OnInit {
     newss = [
         {
+            name: '디지털타임스',
+            img: 'news-7.png',
+            href: 'https://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=001&oid=029&aid=0002626570',
+            story: ' 케어링 앤 컴퍼니, ' + "<br>" +
+                '대한민국 최고브랜드대상 ' + "<br>" +
+                '방문요양 서비스부문 ' + "<br>" +
+                '대상(大賞)'
+        },
+        {
             name: '한국경제',
             img: 'news-5.PNG',
             href: 'https://n.news.naver.com/article/015/0004393778',

@@ -1,0 +1,56 @@
+<div class="container" style="padding: 0">
+    <div style="overflow:auto; width:100px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 20px">
+        <table>
+            <th>보호사 명</th>
+            <tr>
+                <td>첫번째 칸</td>
+            </tr>
+            <tr>
+                <td>첫번째 칸</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block;">
+        <label>근무장소 :
+            <input type="text" size="40" style="width: 55%;" [(ngModel)]="place">
+        </label>
+        <br>
+        <label>센터 :
+            <select [(ngModel)]="center">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+            </select>
+        </label>
+        <br>
+        <label>시간 :
+            <select [(ngModel)]="time">
+                <option value="시간선택">시간선택</option>
+                <option value="60">60분</option>
+                <option value="90">90분</option>
+                <option value="180">180분</option>
+                <option value="240">240분</option>
+            </select>
+        </label>
+        <br>
+        <label>근로 내용 :
+            <input type="checkbox" name="chk" style="width: 20px">방문요양
+            <input type="checkbox" name="chk" style="width: 20px">방문목욕
+            <input type="checkbox" name="chk" style="width: 20px">방문간호
+        </label>
+        <br>
+        <label>근로 시작일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <label>근로 계약일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+    </div>
+    <div>
+        <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, contract)">계약서 저장 및 다운로드</button>
+    </div>
+</div>
+

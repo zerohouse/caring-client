@@ -12,9 +12,26 @@ import {
     WidthType,
 } from "docx";
 
+const phoneReplace = /-/g;
+
+export const phoneNumberFormat = (value: string) => {
+    const phoneNumber = value.toString().replace(phoneReplace, '');
+    let format: string = '';
+
+    if(phoneNumber.length === 10 && phoneNumber.slice(0,2) === "02") {
+        format = `${phoneNumber.slice(0, 2)}-${phoneNumber.slice(2, 6)}-${phoneNumber.slice(6)}`;
+    } else if (phoneNumber.length === 10) {
+        format = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+    } else if (phoneNumber.length === 11) {
+        format = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7)}`;
+    }
+    return format;
+};
+
+
 export class docRec {
 
-    public createRecipient(name: string, level: string, birth: string, address: string, phone: string, sortation: string, center: string, pname: string, relation: string, pbirth: string, pphone: string, paddress: string, contract_start: string, contract_end: string, useday: string, usestime: string, useetime: string, contract_date: string): Document {
+    public createRecipient(name: string, level: string, number:string, birth: string, address: string, phone: string, sortation: string, center: string, pname: string, relation: string, pbirth: string, pphone: string, paddress: string, contract_start: string, contract_end: string, useday: string, usestime: string, useetime: string, contract_date: string): Document {
         const document = new Document();
 
         const contract = {
@@ -198,6 +215,14 @@ export class docRec {
                                         size: 24,
                                     })
                                 ],
+                            }),new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children:[
+                                    new TextRun({
+                                        text: `(L-${number})`,
+                                        size: 24,
+                                    })
+                                ],
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                             width: {
@@ -294,7 +319,15 @@ export class docRec {
                                 alignment: AlignmentType.CENTER,
                                 children:[
                                     new TextRun({
-                                        text: `${phone}`,
+                                        text: `자택)`,
+                                        size: 24,
+                                    })
+                                ],
+                            }), new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children:[
+                                    new TextRun({
+                                        text: `${phoneNumberFormat(phone)}`,
                                         size: 24,
                                     })
                                 ],
@@ -890,7 +923,7 @@ export class docRec {
                                 alignment: AlignmentType.CENTER,
                                 children:[
                                     new TextRun({
-                                        text: `이동전화)${pphone}`,
+                                        text: `이동전화)${phoneNumberFormat(pphone)}`,
                                         size: 24,
                                     })
                                 ],
@@ -2266,7 +2299,7 @@ export class docRec {
                 this.createText13content(`① 계약기간은 ${contract.startDate.year}년 ${contract.startDate.month}월 ${contract.startDate.day}일부터 ${contract.endDate.year}년 ${contract.endDate.month}월 ${contract.endDate.day}일까지로 한다. `),
                 this.createText13content("② 제1항의 계약기간은 당사자 간의 협의에 따라 변경할 수 있다."),
                 this.createText(""),
-                this.createText13("제3조(급여범위) ",") 방문요양급여는 장기요양요원이 ‘갑’의 가정 등을 방문하여 신체활동 및 가사활동 등을 지원하는 장기요양급여로 한다."),
+                this.createText13("제3조(급여범위) "," 방문요양급여는 장기요양요원이 ‘갑’의 가정 등을 방문하여 신체활동 및 가사활동 등을 지원하는 장기요양급여로 한다."),
                 this.createText(""),
                 this.createText13title("제4조(급여이용 및 제공) "),
                 this.createText(""),
@@ -2279,7 +2312,6 @@ export class docRec {
                 this.createText13content("③ ‘을’의 방문요양급여 제공시간은 아래와 같다. 다만, 1일 2회 방문요양급여를 제공하는 경우에는 2시간 이상의 간격으로 제공한다."),
                 table3,
                 this.createText13content("④ ‘관공서의 공휴일에 관한 규정’에 의한 공휴일에 급여를 제공하는 경우에는 ‘을’은 30%의 할증비용을 청구할 수 있다."),
-                this.createText(""),
                 this.createText13content("⑤ 야간(18:00~22:00), 심야(22:00~06:00)에 급여를 제공하는 경우에는 ‘을’은 야간 20%, 심야 30%의 할증 비용을 청구할 수 있다."),
                 this.createText(""),
                 this.createText13content("⑥ 야간․심야․휴일가산이 동시에 적용되는 경우에는 중복하여 가산하지 않는다."),
@@ -2381,6 +2413,7 @@ export class docRec {
                 this.createText13content("①‘을’은 다음 각호의 경우에는‘갑’(또는‘병’)에게 배상의무가 있으며 배상책임은 관계규정에 따른다."),
                 this.createText13content("   1. 장기요양요원(또는‘을’)의 고의나 과실로 인하여 ‘갑’을 부상케 하는 등 건강을 상하게 하거나 사망에 이르게 하였을 때"),
                 this.createText13content("   2. 장기요양요원(또는‘을’)의 학대(노인복지법 제1조의2 제4호의 노인학대 및 같은 법 제39조의9의 금지행위를 말한다)로 인하여 ‘갑’의 건강을 상하게 하거나, 사망에 이르게 하였을 때"),
+                this.createText(""),
                 this.createText13content("② 다음 각 호에 해당되는 경우에는 ‘갑’(또는 ‘병’)은 ‘을’에게 배상을 요구할 수 없다."),
                 this.createText13content("   1. 자연사 또는 질환에 의하여 사망 하였을 때"),
                 this.createText13content("   2.‘을’이 선량한 주의의무를 다했음에도 임의로 외출하여 상해를 당했거나 사망 하였을 때"),
@@ -2394,22 +2427,17 @@ export class docRec {
                 this.createText15B("위와 같이 계약을 체결하고 본 계약체결을 증명하기 위하여 쌍방이 계약서를 작성 날인 후 각각 1부씩 보관키로 한다. "),
                 this.createText(""),
                 this.createRtoday(contract),
-                this.createText15("상기 내용에 대한 충분한 설명을 ‘갑’과 ‘병’에게 제공하였습니다."),
                 this.createText(""),
+                this.createText15("상기 내용에 대한 충분한 설명을 ‘갑’과 ‘병’에게 제공하였습니다."),
                 this.createText(""),
                 this.createText15R(`'을'   시설장   ${center_captain(center)}(인)`),
                 this.createText(""),
                 this.createText15("상기 내용을 읽고 그 내용에 동의합니다."),
                 this.createText(""),
-                this.createText(""),
                 this.createText15R(`'갑'   이용자   ${name}(인)`),
                 this.createText(""),
                 this.createText(""),
                 this.createText15R(`'병'   대리인(보호자)   ${pname}(인)`),
-                this.createText(""),
-                this.createText(""),
-                this.createText(""),
-                this.createText(""),
                 this.createText(""),
                 this.createText(""),
                 this.createText(""),
@@ -2644,7 +2672,7 @@ export class docRec {
                 }),
                 new TextRun({
                     text: text2,
-                    size: 26,
+                    size: 24,
                 })
             ],
         })
@@ -2655,7 +2683,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 26,
+                    size: 24,
                     bold: true,
                 }),
             ],
@@ -2667,7 +2695,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 26,
+                    size: 22,
                 }),
             ],
         })
@@ -2701,7 +2729,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 30,
+                    size: 28,
                     bold: true,
                 }),
             ],
@@ -2713,7 +2741,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 30,
+                    size: 28,
                 }),
             ],
         })
@@ -2725,7 +2753,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 30,
+                    size: 28,
                     bold: true,
                 }),
             ],
@@ -2738,7 +2766,7 @@ export class docRec {
             children: [
                 new TextRun({
                     text: text,
-                    size: 30,
+                    size: 28,
                     bold: true,
                 }),
             ],
@@ -2750,8 +2778,8 @@ export class docRec {
             alignment: AlignmentType.CENTER,
             children: [
                 new TextRun({
-                    text: `${contract.date.year}년\t${contract.date.month}  월\t${contract.date.day}  일`,
-                    size: 30,
+                    text: `${contract.date.year}년\t${contract.date.month}월\t${contract.date.day}일`,
+                    size: 28,
                     bold: true,
                 }),
             ],

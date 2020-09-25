@@ -5,9 +5,83 @@ import {
     TextRun,
 } from "docx";
 
+function e_year(start_year:string, start_month:string, start_day:string): string{
+    let end_year: number = Number(start_year) + 1;
+    let month: number = Number(start_month);
+    let day: number = Number(start_day);
+
+    if (month===1 && day===1){
+        end_year -= 1;
+    }
+
+    return `${end_year}`;
+}  //근로 종료년도 기록 함수
+
+function e_month(start_month:string, start_day:string): string{
+    let end_month: number = Number(start_month);
+    let day: number = Number(start_day);
+
+    if (day===1){
+        if (end_month===1){
+            end_month=12;
+        } else {
+            end_month -= 1;
+        }
+    }
+    if (end_month<10){
+        return `0${end_month}`
+    }
+
+    return `${end_month}`
+}  //근로 종료달 기록 함수
+
+function e_day(start_year:string, start_month:string, start_day:string): string{
+    let year: number = Number(start_year) + 1;
+    let month: number = Number(start_month);
+    let end_day: number = Number(start_day);
+
+    if (end_day===1){
+        if (month===5 || month===7 || month===10 || month===12){
+            end_day=30;
+        } else if (month===3){
+            if (year%4===0 && year%100!=0){
+                end_day=29;
+            } else {
+                end_day=28;
+            }
+        } else {
+            end_day=31;
+        }
+    } else {
+        end_day-=1;
+    }
+    if (end_day<10){
+        return `0${end_day}`;
+    }
+
+    return `${end_day}`;
+}  //근로 종료일 기록 함수
+
+
+const phoneReplace = /-/g;
+
+export const phoneNumberFormat = (value: string) => {
+    const phoneNumber = value.toString().replace(phoneReplace, '');
+    let format: string = '';
+
+    if(phoneNumber.length === 10 && phoneNumber.slice(0,2) === "02") {
+        format = `${phoneNumber.slice(0, 2)}-${phoneNumber.slice(2, 6)}-${phoneNumber.slice(6)}`;
+    } else if (phoneNumber.length === 10) {
+        format = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+    } else if (phoneNumber.length === 11) {
+        format = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7)}`;
+    }
+    return format;
+};
+
 export class docGiver {
 
-    public createCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, end: string, contract: string): Document {
+    public createCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, contract: string): Document {
 
         const document = new Document();
 
@@ -23,11 +97,6 @@ export class docGiver {
                 year: start.slice(0, 4),
                 month: start.slice(5, 7),
                 day: start.slice(8, 10),
-            },
-            endDate: {
-                year: end.slice(0, 4),
-                month: end.slice(5, 7),
-                day: end.slice(8, 10),
             },
             contract: {
                 year: contract.slice(0, 4),
@@ -183,7 +252,7 @@ export class docGiver {
                     bold: true,
                 }),
                 new TextRun({
-                    text: `${caregiver.startDate.year}년 ${caregiver.startDate.month}월 ${caregiver.startDate.day}일부터 ${caregiver.endDate.year}년 ${caregiver.endDate.month}월 ${caregiver.endDate.day}일까지\n`,
+                    text: `${caregiver.startDate.year}년 ${caregiver.startDate.month}월 ${caregiver.startDate.day}일부터 ${e_year(caregiver.startDate.year, caregiver.startDate.month, caregiver.startDate.day)}년 ${e_month(caregiver.startDate.month, caregiver.startDate.day)}월 ${e_day(caregiver.startDate.year, caregiver.startDate.month, caregiver.startDate.day)}일까지\n`,
                 }),
             ],
         });
@@ -480,7 +549,7 @@ export class docGiver {
         return new Paragraph({
             children: [
                 new TextRun({
-                    text: `\t연 락 처 : ${caregiver.phone} / 성명 :  ${caregiver.name} (서명 / 인)`,
+                    text: `\t연 락 처 : ${phoneNumberFormat(caregiver.phone)} / 성명 :  ${caregiver.name} (서명 / 인)`,
                 }),
             ],
         });

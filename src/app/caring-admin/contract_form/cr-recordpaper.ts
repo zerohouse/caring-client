@@ -17,52 +17,73 @@ function check(month: string): string{
     }
     return "■"
 } //기록지 신체활동지원 체크 함수
-*//*
-function keep(month: string): string{
-    if (month===""){
+*/
+
+function time(day: string, time: string): string{
+    if (day===""){
         return ""
     }
-    return "2.유지"
+    return time
 }  //기록지 변화상태 기록 함수
-*/
+
+
 function centernumber(center: string): string{
     if (center==="강남"){
         return "3-11680-00280"
     } else if (center==="논현"){
         return "3-11680-00276"
     } else if (center==="서초방문요양"){
-        return ""
+        return "2-11650-00178"
     }
     return ""
 }  //기록지 변화상태 기록 함수
 
-function endtime(time: string, starttime: string): string{
+function endtime(day:string, time: string, starttime: string): string{
     let hour: number = Number(starttime.slice(0, 2));
-    let min: number = Number(starttime.slice(3, 5));
+    let minute: number = Number(starttime.slice(3, 5));
 
-    if (time===""){
+    if (day==="" || time===""){
         return ""
     } else{
         let addtime = Number(time);
 
         if(addtime>=60){
             hour += Math.floor(addtime / 60);
-            min += (addtime % 60);
-            if (min>=60){
+            minute += (addtime % 60);
+            if (minute>=60){
                 hour += 1;
-                min -= 60;
+                minute -= 60;
             }
-            return `${hour}:${min}`
-        } else {
-            min += addtime;
-            if (min>=60){
-                hour += 1;
-                min -= 60;
-            }
-            if(min==0){
+            if (hour<10 && minute==0){
+                return `0${hour}:00`
+            } else if(minute==0){
                 return `${hour}:00`
+            } else if(minute<10 && hour<10){
+                return `0${hour}:0${minute}`
+            } else if (hour<10){
+                return `0${hour}:${minute}`
+            } else if(minute<10){
+                return `${hour}:0${minute}`
             }
-            return `${hour}:${min}`
+            return `${hour}:${minute}`
+        } else {
+            minute += addtime;
+            if (minute>=60){
+                hour += 1;
+                minute -= 60;
+            }
+            if (hour<10 && minute==0){
+                return `0${hour}:00`
+            } else if(minute==0){
+                return `${hour}:00`
+            } else if(minute<10 && hour<10){
+                return `0${hour}:0${minute}`
+            } else if (hour<10){
+                return `0${hour}:${minute}`
+            } else if(minute<10){
+                return `${hour}:0${minute}`
+            }
+            return `${hour}:${minute}`
         }
     }
 }  //기록지 총시간 기록 함수
@@ -198,7 +219,7 @@ export class docRecord {
                                 alignment: AlignmentType.CENTER,
                                 children:[
                                     new TextRun({
-                                        text: `${number}`,
+                                        text: `L-${number}`,
                                         size: 22,
                                         bold: true,
                                     })
@@ -432,49 +453,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${firsttime}분`,
+                                text: `${time(firstday, firsttime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${secondtime}분`,
+                                text: `${time(secondday, secondtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${thirdtime}분`,
+                                text: `${time(thirdday, thirdtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${fourthtime}분`,
+                                text: `${time(fourthday, fourthtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${fifthtime}분`,
+                                text: `${time(fifthday, fifthtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${sixthtime}분`,
+                                text: `${time(sixthday, sixthtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.RIGHT,
-                                text: `${seventhtime}분`,
+                                text: `${time(seventhday, seventhtime)}분`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -530,49 +551,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${firststime}`,
+                                text: `${time(firstday, firststime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${secondstime}`,
+                                text: `${time(secondday, secondstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${thirdstime}`,
+                                text: `${time(thirdday, thirdstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${fourthstime}`,
+                                text: `${time(fourthday, fourthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${fifthstime}`,
+                                text: `${time(fifthday, fifthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${sixthstime}`,
+                                text: `${time(sixthday, sixthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${seventhstime}`,
+                                text: `${time(seventhday, seventhstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -611,49 +632,49 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(firsttime, firststime)}`,
+                                text: `${endtime(firstday, firsttime, firststime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(secondtime, secondstime)}`,
+                                text: `${endtime(secondday, secondtime, secondstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(thirdtime, thirdstime)}`,
+                                text: `${endtime(thirdday, thirdtime, thirdstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(fourthtime, fourthstime)}`,
+                                text: `${endtime(fourthday, fourthtime, fourthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(fifthtime, fifthstime)}`,
+                                text: `${endtime(fifthday, fifthtime, fifthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(sixthtime, sixthstime)}`,
+                                text: `${endtime(sixthday, sixthtime, sixthstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `${endtime(seventhtime, seventhstime)}`,
+                                text: `${endtime(seventhday, seventhtime, seventhstime)}`,
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
