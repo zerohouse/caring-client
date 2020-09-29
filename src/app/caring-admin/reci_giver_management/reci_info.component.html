@@ -4,30 +4,218 @@
         <p style="font-size: 24px">
             수급자 정보
         </p>
-        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white" (click)="new='registration'" >신규 등록</button>
-        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" *ngIf="new==='registration'" (click)="new='default'" >저장하기</button>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white" (click)="new(); newregist='registration'" >신규 등록</button>
         <div>
             <div style="overflow:auto; width:300px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 20px">
-                <table>
-                    <th>
-                        <input type="checkbox">
-                    </th>
-                    <th>수급자 명</th>
-                    <th>생년월일</th>
-                    <th>등급</th>
-                    <th>구분</th>
-                    <th>상태</th>
+                <table class="table" #table>
+                    <thead>
                     <tr>
-                        <td>첫번째 칸</td>
-                        <td>두번째 칸</td>
+                        <th>
+                            <input type="checkbox">
+                        </th>
+                        <th>수급자 명</th>
+                        <th>생년월일</th>
+                        <th>등급</th>
+                        <th>구분</th>
+                        <th>상태</th>
                     </tr>
-                    <tr>
-                        <td>첫번째 칸</td>
-                        <td>두번째 칸</td>
+                    </thead>
+                    <tbody *ngFor="let reci of data?.content">
+                    <tr *ngIf="reci.recognitionNumber">
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>{{reci.name}}</td>
+                        <td>{{reci.birth}}</td>
+                        <td>{{reci.level}}</td>
+                        <td>{{reci.type}}</td>
+                        <td>{{reci.state}}</td>
                     </tr>
+                    <tr *ngIf="!reci.recognitionNumber">
+
+                    </tr>
+                    <div style="display: inline-block; float: left; padding-top: 30px" *ngIf="newregist==='registration'">
+                        <table style="margin-bottom: 30px">
+                            <tr><!-- 첫번째 줄 시작 -->
+                                <td>수급자명</td>
+                                <td colspan="2">
+                                    <input type="text" style="width: 140px" [(ngModel)]="reci.name">
+                                </td>
+                                <td>생년월일</td>
+                                <td colspan="3">
+                                    <input type="text" style="width: 170px" [(ngModel)]="reci.birth">
+                                    <label>
+                                        <input type="radio" name="gender" value="M" [(ngModel)]="reci.gender" checked>남
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="gender" value="W" [(ngModel)]="reci.gender">여
+                                    </label>
+                                </td>
+                                <td>유형</td>
+                                <td>
+                                    <select name="type" [(ngModel)]="reci.type">
+                                        <option value="family">가족요양</option>
+                                        <option value="visit">일반요양</option>
+                                    </select>
+                                </td>
+                            </tr><!-- 첫번째 줄 끝 -->
+                            <tr><!-- 두번째 줄 시작 -->
+                                <td>장기요양인정번호</td>
+                                <td colspan="2">
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.recognitionNumber">
+                                    <button>현황</button>
+                                </td>
+                                <td>시작일/유효기간</td>
+                                <td colspan="6">
+                                    <label>
+                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.startDate">/
+                                    </label>
+                                    <label>
+                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.validityStart">~
+                                    </label>
+                                    <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.validityEnd">
+                                </td>
+                            </tr><!-- 두번째 줄 끝 -->
+                            <tr><!-- 세번째 줄 시작 -->
+                                <td>장기요양등급</td>
+                                <td>
+                                    <select name="level" style="width: 80px" [(ngModel)]="reci.level">
+                                        <option value="1등급">1등급</option>
+                                        <option value="2등급">2등급</option>
+                                        <option value="3등급">3등급</option>
+                                        <option value="4등급">4등급</option>
+                                        <option value="5등급">5등급</option>
+                                    </select>
+                                </td>
+                                <td>수급구분</td>
+                                <td>
+                                    <select name="supplyType" [(ngModel)]="reci.supplyType">
+                                        <option value="일반">일반대상</option>
+                                        <option value="감경 40%">감경 40%</option>
+                                        <option value="감경 50%">감경 50%</option>
+                                        <option value="감경 60%">감경 60%</option>
+                                        <option value="국민기초생활">국민기초</option>
+                                        <option value="의료급여">의료급여</option>
+                                    </select>
+                                </td>
+                                <td>상태</td>
+                                <td>
+                                    <select name="state" style="width:170px" [(ngModel)]="reci.state">
+                                        <option value="수급중">수급중</option>
+                                        <option value="입원중">입원중</option>
+                                        <option value="대기중">대기중</option>
+                                        <option value="종료">종료</option>
+                                        <option value="사망">사망</option>
+                                        <option value="타기관">타기관</option>
+                                    </select>
+                                </td>
+                                <td>대표질환</td>
+                                <td colspan="2">
+                                    <input type="text" style="width: 130px" [(ngModel)]="reci.disease">
+                                </td>
+                            </tr><!-- 세번째 줄 끝 -->
+                            <tr><!-- 다섯번째 줄 시작 -->
+                                <td>주소</td>
+                                <td colspan="8"><!--
+                            <input type="text" id="sample6_postcode" placeholder="우편번호">
+                            <input type="button" (click)="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                            <input type="text" id="sample6_address" placeholder="주소"><br>
+                            <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                            <input type="text" id="sample6_extraAddress" placeholder="참고항목">-->
+                                </td>
+                            </tr><!-- 다섯번째 줄 끝 -->
+                        </table>
+
+                        <table>
+                            <tr><!-- 두번째 테이블 첫번째 줄 시작 -->
+                                <td>계약자성명</td>
+                                <td>
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorName">
+                                </td>
+                                <td>생년월일</td>
+                                <td>
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorBirth">
+                                </td>
+                            </tr><!-- 두번째 테이블 첫번째 줄 끝 -->
+                        </table>
+                        <table>
+                            <tr><!-- 두번째 테이블 두번째 줄 시작 -->
+                                <td>계약자 메모</td>
+                                <td>
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorMemo">
+                                </td>
+                                <td>수급자계약자관계</td>
+                                <td>
+                                    <select name="type" [(ngModel)]="reci.relationship">
+                                        <option value="">관계선택</option>
+                                        <option value="배우자">배우자</option>
+                                        <option value="자녀">자녀</option>
+                                        <option value="부모">부모</option>
+                                        <option value="형제">형제</option>
+                                        <option value="자손">자손</option>
+                                        <option value="자부">자부</option>
+                                        <option value="친척">친척</option>
+                                        <option value="사회복지공무원">사회복지공무원</option>
+                                        <option value="시군구청장이 지정한자">시군구청장이 지정한자</option>
+                                    </select>
+                                </td>
+                            </tr><!-- 두번째 테이블 두번째 줄 끝 -->
+                        </table>
+                        <table>
+                            <tr><!-- 두번째 테이블 세번째 줄 시작 -->
+                                <td>수급자(자택/휴대)</td>
+                                <td>
+                                    <label>
+                                        <input type="text" style="width: 100px" [(ngModel)]="reci.tel">/
+                                    </label>
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.phone">
+                                </td>
+                                <td>계약자(자택/휴대)</td>
+                                <td>
+                                    <label>
+                                        <input type="text" style="width: 100px" [(ngModel)]="reci.contractorTel">/
+                                    </label>
+                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorPhone">
+                                </td>
+                            </tr><!-- 두번째 테이블 세번째 줄 끝 -->
+                            <tr><!-- 두번째 테이블 세번째 줄 시작 -->
+                                <td>참고사항</td>
+                                <td colspan="3">
+                                    <label>
+                                        <input type="text" style="width: 97%" [(ngModel)]="reci.note">
+                                    </label>
+                                </td>
+                            </tr><!-- 두번째 테이블 세번째 줄 끝 -->
+                        </table>
+                        <table>
+                            <tr><!-- 두번째 테이블 세번째 줄 시작 -->
+                                <td>일정배정유무</td>
+                                <td>
+                                    <input type="" style="width: 100px">
+                                </td>
+                                <td>
+                                    <button>01월</button>
+                                    <button>02월</button>
+                                    <button>03월</button>
+                                    <button>04월</button>
+                                    <button>05월</button>
+                                    <button>06월</button>
+                                    <button>07월</button>
+                                    <button>08월</button>
+                                    <button>09월</button>
+                                    <button>10월</button>
+                                    <button>11월</button>
+                                    <button>12월</button>
+                                </td>
+                            </tr><!-- 두번째 테이블 세번째 줄 끝 -->
+                        </table><br>
+                        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" *ngIf="newregist==='registration'" (click)="save(reci); newregist='default'" >저장하기</button>
+                    </div>
+                    </tbody>
                 </table>
+                <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
             </div>
-            <div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="new==='default'">
+            <div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="newregist==='default'">
                 <div >
                     <p>
                         장기요양 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
@@ -38,182 +226,6 @@
                         욕구/낙상/욕창/정신 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
                     </p>
                 </div>
-            </div>
-            <div style="display: inline-block; float: left; padding-top: 30px" *ngIf="new==='registration'">
-                <table style="margin-bottom: 30px">
-                    <tr><!-- 첫번째 줄 시작 -->
-                        <td>수급자명</td>
-                        <td colspan="2">
-                            <input type="text" style="width: 140px">
-                        </td>
-                        <td>생년월일</td>
-                        <td colspan="3">
-                            <input type="text" style="width: 170px">
-                            <label>
-                                <input type="radio" name="gender" value="M" checked>남
-                            </label>
-                            <label>
-                                <input type="radio" name="gender" value="W">여
-                            </label>
-                        </td>
-                        <td>유형</td>
-                        <td>
-                            <select name="type">
-                                <option value="family">가족요양</option>
-                                <option value="visit">일반요양</option>
-                            </select>
-                        </td>
-                    </tr><!-- 첫번째 줄 끝 -->
-                    <tr><!-- 두번째 줄 시작 -->
-                        <td>장기요양인정번호</td>
-                        <td colspan="2">
-                            <input type="text" style="width: 100px">
-                            <button>현황</button>
-                        </td>
-                        <td>시작일/유효기간</td>
-                        <td colspan="6">
-                            <label>
-                                <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31">/
-                            </label>
-                            <label>
-                                <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31">~
-                            </label>
-                            <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31">
-                        </td>
-                    </tr><!-- 두번째 줄 끝 -->
-                    <tr><!-- 세번째 줄 시작 -->
-                        <td>장기요양등급</td>
-                        <td>
-                            <select name="level" style="width: 80px">
-                                <option value="1등급">1등급</option>
-                                <option value="2등급">2등급</option>
-                                <option value="3등급">3등급</option>
-                                <option value="4등급">4등급</option>
-                                <option value="5등급">5등급</option>
-                            </select>
-                        </td>
-                        <td>수급구분</td>
-                        <td>
-                            <select name="supplyType">
-                                <option value="일반">일반대상</option>
-                                <option value="감경 40%">감경 40%</option>
-                                <option value="감경 50%">감경 50%</option>
-                                <option value="감경 60%">감경 60%</option>
-                                <option value="국민기초생활">국민기초</option>
-                                <option value="의료급여">의료급여</option>
-                            </select>
-                        </td>
-                        <td>상태</td>
-                        <td>
-                            <select name="state" style="width:170px">
-                                <option value="수급중">수급중</option>
-                                <option value="입원중">입원중</option>
-                                <option value="대기중">대기중</option>
-                                <option value="종료">종료</option>
-                                <option value="사망">사망</option>
-                                <option value="타기관">타기관</option>
-                            </select>
-                        </td>
-                        <td>대표질환</td>
-                        <td colspan="2">
-                            <input type="text" style="width: 130px">
-                        </td>
-                    </tr><!-- 세번째 줄 끝 -->
-                    <tr><!-- 다섯번째 줄 시작 -->
-                        <td>주소</td>
-                        <td colspan="8"><!--
-                            <input type="text" id="sample6_postcode" placeholder="우편번호">
-                            <input type="button" (click)="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                            <input type="text" id="sample6_address" placeholder="주소"><br>
-                            <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                            <input type="text" id="sample6_extraAddress" placeholder="참고항목">-->
-                        </td>
-                    </tr><!-- 다섯번째 줄 끝 -->
-                </table>
-
-                <table>
-                    <tr><!-- 두번째 테이블 첫번째 줄 시작 -->
-                        <td>계약자성명</td>
-                        <td>
-                            <input type="text" style="width: 100px">
-                        </td>
-                        <td>생년월일</td>
-                        <td>
-                            <input type="text" style="width: 100px">
-                        </td>
-                    </tr><!-- 두번째 테이블 첫번째 줄 끝 -->
-                </table>
-                <table>
-                    <tr><!-- 두번째 테이블 두번째 줄 시작 -->
-                        <td>계약자 메모</td>
-                        <td>
-                            <input type="text" style="width: 100px">
-                        </td>
-                        <td>수급자계약자관계</td>
-                        <td>
-                            <select name="type">
-                                <option value="">관계선택</option>
-                                <option value="배우자">배우자</option>
-                                <option value="자녀">자녀</option>
-                                <option value="부모">부모</option>
-                                <option value="형제">형제</option>
-                                <option value="자손">자손</option>
-                                <option value="자부">자부</option>
-                                <option value="친척">친척</option>
-                                <option value="사회복지공무원">사회복지공무원</option>
-                                <option value="시군구청장이 지정한자">시군구청장이 지정한자</option>
-                            </select>
-                        </td>
-                    </tr><!-- 두번째 테이블 두번째 줄 끝 -->
-                </table>
-                <table>
-                    <tr><!-- 두번째 테이블 세번째 줄 시작 -->
-                        <td>수급자(자택/휴대)</td>
-                        <td>
-                            <label>
-                                <input type="text" style="width: 100px">/
-                            </label>
-                            <input type="text" style="width: 100px">
-                        </td>
-                        <td>계약자(자택/휴대)</td>
-                        <td>
-                            <label>
-                                <input type="text" style="width: 100px">/
-                            </label>
-                            <input type="text" style="width: 100px">
-                        </td>
-                    </tr><!-- 두번째 테이블 세번째 줄 끝 -->
-                    <tr><!-- 두번째 테이블 세번째 줄 시작 -->
-                        <td>참고사항</td>
-                        <td colspan="3">
-                            <label>
-                                <input type="text" style="width: 97%">
-                            </label>
-                        </td>
-                    </tr><!-- 두번째 테이블 세번째 줄 끝 -->
-                </table>
-                <table>
-                    <tr><!-- 두번째 테이블 세번째 줄 시작 -->
-                        <td>일정배정유무</td>
-                        <td>
-                            <input type="" style="width: 100px">
-                        </td>
-                        <td>
-                            <button>01월</button>
-                            <button>02월</button>
-                            <button>03월</button>
-                            <button>04월</button>
-                            <button>05월</button>
-                            <button>06월</button>
-                            <button>07월</button>
-                            <button>08월</button>
-                            <button>09월</button>
-                            <button>10월</button>
-                            <button>11월</button>
-                            <button>12월</button>
-                        </td>
-                    </tr><!-- 두번째 테이블 세번째 줄 끝 -->
-                </table><br>
             </div>
         </div>
     </div>

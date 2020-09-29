@@ -1,4 +1,7 @@
 import { Component } from "@angular/core";
+import {Page, Recipient} from "../../../../ngxSpring/recipient.model";
+import {RecipientService} from "../../../../ngxSpring/recipient.service";
+import {checkAuthority} from "../../reserve-list/reserve-list.component";
 
 
 /*
@@ -74,7 +77,44 @@ export class reci_infoComponent {
   btn: string;
   information: string;
   contract_type: string;
-  new: string = 'default';
+  newregist: string = 'default';
+  data: Page<Recipient>;
+
+  constructor(private api: RecipientService) {
+
+  }
+
+  ngOnInit() {
+    this.load(0);
+  }
+
+  load($event: any) {
+    this.api.recipient.getRecipientList($event, 100).subscribe(data => this.data = data);
+  }
+
+  update(recipient) {
+    this.api.recipient.update(recipient.recognitionNumber).subscribe();
+  }
+
+  delete(recipient) {
+    if (!checkAuthority()) {
+      return;
+    }
+    this.api.recipient.deleteRecipient(recipient.recognitionNumber).subscribe(() => {
+      this.data.content.remove(recipient);
+    });
+  }
+
+  new() {
+    this.data.content.unshift({direct: true} as Recipient);
+  }
+
+  save(recipient: Recipient) {
+    this.api.recipient.save(recipient).subscribe(i => {
+      recipient.recognitionNumber = i.recognitionNumber;
+      recipient.createdAt = i.createdAt;
+    });
+  }
 }
 /*
 function creatrecipient(){

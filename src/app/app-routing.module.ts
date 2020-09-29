@@ -10,7 +10,7 @@ import {admin_mainComponent} from  "./caring-admin/admin_main/admin_main.compone
 const routes: Routes = [
     {path: '', component: MainComponent},
     {path: 'list', component: ReserveListComponent, canActivate: [ReserveListGuardGuard]},
-    {path: 'admin', component: adminComponent},
+    {path: 'admin', component: admin_mainComponent},
 ];
 
 @NgModule({

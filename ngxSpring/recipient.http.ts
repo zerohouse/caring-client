@@ -5,7 +5,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class adminHttp {
+export class RecipientHttp {
     constructor(private http: HttpClient, @Inject(APP_BASE_HREF) @Optional() private readonly origin: string) {
         if (!origin)
             this.origin = '';

@@ -1,7 +1,27 @@
 /* tslint:disable */
 
-export interface Admin extends CreateTable {
-
+export interface Giver extends CreateTable {
+    name: string;
+    birth: string;
+    gender: boolean;
+    workStart: string;
+    workEnd: string;
+    work: string;
+    certificate1: string;
+    certificateNumber1: string;
+    issueDate1: string;
+    certificate2: string;
+    certificateNumber2: string;
+    issueDate2: string;
+    postNumber: number;
+    address: string;
+    detailAddress: string;
+    tel: string;
+    phone: string;
+    email: string;
+    dementia: boolean;
+    note: string;
+    direct: boolean;
 }
 
 export interface Page<T> extends Slice<T> {

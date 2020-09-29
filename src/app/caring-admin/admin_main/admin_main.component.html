@@ -72,8 +72,9 @@
         </div>
     </div>
     <div class="container" *ngIf="btn==='contract'">
-        <button class="main_btn" style="width: 203px" (click)="contract_type='beneficiary'">수급자 서비스 계약서</button>
-        <button class="main_btn" style="width: 203px" (click)="contract_type='care_giver'">요양보호사 근로 계약서</button><br>
+        <caring_admin></caring_admin>
+        <!--<button class="main_btn" style="width: 203px" (click)="contract_type='beneficiary'">수급자 서비스 계약서</button>
+        <button class="main_btn" style="width: 203px" (click)="contract_type='care_giver'">요양보호사 근로 계약서</button><br>-->
     </div>
 
     <div class="container" *ngIf="btn==='message'">
