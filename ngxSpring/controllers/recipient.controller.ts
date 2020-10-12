@@ -1,12 +1,13 @@
 /* tslint:disable */
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {RecipientHttp} from '../recipient.http';
+//import {RecipientHttp} from '../recipient.http';
 import {Page, Recipient} from '../recipient.model';
+import {ApiHttp} from "../api.http";
 
 @Injectable()
 export class RecipientController {
-    constructor(private http: RecipientHttp) {
+    constructor(private http: ApiHttp) {
     }
 
     deleteRecipient(recognitionNumber: string): Observable<void> {

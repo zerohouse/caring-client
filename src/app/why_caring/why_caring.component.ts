@@ -11,7 +11,7 @@ export class Why_caringComponent implements OnInit {
             name: '최고의 전문가',
             img: 'why-1.png',
             story: ' 업계에서 10년 이상 몸 담은 최고의 <br>' +
-                ' 요양 전문가들이 만들어 믿을 수 있습니다.'
+                ' 요양전문가들이 만들어 믿을 수 있습니다.'
         },
         {
             name: '고품질 서비스',

@@ -15,7 +15,7 @@ db.query(`SELECT * FROM recipient`, function (error,list){
 })
 */
 @Component({
-  selector: "admin_login",
+  selector: "admin_main",
   templateUrl: "./admin_main.component.html",
   styleUrls: ["./admin_main.component.sass"]
 })

@@ -23,6 +23,9 @@
                     </thead>
                     <tbody *ngFor="let giver of data?.content">
                     <tr>
+                        <td>
+                            <input type="checkbox">
+                        </td>
                         <td>{{giver.name}}</td>
                         <td>{{giver.birth}}</td>
                         <td>{{giver.workStart}}</td>
@@ -65,10 +68,10 @@
                         <td>
                             <input type="text" style="width: 210px">
                             <label>
-                                <input type="radio" name="gender" value="M" checked>남
+                                <input type="radio" name="gender" value=true checked>남
                             </label>
                             <label>
-                                <input type="radio" name="gender" value="W">여
+                                <input type="radio" name="gender" value=false>여
                             </label>
                         </td>
                     </tr><!-- 첫번째 줄 끝 -->

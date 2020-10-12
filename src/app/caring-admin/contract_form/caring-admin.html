@@ -3,9 +3,9 @@
     <div style="margin-bottom: 50px"></div>
     <h1 style="font-size: 30px">케어링 관리자 모드</h1>
     <div>
-        <button [(ngModel)]="client" (click)="worker=true" *ngIf="worker == false">요양 보호사 근로 계약서</button>
-        <button [(ngModel)]="client" (click)="client=true" *ngIf="client == false">수급자 계약서</button>
-        <button [(ngModel)]="client" (click)="record=true" *ngIf="record == false">기록지</button>
+        <button (click)="worker=true; client=false; record=false;" *ngIf="worker === false">요양 보호사 근로 계약서</button>
+        <button (click)="client=true; worker=false; record=false;" *ngIf="client === false">수급자 계약서</button>
+        <button (click)="record=true; worker=false; client=false;" *ngIf="record === false">기록지</button>
     </div>
     <div class="inputs" style="border: 1px solid black;" *ngIf="worker == true">
         <h3>요양 보호사 근로 계약서</h3>

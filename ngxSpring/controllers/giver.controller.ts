@@ -1,12 +1,13 @@
 /* tslint:disable */
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GiverHttp} from '../giver.http';
+//import {GiverHttp} from '../giver.http';
 import {Page, Giver} from "../giver.model";
+import {ApiHttp} from "../api.http";
 
 @Injectable()
 export class GiverController {
-    constructor(private http: GiverHttp) {
+    constructor(private http: ApiHttp) {
     }
 
     deleteGiver(certificateNumber1: string): Observable<void> {

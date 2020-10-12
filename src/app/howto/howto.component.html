@@ -23,7 +23,7 @@
             <swiper [(index)]="index" [config]="swiperConfig">
                 <div class="slide-desc" *ngFor="let slide of slides; let i = index">
                     <div style="margin-left: 27px; display: inline-block">
-                        <h2 style="width: 380px; font-size: 38px" [innerHTML]="slide.title"></h2>
+                        <h2 style="width: 400px; font-size: 38px" [innerHTML]="slide.title"></h2>
                         <p [innerHTML]="slide.body"></p>
                     </div>
                     <img [src]="slide.image" style="width: 450px; height: 480px">
