@@ -5,6 +5,7 @@ import { saveAs } from "file-saver/FileSaver";
 import { docGiver } from "./cr-caregiver";
 import { docRec } from "./cr-recipient";
 import { docRecord } from "./cr-recordpaper";
+import { doc_salary } from "./cr-caregiver-salary";
 
 @Component({
   selector: "caring_admin",
@@ -16,6 +17,7 @@ export class adminComponent {
   worker: boolean = false;
   client: boolean = false;
   record: boolean = false;
+  salary: boolean = false;
 
   name: string;
   center: string = '센터선택';
@@ -75,6 +77,13 @@ export class adminComponent {
   seventhstime: string = '';
   seventhtime: string = '';
 
+  sal_name: string = '';
+  sal_number: string = '';
+  sal_relation: string = '';
+  officials: string = '';
+  bank: string = '';
+  account_number: string = '';
+
   public downloadCaregiver(name: string, center: string, time: string, address: string, place: string, phone: string, start: string, contract: string): void {
     const caregiver = new docGiver();
     const doc = caregiver.createCaregiver(name, center, time, address, place, phone, start, contract);
@@ -82,6 +91,17 @@ export class adminComponent {
     Packer.toBlob(doc).then(blob => {
       console.log(blob);
       saveAs(blob, name + "님_근로 계약서.docx");
+      console.log("Document created successfully");
+    });
+  }
+
+  public download_salary(sal_name: string, sal_number: string, sal_relation: string, officials: string, bank: string, account_number: string): void {
+    const salary = new doc_salary();
+    const doc = salary.createSalary(sal_name, sal_number, sal_relation, officials, bank,account_number);
+
+    Packer.toBlob(doc).then(blob => {
+      console.log(blob);
+      saveAs(blob, sal_name + "님_급여 이체 동의서.docx");
       console.log("Document created successfully");
     });
   }

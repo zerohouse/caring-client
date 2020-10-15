@@ -3,10 +3,12 @@
     <div style="margin-bottom: 50px"></div>
     <h1 style="font-size: 30px">케어링 관리자 모드</h1>
     <div>
-        <button (click)="worker=true; client=false; record=false;" *ngIf="worker === false">요양 보호사 근로 계약서</button>
-        <button (click)="client=true; worker=false; record=false;" *ngIf="client === false">수급자 계약서</button>
-        <button (click)="record=true; worker=false; client=false;" *ngIf="record === false">기록지</button>
+        <button (click)="worker=true; client=false; record=false; salary=false;" *ngIf="worker === false">요양 보호사 근로 계약서</button>
+        <button (click)="salary=true; client=false; record=false; worker=false;" *ngIf="salary === false">급여 이체 동의서</button>
+        <button (click)="client=true; worker=false; record=false; salary=false;" *ngIf="client === false">수급자 계약서</button>
+        <button (click)="record=true; worker=false; client=false; salary=false;" *ngIf="record === false">기록지</button>
     </div>
+
     <div class="inputs" style="border: 1px solid black;" *ngIf="worker == true">
         <h3>요양 보호사 근로 계약서</h3>
         <label>성명 :
@@ -53,6 +55,35 @@
         </label>
         <br>
         <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, contract)">요보사 계약서</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="salary == true">
+        <h3>급여 이체 동의서</h3>
+        <label>성명 :
+            <input type="text" size="40" [(ngModel)]="sal_name">
+        </label>
+        <br>
+        <label>주민등록번호 :
+            <input type="text" size="40" style="width: 45%;" [(ngModel)]="sal_number">
+        </label>
+        <br>
+        <label>관계 :
+            <input type="text" size="40" [(ngModel)]="sal_relation">
+        </label>
+        <br>
+        <label>관계자 성명 :
+            <input type="text" size="40" style="width: 49%;" [(ngModel)]="officials">
+        </label>
+        <br>
+        <label>은행명 :
+            <input type="text" size="40" style="width: 60%;" [(ngModel)]="bank">
+        </label>
+        <br>
+        <label>계좌번호 :
+            <input type="text" size="40" style="width: 55%;" [(ngModel)]="account_number">
+        </label>
+        <br>
+        <button (click)="download_salary(sal_name, sal_number, sal_relation, officials, bank, account_number)">급여 이체 동의서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="client == true">
