@@ -4,9 +4,9 @@
         <p style="font-size: 24px">
             요양보호사 정보
         </p>
-        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white;" (click)="new()" >신규 등록</button>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white;" (click)="newregist=false" >신규 등록</button>
         <div>
-            <div style="overflow:auto; width:400px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 20px">
+            <div style="overflow:auto; width:350px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 20px">
                 <table class="table" #table>
                     <thead>
                     <tr>
@@ -29,35 +29,17 @@
                         <td>{{giver.name}}</td>
                         <td>{{giver.birth}}</td>
                         <td>{{giver.workStart}}</td>
-                    </tr>
-                    <tr *ngIf="!giver.name">
-                        <td colspan="2">
-                            <button (click)="save(giver)">저장하기</button>
-                        </td>
-                        <td>
-                            <input [(ngModel)]="giver.name">
-                        </td>
-                        <td>
-                            <input [(ngModel)]="giver.phone">
-                        </td>
+                        <td>{{giver.workStart}}</td>
+                        <td>{{giver.workStart}}</td>
                     </tr>
                     </tbody>
                 </table>
                 <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
             </div>
-            <!--<div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="newregist==='default'">
-                <div >
-                    <p>
-                        장기요양 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        욕구/낙상/욕창/정신 인정만료일 <span style="background-color: #868e96; padding: 0 5px; border-radius: 5px">D-90</span>
-                    </p>
-                </div>
-            </div>-->
-            <div style="display: inline-block; float: left; padding-top: 30px">
+            <div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="newregist===true">
+
+            </div>
+            <div style="display: inline-block; float: left; padding-top: 30px" *ngIf="newregist===false">
                 <table style="margin-bottom: 30px">
                     <tr><!-- 첫번째 줄 시작 -->
                         <td>보호사명</td>
@@ -193,7 +175,7 @@
                         </td>
                     </tr><!-- 두번째 테이블 세번째 줄 끝 -->
                 </table><br>
-                <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" *ngIf="newregist==='registration'" (click)="newregist='default'" >저장하기</button>
+                <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" *ngIf="newregist===false" (click)="newregist=true" >저장하기</button>
             </div>
         </div>
     </div>

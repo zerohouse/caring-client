@@ -2,10 +2,10 @@ import { Component } from "@angular/core";
 import { Packer } from "docx";
 import { saveAs } from "file-saver/FileSaver";
 
-import { docGiver } from "./cr-caregiver";
-import { docRec } from "./cr-recipient";
-import { docRecord } from "./cr-recordpaper";
-import { doc_salary } from "./cr-caregiver-salary";
+import { docGiver } from "../cr-caregiver";
+import { docRec } from "../cr-recipient";
+import { docRecord } from "../cr-recordpaper";
+import { doc_salary } from "../cr-caregiver-salary";
 
 @Component({
   selector: "caring_admin",

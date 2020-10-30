@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Packer } from "docx";
 import { saveAs } from "file-saver/FileSaver";
 
-import { docGiver } from "./cr-caregiver";
+import { docGiver } from "../cr-caregiver";
 
 @Component({
     selector: "caregiver_contract",

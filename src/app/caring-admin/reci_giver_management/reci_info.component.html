@@ -4,7 +4,7 @@
         <p style="font-size: 24px">
             수급자 정보
         </p>
-        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white" (click)="newregist='registration'; new()" >신규 등록</button>
+        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white" (click)="newregist='registration';" >신규 등록</button>
         <div>
             <div style="overflow:auto; width:310px; height:614px; padding:5px; background-color:gold; display: inline-block; float: left; margin-right: 5px">
                 <table class="table" #table>
@@ -20,23 +20,19 @@
                         <th>상태</th>
                     </tr>
                     </thead>
-                    <tbody *ngFor="let reci of data?.content; index as i">
-                    <tr *ngIf="reci.id" style="cursor: pointer">
+                    <tbody *ngFor="let reci of data?.content;">
+                    <tr *ngIf="reci.id" style="cursor: pointer" (click)="get(reci); newregist='registration'; user = reci">
                         <td>
                             <input type="checkbox">
                         </td>
-                        <td>{{i+1}}    {{reci.name}}</td>
+                        <td>{{reci.name}}</td>
                         <td>{{reci.birth}}</td>
                         <td>{{reci.level}}</td>
                         <td>{{reci.type}}</td>
                         <td>{{reci.state}}</td>
                     </tr>
-                    <tr *ngIf="!reci.id">
-
-                    </tr>
                     </tbody>
                 </table>
-
                 <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
             </div>
             <div style="width: 300px; display: inline-block; float: left; padding-top: 30px" *ngIf="newregist==='default'">
@@ -53,27 +49,27 @@
             </div>
             <div style="display: inline-block; float: left; padding-top: 30px" *ngIf="newregist==='registration'">
                 <table class="table" #table>
-                    <tbody *ngFor="let reci of data?.content;">
-                    <tr *ngIf="!reci.id">
+                    <tbody>
+                    <tr>
                         <table style="margin-bottom: 30px">
                             <tr><!-- 첫번째 줄 시작 -->
                                 <td>수급자명</td>
                                 <td colspan="2">
-                                    <input type="text" style="width: 140px" [(ngModel)]="reci.name">
+                                    <input type="text" style="width: 140px" [(ngModel)]="user.name">
                                 </td>
                                 <td>생년월일</td>
                                 <td colspan="3">
-                                    <input type="text" style="width: 170px" [(ngModel)]="reci.birth">
+                                    <input type="text" style="width: 170px" [(ngModel)]="user.birth">
                                     <label>
-                                        <input type="radio" name="gender" value=ture [(ngModel)]="reci.gender" checked>남
+                                        <input type="radio" name="gender" value=ture [(ngModel)]="user.gender" checked>남
                                     </label>
                                     <label>
-                                        <input type="radio" name="gender" value=false [(ngModel)]="reci.gender">여
+                                        <input type="radio" name="gender" value=false [(ngModel)]="user.gender">여
                                     </label>
                                 </td>
                                 <td>유형</td>
                                 <td>
-                                    <select name="type" [(ngModel)]="reci.type">
+                                    <select name="type" [(ngModel)]="user.type">
                                         <option value="family">가족요양</option>
                                         <option value="visit">일반요양</option>
                                     </select>
@@ -82,24 +78,24 @@
                             <tr><!-- 두번째 줄 시작 -->
                                 <td>장기요양인정번호</td>
                                 <td colspan="2">
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.recognitionNumber">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.recognitionNumber">
                                     <button>현황</button>
                                 </td>
                                 <td>시작일/유효기간</td>
                                 <td colspan="6">
                                     <label>
-                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.startDate">/
+                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="user.startDate">/
                                     </label>
                                     <label>
-                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.validityStart">~
+                                        <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="user.validityStart">~
                                     </label>
-                                    <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="reci.validityEnd">
+                                    <input type="date" style="font-size: 13px" min="2015-01-01" max="2050-12-31" [(ngModel)]="user.validityEnd">
                                 </td>
                             </tr><!-- 두번째 줄 끝 -->
                             <tr><!-- 세번째 줄 시작 -->
                                 <td>장기요양등급</td>
                                 <td>
-                                    <select name="level" style="width: 80px" [(ngModel)]="reci.level">
+                                    <select name="level" style="width: 80px" [(ngModel)]="user.level">
                                         <option value="1등급">1등급</option>
                                         <option value="2등급">2등급</option>
                                         <option value="3등급">3등급</option>
@@ -109,7 +105,7 @@
                                 </td>
                                 <td>수급구분</td>
                                 <td>
-                                    <select name="supplyType" [(ngModel)]="reci.supplyType">
+                                    <select name="supplyType" [(ngModel)]="user.supplyType">
                                         <option value="일반">일반대상</option>
                                         <option value="감경 40%">감경 40%</option>
                                         <option value="감경 50%">감경 50%</option>
@@ -120,7 +116,7 @@
                                 </td>
                                 <td>상태</td>
                                 <td>
-                                    <select name="state" style="width:170px" [(ngModel)]="reci.state">
+                                    <select name="state" style="width:170px" [(ngModel)]="user.state">
                                         <option value="수급중">수급중</option>
                                         <option value="입원중">입원중</option>
                                         <option value="대기중">대기중</option>
@@ -131,16 +127,16 @@
                                 </td>
                                 <td>대표질환</td>
                                 <td colspan="2">
-                                    <input type="text" style="width: 130px" [(ngModel)]="reci.disease">
+                                    <input type="text" style="width: 130px" [(ngModel)]="user.disease">
                                 </td>
                             </tr><!-- 세번째 줄 끝 -->
                             <tr><!-- 다섯번째 줄 시작 -->
                                 <td>주소</td>
                                 <td colspan="8">
-                                    <input type="text" placeholder="우편번호" [(ngModel)]="reci.postNumber">
-                                    <input type="button" value="우편번호 찾기"><br>
-                                    <input type="text" placeholder="주소" [(ngModel)]="reci.address"><br>
-                                    <input type="text" placeholder="상세주소" [(ngModel)]="reci.detailAddress">
+                                    <input type="text" placeholder="우편번호" [(ngModel)]="user.postNumber">
+                                    <input type="button" value="우편번호 찾기"><!--카카오 주소 api 사용-->
+                                    <input type="text" placeholder="주소" [(ngModel)]="user.address"><br>
+                                    <input type="text" placeholder="상세주소" [(ngModel)]="user.detail">
                                 </td>
                             </tr><!-- 다섯번째 줄 끝 -->
                         </table>
@@ -149,11 +145,11 @@
                             <tr><!-- 두번째 테이블 첫번째 줄 시작 -->
                                 <td>계약자성명</td>
                                 <td>
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorName">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.contractorName">
                                 </td>
                                 <td>생년월일</td>
                                 <td>
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorBirth">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.contractorBirth">
                                 </td>
                             </tr><!-- 두번째 테이블 첫번째 줄 끝 -->
                         </table>
@@ -161,11 +157,11 @@
                             <tr><!-- 두번째 테이블 두번째 줄 시작 -->
                                 <td>계약자 메모</td>
                                 <td>
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorMemo">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.contractorMemo">
                                 </td>
                                 <td>수급자계약자관계</td>
                                 <td>
-                                    <select name="type" [(ngModel)]="reci.relationship">
+                                    <select name="type" [(ngModel)]="user.relationship">
                                         <option value="">관계선택</option>
                                         <option value="배우자">배우자</option>
                                         <option value="자녀">자녀</option>
@@ -185,23 +181,23 @@
                                 <td>수급자(자택/휴대)</td>
                                 <td>
                                     <label>
-                                        <input type="text" style="width: 100px" [(ngModel)]="reci.tel">/
+                                        <input type="text" style="width: 100px" [(ngModel)]="user.tel">/
                                     </label>
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.phone">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.phone">
                                 </td>
                                 <td>계약자(자택/휴대)</td>
                                 <td>
                                     <label>
-                                        <input type="text" style="width: 100px" [(ngModel)]="reci.contractorTel">/
+                                        <input type="text" style="width: 100px" [(ngModel)]="user.contractorTel">/
                                     </label>
-                                    <input type="text" style="width: 100px" [(ngModel)]="reci.contractorPhone">
+                                    <input type="text" style="width: 100px" [(ngModel)]="user.contractorPhone">
                                 </td>
                             </tr><!-- 두번째 테이블 세번째 줄 끝 -->
                             <tr><!-- 두번째 테이블 세번째 줄 시작 -->
                                 <td>참고사항</td>
                                 <td colspan="3">
                                     <label>
-                                        <input type="text" style="width: 97%" [(ngModel)]="reci.note">
+                                        <input type="text" style="width: 97%" [(ngModel)]="user.note">
                                     </label>
                                 </td>
                             </tr><!-- 두번째 테이블 세번째 줄 끝 -->
@@ -228,7 +224,7 @@
                                 </td>
                             </tr><!-- 두번째 테이블 세번째 줄 끝 -->
                         </table>
-                        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" (click)="save(reci); newregist='default'" >저장하기</button>
+                        <button class="main_btn" style="width: auto; cursor: pointer; background-color: rgb(94, 94, 94); color: white; float: right" (click)="save(user); newregist='default';" >저장하기</button>
                     </tr>
                     </tbody>
                 </table>

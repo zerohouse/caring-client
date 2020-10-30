@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Packer } from "docx";
 import { saveAs } from "file-saver/FileSaver";
 
-import { docRec } from "./cr-recipient";
+import { docRec } from "../cr-recipient";
 
 @Component({
     selector: "recipient_contract",

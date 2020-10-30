@@ -10,10 +10,12 @@ import {RecipientController} from "./controllers/recipient.controller";
 import {GiverService} from "./giver.service";
 import {GiverHttp} from "./giver.http";
 import {GiverController} from "./controllers/giver.controller";
+import {ConsultService} from "./consult.service";
+import {ConsultController} from "./controllers/consult.controller";
 
 @NgModule({
   imports: [HttpClientModule],
-  providers: [ApiService, ApiHttp, ReserveController, RecipientService, RecipientHttp, RecipientController, GiverService, GiverHttp, GiverController]
+  providers: [ApiService, ApiHttp, ReserveController, RecipientService, RecipientHttp, RecipientController, GiverService, GiverHttp, GiverController, ConsultService, ConsultController]
 })
 export class NgxSpringModule {
 }

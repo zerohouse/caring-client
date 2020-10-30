@@ -11,15 +11,19 @@ export class RecipientController {
     }
 
     deleteRecipient(recognitionNumber: string): Observable<void> {
-        return this.http.delete<void>('/api/recipient', {recognitionNumber: recognitionNumber});
+        return this.http.delete<void>('/api/recipient/list', {recognitionNumber: recognitionNumber});
     }
 
-    getRecipient(recognitionNumber: string): Observable<Recipient> {
-        return this.http.get<Recipient>('/api/recipient', {recognitionNumber: recognitionNumber});
+    getRecipient(id: number): Observable<Recipient> {
+        return this.http.get<Recipient>('/api/recipient/list', {id: id});
     }
 
     getRecipientList(page?: number, size?: number): Observable<Page<Recipient>> {
         return this.http.get<Page<Recipient>>('/api/recipient/list', {page: page, size: size});
+    }
+
+    getList(): Observable<Recipient[]> {
+        return this.http.get<Recipient[]>('/api/recipient/list');
     }
 
     newRecipient(recipient: Recipient): Observable<Recipient> {
@@ -28,9 +32,5 @@ export class RecipientController {
 
     save(recipient: Recipient): Observable<Recipient> {
         return this.http.post<Recipient>('/api/recipient', recipient);
-    }
-
-    update(recognitionNumber: string): Observable<void> {
-        return this.http.post<void>('/api/recipient/update', null, {recognitionNumber: recognitionNumber});
     }
 }

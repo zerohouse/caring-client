@@ -81,10 +81,8 @@
         <button class="main_btn" (click)="message='schedule'">근무일정표</button>
         <button class="main_btn" (click)="message='salary'">급여명세서</button><br>
         <div *ngIf="btn==='message' && message==='schedule'">
-            <workSchedule></workSchedule>
         </div>
         <div *ngIf="btn==='message' && message==='salary'">
-            <paystub></paystub>
         </div>
     </div>
 

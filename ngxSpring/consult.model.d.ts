@@ -1,31 +1,21 @@
 /* tslint:disable */
 
-export interface Recipient extends CreateTable {
-    name: string;
-    birth: string;
-    gender: boolean;
-    type: string;
-    recognitionNumber: string;
-    startDate: string;
-    validityStart: string;
-    validityEnd: string;
-    level: string;
-    supplyType: string;
+export interface Consult extends CreateTable {
     state: string;
-    disease: string;
-    postNumber: string;
-    address: string;
-    detail: string;
-    cohabit: boolean;
-    contractorName: string;
-    contractorBirth: string;
-    contractorMemo: string;
-    relationship: string;
-    tel: string;
+    progress: string;
+    city: string;
+    hole: string;
     phone: string;
-    contractorTel: string;
-    contractorPhone: string;
-    note: string;
+    give: string;
+    take: string;
+    level: string;
+    now: string;
+    memo: string;
+    come: string;
+    first: string;
+    start: string;
+    end: string;
+    modifyAt: string;
     direct: boolean;
 }
 

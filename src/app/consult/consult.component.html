@@ -1,0 +1,172 @@
+<div class="container" style="padding-top: 50px; width: 95%; padding-left: 0; padding-right: 0">
+    <button (click)="saves=true; check=true; new()">새 상담 기록</button>
+    <button (click)="saves=false; check=false; load(0); count=0">갱신</button>
+    <label style="padding-left: 200px">상태 :
+        <select [(ngModel)]="state">
+            <option value="진행중(1~4급)" (select)="count=0">진행중(1~4급)</option>
+            <option value="등급신청중" (select)="count=0">등급신청중</option>
+            <option value="완료 & 5급" (select)="count=0">완료 & 5급</option>
+            <option value="부재 & 통화요망" (select)="count=0">부재 & 통화요망</option>
+            <option value="서비스 시작" (select)="count=0">서비스 시작</option>
+        </select>
+        <button (click)="search_term='state';check=true;">확인</button>
+    </label>
+    <label style="padding-left: 20px">진행상황 :
+        <select [(ngModel)]="progress">
+            <option value="수시확인">수시확인</option>
+            <option value="진행요망">진행요망</option>
+            <option value="진행중">진행중</option>
+        </select>
+        <button (click)="search_term='progress';check=true;">확인</button>
+    </label>
+    <label style="padding-left: 200px;">검색 :
+        <input type="text" style="width: 200px" [(ngModel)]="number" (keypress)="search_term='phone'; check=true;">
+    </label>
+    <table class="table" #table>
+        <thead>
+        <tr>
+            <th>상태</th>
+            <th>첫 상담</th>
+            <th class="short">도.시/군</th>
+            <th class="short">구</th>
+            <th>번호</th>
+            <th>보호자</th>
+            <th>대상자</th>
+            <th class="short">등급</th>
+            <th>현재상황</th>
+            <th>상담내용</th>
+            <th class="short">유입</th>
+            <th class="short">첫상담</th>
+            <th class="short">시작날</th>
+            <th class="short">계약날</th>
+            <th class="short">수정</th>
+            <th class="short">삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="saves===true">
+                <td>
+                    <select [(ngModel)]="user.state">
+                        <option value="진행중(1~4급)">진행중(1~4급)</option>
+                        <option value="등급신청중">등급신청중</option>
+                        <option value="완료 & 5급">완료 & 5급</option>
+                        <option value="부재 & 통화요망">부재 & 통화요망</option>
+                        <option value="서비스 시작">서비스 시작</option>
+                    </select>
+                </td>
+                <td>
+                    <label>현재 진행상황<br>
+                        <select [(ngModel)]="user.progress">
+                            <option value="">종료</option>
+                            <option value="수시확인">수시확인</option>
+                            <option value="진행요망">진행요망</option>
+                            <option value="진행중">진행중</option>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.city">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.hole">
+                </td>
+                <td>
+                    <input style="width: 100px" [(ngModel)]="user.phone">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.give">
+                </td>
+                <td>
+                    <input style="width: 100px" [(ngModel)]="user.take">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.level">
+                </td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="user.memo"></textarea>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.come">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.first">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.start">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.end">
+                </td>
+                <td>
+                    <button (click)="save(user); saves=false;">저장하기</button>
+                </td>
+            </tr>
+        </tbody>
+        <ng-container *ngFor="let item of data?.content">
+            <tbody *ngIf="check===false">
+                <tr *ngIf="item.id">
+                    <td>{{item.state}}</td>
+                    <td>
+                        {{item.createdAt | date : 'MM-dd'}}/
+                    </td>
+                    <td class="short">{{item.city}}</td>
+                    <td class="short">{{item.hole}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.give}}</td>
+                    <td>{{item.take}}</td>
+                    <td class="short">{{item.level}}</td>
+                    <td>
+                        <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="item.memo" (ngModelChange)="save(item)"></textarea>
+                    </td>
+                    <td class="short">{{item.come}}</td>
+                    <td class="short">{{item.first}}</td>
+                    <td class="short">{{item.start}}</td>
+                    <td class="short">{{item.end}}</td>
+                    <td class="short">
+                        <button (click)="user=item; saves=true; check=true;">-</button>
+                    </td>
+                    <td class="short">
+                        <button (click)="delete(item);">-</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="get(search_term, item)===1 && check===true">
+                <tr>
+                    <td>{{item.state}}</td>
+                    <td>
+                        {{item.createdAt | date : 'MM-dd'}}/
+                    </td>
+                    <td class="short">{{item.city}}</td>
+                    <td class="short">{{item.hole}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.give}}</td>
+                    <td>{{item.take}}</td>
+                    <td class="short">{{item.level}}</td>
+                    <td>
+                        <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="item.memo" (ngModelChange)="save(item)"></textarea>
+                    </td>
+                    <td class="short">{{item.come}}</td>
+                    <td class="short">{{item.first}}</td>
+                    <td class="short">{{item.start}}</td>
+                    <td class="short">{{item.end}}</td>
+                    <td class="short">
+                        <button (click)="user=item; saves=true; check=true;">-</button>
+                    </td>
+                    <td class="short">
+                        <button (click)="delete(item);">-</button>
+                    </td>
+                </tr>
+            </tbody>
+        </ng-container>
+    </table>
+    <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
+</div>
