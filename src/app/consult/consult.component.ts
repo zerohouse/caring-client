@@ -14,6 +14,7 @@ export class ConsultListComponent implements OnInit {
     today: Date = new Date();
     month: string = String(this.today.getMonth());
     day: string = String(this.today.getDay());
+    list: Consult[];
     user: Consult = {
         state: '',
         progress: '',
@@ -41,6 +42,7 @@ export class ConsultListComponent implements OnInit {
     saves: boolean = false;
     check: boolean = false;
     count: number = 0;
+    change: boolean = false;
 
     constructor(private api: ConsultService) {
 
@@ -50,13 +52,17 @@ export class ConsultListComponent implements OnInit {
     }
 
     load($event: any) {
-        this.api.consult.getConsultList($event, 10000).subscribe(data => this.data = data);
+        this.api.consult.getConsultList($event, 10).subscribe(data => this.data = data);
     }
 
     delete(item) {
         this.api.consult.deleteConsult(item.id).subscribe(() => {
             this.data.content.remove(item);
         });
+    }
+
+    getphone(number: string){
+        this.api.consult.getSearchConsult(number).subscribe( list => this.list = list );
     }
 
     new() {
@@ -94,7 +100,7 @@ export class ConsultListComponent implements OnInit {
             }
         });
     }
-
+/*
     get(term: string, user: Consult): number {
         if (term==='state'){
             if (user.state===this.state){
@@ -112,6 +118,6 @@ export class ConsultListComponent implements OnInit {
             }
         }
         return 0
-    }
+    }*/
 }
 

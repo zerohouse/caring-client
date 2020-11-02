@@ -20,7 +20,7 @@
         <button (click)="search_term='progress';check=true;">확인</button>
     </label>
     <label style="padding-left: 200px;">검색 :
-        <input type="text" style="width: 200px" [(ngModel)]="number" (keypress)="search_term='phone'; check=true;">
+        <input type="text" style="width: 200px" [(ngModel)]="number" (keypress)="getphone(number); check=true;">
     </label>
     <table class="table" #table>
         <thead>
@@ -129,14 +129,76 @@
                     <td class="short">{{item.start}}</td>
                     <td class="short">{{item.end}}</td>
                     <td class="short">
-                        <button (click)="user=item; saves=true; check=true;">-</button>
+                        <button (click)="user=item; change=true;">-</button>
                     </td>
                     <td class="short">
                         <button (click)="delete(item);">-</button>
                     </td>
                 </tr>
+                <tr *ngIf="item.id===user.id && change===true">
+                    <td>
+                        <select [(ngModel)]="user.state">
+                            <option value="진행중(1~4급)">진행중(1~4급)</option>
+                            <option value="등급신청중">등급신청중</option>
+                            <option value="완료 & 5급">완료 & 5급</option>
+                            <option value="부재 & 통화요망">부재 & 통화요망</option>
+                            <option value="서비스 시작">서비스 시작</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>현재 진행상황<br>
+                            <select [(ngModel)]="user.progress">
+                                <option value="">종료</option>
+                                <option value="수시확인">수시확인</option>
+                                <option value="진행요망">진행요망</option>
+                                <option value="진행중">진행중</option>
+                            </select>
+                        </label>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.city">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.hole">
+                    </td>
+                    <td>
+                        <input style="width: 100px" [(ngModel)]="user.phone">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.give">
+                    </td>
+                    <td>
+                        <input style="width: 100px" [(ngModel)]="user.take">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.level">
+                    </td>
+                    <td>
+                        <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="user.memo"></textarea>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.come">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.first">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.start">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.end">
+                    </td>
+                    <td>
+                        <button (click)="save(user); change=false;">저장하기</button>
+                    </td>
+                </tr>
             </tbody>
-            <tbody *ngIf="get(search_term, item)===1 && check===true">
+        </ng-container>
+        <ng-container *ngFor="let item of list">
+            <tbody *ngIf="check===true">
                 <tr>
                     <td>{{item.state}}</td>
                     <td>
@@ -159,10 +221,70 @@
                     <td class="short">{{item.start}}</td>
                     <td class="short">{{item.end}}</td>
                     <td class="short">
-                        <button (click)="user=item; saves=true; check=true;">-</button>
+                        <button (click)="user=item; change=true;">-</button>
                     </td>
                     <td class="short">
                         <button (click)="delete(item);">-</button>
+                    </td>
+                </tr>
+                <tr *ngIf="item.id===user.id && change===true">
+                    <td>
+                        <select [(ngModel)]="user.state">
+                            <option value="진행중(1~4급)">진행중(1~4급)</option>
+                            <option value="등급신청중">등급신청중</option>
+                            <option value="완료 & 5급">완료 & 5급</option>
+                            <option value="부재 & 통화요망">부재 & 통화요망</option>
+                            <option value="서비스 시작">서비스 시작</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>현재 진행상황<br>
+                            <select [(ngModel)]="user.progress">
+                                <option value="">종료</option>
+                                <option value="수시확인">수시확인</option>
+                                <option value="진행요망">진행요망</option>
+                                <option value="진행중">진행중</option>
+                            </select>
+                        </label>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.city">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.hole">
+                    </td>
+                    <td>
+                        <input style="width: 100px" [(ngModel)]="user.phone">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.give">
+                    </td>
+                    <td>
+                        <input style="width: 100px" [(ngModel)]="user.take">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.level">
+                    </td>
+                    <td>
+                        <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="user.memo"></textarea>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.come">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.first">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.start">
+                    </td>
+                    <td>
+                        <input [(ngModel)]="user.end">
+                    </td>
+                    <td>
+                        <button (click)="save(user); change=false;">저장하기</button>
                     </td>
                 </tr>
             </tbody>

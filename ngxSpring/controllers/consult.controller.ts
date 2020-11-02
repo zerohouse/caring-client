@@ -13,18 +13,13 @@ export class ConsultController {
         return this.http.delete<void>('/api/consult', {id: id});
     }
 
-    getConsult(id: number): Observable<Consult> {
-        return this.http.get<Consult>('/api/consult', {id: id});
-    }
-
-    getSearchConsult(search: string, page?: number, size?: number): Observable<Page<Consult>> {
-        return this.http.get<Page<Consult>>('/api/consult/list', {search: search, page: page, size: size});
+    getSearchConsult(phone: string): Observable<Consult[]> {
+        return this.http.get<Consult[]>('/api/consult', {phone: phone});
     }
 
     getConsultList(page?: number, size?: number): Observable<Page<Consult>> {
         return this.http.get<Page<Consult>>('/api/consult/list', {page: page, size: size});
     }
-
 
     save(consult: Consult): Observable<Consult> {
         return this.http.post<Consult>('/api/consult', consult);
