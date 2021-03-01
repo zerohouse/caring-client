@@ -41,7 +41,7 @@ export class PaginationComponent {
     if (!this.startPlusAble) {
       return;
     }
-    this.start++;
+    this.start += 5;
   }
 
 
@@ -58,7 +58,7 @@ export class PaginationComponent {
     if (!this.startMinusAble) {
       return;
     }
-    this.start--;
+    this.start -= 5;
   }
 
   get startMinusAble() {

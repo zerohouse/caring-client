@@ -1,7 +1,7 @@
 <section style="padding-top: 77px; height: 711px" class="head" *showItSizes="{min:1440}">
     <div class="container">
         <div class="box"></div>
-        <img src="../../assets/img/group-9.svg" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px">
+        <img src="../../assets/img/group-9.webp" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px">
         <h2 style="font-size: 40px; color: white; width: 478px; margin-bottom: 18px;">
             받을 수 있는 급여와 지원금을 미리 계산해보세요
         </h2>
@@ -24,16 +24,12 @@
             <div class="radio-toolbar">
                 <input type="radio" [(ngModel)]="level" id="radio1" name="radiolevel" value="level1">
                 <label for="radio1">1등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio2" name="radiolevel" value="level2">
                 <label for="radio2">2등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio3" name="radiolevel" value="level3">
                 <label for="radio3">3등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio4" name="radiolevel" value="level4">
                 <label for="radio4">4등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio5" name="radiolevel" value="level5">
                 <label for="radio5">5등급</label>
             </div>
@@ -58,48 +54,48 @@
             <span style="width: 100px; margin: 45px 60px 0px 328px; font-size: 24px; font-weight: 500;">월 </span>
             <span style="width: 1px" [ngSwitch]="level">
                 <span style="width: 1px" *ngSwitchCase="'level1'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='zero'">166,480원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='four'">199,770원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='zero'">168,960원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level2'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='zero'">166,480원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='four'">199,770원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='zero'">168,960원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level3'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='zero'">142,380원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='four'">170,850원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='zero'">144,510원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='four'">173,412원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level4'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='zero'">142,380원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px;" *ngIf="count=='four'">170,850원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='zero'">144,510원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px;" *ngIf="count=='four'">173,412원</span>
                 </span>
-                <span style="width: 150px; margin: 3px 60px 0px 300px; font-size: 28px;" *ngSwitchCase="'level5'">142,380원</span>
+                <span style="width: 150px; margin: 3px 60px 0 300px; font-size: 28px;" *ngSwitchCase="'level5'">144,510원</span>
             </span>
             <br><br><br>
             <span style="color: #51cf66;">국가 지원금</span>
-            <span style="width: 100px; margin: 45px 60px 0px 328px; font-size: 24px; font-weight: 500;"> 월</span>
+            <span style="width: 100px; margin: 45px 60px 0 328px; font-size: 24px; font-weight: 500;"> 월</span>
             <span style="width: 1px" [ngSwitch]="level">
                 <span style="width: 1px" *ngSwitchCase="'level1'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="width: 200px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="width: 200px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level2'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="width: 200px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="width: 200px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level3'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level4'">
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="width: 150px; margin: -38px 60px 0px 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="width: 150px; margin: -38px 60px 0 240px; font-size: 28px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
-                <span style="width: 150px; margin: 3px 60px 0px 300px;font-size: 28px; color: #51cf66;" *ngSwitchCase="'level5'">806,820원</span>
+                <span style="width: 150px; margin: 3px 60px 0 300px;font-size: 28px; color: #51cf66;" *ngSwitchCase="'level5'">818,890원</span>
             </span>
         </div>
         <div class="content-box" *ngIf="type == 'family'">
-            <label>가족 요양 돌봄 시간 (하루 기준)</label>
+            <label>가족 요양 돌봄 시간(하루 기준)</label>
             <form class="radio-toolbar">
                 <input type="radio" [(ngModel)]="minute" id="90min" name="minute" value="90min">
                 <label for="90min" style="width: 49%">90분</label>
@@ -114,21 +110,22 @@
             </span>
             <label *ngIf="minute != null">1회당 가족 요양 급여</label>
             <span style="width: 1px" [ngSwitch]="minute">
-                    <h4 *ngSwitchCase="'60min'">21,000원</h4>
-                    <h4 *ngSwitchCase="'90min'">28,000원</h4>
+                    <h4 *ngSwitchCase="'60min'">21,200원</h4>
+                    <h4 *ngSwitchCase="'90min'">28,400원</h4>
             </span>
         </div>
         <div class="bill" *ngIf="type == 'family'">
             <span style="border-bottom: 1px solid #979797;">받으실 수 있는 <br> 가족 요양 급여</span>
-            <span style="margin: 45px 0px 0px 320px; width: 50px; font-size: 24px; font-weight: 500;"> 월
+            <span style="margin: 45px 0 0 320px; width: 50px; font-size: 24px; font-weight: 500;"> 월
                 <span style="width: 1px" [ngSwitch]="minute">
-                    <span style="width: 200px; margin: -50px 0px 0px -50px; font-size: 35px; color: #51cf66;" *ngSwitchCase="'60min'">420,000원</span>
-                    <span style="width: 200px; margin: -50px 0px 0px -50px; font-size: 35px; color: #51cf66;" *ngSwitchCase="'90min'">868,000원</span>
+                    <span style="width: 200px; margin: -50px 0 0 -50px; font-size: 35px; color: #51cf66;" *ngSwitchCase="'60min'">424,000원</span>
+                    <span style="width: 200px; margin: -50px 0 0 -50px; font-size: 35px; color: #51cf66;" *ngSwitchCase="'90min'">880,400원</span>
                 </span>
             </span>
             <span style="width: 1px" [ngSwitch]="minute">
-                <span style="width: 300px; margin: 45px 60px 0px 228px; font-size: 17px; color: #979797; font-weight: 500;" *ngSwitchCase="'60min'">(21,000원 x 20회 = 420,000원)</span>
-                <span style="width: 300px; margin: 45px 60px 0px 228px; font-size: 17px; color: #979797; font-weight: 500;" *ngSwitchCase="'90min'">(28,000원 x 31회 = 868,000원)</span>
+                <span style="width: 300px; margin: 45px 60px 0 228px; font-size: 17px; color: #979797; font-weight: 500;" *ngSwitchCase="'60min'">(21,200원 x 20회 = 424,000원)</span>
+                <span style="width: 300px; margin: 45px 60px 0 228px; font-size: 17px; color: #979797; font-weight: 500;" *ngSwitchCase="'90min'">(28,400원 x 31회 = 880,400원)</span>
+                <span style="margin: 105px 60px 0 178px; font-size: 17px; color: #979797; font-weight: 550;">*본인부담금은 고시 비율에 따라 공제</span>
             </span>
         </div>
     </div>
@@ -138,7 +135,7 @@
 <section style="padding-top: 85px;padding-bottom: 81px; text-align: left;" class="head" *showItSizes="{min:900,max:1439}">
     <div class="container">
         <div class="box" style="left: 402.5px; width: 400px;"></div>
-        <img src="../../assets/img/group-9.svg" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px; ">
+        <img src="../../assets/img/group-9.webp" style="position:static; width: 68px;height: 68px; left: 144px; margin-bottom: 53px; ">
         <h2 style="font-size: 32px; color: white; width: 386px; margin-bottom: 18px;">
             받을 수 있는 급여와 지원금을 미리 계산해보세요
         </h2>
@@ -157,31 +154,27 @@
             </label>
         </form>
         <div class="content-box" *ngIf="type == 'pro'" style="left: 500px; width: 270px;">
-            <label>어르신의 노인장기요양보험 등급</label>
+            <label style="font-size: 18px">어르신의 노인장기요양보험 등급</label>
             <div class="radio-toolbar-900">
                 <input type="radio" [(ngModel)]="level" id="radio1" name="radiolevel" value="level1">
                 <label for="radio1">1등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio2" name="radiolevel" value="level2">
                 <label for="radio2">2등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio3" name="radiolevel" value="level3">
                 <label for="radio3">3등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio4" name="radiolevel" value="level4">
                 <label for="radio4">4등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio5" name="radiolevel" value="level5">
                 <label for="radio5">5등급</label>
             </div>
-            <label>요양보호사 돌봄 횟수</label>
+            <label style="font-size: 18px">요양보호사 돌봄 횟수</label>
             <div class="select">
                 <select [(ngModel)]="count">
                     <option *ngIf="level != 'level5'" value="four">24회 (주6회 x 4주)</option>
                     <option value="zero">20회 (주5회 x 4주)</option>
                 </select>
             </div>
-            <label>돌봄 시간 (하루 기준)</label>
+            <label style="font-size: 18px">돌봄 시간 (하루 기준)</label>
             <span [ngSwitch]="level">
                 <h4 style="font-size: 20px" *ngSwitchCase="'level1'">4시간 (240분)</h4>
                 <h4 style="font-size: 20px" *ngSwitchCase="'level2'">4시간 (240분)</h4>
@@ -192,90 +185,90 @@
         </div>
         <div class="bill" *ngIf="type == 'pro'" style="position: relative; width: 377px; height: 232px; left: 403px; top: -78px;">
             <span style="width: 275px; font-size: 20px; padding-bottom: 25px; border-bottom: 1px solid #979797;">개인 부담금</span>
-            <span style="margin: 42px 60px 0px 200px; width: 50px; font-size: 20px; font-weight: 500;"> 월</span>
+            <span style="margin: 42px 60px 0 200px; width: 50px; font-size: 20px; font-weight: 500;"> 월</span>
             <span style="width: 1px" [ngSwitch]="level">
                 <span style="width: 1px" *ngSwitchCase="'level1'">
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">166,480원</span>
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">199,770원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">168,960원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level2'">
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">166,480원</span>
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">199,770원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">168,960원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level3'">
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">142,380원</span>
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">170,850원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">144,510원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">173,412원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level4'">
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">142,380원</span>
-                    <span style="margin: -38px 60px 0px 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">170,850원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='zero'">144,510원</span>
+                    <span style="margin: -38px 60px 0 115px; width: 100px; font-size: 20px;" *ngIf="count=='four'">173,412원</span>
                 </span>
-                <span style="margin: 2px 60px 0px 175px; width: 100px; font-size: 20px;" *ngSwitchCase="'level5'">142,380원</span>
+                <span style="margin: 2px 60px 0 175px; width: 100px; font-size: 20px;" *ngSwitchCase="'level5'">144,510원</span>
             </span>
             <br><br><br>
             <span style="width: 150px; font-size: 20px; color: #51cf66;">국가 지원금</span>
-            <span style="margin: 42px 60px 0px 200px; width: 50px; font-size: 20px; font-weight: 500;"> 월</span>
+            <span style="margin: 42px 60px 0 200px; width: 50px; font-size: 20px; font-weight: 500;"> 월</span>
             <span style="width: 1px" [ngSwitch]="level">
                 <span style="width: 1px" *ngSwitchCase="'level1'">
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="margin: -38px 0px 0px 105px; width: 150px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="margin: -38px 0 0 105px; width: 150px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level2'">
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="margin: -38px 0px 0px 105px; width: 150px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="margin: -38px 0 0 105px; width: 150px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level3'">
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
                 <span style="width: 1px" *ngSwitchCase="'level4'">
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="margin: -38px 0px 0px 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="margin: -38px 0 0 115px; width: 100px; font-size: 20px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
-                <span style="margin: 2px 0px 0px 175px; width: 100px; font-size: 20px; color: #51cf66;" *ngSwitchCase="'level5'">806,820원</span>
+                <span style="margin: 2px 0 0 175px; width: 100px; font-size: 20px; color: #51cf66;" *ngSwitchCase="'level5'">818,890원</span>
             </span>
         </div>
         <div class="content-box" *ngIf="type == 'family'" style="left: 500px; width: 270px;">
-            <label>가족 요양 돌봄 시간 (하루 기준)</label>
+            <label style="font-size: 19px">가족 요양 돌봄 시간 (하루 기준)</label>
             <form class="radio-toolbar-900">
                 <input type="radio" [(ngModel)]="minute" id="90min" name="minute" value="90min">
                 <label for="90min" style="font-size: 20px; padding: 5px 16% 5px 16%;" >90분</label>
-
                 <input type="radio" [(ngModel)]="minute" id="60min" name="minute" value="60min">
                 <label for="60min" style="font-size: 20px; padding: 5px 16% 5px 16%;">60분</label>
             </form>
-            <label style="margin-bottom: 10px;" *ngIf="minute != null">가족 요양 돌봄 횟수</label>
+            <label style="margin-bottom: 10px; font-size: 19px" *ngIf="minute != null">가족 요양 돌봄 횟수</label>
             <span [ngSwitch]="minute" style="width: 1px">
                     <h4 style="font-size: 20px" *ngSwitchCase="'60min'">20회</h4>
                     <h4 style="font-size: 20px" *ngSwitchCase="'90min'">31회</h4>
             </span>
-            <label *ngIf="minute != null">1회당 가족 요양 급여</label>
+            <label *ngIf="minute != null" style="font-size: 19px">1회당 가족 요양 급여</label>
             <span [ngSwitch]="minute" style="width: 1px">
-                    <h4 style="font-size: 20px" *ngSwitchCase="'60min'">21,000원</h4>
-                    <h4 style="font-size: 20px" *ngSwitchCase="'90min'">28,000원</h4>
+                    <h4 style="font-size: 20px" *ngSwitchCase="'60min'">21,200원</h4>
+                    <h4 style="font-size: 20px" *ngSwitchCase="'90min'">28,400원</h4>
             </span>
         </div>
         <div class="bill" *ngIf="type == 'family'" style="position: relative; width: 377px; height: 232px; left: 403px; top: -78px;">
             <span style="width: 275px; font-size: 20px; border-bottom: 1px solid #979797;">받으실 수 있는 <br> 가족 요양 급여</span>
-            <span style="margin: 60px 0px 0px 193px; width: 50px; font-size: 20px; font-weight: 500;"> 월
+            <span style="margin: 60px 0 0 193px; width: 50px; font-size: 20px; font-weight: 500;"> 월
                 <span [ngSwitch]="minute" style="width: 1px">
-                    <span style="width: 150px; margin: -45px 0px 0px -55px; width: 170px; font-size: 25px; color: #51cf66;" *ngSwitchCase="'60min'">420,000원</span>
-                    <span style="width: 150px; margin: -45px 0px 0px -55px; width: 170px; font-size: 25px; color: #51cf66;" *ngSwitchCase="'90min'">868,000원</span>
+                    <span style="margin: -45px 0 0 -55px; width: 170px; font-size: 25px; color: #51cf66;" *ngSwitchCase="'60min'">424,000원</span>
+                    <span style="margin: -45px 0 0 -55px; width: 170px; font-size: 25px; color: #51cf66;" *ngSwitchCase="'90min'">880,400원</span>
                 </span>
             </span>
             <span [ngSwitch]="minute" style="width: 1px">
-                <span style="margin: 80px 0px 0px 48px; font-size: 17px; color: #979797; width: 250px; font-weight: 500;" *ngSwitchCase="'60min'">(21,000원 x 20회 = 420,000원)</span>
-                <span style="margin: 80px 0px 0px 48px; font-size: 17px; color: #979797; width: 250px; font-weight: 500;" *ngSwitchCase="'90min'">(28,000원 x 31회 = 868,000원)</span>
+                <span style="margin: 80px 0 0 45px; font-size: 17px; color: #979797; width: 250px; font-weight: 500;" *ngSwitchCase="'60min'">(21,200원 x 20회 = 424,000원)</span>
+                <span style="margin: 80px 0 0 45px; font-size: 17px; color: #979797; width: 250px; font-weight: 500;" *ngSwitchCase="'90min'">(28,400원 x 31회 = 880,400원)</span>
+                <span style="margin: 105px 60px 0 15px; font-size: 16px; color: #979797; width: 280px; font-weight: 550;">*본인부담금은 고시 비율에 따라 공제</span>
             </span>
         </div>
     </div>
 </section>
 
 
-<section style="padding-top: 47px; padding-bottom: 25px;text-align: center" class="head"
+<section style="padding-top: 47px; text-align: center" class="head"
          *showItSizes="{min:600,max:899}">
         <div class="container" style="width: 85%">
-        <img src="../../assets/img/group-9.svg" style="position: static; width: 61px;height: 61px; margin-bottom: 19px;">
+        <img src="../../assets/img/group-9.webp" style="position: static; width: 61px;height: 61px; margin-bottom: 19px;">
         <h2 style="font-size: 32px; color: white; margin-bottom: 23px;">
             받을 수 있는 급여와 지원금을 <br>미리 계산해보세요
         </h2>
@@ -295,20 +288,16 @@
         </form>
         <div class="box_m" style="width: 70%"></div>
         <div class="content-box_m-600" *ngIf="type == 'pro'" style="width: 65%">
-            <label style="margin-left: 8px;">어르신의 노인장기요양보험 등급</label>
+            <label style="margin-left: 8px; font-size: 19px">어르신의 노인장기요양보험 등급</label>
             <div class="radio-toolbar_m-600">
                 <input type="radio" [(ngModel)]="level" id="radio1" name="radiolevel" value="level1">
                 <label for="radio1">1등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio2" name="radiolevel" value="level2">
                 <label for="radio2">2등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio3" name="radiolevel" value="level3">
                 <label for="radio3">3등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio4" name="radiolevel" value="level4">
                 <label for="radio4">4등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio5" name="radiolevel" value="level5">
                 <label for="radio5">5등급</label>
             </div>
@@ -333,22 +322,22 @@
             <p style="top:-20px">월
                 <span [ngSwitch]="level">
                     <span style="width: 1px" *ngSwitchCase="'level1'">
-                        <span style="font-size: 28px;" *ngIf="count=='zero'">166,480원</span>
-                        <span style="font-size: 28px;" *ngIf="count=='four'">199,770원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='zero'">168,960원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='four'">202,752원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level2'">
-                        <span style="font-size: 28px;" *ngIf="count=='zero'">166,480원</span>
-                        <span style="font-size: 28px;" *ngIf="count=='four'">199,770원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='zero'">168,960원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='four'">202,752원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level3'">
-                        <span style="font-size: 28px;" *ngIf="count=='zero'">142,380원</span>
-                        <span style="font-size: 28px;" *ngIf="count=='four'">170,850원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='zero'">144,510원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='four'">173,412원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level4'">
-                        <span style="font-size: 28px;" *ngIf="count=='zero'">142,380원</span>
-                        <span style="font-size: 28px;" *ngIf="count=='four'">170,850원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='zero'">144,510원</span>
+                        <span style="font-size: 28px;" *ngIf="count=='four'">173,412원</span>
                     </span>
-                    <span style="font-size: 28px;" *ngSwitchCase="'level5'">142,380원</span>
+                    <span style="font-size: 28px;" *ngSwitchCase="'level5'">144,510원</span>
                 </span>
             </p>
             <p style="width: 100%; top:-10px; position: relative; border-bottom: 1px solid #979797"></p>
@@ -356,22 +345,22 @@
             <p style="top:-40px">월
                 <span style="width: 1px" [ngSwitch]="level">
                     <span style="width: 1px" *ngSwitchCase="'level1'">
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level2'">
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level3'">
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                     </span>
                     <span style="width: 1px" *ngSwitchCase="'level4'">
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                        <span style="font-size: 28px; color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                     </span>
-                    <span style="font-size: 28px; color: #51cf66;" *ngSwitchCase="'level5'">806,820원</span>
+                    <span style="font-size: 28px; color: #51cf66;" *ngSwitchCase="'level5'">818,890원</span>
                 </span>
             </p>
         </div>
@@ -391,34 +380,34 @@
             </span>
             <label *ngIf="minute != null" style="margin-left: 8px">1회당 가족 요양 급여</label>
             <span style="width: 1px" [ngSwitch]="minute">
-                <h5 *ngSwitchCase="'60min'">21,000원</h5>
-                <h5 *ngSwitchCase="'90min'">28,000원</h5>
+                <h5 *ngSwitchCase="'60min'">21,200원</h5>
+                <h5 *ngSwitchCase="'90min'">28,400원</h5>
             </span>
         </div>
         <div class="bill-600" *ngIf="type == 'family'">
             <span style="top: 20px; font-size: 24px;">받으실 수 있는 <br> 가족 요양 급여</span>
             <p style="top: -40px">월
                 <span [ngSwitch]="minute">
-                    <span style="color: #51cf66; font-size: 30px" *ngSwitchCase="'60min'">420,000원</span>
-                    <span style="color: #51cf66; font-size: 30px" *ngSwitchCase="'90min'">868,000원</span>
+                    <span style="color: #51cf66; font-size: 30px" *ngSwitchCase="'60min'">424,000원</span>
+                    <span style="color: #51cf66; font-size: 30px" *ngSwitchCase="'90min'">880,400원</span>
                 </span>
             </p>
-            <p style="width: 100%; top: -15px; border-bottom: 1px solid #979797"></p>
-            <p [ngSwitch]="minute" style="top: -20px;text-align: right;">
-                <span style="font-size: 14px; color: #979797; font-weight: 500;" *ngSwitchCase="'60min'">(21,000원 x 20회 = 420,000원)</span>
-                <span style="font-size: 14px; color: #979797; font-weight: 500;" *ngSwitchCase="'90min'">(28,000원 x 31회 = 868,000원)</span>
+            <p style="width: 100%; top: -25px; border-bottom: 1px solid #979797"></p>
+            <p [ngSwitch]="minute" style="top: -35px;text-align: right;">
+                <span style="font-size: 14px; color: #979797; font-weight: 500;" *ngSwitchCase="'60min'">(21,200원 x 20회 = 424,000원)</span>
+                <span style="font-size: 14px; color: #979797; font-weight: 500;" *ngSwitchCase="'90min'">(28,400원 x 31회 = 880,400원)</span>
+                <br><span style="top: -17px; font-size: 14px; color: #979797; font-weight: 550;">*본인부담금은 고시 비율에 따라 공제</span>
             </p>
         </div>
-        <img src="../../assets/img/zigzag.png" style="width: 78%; position:relative; top: -170px; margin-right: auto; margin-left: auto;">
-
+        <img src="../../assets/img/zigzag.webp" style="width: 78%; position:relative; top: -175px; margin-right: auto; margin-left: auto;" alt="영수증 이미지">
     </div>
 </section>
 
 
 <section class="head text-center" style="padding-top: 43px; text-align: center"
-        *showItSizes="{max:599}">
+        *showItSizes="{min:321,max:599}">
     <div class="container">
-        <img src="../../assets/img/group-9.svg" style="position: static; width: 41px;height: 41px; margin-bottom: 19px;">
+        <img src="../../assets/img/group-9.webp" style="position: static; width: 41px;height: 41px; margin-bottom: 19px;" alt="원화 이미지">
         <h2 style="font-size: 18px; color: white; margin-bottom: 23px;">
             받을 수 있는 급여와 지원금을 <br>미리 계산해보세요
         </h2>
@@ -427,12 +416,12 @@
         </p>
         <div style="margin-bottom: 48px;">
             <label class="container-checkbox" style="width: 110px;">
-                <input type="radio" name="check_in" value="family" [(ngModel)]="type">가족 요양
+                <input type="radio" name="check_in" value="family" id="family_600" [(ngModel)]="type">가족 요양
                 <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
             </label>
             <br>
             <label class="container-checkbox" style="width: 110px;">
-                <input type="radio" name="check_in" value="pro" [(ngModel)]="type">방문 요양
+                <input type="radio" name="check_in" value="pro" id="visit_600" [(ngModel)]="type">방문 요양
                 <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
             </label>
         </div>
@@ -442,16 +431,12 @@
             <div class="radio-toolbar_m" >
                 <input type="radio" [(ngModel)]="level" id="radio1" name="radiolevel" value="level1">
                 <label for="radio1">1등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio2" name="radiolevel" value="level2">
                 <label for="radio2">2등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio3" name="radiolevel" value="level3">
                 <label for="radio3">3등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio4" name="radiolevel" value="level4">
                 <label for="radio4">4등급</label>
-
                 <input type="radio" [(ngModel)]="level" id="radio5" name="radiolevel" value="level5">
                 <label for="radio5">5등급</label>
             </div>
@@ -464,11 +449,11 @@
             </div>
             <label>돌봄 시간 (하루 기준)</label>
             <span [ngSwitch]="level">
-                <h5 style="margin-left: 0px;" *ngSwitchCase="'level1'">4시간 (240분)</h5>
-                <h5 style="margin-left: 0px;" *ngSwitchCase="'level2'">4시간 (240분)</h5>
-                <h5 style="margin-left: 0px;" *ngSwitchCase="'level3'">3시간 (180분)</h5>
-                <h5 style="margin-left: 0px;" *ngSwitchCase="'level4'">3시간 (180분)</h5>
-                <h5 style="margin-left: 0px;" *ngSwitchCase="'level5'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level1'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level2'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level3'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level4'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level5'">3시간 (180분)</h5>
             </span>
         </div>
         <div class="bill_m" style="text-align: left; top: 5px;" *ngIf="type == 'pro'" >
@@ -476,44 +461,44 @@
             <p style="text-align: right; position: relative; top: -23px" [ngSwitch]="level">
                 <span style="font-weight: normal;">월 </span>
                 <span *ngSwitchCase="'level1'">
-                    <span *ngIf="count=='zero'">166,480원</span>
-                    <span *ngIf="count=='four'">199,770원</span>
+                    <span *ngIf="count=='zero'">168,960원</span>
+                    <span *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span *ngSwitchCase="'level2'">
-                    <span *ngIf="count=='zero'">166,480원</span>
-                    <span *ngIf="count=='four'">199,770원</span>
+                    <span *ngIf="count=='zero'">168,960원</span>
+                    <span *ngIf="count=='four'">202,752원</span>
                 </span>
                 <span *ngSwitchCase="'level3'">
-                    <span *ngIf="count=='zero'">142,380원</span>
-                    <span *ngIf="count=='four'">170,850원</span>
+                    <span *ngIf="count=='zero'">144,510원</span>
+                    <span *ngIf="count=='four'">173,412원</span>
                 </span>
                 <span *ngSwitchCase="'level4'">
-                    <span *ngIf="count=='zero'">142,380원</span>
-                    <span *ngIf="count=='four'">170,850원</span>
+                    <span *ngIf="count=='zero'">144,510원</span>
+                    <span *ngIf="count=='four'">173,412원</span>
                 </span>
-                <span *ngSwitchCase="'level5'">142,380원</span>
+                <span *ngSwitchCase="'level5'">144,510원</span>
             </p>
             <p style="width: 100%; position: relative; top: -18px; margin: 5px 0; border-bottom: 1px solid #979797"></p>
             <span style="position: relative; top: -16px; color: #51cf66;">국가 지원금</span>
             <p style="text-align: right; position: relative; top: -40px" [ngSwitch]="level">
                 <span style="font-weight: normal;">월 </span>
                 <span *ngSwitchCase="'level1'">
-                    <span style="color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span *ngSwitchCase="'level2'">
-                    <span style="color: #51cf66;" *ngIf="count=='zero'">943,320원</span>
-                    <span style="color: #51cf66;" *ngIf="count=='four'">1,131,990원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
                 </span>
                 <span *ngSwitchCase="'level3'">
-                    <span style="color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
                 <span *ngSwitchCase="'level4'">
-                    <span style="color: #51cf66;" *ngIf="count=='zero'">806,820원</span>
-                    <span style="color: #51cf66;" *ngIf="count=='four'">968,190원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">982,668원</span>
                 </span>
-                <span style="color: #51cf66;" *ngSwitchCase="'level5'">806,820원</span>
+                <span style="color: #51cf66;" *ngSwitchCase="'level5'">818,890원</span>
             </p>
         </div>
         <div class="content-box_m" *ngIf="type == 'family'" style="padding-left: 8px">
@@ -521,7 +506,6 @@
             <form class="radio-toolbar_m">
                 <input type="radio" [(ngModel)]="minute" id="90min" name="minute" value="90min">
                 <label for="90min" style="width: 47%;">90분</label>
-
                 <input type="radio" [(ngModel)]="minute" id="60min" name="minute" value="60min">
                 <label for="60min" style="width: 47%;">60분</label>
             </form>
@@ -532,8 +516,8 @@
             </span>
             <label *ngIf="minute != null">1회당 가족 요양 급여</label>
             <span [ngSwitch]="minute">
-                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">21,000원</h5>
-                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">28,000원</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">21,200원</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">28,400원</h5>
             </span>
         </div>
         <div class="bill_m" style="text-align: justify;" *ngIf="type == 'family'">
@@ -541,16 +525,154 @@
             <span style="position: relative; top: -5px; line-height: 19px">받으실 수 있는 <br> 가족 요양 급여</span>
             <p style="top: -45px; text-align: right; font-size: 16px; font-weight: 500;">월
                 <span [ngSwitch]="minute" style="width: 1px">
-                    <span style="font-size: 23px; color: #51cf66;" *ngSwitchCase="'60min'">420,000원</span>
-                    <span style="font-size: 23px; color: #51cf66;" *ngSwitchCase="'90min'">868,000원</span>
+                    <span style="font-size: 6vw; color: #51cf66;" *ngSwitchCase="'60min'">424,000원</span>
+                    <span style="font-size: 6vw; color: #51cf66;" *ngSwitchCase="'90min'">880,400원</span>
                 </span>
             </p>
             <p style="width: 100%; top: -25px; border-bottom: 1px solid #979797"></p>
-            <p [ngSwitch]="minute" style="top: -25px;  text-align: right;">
-                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'60min'">(21,000원 x 20회 = 420,000원)</span>
-                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'90min'">(28,000원 x 31회 = 868,000원)</span>
+            <p [ngSwitch]="minute" style="top: -25px;  text-align: right;line-height: 17px">
+                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'60min'">(21,200원 x 20회 = 424,000원)</span>
+                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'90min'">(28,400원 x 31회 = 880,400원)</span>
+                <br><span style="color: #979797; font-size: 12px; font-weight: 550">*본인부담금은 고시 비율에 따라 공제</span>
             </p>
         </div>
     </div>
-    <img src="../../assets/img/zigzag.png" style="width: 93%; position:relative; top: -140px; margin-right: auto; margin-left: auto;">
+    <img src="../../assets/img/zigzag.webp" style="width: 93%; position:relative; top: -140px; margin-right: auto; margin-left: auto;">
+</section>
+
+<section class="head text-center" style="padding-top: 43px; text-align: center"
+         *showItSizes="{max:320}">
+    <div class="container">
+        <img src="../../assets/img/group-9.webp" style="position: static; width: 41px;height: 41px; margin-bottom: 19px;" alt="원화 이미지">
+        <h2 style="font-size: 18px; color: white; margin-bottom: 23px;">
+            받을 수 있는 급여와 지원금을 <br>미리 계산해보세요
+        </h2>
+        <p style="font-size: 14px; margin-bottom: 36px;">
+            먼저, 원하시는 요양서비스를 선택하세요.
+        </p>
+        <div style="margin-bottom: 48px;">
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="family" id="family_320" [(ngModel)]="type">가족 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
+            </label>
+            <br>
+            <label class="container-checkbox" style="width: 110px;">
+                <input type="radio" name="check_in" value="pro" id="visit_320" [(ngModel)]="type">방문 요양
+                <span class="checkmark" style="width:41px; height: 41px; top: -5px;"></span>
+            </label>
+        </div>
+        <div class="box_m"></div>
+        <div class="content-box_m" *ngIf="type == 'pro'" style="padding-left: 8px">
+            <label>어르신의 노인장기요양보험 등급</label>
+            <div class="radio-toolbar_m" >
+                <input type="radio" [(ngModel)]="level" id="radio1" name="radiolevel" value="level1">
+                <label for="radio1">1등급</label>
+                <input type="radio" [(ngModel)]="level" id="radio2" name="radiolevel" value="level2">
+                <label for="radio2">2등급</label>
+                <input type="radio" [(ngModel)]="level" id="radio3" name="radiolevel" value="level3">
+                <label for="radio3">3등급</label>
+                <input type="radio" [(ngModel)]="level" id="radio4" name="radiolevel" value="level4">
+                <label for="radio4">4등급</label>
+                <input type="radio" [(ngModel)]="level" id="radio5" name="radiolevel" value="level5">
+                <label for="radio5">5등급</label>
+            </div>
+            <label>요양보호사 돌봄 횟수</label>
+            <div class="select">
+                <select style="font-size: 14px; height: 30px; font-weight: bold; background-size: 14px 9px; line-height: 0.9" [(ngModel)]="count">
+                    <option value="four" *ngIf="level != 'level5'">24회 (주6회 x 4주)</option>
+                    <option value="zero">20회 (주5회 x 4주)</option>
+                </select>
+            </div>
+            <label>돌봄 시간 (하루 기준)</label>
+            <span [ngSwitch]="level">
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level1'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level2'">4시간 (240분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level3'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level4'">3시간 (180분)</h5>
+                <h5 style="margin-left: 0;" *ngSwitchCase="'level5'">3시간 (180분)</h5>
+            </span>
+        </div>
+        <div class="bill_m" style="text-align: left; top: 5px;" *ngIf="type == 'pro'" >
+            <span style="padding-right: 80px;">개인 부담금</span>
+            <p style="text-align: right; position: relative; top: -23px" [ngSwitch]="level">
+                <span style="font-weight: normal;">월 </span>
+                <span *ngSwitchCase="'level1'">
+                    <span *ngIf="count=='zero'">168,960원</span>
+                    <span *ngIf="count=='four'">202,752원</span>
+                </span>
+                <span *ngSwitchCase="'level2'">
+                    <span *ngIf="count=='zero'">168,960원</span>
+                    <span *ngIf="count=='four'">202,752원</span>
+                </span>
+                <span *ngSwitchCase="'level3'">
+                    <span *ngIf="count=='zero'">144,510원</span>
+                    <span *ngIf="count=='four'">173,412원</span>
+                </span>
+                <span *ngSwitchCase="'level4'">
+                    <span *ngIf="count=='zero'">144,510원</span>
+                    <span *ngIf="count=='four'">173,412원</span>
+                </span>
+                <span *ngSwitchCase="'level5'">144,510원</span>
+            </p>
+            <p style="width: 100%; position: relative; top: -18px; margin: 5px 0; border-bottom: 1px solid #979797"></p>
+            <span style="position: relative; top: -16px; color: #51cf66;">국가 지원금</span>
+            <p style="text-align: right; position: relative; top: -40px" [ngSwitch]="level">
+                <span style="font-weight: normal;">월 </span>
+                <span *ngSwitchCase="'level1'">
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
+                </span>
+                <span *ngSwitchCase="'level2'">
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">957,440원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">1,148,928원</span>
+                </span>
+                <span *ngSwitchCase="'level3'">
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">982,668원</span>
+                </span>
+                <span *ngSwitchCase="'level4'">
+                    <span style="color: #51cf66;" *ngIf="count=='zero'">818,890원</span>
+                    <span style="color: #51cf66;" *ngIf="count=='four'">982,668원</span>
+                </span>
+                <span style="color: #51cf66;" *ngSwitchCase="'level5'">818,890원</span>
+            </p>
+        </div>
+        <div class="content-box_m" *ngIf="type == 'family'" style="padding-left: 8px">
+            <label>가족 요양 돌봄 시간 (하루 기준)</label>
+            <form class="radio-toolbar_m">
+                <input type="radio" [(ngModel)]="minute" id="90min" name="minute" value="90min">
+                <label for="90min" style="width: 47%;">90분</label>
+                <input type="radio" [(ngModel)]="minute" id="60min" name="minute" value="60min">
+                <label for="60min" style="width: 47%;">60분</label>
+            </form>
+            <label style="margin-bottom: 10px;" *ngIf="minute != null">가족 요양 돌봄 횟수</label>
+            <span [ngSwitch]="minute">
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">20회</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">31회</h5>
+            </span>
+            <label *ngIf="minute != null">1회당 가족 요양 급여</label>
+            <span [ngSwitch]="minute">
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'60min'">21,200원</h5>
+                <h5 style="width: 95%; margin-left: 0;" *ngSwitchCase="'90min'">28,400원</h5>
+            </span>
+        </div>
+        <div class="bill_m" style="text-align: justify;" *ngIf="type == 'family'">
+            <br>
+            <p style="position: relative; top: -5px; line-height: 19px">
+            <span>받으실 수 있는 <br> 가족 요양 급여</span></p>
+            <p style="top: -35px; text-align: right; font-size: 16px; font-weight: 500;">월
+                <span [ngSwitch]="minute" style="width: 1px">
+                    <span style="font-size: 6vw; color: #51cf66;" *ngSwitchCase="'60min'">424,000원</span>
+                    <span style="font-size: 6vw; color: #51cf66;" *ngSwitchCase="'90min'">880,400원</span>
+                </span>
+            </p>
+            <p style="width: 100%; top: -25px; border-bottom: 1px solid #979797"></p>
+            <p [ngSwitch]="minute" style="top: -25px;  text-align: right; line-height: 17px">
+                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'60min'">(21,200원 x 20회 = 424,000원)</span>
+                <span style="color: #979797; font-size: 12px; font-weight: normal" *ngSwitchCase="'90min'">(28,400원 x 31회 = 880,400원)</span>
+                <br><span style="color: #979797; font-size: 11px; font-weight: 550">*본인부담금은 고시 비율에 따라 공제</span>
+            </p>
+        </div>
+    </div>
+    <img src="../../assets/img/zigzag.webp" style="width: 93%; position:relative; top: -140px; margin-right: auto; margin-left: auto;">
 </section>

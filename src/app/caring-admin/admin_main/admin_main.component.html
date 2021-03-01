@@ -1,7 +1,7 @@
 <section class="header">
     <div class="container">
         <span routerLink="/admin">
-            <img src="./../assets/img/logo-title.svg" class="logo"
+            <img src="./../assets/img/logo-title.webp" class="logo"
                  style="width: 152px;margin-left: -20px;" alt="">
         </span><br>
         <button class="main_btn" style="width: 203px" (click)="btn='administration'">수급자 / 요양보호사 관리</button>
@@ -87,11 +87,11 @@
     </div>
 
     <div class="container" *ngIf="btn==='administration'&&information==='beneficiary'">
-        <reci_info></reci_info>
+        <!--<reci_info></reci_info>-->
     </div>
 
     <div class="container" *ngIf="btn==='administration'&&information==='care_worker'">
-        <giver_info></giver_info>
+        <!--<giver_info></giver_info>-->
     </div>
 
     <div class="container" *ngIf="btn==='record'&&record_parameter==='record_list'" style="text-align: center">

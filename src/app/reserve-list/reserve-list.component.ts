@@ -82,7 +82,7 @@ export class ReserveListComponent implements OnInit {
     }
 
     update(item) {
-        this.api.reserve.updateMemo(item.id, item.memo).subscribe();
+        this.api.reserve.updateMemo(item).subscribe();
     }
 
     delete(item) {

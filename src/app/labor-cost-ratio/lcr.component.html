@@ -1,0 +1,93 @@
+<section class="head" *showItSizes="{min:1440}">
+    <div class="container" style="padding: 98px 0 221px 0">
+        <div style="width: 550px; display: inline-block;">
+            <p class="header">
+                국내 최고 수준의<br>
+                급여를 제공합니다
+            </p>
+            <p class="content">
+                케어링은 국민건강보험공단 가이드라인 86.6%<br> 보다 더 높은 인건비 비율을 목표로 하고 있습니다.<br> 케어링은 최고의 요양보호사님들께 최고의 급여를<br> 드리기 위해 최선을 다하고 있습니다.
+            </p>
+        </div>
+        <div class="Rectangle">
+            <span  *ngIf="scroll===true" class="ani" style="padding: 50px 2px 3px 3px; font-size: 23px; font-weight: bold; border-bottom: 1px solid #d68b6b">인건비 지출비율</span><br>
+            <p *ngIf="scroll===true" class="ani" style="margin: 50px 0 48px;">
+                <span  style="font-size: 80px; line-height: 54px; font-weight: bold" (scroll)="onScroll($event)" [countUp]="92.12" [options]="myOpts">0</span>
+                <span style="font-size: 80px; line-height: 54px; font-weight: bold">%</span>
+                <span style="font-size: 40px"> 달성</span>
+            </p>
+            <p  *ngIf="scroll===true" class="ani" style="font-size: 19px; line-height: 1.53; color: #979797; font-weight: 550">2020.12 기준 케어링 직영센터 평균</p>
+        </div>
+    </div>
+</section>
+
+<section class="head" *showItSizes="{min:900,max:1439}">
+    <div class="container" style="padding: 98px 0 111px 0">
+        <div style="width: 400px; display: inline-block;">
+            <p class="header" style="font-size: 32px">
+                국내 최고 수준의<br>
+                급여를 제공합니다
+            </p>
+            <p class="content" style="font-size: 17px;">
+                케어링은 국민건강보험공단 가이드라인 86.6%<br> 보다 더 높은 인건비 비율을 목표로 하고 있습니다.<br> 케어링은 최고의 요양보호사님들께 최고의 급여를<br> 드리기 위해 최선을 다하고 있습니다.
+            </p>
+        </div>
+        <div class="Rectangle_900">
+            <span  *ngIf="scroll===true" class="ani" style="padding: 50px 2px 3px 3px; font-size: 19px; font-weight: bold; border-bottom: 1px solid #d68b6b">인건비 지출비율</span><br>
+            <p *ngIf="scroll===true" class="ani" style="margin: 50px 0 48px;">
+                <span  style="font-size: 60px; line-height: 54px; font-weight: bold" (scroll)="onScroll($event)" [countUp]="92.12" [options]="myOpts">0</span>
+                <span style="font-size: 60px; line-height: 54px; font-weight: bold">%</span>
+                <span style="font-size: 32px"> 달성</span>
+            </p>
+            <p  *ngIf="scroll===true" class="ani" style="font-size: 15px; line-height: 1.53; color: #979797; font-weight: 550">2020.12 기준 케어링 직영센터 평균</p>
+        </div>
+    </div>
+</section>
+
+<section class="head" *showItSizes="{min:600,max:899}">
+    <div class="container" style="padding: 58px 0 68px 0;">
+        <div style="width: 370px; margin-right: auto; margin-left: auto">
+            <p class="header" style="font-size: 32px">
+                국내 최고 수준의<br>급여를 제공합니다
+            </p>
+        </div>
+        <div class="Rectangle_600">
+            <span  *ngIf="scroll===true" class="ani" style="padding: 50px 2px 3px 3px; font-size: 19px; font-weight: bold; border-bottom: 1px solid #d68b6b">인건비 지출비율</span><br>
+            <p *ngIf="scroll===true" class="ani" style="margin: 50px 0 48px;">
+                <span  style="font-size: 60px; line-height: 54px; font-weight: bold" (scroll)="onScroll($event)" [countUp]="92.12" [options]="myOpts">0</span>
+                <span style="font-size: 60px; line-height: 54px; font-weight: bold">%</span>
+                <span style="font-size: 32px"> 달성</span>
+            </p>
+            <p *ngIf="scroll===true" class="ani" style="font-size: 15px; line-height: 1.53; color: #979797; font-weight: 550">2020.12 기준 케어링 직영센터 평균</p>
+        </div>
+        <div style="width: 370px; margin: 30px auto 30px auto">
+            <p class="content" style="font-size: 20px;">
+                케어링은 국민건강보험공단 가이드라인 86.6%보다 더 높은 인건비 비율을 목표로 하고 있습니다. 케어링은 최고의 요양보호사님들께 최고의 급여를 드리기 위해 최선을 다하고 있습니다.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="head" *showItSizes="{max:599}">
+    <div class="container" style="width: 100%; padding: 48px 0 0 0;">
+        <div style="width: 248px; margin-right: auto; margin-left: auto">
+            <p class="header" style="font-size: 20px">
+                국내 최고 수준의<br>급여를 제공합니다
+            </p>
+        </div>
+        <div class="Rectangle_m">
+            <span  *ngIf="scroll===true" class="ani" style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #d68b6b">인건비 지출비율</span><br>
+            <p *ngIf="scroll===true" class="ani" style="margin: 14px 0 14px 0;">
+                <span style="font-size: 43px; line-height: 54px; font-weight: bold" (scroll)="onScroll($event)" [countUp]="92.12" [options]="myOpts">0</span>
+                <span style="font-size: 43px; line-height: 54px; font-weight: bold">%</span>
+                <span style="font-size: 27px"> 달성</span>
+            </p>
+            <p *ngIf="scroll===true" class="ani" style="font-size: 11px; line-height: 1.53; color: #979797; font-weight: 550">2020.12 기준 케어링 직영센터 평균</p>
+        </div>
+        <div style="width: 248px; margin: 30px auto 30px auto">
+            <p class="content" style="font-size: 14px;">
+                케어링은 국민건강보험공단 가이드라인 86.6%보다 더 높은 인건비 비율을 목표로 하고 있습니다. 케어링은 최고의 요양보호사님들께 최고의 급여를 드리기 위해 최선을 다하고 있습니다.
+            </p>
+        </div>
+    </div>
+</section>

@@ -6,6 +6,8 @@ import {ReserveListGuardGuard} from './reserve-list-guard.guard';
 import {adminComponent} from "./caring-admin/contract_form/pre-contract-writing/caring-admin";
 import {admin_mainComponent} from  "./caring-admin/admin_main/admin_main.component";
 import {ConsultListComponent} from "./consult/consult.component";
+import {Yt_mainComponent} from "./yt_main/yt_main.component";
+import {CaregiverListComponent} from "./caregiver-list/caregiver-list.component";
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
     {path: 'list', component: ReserveListComponent, canActivate: [ReserveListGuardGuard]},
     {path: 'admin', component: admin_mainComponent},
     {path: 'consult', component: ConsultListComponent, canActivate: [ReserveListGuardGuard]},
+    {path: 'yt', component: Yt_mainComponent},
+    {path: 'cg-list', component: CaregiverListComponent},
 ];
 
 @NgModule({

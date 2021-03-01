@@ -1,5 +1,4 @@
 /* tslint:disable */
-
 export interface Reserve extends CreateTable {
     name: string;
     phone: string;
@@ -27,10 +26,10 @@ export interface Sort extends Streamable<Order>, Serializable {
 export interface Pageable {
     offset: number;
     sort: Sort;
-    paged: boolean;
-    pageSize: number;
     unpaged: boolean;
     pageNumber: number;
+    paged: boolean;
+    pageSize: number;
 }
 
 export interface IdTable {
@@ -41,14 +40,14 @@ export interface Serializable {
 }
 
 export interface Slice<T> extends Streamable<T> {
-    number: number;
     size: number;
     content: T[];
+    number: number;
     sort: Sort;
     numberOfElements: number;
     pageable: Pageable;
-    first: boolean;
     last: boolean;
+    first: boolean;
 }
 
 export interface Streamable<T> extends Iterable<T>, Supplier<Stream<T>> {

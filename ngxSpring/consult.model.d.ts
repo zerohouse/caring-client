@@ -15,8 +15,14 @@ export interface Consult extends CreateTable {
     first: string;
     start: string;
     end: string;
-    modifyAt: string;
+    phone2: string;
+    giveName: string;
+    takeName: string;
+    deleteReason: string;
+    lastModifiedDate: string;
     direct: boolean;
+    csComplete: boolean;
+    firstOrder: boolean;
 }
 
 export interface Page<T> extends Slice<T> {

@@ -1,12 +1,17 @@
-
-<div class="container" style="text-align: center; vertical-align: center">
+<div class="container" style="text-align: center; vertical-align: center; margin: 0; padding: 0">
     <div style="margin-bottom: 50px"></div>
-    <h1 style="font-size: 30px">케어링 관리자 모드</h1>
+    <h1 style="font-size: 30px">
+        케어링 관리자 모드</h1>
     <div>
-        <button (click)="worker=true; client=false; record=false; salary=false;" *ngIf="worker === false">요양 보호사 근로 계약서</button>
-        <button (click)="salary=true; client=false; record=false; worker=false;" *ngIf="salary === false">급여 이체 동의서</button>
-        <button (click)="client=true; worker=false; record=false; salary=false;" *ngIf="client === false">수급자 계약서</button>
-        <button (click)="record=true; worker=false; client=false; salary=false;" *ngIf="record === false">기록지</button>
+        <button (click)="worker=true; worker2021=false; family2021=false; family=false; client=false; record=false; salary=false; resignation=false; client2021=false;" *ngIf="worker === false">요양 보호사 근로 계약서</button>
+        <button (click)="family=true; worker2021=false; family2021=false; worker=false; client=false; record=false; salary=false; resignation=false; client2021=false;" *ngIf="family === false">가족요양 근로 계약서</button>
+        <button (click)="salary=true; worker2021=false; family2021=false; family=false; client=false; record=false; worker=false; resignation=false; client2021=false;" *ngIf="salary === false">급여 이체 동의서</button>
+        <button (click)="client=true; worker2021=false; family2021=false; family=false; worker=false; record=false; salary=false; resignation=false; client2021=false;" *ngIf="client === false">수급자 계약서</button>
+        <!--<button (click)="record=true; worker2021=false; family2021=false; family=false; worker=false; client=false; salary=false; resignation=false; client2021=false;" *ngIf="record === false">기록지</button>-->
+        <button (click)="resignation=true; worker2021=false; family2021=false; family=false; worker=false; client=false; salary=false; record=false; client2021=false;" *ngIf="resignation === false">사직서</button><br>
+        <button (click)="worker2021=true; family2021=false; worker=false; family=false; client=false; record=false; salary=false; resignation=false; client2021=false;" *ngIf="worker2021 === false">2021요양 보호사 근로 계약서</button>
+        <button (click)="family2021=true; worker2021=false; worker=false; family=false; client=false; record=false; salary=false; resignation=false; client2021=false;" *ngIf="family2021 === false">2021가족요양 근로 계약서</button>
+        <button (click)="client2021=true; worker2021=false; family2021=false; family=false; worker=false; record=false; salary=false; resignation=false; client=false;" *ngIf="client2021 === false">2021수급자 계약서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="worker == true">
@@ -29,6 +34,8 @@
                 <option value="논현">논현</option>
                 <option value="강남">강남</option>
                 <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
             </select>
         </label>
         <br>
@@ -55,6 +62,54 @@
         </label>
         <br>
         <button (click)="downloadCaregiver(name, center, time, address, place, phone, start, contract)">요보사 계약서</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="family == true">
+        <h3>가족요양 근로 계약서</h3>
+        <label>성명 :
+            <input type="text" size="40" [(ngModel)]="name">
+        </label>
+        <br>
+        <label>주소 :
+            <input type="text" size="40" [(ngModel)]="address">
+        </label>
+        <br>
+        <label>어르신 성함 :
+            <input type="text" size="40" style="width: 49%;" [(ngModel)]="place">
+        </label>
+        <br>
+        <label>센터 :
+            <select [(ngModel)]="center">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
+            </select>
+        </label>
+        <br>
+        <label>시간 :
+            <select [(ngModel)]="time">
+                <option value="시간선택">시간선택</option>
+                <option value="60">60분</option>
+                <option value="90">90분</option>
+            </select>
+        </label>
+        <br>
+        <label>핸드폰 번호 :
+            <input type="text" size="40" style="width: 50%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="phone">
+        </label>
+        <br>
+        <label>근로 시작일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <label>근로 계약일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <button (click)="downloadFamilyCaregiver(name, center, time, address, place, phone, start, contract)">가족요양 근로 계약서</button>
     </div>
 
     <div class="inputs" style="border: 1px solid black;" *ngIf="salary == true">
@@ -129,6 +184,8 @@
                 <option value="논현">논현</option>
                 <option value="강남">강남</option>
                 <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
             </select><br>
         </label>
         <label>보호자</label><br>
@@ -144,6 +201,7 @@
                 <option value="형제">형제</option>
                 <option value="자손">자손</option>
                 <option value="자부">자부</option>
+                <option value="사위">사위</option>
                 <option value="친척">친척</option>
                 <option value="사회복지공무원">사회복지공무원</option>
                 <option value="시군구청장이 지정한자">시군구청장이 지정한자</option>
@@ -217,10 +275,12 @@
                 <option value="논현">논현</option>
                 <option value="강남">강남</option>
                 <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
             </select><br>
         </label>
         <label>총제공일 :
-            <select style="width: 62%;" [(ngModel)]="day">
+            <select style="width: 62%;" [(ngModel)]="day" (change)="firstday = ''; firststime = ''; firsttime = ''; secondday = ''; secondstime = ''; secondtime = ''; thirdday = ''; thirdstime = ''; thirdtime = ''; fourthday = ''; fourthstime = ''; fourthtime = ''; fifthday = ''; fifthstime = ''; fifthtime = ''; sixthday = ''; sixthstime = ''; sixthtime = ''; seventhday = ''; seventhstime = ''; seventhtime = '';">
                 <option value=0>제공일 선택</option>
                 <option value=1>1일</option>
                 <option value=2>2일</option>
@@ -447,6 +507,251 @@
             </label>
         </p>
         <button style="float: right" (click)="downloadRecordpaper(rname, rbirth, rlevel, rnumber, rcenter, firstday, firststime, firsttime, secondday, secondstime, secondtime, thirdday, thirdstime, thirdtime, fourthday, fourthstime, fourthtime, fifthday, fifthstime, fifthtime, sixthday, sixthstime, sixthtime, seventhday, seventhstime, seventhtime)">기록지 다운로드</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="resignation == true">
+        <h3>사직서</h3>
+        <label>성명 :
+            <input type="text" size="40" style="width: 69%" [(ngModel)]="resig_name"><br>
+        </label>
+        <label>생년월일 :
+            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 60%" [(ngModel)]="resig_birth"><br>
+        </label>
+        <label>주민등록번호 :
+            <input type="text" size="40" style="width: 49%;" [(ngModel)]="resig_number"><br>
+        </label>
+        <label>연락처 :
+            <input type="text" size="40" style="width: 64%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="resig_phone"><br>
+        </label>
+        <label>주소 :
+            <input type="text" size="40" style="width: 69%" [(ngModel)]="resig_address"><br>
+        </label>
+        <label>센터 :
+            <select [(ngModel)]="resig_center" style="width: 71%;">
+                <option value="">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
+            </select><br>
+        </label>
+        <label>입사일자 :
+            <input type="date" style="width: 60%;" [(ngModel)]="resig_start" min="2015-01-01" max="2050-01-01"><br>
+        </label>
+        <label>퇴사희망일자 :
+            <input type="date" style="width: 50%;" [(ngModel)]="resig_end" min="2015-01-01" max="2050-01-01"><br>
+        </label>
+        <label>사직서 작성일 :
+            <input type="date" style="width: 49%;" [(ngModel)]="resig_date" min="2015-01-01" max="2100-01-01"><br>
+        </label>
+
+        <button (click)="downloadResignation(resig_name, resig_birth, resig_address, resig_phone, resig_center, resig_number, resig_start, resig_end, resig_date)">사직서</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="worker2021 === true">
+        <h3>2021요양 보호사 근로 계약서</h3>
+        <label>성명 :
+            <input type="text" size="40" [(ngModel)]="name">
+        </label>
+        <br>
+        <label>주소 :
+            <input type="text" size="40" [(ngModel)]="address">
+        </label>
+        <br>
+        <label>근무장소 :
+            <input type="text" size="40" style="width: 55%;" [(ngModel)]="place">
+        </label>
+        <br>
+        <label>센터 :
+            <select [(ngModel)]="center">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
+            </select>
+        </label>
+        <br>
+        <label>시간 :
+            <select [(ngModel)]="time">
+                <option value="시간선택">시간선택</option>
+                <option value="60">60분</option>
+                <option value="90">90분</option>
+                <option value="180">180분</option>
+                <option value="240">240분</option>
+            </select>
+        </label>
+        <br>
+        <label>핸드폰 번호 :
+            <input type="text" size="40" style="width: 50%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="phone">
+        </label>
+        <br>
+        <label>근로 시작일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <label>근로 계약일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <button (click)="download2021Caregiver(name, center, time, address, place, phone, start, contract)">2021요보사 계약서</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="family2021 === true">
+        <h3>2021가족요양 근로 계약서</h3>
+        <label>성명 :
+            <input type="text" size="40" [(ngModel)]="name">
+        </label>
+        <br>
+        <label>주소 :
+            <input type="text" size="40" [(ngModel)]="address">
+        </label>
+        <br>
+        <label>어르신 성함 :
+            <input type="text" size="40" style="width: 49%;" [(ngModel)]="place">
+        </label>
+        <br>
+        <label>센터 :
+            <select [(ngModel)]="center">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
+            </select>
+        </label>
+        <br>
+        <label>시간 :
+            <select [(ngModel)]="time">
+                <option value="시간선택">시간선택</option>
+                <option value="60">60분</option>
+                <option value="90">90분</option>
+            </select>
+        </label>
+        <br>
+        <label>핸드폰 번호 :
+            <input type="text" size="40" style="width: 50%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="phone">
+        </label>
+        <br>
+        <label>근로 시작일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="start" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <label>근로 계약일 :
+            <input type="date" style="width: 50%;" [(ngModel)]="contract" min="2015-01-01" max="2050-12-31">
+        </label>
+        <br>
+        <button (click)="download2021FamilyCaregiver(name, center, time, address, place, phone, start, contract)">2021가족요양 근로 계약서</button>
+    </div>
+
+    <div class="inputs" style="border: 1px solid black;" *ngIf="client2021 === true">
+        <h3>2021수급자 계약서</h3>
+        <label>성명 :
+            <input type="text" size="40" style="width: 69%" [(ngModel)]="recname"><br>
+        </label>
+        <label>장기요양등급 :
+            <select style="width: 51%;" [(ngModel)]="reclevel">
+                <option value="등급선택">등급선택</option>
+                <option value="1등급">1등급</option>
+                <option value="2등급">2등급</option>
+                <option value="3등급">3등급</option>
+                <option value="4등급">4등급</option>
+                <option value="5등급">5등급</option>
+            </select><br>
+        </label>
+        <label>장기요양인정번호 :
+            <input type="text" size="40" style="width: 40%;" placeholder="숫자만 입력해주세요" [(ngModel)]="recnumber"><br>
+        </label>
+        <label>생년월일 :
+            <input type="date" min="1910-01-01" max="2005-01-01" style="width: 61%" [(ngModel)]="recbirth"><br>
+        </label>
+        <label>주소 :
+            <input type="text" size="40" style="width: 70%" [(ngModel)]="recaddress"><br>
+        </label>
+        <label>핸드폰 번호 :
+            <input type="text" size="40" style="width: 54%;" class="phone" maxlength="13" placeholder="숫자만 입력해주세요" [(ngModel)]="recphone"><br>
+        </label>
+        <label>수급구분 :
+            <select style="width: 62%;" [(ngModel)]="etc">
+                <option value="일반">일반대상</option>
+                <option value="40%">감경 40%</option>
+                <option value="50%">감경 50%</option>
+                <option value="60%">감경 60%</option>
+                <option value="국민">국민기초생활</option>
+                <option value="의료">의료급여</option>
+            </select><br>
+        </label>
+        <label>센터 :
+            <select [(ngModel)]="reccenter" style="width: 72%;">
+                <option value="센터선택">센터선택</option>
+                <option value="논현">논현</option>
+                <option value="강남">강남</option>
+                <option value="서초방문요양">서초방문요양</option>
+                <option value="가온">가온</option>
+                <option value="고은">고은</option>
+            </select><br>
+        </label>
+        <label>보호자</label><br>
+        <label>성명 :
+            <input type="text" size="40" style="width: 70%;" [(ngModel)]="pname"><br>
+        </label>
+        <label>이용자와의 관계 :
+            <select style="width: 46%;" [(ngModel)]="relation">
+                <option value="">관계선택</option>
+                <option value="배우자">배우자</option>
+                <option value="자녀">자녀</option>
+                <option value="부모">부모</option>
+                <option value="형제">형제</option>
+                <option value="자손">자손</option>
+                <option value="자부">자부</option>
+                <option value="사위">사위</option>
+                <option value="친척">친척</option>
+                <option value="사회복지공무원">사회복지공무원</option>
+                <option value="시군구청장이 지정한자">시군구청장이 지정한자</option>
+            </select><br>
+        </label>
+        <label>생년월일 :
+            <input type="date" size="40" style="width: 61%;" [(ngModel)]="pbirth" min="1910-01-01" max="2020-01-01"><br>
+        </label>
+        <label>연락처 :
+            <input type="text" size="40" style="width: 65%;" placeholder="숫자만 입력해주세요" [(ngModel)]="pphone"><br>
+        </label>
+        <label>주소 :
+            <input type="text" size="40" style="width: 70%;" [(ngModel)]="paddress"><br>
+        </label><br>
+        <label>계약 시작일 :
+            <input type="date" style="width: 55%;" [(ngModel)]="contract_start" min="2015-01-01" max="2050-01-01"><br>
+        </label>
+        <label>계약 종료일 :
+            <input type="date" style="width: 55%;" [(ngModel)]="contract_end" min="2015-01-01" max="2050-01-01"><br>
+        </label>
+        <label>이용일 :
+            <input type="text" style="width: 65%;" [(ngModel)]="useday" placeholder = "ex)버튼을 클릭해주세요"><br>
+            <button (click)="useday = useday + '월'">월</button>
+            <button (click)="useday = useday + '화'">화</button>
+            <button (click)="useday = useday + '수'">수</button>
+            <button (click)="useday = useday + '목'">목</button>
+            <button (click)="useday = useday + '금'">금</button>
+            <button (click)="useday = useday + '토'">토</button>
+            <button (click)="useday = useday + '일'">일</button>
+            <button (click)="useday = useday + '월화수목금'">평일</button>
+            <button (click)="useday = useday + '토일'">주말</button>
+            <button (click)="useday = '월화수목금토일'">매일</button><br>
+        </label>
+        <label>시작시간 :
+            <input type="time" style="width: 63%" [(ngModel)]="usestime"><br>
+        </label>
+        <label>종료시간 :
+            <input type="time" style="width: 63%" [(ngModel)]="useetime"><br>
+        </label>
+        <label>계약일 :
+            <input type="date" style="width: 68%;" [(ngModel)]="contract_date" min="2015-01-01" max="2100-01-01"><br>
+        </label>
+
+        <button (click)="download2021Recipient(recname, reclevel, recnumber, recbirth, recaddress, recphone, etc, reccenter, pname, relation, pbirth, pphone, paddress, contract_start, contract_end, useday, usestime, useetime, contract_date)">2021수급자 계약서</button>
     </div>
 </div>
 

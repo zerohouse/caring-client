@@ -1,11 +1,14 @@
 <section style="padding-top: 174px;padding-bottom: 137px" class="head" *showItSizes="{min:1440}">
     <div class="container">
-        <img src="../../assets/img/caring-logo.svg" style="width: 165px;height: 43px;top: -140px;left: 141px">
+        <img src="../../assets/img/caring-logo.svg" style="width: 165px;height: 43px;top: -140px;left: 141px" alt="케어링 로고">
         <a href="https://blog.naver.com/caring_official" target="_blank">
-            <img src="../../assets/img/blog_img.png" style="width: 90px;top: -140px; right: 47px; cursor: pointer">
+            <img src="../../assets/img/blog_img.webp" style="width: 90px;top: -140px; right: 47px; cursor: pointer" class="blog_img" alt="블로그 이미지">
         </a>
-        <img src="../../assets/img/main_img_03_dark.png" style="top: -21px;left: 672px">
-        <h2>품격있는 방문요양<br> 케어링으로 시작하세요.</h2>
+        <img src="../../assets/img/main_img_03_dark.webp" style="top: -21px;left: 672px" alt="수급자와 요양보호사 이미지">
+        <h2>
+            품격있는 방문요양<br>
+            케어링으로 시작하세요.
+        </h2>
         <p style="margin-top: 25px; margin-bottom: 40px">
             집보다 편한 곳은 없습니다.<br>
             보호자님과 어르신께 꼭 맞는 돌봄 서비스,<br>
@@ -18,10 +21,10 @@
             </label>
         </p>
     </div>
-    <div class="layer2" *ngIf="type=='show'">
+    <div class="layer2" *ngIf="type==='show'">
         <div class="bg"></div>
         <div class="layer">
-            <img src="assets/img/Leaflet2.png" (click)="type='hide';">
+            <img src="assets/img/Leaflet_new.png" (click)="type='hide';" alt="전단지">
             <!--<button class="close" (click)="type='hide'">닫기</button>-->
         </div>
     </div>
@@ -29,12 +32,12 @@
 
 <section style="padding-top: 124px;padding-bottom: 30px" class="head" *showItSizes="{min:900,max:1439}">
     <div class="container">
-        <img src="../../assets/img/caring-logo.svg" style="width: 165px;height: 43px;top: -110px;">
+        <img src="../../assets/img/caring-logo.svg" style="width: 165px;height: 43px;top: -110px;" alt="케어링 로고">
         <a href="https://blog.naver.com/caring_official" target="_blank">
-            <img src="../../assets/img/blog_img.png" style="width: 80px;top: -110px; right: 14px; cursor: pointer">
+            <img src="../../assets/img/blog_img.webp" style="width: 80px;top: -110px; right: 14px; cursor: pointer" class="blog_img" alt="블로그 이미지">
         </a>
-        <img src="../../assets/img/main_img_03_dark.png" style="width: 450px; left: 430px; top:20px;">
-        <div style="position: relative;z-index: 10;">
+        <img src="../../assets/img/main_img_03_dark.webp" style="width: 450px; left: 430px; top:20px;" alt="수급자와 요양보호사 이미지">
+        <div style="position: relative;z-index: 1;">
             <h2 style="font-size: 38px;">품격있는 방문요양<br> 케어링으로 시작하세요.</h2>
             <p style="font-size: 20px; margin-top: 25px; margin-bottom: 40px">
                 집보다 편한 곳은 없습니다.<br>
@@ -52,7 +55,7 @@
     <div class="layer2" *ngIf="type=='show'">
         <div class="bg"></div>
         <div class="layer" style="margin-top: 50px; width: 450px; height: 480px; top: 230px">
-            <img src="assets/img/Leaflet2.png" (click)="type='hide'">
+            <img src="assets/img/Leaflet_new.png" (click)="type='hide'" alt="전단지">
             <!--<button class="close" style="top: 565px; font-size: 15px" (click)="type='hide'">닫기</button>-->
         </div>
     </div>
@@ -60,12 +63,12 @@
 
 <section style="text-align: center" class="head"
          *showItSizes="{min:600,max:899}">
-    <div class="container" style="width: 85%;">
+    <div class="container" style="width: 85%; padding-top: 25px;">
         <img src="../../assets/img/caring-logo.svg" style="position: relative; width: 165px; height: 43px; padding-bottom: 60px; left: -25%" alt="케어링 로고">
         <a href="https://blog.naver.com/caring_official" target="_blank">
-            <img src="../../assets/img/blog_img.png" style="position: relative; width: 70px; padding-bottom: 50px; right: -25%; cursor: pointer" alt="케어링 공식 블로그 이미지">
+            <img src="../../assets/img/blog_img.webp" style="position: relative; width: 70px; padding-bottom: 50px; right: -25%; cursor: pointer" class="blog_img" alt="블로그 이미지">
         </a>
-        <div style="position: relative; z-index: 10;">
+        <div style="position: relative; z-index: 1;">
             <h2 style="font-size: 34px;">품격있는 방문요양<br> 케어링으로 시작하세요.</h2>
             <p style="font-size: 18px; margin-top: 15px; margin-bottom: 20px">
                 집보다 편한 곳은 없습니다.<br>
@@ -79,12 +82,12 @@
                 1522-6585
             </label>
         </div>
-        <img src="../../assets/img/main_img_03_dark.png" style="position: relative; width: 400px; margin-left: auto; margin-right: auto; top: 6px;">
+        <img src="../../assets/img/main_img_03_dark.webp" style="position: relative; width: 400px; margin-left: auto; margin-right: auto; top: 6px;" alt="수급자와 요양보호사 이미지">
     </div>
-    <div class="layer2" *ngIf="type=='show'">
+    <div class="layer2" *ngIf="type==='show'">
         <div class="bg"></div>
         <div class="layer" style="width: 380px; height: 430px; margin-top: 50px; top: 200px">
-            <img src="assets/img/Leaflet2.png" (click)="type='hide'">
+            <img src="assets/img/Leaflet_new.png" (click)="type='hide'" alt="전단지">
             <!--<button class="close" style="top: 525px; left: 0; font-size: 13px" (click)="type='hide'">닫기</button>-->
         </div>
     </div>
@@ -92,13 +95,13 @@
 
 <section class="head" style="padding-top: 18px"
          *showItSizes="{max:599}">
-    <div class="container" style="width: 100%; text-align: center; padding: 0px;">
+    <div class="container" style="width: 100%; text-align: center; padding: 0;">
         <div style="display: block;
     position: relative;
     width: 126px;
     height: 33px;
     margin: 0 0 98px 20px;
-    background-image: url(../../assets/img/caring-logo.svg);
+    background-image: url('../../assets/img/caring-logo.svg');
     background-size: contain;
     background-position: top left;
     background-repeat: no-repeat;"></div>
@@ -108,21 +111,21 @@
             보호자님과 어르신께 꼭 맞는 돌봄 서비스,<br>
             케어링과 함께라면 가능합니다.
         </div>
-        <button type="button" onclick="location.href='tel:1522-6585'" style="font-size: 16px; margin-bottom: 26px; width: 250px; font-weight: bold;"> 무료 상담 전화하기</button>
-        <img src="../../assets/img/main_img_03_dark_3x.png"
+        <button type="button" onclick="location.href='tel:1522-6585'" id="call_free" style="font-size: 16px; margin-bottom: 26px; width: 250px; font-weight: bold;">무료 상담 전화하기</button>
+        <img src="../../assets/img/main_img_03_dark_3x.webp"
                 style="display: block;
                 position: relative;
                 width: 100%;
                 height: auto;
-                padding: 0px;
+                padding: 0;
                 background-size: contain;
                 background-position: bottom center;
-                background-repeat: no-repeat;">
+                background-repeat: no-repeat;" alt="수급자와 요양보호사 이미지">
     </div>
-    <div class="layer2" *ngIf="type=='show'">
+    <div class="layer2" *ngIf="type==='show'">
         <div class="bg"></div>
         <div class="layer" style="width: 300px; height: 400px; margin-top: 18px; top: 200px">
-            <img src="assets/img/Leaflet2.png" (click)="type='hide'">
+            <img src="assets/img/Leaflet_new.png" id="m_leaflet" (click)="type='hide'" alt="전단지">
             <!--<button class="close" style="top: 466px; font-size: 15px; color: #868e96" (click)="type='hide'">닫기</button>-->
         </div>
     </div>

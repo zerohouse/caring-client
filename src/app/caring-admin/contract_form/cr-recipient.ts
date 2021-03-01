@@ -2311,8 +2311,8 @@ export class docRec {
                 this.createText(""),
                 this.createText13content("③ ‘을’의 방문요양급여 제공시간은 아래와 같다. 다만, 1일 2회 방문요양급여를 제공하는 경우에는 2시간 이상의 간격으로 제공한다."),
                 table3,
-                this.createText13content("④ ‘관공서의 공휴일에 관한 규정’에 의한 공휴일에 급여를 제공하는 경우에는 ‘을’은 30%의 할증비용을 청구할 수 있다."),
-                this.createText13content("⑤ 야간(18:00~22:00), 심야(22:00~06:00)에 급여를 제공하는 경우에는 ‘을’은 야간 20%, 심야 30%의 할증 비용을 청구할 수 있다."),
+                this.createText13content("④ 유급 휴일 및 근로자의 날에 급여를 제공한 경우 급여 비용의 50%를 가산하며, 일요일이 중복될 경우 유급휴일 및 근로자의 날을 따른다."),
+                this.createText13content("⑤ 심야(22:00~06:00)에 급여를 제공하는 경우에는 ‘을’은 심야 30%의 할증 비용을 청구할 수 있다."),
                 this.createText(""),
                 this.createText13content("⑥ 야간․심야․휴일가산이 동시에 적용되는 경우에는 중복하여 가산하지 않는다."),
                 this.createText(""),
@@ -2532,7 +2532,11 @@ export class docRec {
             } else if(center === "논현"){
                 return "정기범"
             } else if(center === "서초방문요양"){
-                return "김명숙"
+                return "이인성"
+            } else if(center === "가온"){
+                return "김수령"
+            } else if(center === "고은"){
+                return "선유정"
             }
             return " "
         }  //센터장 성명 출력
@@ -2541,9 +2545,13 @@ export class docRec {
             if (center === "강남"){
                 return "02-540-0655"
             } else if(center === "논현"){
-                return "02-3443-2996"
+                return "02-540-3488"
             } else if(center === "서초방문요양"){
                 return "02-541-3505"
+            } else if(center === "가온"){
+                return "02-541-3503"
+            } else if(center === "고은"){
+                return "02-541-3506"
             }
             return " "
         }  //센터 전화번호 출력
@@ -2555,6 +2563,10 @@ export class docRec {
                 return "서울시 강남구 강남대로 514  5층 502호"
             } else if(center === "서초방문요양"){
                 return "서울시 서초구 신반포로 328, 328빌딩 303호"
+            } else if(center === "가온"){
+                return "서울시 서초구 신반포로 328, 328빌딩 301호"
+            } else if(center === "고은"){
+                return "서울시 서초구 신반포로 328, 328빌딩 302호"
             }
             return " "
         }  //센터 전화번호 출력

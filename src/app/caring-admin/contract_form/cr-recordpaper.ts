@@ -2,6 +2,7 @@ import {
     AlignmentType,
     BorderStyle,
     Document,
+    HeightRule,
     Paragraph,
     Table,
     TableCell,
@@ -10,6 +11,7 @@ import {
     VerticalAlign,
     WidthType,
 } from "docx";
+
 /*
 function check(month: string): string{
     if (month===""){
@@ -773,20 +775,18 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `개인위생(옷갈아입기, 세면,`,
+                                children: [
+                                    new TextRun({
+                                        text: `개인위생(옷갈아입기, 세면,`,
+                                        size: 16,
+                                    }),
+                                ]
                             }),new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `구강청결, 몸단장 도움 등 )`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `구강청결, 몸단장 도움 등 )`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -798,7 +798,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -810,7 +810,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -822,7 +822,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -834,7 +834,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -846,7 +846,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -858,7 +858,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -901,17 +913,10 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `몸씻기 도움`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `몸씻기 도움`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -923,7 +928,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -935,7 +940,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -947,7 +952,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -959,7 +964,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -971,7 +976,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -983,7 +988,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1029,17 +1046,10 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `식사 도움(영양관리 등)`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `식사 도움(영양관리 등)`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -1051,7 +1061,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1063,7 +1073,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1075,7 +1085,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1087,7 +1097,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1099,7 +1109,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1111,7 +1121,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1157,17 +1179,10 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `체위변경`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `체위변경`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -1179,7 +1194,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1191,7 +1206,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1203,7 +1218,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1215,7 +1230,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1227,7 +1242,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1239,7 +1254,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1248,6 +1275,7 @@ export class docRecord {
                     ],
                 }),  //체위변경
                 new TableRow({
+                    height: {height: 550, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph({
@@ -1292,20 +1320,18 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `이동 도움(보행,`,
+                                children: [
+                                    new TextRun({
+                                        text: `이동 도움(보행,`,
+                                        size: 16,
+                                    }),
+                                ]
                             }),new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `보장구사용 등 도움)`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `보장구사용 등 도움)`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -1317,7 +1343,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1329,7 +1355,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1341,7 +1367,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1353,7 +1379,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1365,7 +1391,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1377,7 +1403,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1423,17 +1461,10 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `화장실이용하기`,
-                            })],
-                            verticalAlign: VerticalAlign.CENTER,
-                        }),
-                        new TableCell({
-                            children: [new Paragraph({
-                                alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        text: `□`,
-                                        size: 40,
+                                        text: `화장실이용하기`,
+                                        size: 16,
                                     }),
                                 ]
                             })],
@@ -1445,7 +1476,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1457,7 +1488,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1469,7 +1500,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1481,7 +1512,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1493,7 +1524,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1505,7 +1536,19 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
+                                    }),
+                                ]
+                            })],
+                            verticalAlign: VerticalAlign.CENTER,
+                        }),
+                        new TableCell({
+                            children: [new Paragraph({
+                                alignment: AlignmentType.CENTER,
+                                children: [
+                                    new TextRun({
+                                        text: `□`,
+                                        size: 35,
                                     }),
                                 ]
                             })],
@@ -1514,6 +1557,7 @@ export class docRecord {
                     ],
                 }),  //화장실이용
                 new TableRow({
+                    height: {height: 700, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph("")],
@@ -1543,7 +1587,13 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `제공시간`,
+                                children: [
+                                    new TextRun({
+                                        text: `제공시간`,
+                                        size: 20,
+                                        bold: true,
+                                    }),
+                                ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -1888,10 +1938,20 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `의사소통 도움 등`,
+                                children: [
+                                    new TextRun({
+                                        text: `의사소통 도움 등`,
+                                        bold: true,
+                                    }),
+                                ]
                             }),new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `말벗, 격려`,
+                                children: [
+                                    new TextRun({
+                                        text: `말벗, 격려`,
+                                        bold: true,
+                                    }),
+                                ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -1980,10 +2040,20 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `식사 준비, 청소 및`,
+                                children: [
+                                    new TextRun({
+                                        text: `식사 준비, 청소 및`,
+                                        size: 16,
+                                    }),
+                                ]
                             }),new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `주변 정리 정돈, 세탁 등`,
+                                children: [
+                                    new TextRun({
+                                        text: `주변 정리 정돈, 세탁 등`,
+                                        size: 16,
+                                    }),
+                                ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -1993,7 +2063,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2005,7 +2075,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2017,7 +2087,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2029,7 +2099,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2041,7 +2111,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2053,7 +2123,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2065,7 +2135,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2112,10 +2182,20 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `개인활동지원`,
+                                children: [
+                                    new TextRun({
+                                        text: `개인활동지원`,
+                                        size: 16,
+                                    }),
+                                ]
                             }),new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `(외출시 동행 등)`,
+                                children: [
+                                    new TextRun({
+                                        text: `(외출시 동행 등)`,
+                                        size: 16,
+                                    }),
+                                ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -2125,7 +2205,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2137,7 +2217,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2149,7 +2229,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2161,7 +2241,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2173,7 +2253,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2185,7 +2265,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2197,7 +2277,7 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `□`,
-                                        size: 40,
+                                        size: 35,
                                     }),
                                 ],
                             })],
@@ -2206,6 +2286,7 @@ export class docRecord {
                     ],
                 }),  //개인활동지원
                 new TableRow({
+                    height: {height: 700, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph("")],
@@ -2230,7 +2311,12 @@ export class docRecord {
                         new TableCell({
                             children: [new Paragraph({
                                 alignment: AlignmentType.CENTER,
-                                text: `제공시간`,
+                                children: [
+                                    new TextRun({
+                                        text: `제공시간`,
+                                        bold: true,
+                                    }),
+                                ]
                             })],
                             verticalAlign: VerticalAlign.CENTER,
                         }),
@@ -2286,6 +2372,7 @@ export class docRecord {
                     ],
                 }),  //제공시간
                 new TableRow({
+                    height: {height: 400, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph("")],
@@ -2398,6 +2485,7 @@ export class docRecord {
                     ],
                 }),  //신체기능
                 new TableRow({
+                    height: {height: 400, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph({
@@ -2517,6 +2605,7 @@ export class docRecord {
                     ],
                 }),  //식사기능
                 new TableRow({
+                    height: {height: 400, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph({
@@ -2807,6 +2896,7 @@ export class docRecord {
                     ],
                 }),  //소변실수기능
                 new TableRow({
+                    height: {height: 600, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph({
@@ -2827,10 +2917,11 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `/`,
-                                        size: 30,
+                                        size: 40,
                                     })
                                 ],
                             })],
+                            verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -2840,6 +2931,7 @@ export class docRecord {
                     ],
                 }),  //특이사항
                 new TableRow({
+                    height: {height: 600, rule: HeightRule.EXACT},
                     children: [
                         new TableCell({
                             children: [new Paragraph({
@@ -2860,10 +2952,11 @@ export class docRecord {
                                 children: [
                                     new TextRun({
                                         text: `/`,
-                                        size: 30,
+                                        size: 40,
                                     })
                                 ],
                             })],
+                            verticalAlign: VerticalAlign.CENTER,
                         }),
                         new TableCell({
                             children: [new Paragraph("")],
@@ -2996,7 +3089,6 @@ export class docRecord {
                 this.createText(""),
                 this.createText8("■ 노인장기요양보험법 시행규칙   [별지 제12호서식]   <개정 2019. 6. 12.>"),
                 this.createText16B("장기요양급여 제공기록지(방문요양)"),
-                this.createText(""),
                 Rtable1,
                 this.createText3("-"),
                 Rtable2,

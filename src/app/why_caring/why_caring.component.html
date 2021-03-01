@@ -17,10 +17,10 @@
         <div style="margin-bottom: 50px"></div>
         <div style="font-size: 25px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
         <h2 style="font-size: 36px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
-        <div class="card-review" *ngFor="let why of whys" style="width: 236px; padding-left: 0px;">
+        <div class="card-review" *ngFor="let why of whys" style="width: 236px">
             <img [src]="'../assets/img/'+ why.img" style="width: 200px; height: 200px">
             <h4 style="margin-top: 29px;">{{why.name}}</h4>
-            <p style="font-size: 16px; margin-bottom: 29px" [innerHTML]="why.story"></p>
+            <p style="font-size: 14.5px; margin-bottom: 29px" [innerHTML]="why.story"></p>
         </div>
     </div>
 </section>
@@ -39,7 +39,7 @@
 </section>
 
 <section style="text-align: center; padding-top: 54px;" *showItSizes="{max:599}">
-    <div class="container" style="width: 100%; padding: 0px">
+    <div class="container" style="width: 100%; padding: 0">
         <div style="font-size: 14px;margin-bottom: 14px">국내에만 방문요양 센터는 1만 5천여 개...<br></div>
         <h2 style="font-size: 20px;margin-bottom: 14px">왜 케어링이어야 할까요?<br></h2>
         <div class="card-review_m" *ngFor="let why of whys">
@@ -49,5 +49,5 @@
             <br>
         </div>
     </div>
-    <img src="../../assets/img/img-money.png" style=" position: relative; width: 55%; height: auto; left: 15%; top: 100px">
+    <img src="../../assets/img/img-money.webp" style=" position: relative; width: 55%; height: auto; left: 15%; top: 100px">
 </section>

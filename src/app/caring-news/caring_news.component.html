@@ -1,5 +1,5 @@
 <section *showItSizes="{min:1440}" style="padding-top: 146px; padding-bottom: 151px;">
-    <div class="container" style="overflow-x: hidden;padding-bottom: 30px">
+    <div class="container" style="overflow-x: hidden; padding: 0 0 30px 10px;">
         <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
         <swiper class="visible" [(index)]="index" [config]="{slidesPerView:4.0,spaceBetween:20}">
             <div *ngFor="let news of newss" (click)="moveTo(news.href)">
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 2" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 3" (click)="index= index+1"></div>
         <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 4" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 5" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -36,7 +36,7 @@
 <section *showItSizes="{min:600,max:899}" style="padding-top: 111px; padding-bottom: 98px">
     <div class="container" style="width:86%; overflow-x: hidden;padding-bottom: 30px;">
         <h2 style="font-size: 40px; margin-bottom: 48px">케어링 소식</h2>
-        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:2.4,spaceBetween:5}">
+        <swiper class="visible" [(index)]="index" [config]="{slidesPerView:2.0,spaceBetween:5}">
             <div *ngFor="let news of newss" (click)="moveTo(news.href)">
                 <div class="card-review" style="width: 90%;">
                     <img [src]="'../assets/img/'+news.img" style="width: 100%; height: 50%">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 4" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 5" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>
@@ -59,11 +59,11 @@
                 <div class="review-m" (click)="moveTo(news.href)">
                     <img [src]="'../assets/img/'+news.img"><br>
                     <p style="font-weight: bold;">{{news.name}}</p>
-                    <p style="width: 80%;" [innerHTML]="news.story"></p>
+                    <p style="width: 80%;height: 80px" [innerHTML]="news.story"></p>
                 </div>
             </div>
         </swiper>
-        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 5" (click)="index= index+1"></div>
+        <div class="swiper-button-next swiper-button-black" *ngIf="index !== 6" (click)="index= index+1"></div>
 	    <div class="swiper-button-prev swiper-button-black" *ngIf="index !== 0" (click)="index= index-1"></div>
     </div>
 </section>

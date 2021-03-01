@@ -33,22 +33,29 @@ import { Caring_newsComponent } from './caring-news/caring_news.component';
 import { NationwideComponent } from './nationwide/nationwide.component';
 import { adminComponent } from './caring-admin/contract_form/pre-contract-writing/caring-admin';
 import {admin_mainComponent} from "./caring-admin/admin_main/admin_main.component";
-import {reci_infoComponent} from "./caring-admin/reci_giver_management/reci_info.component";
-import {giver_infoComponent} from "./caring-admin/reci_giver_management/giver_info.component";
 import {caregiver_contractComponent} from "./caring-admin/contract_form/caregiver_contract/caregiver_contract.component";
 import {recipient_contractComponent} from "./caring-admin/contract_form/recipient_contract/recipient_contract.component";
 import {ConsultListComponent} from "./consult/consult.component";
-
+import {CaringMapComponent} from "./caring-map/caring-map.component";
+import {CallFooterComponent} from "./call-footer/call-footer.component";
+import {LcrComponent} from "./labor-cost-ratio/lcr.component";
+import {CountUpModule} from "ngx-countup";
+import {ChatbotComponent} from "./chatbot/chatbot.component";
+import {Yt_mainComponent} from "./yt_main/yt_main.component";
+import {Yt_headlineComponent} from "./yt_headline/yt_headline.component";
+import {CaregiverListComponent} from "./caregiver-list/caregiver-list.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
         MainComponent,
+        Yt_mainComponent,
         HowtoComponent,
         QnaComponent,
         QuestionComponent,
         HeadlineComponent,
+        Yt_headlineComponent,
         StoriesComponent,
         HelpRequestComponent,
         ReserveListComponent,
@@ -65,11 +72,14 @@ import {ConsultListComponent} from "./consult/consult.component";
         BannerComponent,
         adminComponent,
         admin_mainComponent,
-        reci_infoComponent,
-        giver_infoComponent,
         caregiver_contractComponent,
         recipient_contractComponent,
         ConsultListComponent,
+        CaregiverListComponent,
+        CaringMapComponent,
+        CallFooterComponent,
+        LcrComponent,
+        ChatbotComponent,
     ],
     imports: [
         NgxSpringModule,
@@ -81,7 +91,8 @@ import {ConsultListComponent} from "./consult/consult.component";
         SwiperModule,
         ScrollToModule,
         ResponsiveModule.forRoot(),
-        FormsModule
+        FormsModule,
+        CountUpModule
     ],
     providers: [
         {provide: EventManager, useClass: PointerEventManager}

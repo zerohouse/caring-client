@@ -1,0 +1,40 @@
+table
+  width: 100%
+  margin: 30px auto
+  text-align: center
+  font-size: 12px
+
+td, th
+  font-size: 15px
+  vertical-align: middle
+  border: 1px solid black
+
+input
+  font-size: 15px
+  width: 50%
+
+  &:focus
+    border: 3px black solid
+
+input[type="checkbox"]:focus
+  outline: 2px solid black
+
+select:focus
+  outline: 2px solid black
+
+button
+  &:focus
+    border: 2px solid black
+
+  &:active
+    transform: scale(0.95)
+
+textarea
+  font-size: 15px
+  resize: none
+  min-height: 80px
+  width: 150px
+
+  &:focus
+    border: 2px solid black
+

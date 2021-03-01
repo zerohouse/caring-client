@@ -9,19 +9,19 @@ export class Why_caringComponent implements OnInit {
     whys = [
         {
             name: '최고의 전문가',
-            img: 'why-1.png',
+            img: 'why-1.webp',
             story: ' 업계에서 10년 이상 몸 담은 최고의 <br>' +
                 ' 요양전문가들이 만들어 믿을 수 있습니다.'
         },
         {
             name: '고품질 서비스',
-            img: 'why-2.png',
+            img: 'why-2.webp',
             story: ' 100% 직영으로 전국 모든 지역에 <br>' +
                 ' 일관된 서비스 품질을 약속합니다.'
         },
         {
             name: '철저한 교육',
-            img: 'why-3.png',
+            img: 'why-3.webp',
             story: ' 요양보호사 교육원을 함께 운영하여 <br>' +
                 ' 어르신 케어를 위한 모든 과정을 <br>철저히 교육합니다.'
         }

@@ -30,7 +30,7 @@ export class ReserveController {
     return this.http.post<Reserve>('/api/reserve', reserve);
   }
 
-  updateMemo(id: number, memo: string): Observable<void> {
-    return this.http.post<void>('/api/reserve/updateMemo', null, {id: id, memo: memo});
+  updateMemo(reserve: Reserve): Observable<void> {
+    return this.http.put<void>('/api/reserve/updateMemo', null, reserve);
   }
 }

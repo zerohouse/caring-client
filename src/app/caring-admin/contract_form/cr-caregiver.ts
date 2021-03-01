@@ -173,13 +173,6 @@ export class docGiver {
                 this.createAgreelast(),
                 this.createText(""),
                 this.createText(""),
-                this.createPayAgreeFirst(),
-                this.createPayAgreetitle("가족요양 급여 공제 동의서"),
-                this.createAgreetext(""),
-                this.createPayAgreetext("매월 분 급여에서 본인부담금을 공제 후 급여를 지급받습니다."),
-                this.createAgreetext(""),
-                this.createAgreename(caregiver),
-                this.createAgreelast(),
             ],
         });
 
@@ -235,7 +228,7 @@ export class docGiver {
                 }),
                 new TextRun(` (이하"기관")과(와)`),
                 new TextRun({
-                    text: `${caregiver.name} 이하`,
+                    text: `${caregiver.name}님 이하`,
                     bold: true,
                     underline: {},
                 }),
@@ -689,82 +682,4 @@ export class docGiver {
             },
         });
     }  //요양보호사계약서 개인정보취급 border
-
-    public createPayAgreeFirst(): Paragraph{
-        return new Paragraph({
-            alignment: AlignmentType.CENTER,
-            border: {
-                top: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-                left: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-                right: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-            },
-        });
-    }  //요양보호사계약서 가족요양 급여공제동의서 border
-
-    public createPayAgreetitle(text: string): Paragraph{
-        return new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children:[
-                new TextRun({
-                    text: text,
-                    bold: true,
-                }),
-            ],
-            border: {
-                left: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-                right: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-            },
-        });
-    } //요양보호사계약서 가족요양 급여공제동의서 제목
-
-    public createPayAgreetext(text: string): Paragraph{
-        return new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children: [
-                new TextRun({
-                    text: text,
-                }),
-            ],
-            border: {
-                left: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-                right: {
-                    color: "auto",
-                    space: 0,
-                    value: "single",
-                    size: 10,
-                },
-            },
-        });
-    } //요양보호사계약서 가족요양 급여공제동의서 본문
-
 }  //docx파일 생성

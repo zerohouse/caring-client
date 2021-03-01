@@ -54,6 +54,7 @@
               "src/sitemap.xml"
             ],
             "styles": [
+              "node_modules/animate.css/animate.min.css",
               "src/styles.sass"
             ],
             "scripts": [

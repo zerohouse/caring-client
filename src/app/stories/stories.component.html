@@ -49,9 +49,9 @@
 
 <section *showItSizes="{max:599}" style="padding-top: 62px; padding-bottom: 51px; background-color: #f8f9fa">
     <div class="container" style="text-align: center; overflow-x: hidden; padding-bottom: 30px;">
-        <h3 style="line-height: 29px;margin-bottom: 41px;">
+        <p style="font-size: 16px; font-weight: bold; line-height: 29px;margin-bottom: 41px;">
             케어링의 요양보호사 선생님들은<br>언제나 진심을 다합니다
-        </h3>
+        </p>
         <swiper class="visible" [(index)]="index" [config]="{slidesPerView:1.0,spaceBetween:15}">
             <div *ngFor="let story of stories">
                 <div class="review-m" (click)="moveTo(story.href)">

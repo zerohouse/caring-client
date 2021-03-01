@@ -1,35 +1,65 @@
-<div class="container" style="padding-top: 50px; width: 95%; padding-left: 0; padding-right: 0">
-    <button (click)="saves=true; check=true; new()">새 상담 기록</button>
-    <button (click)="saves=false; check=false; load(0); count=0">갱신</button>
-    <label style="padding-left: 200px">상태 :
-        <select [(ngModel)]="state">
-            <option value="진행중(1~4급)" (select)="count=0">진행중(1~4급)</option>
-            <option value="등급신청중" (select)="count=0">등급신청중</option>
-            <option value="완료 & 5급" (select)="count=0">완료 & 5급</option>
-            <option value="부재 & 통화요망" (select)="count=0">부재 & 통화요망</option>
-            <option value="서비스 시작" (select)="count=0">서비스 시작</option>
+<div *ngIf="statistics === false && contract === false" class="container" style="padding-top: 50px; width: 95%; padding-left: 0; padding-right: 0">
+    <button (click)="saves=true; new();">새 상담 기록</button>
+    <button (click)="searchOn='기본'; load(0); saves=false; check=false; message_send=false; cs_check=false; date_check=false; three_date_check=false; check_delete=false; all_date=false; state=''; progress=''; search=''">갱신</button>
+    <a href="https://caring.co.kr/cg-list" target="_blank" style="margin-left: 200px;"><button style="cursor: pointer">요보사 리스트</button></a>
+    <button style="margin-left: 10px" (click)="getStateList('진행중(1~4급)'); three_date_check=true; state='';">3일지남</button>
+    <label style="padding-left: 20px">상태 :
+        <select [(ngModel)]="state" (change)="getState(state); three_date_check=false; date='';">
+            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
+            <option value="가족_등급신청중">가족_등급신청중</option>
+            <option value="가족_완료">가족_완료</option>
+            <option value="가족_5급">가족_5급</option>
+            <option value="가족_서비스시작">가족_서비스시작</option>
+            <option value="일반_구인요청">일반_구인요청</option>
+            <option value="일반_구직문의">일반_구직문의</option>
+            <option value="일반_소개">일반_소개</option>
+            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
+            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
+            <option value="부재 & 통화요망">부재 & 통화요망</option>
+            <option value="종료/보류">종료/보류</option>
+            <option value="기타/복지용구">기타/복지용구</option>
+            <option value="홈페이지 예약">홈페이지 예약</option>
         </select>
-        <button (click)="search_term='state';check=true;">확인</button>
     </label>
     <label style="padding-left: 20px">진행상황 :
-        <select [(ngModel)]="progress">
-            <option value="수시확인">수시확인</option>
+        <select [(ngModel)]="progress" (change)="getProgress(progress);">
             <option value="진행요망">진행요망</option>
             <option value="진행중">진행중</option>
+            <option value="수시확인">수시확인</option>
+            <option value="보류">보류</option>
         </select>
-        <button (click)="search_term='progress';check=true;">확인</button>
     </label>
-    <label style="padding-left: 200px;">검색 :
-        <input type="text" style="width: 200px" [(ngModel)]="number" (keypress)="getphone(number); check=true;">
+    <label  style="padding-left: 200px;">
+        <select [(ngModel)]="searchType">
+            <option value="통합">통합</option>
+            <option value="도.시/군">도.시/군</option>
+            <option value="구">구</option>
+            <option value="번호">번호</option>
+            <option value="보호자">보호자</option>
+            <option value="대상자">대상자</option>
+            <option value="등급">등급</option>
+            <option value="현재상황">현재상황</option>
+            <option value="상담내용">상담내용</option>
+            <option value="유입">유입</option>
+            <option value="상담자">상담자</option>
+            <option value="시작날">시작날</option>
+            <option value="계약날">계약날</option>
+        </select>
+        검색 :
+        <input type="text" style="width: 200px" [(ngModel)]="search" (keyup.enter)="getSearch(searchType, search);">
     </label>
+    <button style="float: right" *ngIf="admin===true" (click)="getDeleteReason('');">삭제요청</button>
+    <button style="float: right" *ngIf="admin===true" (click)="all_date=true; check_delete=false; date_check=false; three_date_check=false; cs_check=false; check=true; state=''; progress=''; search=''; date='';">전체데이터</button>
+    <button style="float: right" (click)="statistics=true; all_date=false;">통계</button>
     <table class="table" #table>
         <thead>
         <tr>
+            <th *ngIf="(progress==='진행요망' || progress==='수시확인')" style="width: 10px; padding: 0">순번</th>
             <th>상태</th>
             <th>첫 상담</th>
             <th class="short">도.시/군</th>
             <th class="short">구</th>
-            <th>번호</th>
+            <th style="width: 50px">번호</th>
             <th>보호자</th>
             <th>대상자</th>
             <th class="short">등급</th>
@@ -40,44 +70,80 @@
             <th class="short">시작날</th>
             <th class="short">계약날</th>
             <th class="short">수정</th>
-            <th class="short">삭제</th>
+            <th class="short" *ngIf="saves===false">삭제</th>
         </tr>
         </thead>
         <tbody>
             <tr *ngIf="saves===true">
+                <td *ngIf="(progress==='진행요망' || progress==='수시확인')"></td>
                 <td>
                     <select [(ngModel)]="user.state">
-                        <option value="진행중(1~4급)">진행중(1~4급)</option>
-                        <option value="등급신청중">등급신청중</option>
-                        <option value="완료 & 5급">완료 & 5급</option>
+                        <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
+                        <option value="가족_등급신청중">가족_등급신청중</option>
+                        <option value="가족_완료">가족_완료</option>
+                        <option value="가족_5급">가족_5급</option>
+                        <option value="가족_서비스시작">가족_서비스시작</option>
+                        <option value="일반_구인요청">일반_구인요청</option>
+                        <option value="일반_구직문의">일반_구직문의</option>
+                        <option value="일반_소개">일반_소개</option>
+                        <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
+                        <option value="기타_등급신청 문의">기타_등급신청 문의</option>
                         <option value="부재 & 통화요망">부재 & 통화요망</option>
-                        <option value="서비스 시작">서비스 시작</option>
+                        <option value="종료/보류">종료/보류</option>
+                        <option value="기타/복지용구">기타/복지용구</option>
+                        <option value="홈페이지 예약">홈페이지 예약</option>
                     </select>
                 </td>
                 <td>
                     <label>현재 진행상황<br>
                         <select [(ngModel)]="user.progress">
-                            <option value="">종료</option>
-                            <option value="수시확인">수시확인</option>
                             <option value="진행요망">진행요망</option>
                             <option value="진행중">진행중</option>
+                            <option value="수시확인">수시확인</option>
+                            <option value="보류">보류</option>
+                            <option value="">종료</option>
                         </select>
                     </label>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.city">
+                    <select [(ngModel)]="user.city">
+                        <option value="강원">강원</option>
+                        <option value="경기">경기</option>
+                        <option value="경남">경남</option>
+                        <option value="경북">경북</option>
+                        <option value="광주">광주</option>
+                        <option value="대구">대구</option>
+                        <option value="대전">대전</option>
+                        <option value="부산">부산</option>
+                        <option value="서울">서울</option>
+                        <option value="세종">세종</option>
+                        <option value="울산">울산</option>
+                        <option value="인천">인천</option>
+                        <option value="전남">전남</option>
+                        <option value="전북">전북</option>
+                        <option value="제주">제주</option>
+                        <option value="충남">충남</option>
+                        <option value="충북">충북</option>
+                    </select>
                 </td>
                 <td>
                     <input [(ngModel)]="user.hole">
                 </td>
                 <td>
-                    <input style="width: 100px" [(ngModel)]="user.phone">
+                    <input style="width: 100px" [(ngModel)]="user.phone"><br>
+                    <input style="width: 100px" [(ngModel)]="user.phone2">
                 </td>
                 <td>
-                    <input [(ngModel)]="user.give">
+                    <input [(ngModel)]="user.give"><br>
+                    <label>성함<br>
+                        <input [(ngModel)]="user.giveName">
+                    </label>
                 </td>
                 <td>
-                    <input style="width: 100px" [(ngModel)]="user.take">
+                    <input style="width: 100px" [(ngModel)]="user.take"><br>
+                    <label>성함<br>
+                        <input [(ngModel)]="user.takeName">
+                    </label>
                 </td>
                 <td>
                     <input [(ngModel)]="user.level">
@@ -89,10 +155,25 @@
                     <textarea [(ngModel)]="user.memo"></textarea>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.come">
+                    <select [(ngModel)]="user.come">
+                        <option value="">유입모름</option>
+                        <option value="유튜브">유튜브</option>
+                        <option value="인터넷">인터넷</option>
+                        <option value="전단지">전단지</option>
+                        <option value="홈페이지">홈페이지</option>
+                        <option value="네이버">네이버</option>
+                        <option value="카톡">카톡</option>
+                        <option value="기타">기타</option>
+                    </select>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.first">
+                    <select [(ngModel)]="user.first">
+                        <option value="김세진">김세진</option>
+                        <option value="이건희">이건희</option>
+                        <option value="이세은">이세은</option>
+                        <option value="임규경">임규경</option>
+                        <option value="전아영">전아영</option>
+                    </select>
                 </td>
                 <td>
                     <input [(ngModel)]="user.start">
@@ -101,28 +182,48 @@
                     <input [(ngModel)]="user.end">
                 </td>
                 <td>
-                    <button (click)="save(user); saves=false;">저장하기</button>
+                    <button (click)="user.phone=PhoneNumberFormat(user.phone); user.phone2=PhoneNumberFormat(user.phone2); time_update(user); firstSave(user);ngOnInit()">저장하기</button>
                 </td>
             </tr>
         </tbody>
-        <ng-container *ngFor="let item of data?.content">
-            <tbody *ngIf="check===false">
+        <ng-container *ngFor="let item of data?.content; index as i;">
+            <tbody *ngIf="check===false && date_check===false && three_date_check===false && cs_check===false">
                 <tr *ngIf="item.id">
+                    <td *ngIf="progress==='진행요망' || progress==='수시확인'" style="color: red; width: 10px; padding: 0">
+                        {{i+1}}<br>
+                    </td>
                     <td>{{item.state}}</td>
                     <td>
-                        {{item.createdAt | date : 'MM-dd'}}/
+                        {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                        <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                            {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                        </span>
                     </td>
                     <td class="short">{{item.city}}</td>
                     <td class="short">{{item.hole}}</td>
-                    <td>{{item.phone}}</td>
-                    <td>{{item.give}}</td>
-                    <td>{{item.take}}</td>
+                    <td>
+                        {{item.phone}}<br>
+                        {{item.phone2}}
+                    </td>
+                    <td>
+                        {{item.give}}<br>
+                        <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                            ({{item.giveName}})
+                        </span>
+                    </td>
+                    <td>
+                        {{item.take}}<br>
+                        <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                            ({{item.takeName}})
+                        </span>
+                    </td>
                     <td class="short">{{item.level}}</td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                     </td>
                     <td>
-                        <textarea [(ngModel)]="item.memo" (ngModelChange)="save(item)"></textarea>
+                        <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
                     </td>
                     <td class="short">{{item.come}}</td>
                     <td class="short">{{item.first}}</td>
@@ -132,43 +233,79 @@
                         <button (click)="user=item; change=true;">-</button>
                     </td>
                     <td class="short">
-                        <button (click)="delete(item);">-</button>
+                        <button (click)="delete_request(item);">-</button>
                     </td>
                 </tr>
                 <tr *ngIf="item.id===user.id && change===true">
+                    <td *ngIf="(progress==='진행요망' || progress==='수시확인')"></td>
                     <td>
                         <select [(ngModel)]="user.state">
-                            <option value="진행중(1~4급)">진행중(1~4급)</option>
-                            <option value="등급신청중">등급신청중</option>
-                            <option value="완료 & 5급">완료 & 5급</option>
+                            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
+                            <option value="가족_등급신청중">가족_등급신청중</option>
+                            <option value="가족_완료">가족_완료</option>
+                            <option value="가족_5급">가족_5급</option>
+                            <option value="가족_서비스시작">가족_서비스시작</option>
+                            <option value="일반_구인요청">일반_구인요청</option>
+                            <option value="일반_구직문의">일반_구직문의</option>
+                            <option value="일반_소개">일반_소개</option>
+                            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
+                            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
                             <option value="부재 & 통화요망">부재 & 통화요망</option>
-                            <option value="서비스 시작">서비스 시작</option>
+                            <option value="종료/보류">종료/보류</option>
+                            <option value="기타/복지용구">기타/복지용구</option>
+                            <option value="홈페이지 예약">홈페이지 예약</option>
                         </select>
                     </td>
                     <td>
                         <label>현재 진행상황<br>
                             <select [(ngModel)]="user.progress">
-                                <option value="">종료</option>
-                                <option value="수시확인">수시확인</option>
                                 <option value="진행요망">진행요망</option>
                                 <option value="진행중">진행중</option>
+                                <option value="수시확인">수시확인</option>
+                                <option value="보류">보류</option>
+                                <option value="">종료</option>
                             </select>
                         </label>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.city">
+                        <select [(ngModel)]="user.city">
+                            <option value="강원">강원</option>
+                            <option value="경기">경기</option>
+                            <option value="경남">경남</option>
+                            <option value="경북">경북</option>
+                            <option value="광주">광주</option>
+                            <option value="대구">대구</option>
+                            <option value="대전">대전</option>
+                            <option value="부산">부산</option>
+                            <option value="서울">서울</option>
+                            <option value="세종">세종</option>
+                            <option value="울산">울산</option>
+                            <option value="인천">인천</option>
+                            <option value="전남">전남</option>
+                            <option value="전북">전북</option>
+                            <option value="제주">제주</option>
+                            <option value="충남">충남</option>
+                            <option value="충북">충북</option>
+                        </select>
                     </td>
                     <td>
                         <input [(ngModel)]="user.hole">
                     </td>
                     <td>
-                        <input style="width: 100px" [(ngModel)]="user.phone">
+                        <input style="width: 100px" [(ngModel)]="user.phone"><br>
+                        <input style="width: 100px" [(ngModel)]="user.phone2">
                     </td>
                     <td>
-                        <input [(ngModel)]="user.give">
+                        <input [(ngModel)]="user.give"><br>
+                        <label>성함<br>
+                            <input [(ngModel)]="user.giveName">
+                        </label>
                     </td>
                     <td>
-                        <input style="width: 100px" [(ngModel)]="user.take">
+                        <input style="width: 100px" [(ngModel)]="user.take"><br>
+                        <label>성함<br>
+                            <input [(ngModel)]="user.takeName">
+                        </label>
                     </td>
                     <td>
                         <input [(ngModel)]="user.level">
@@ -177,13 +314,19 @@
                         <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
                     </td>
                     <td>
-                        <textarea [(ngModel)]="user.memo"></textarea>
+                        <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
                     </td>
                     <td>
                         <input [(ngModel)]="user.come">
                     </td>
                     <td>
-                        <input [(ngModel)]="user.first">
+                        <select [(ngModel)]="user.first">
+                            <option value="김세진">김세진</option>
+                            <option value="이건희">이건희</option>
+                            <option value="이세은">이세은</option>
+                            <option value="임규경">임규경</option>
+                            <option value="전아영">전아영</option>
+                        </select>
                     </td>
                     <td>
                         <input [(ngModel)]="user.start">
@@ -192,29 +335,51 @@
                         <input [(ngModel)]="user.end">
                     </td>
                     <td>
-                        <button (click)="save(user); change=false;">저장하기</button>
+                        <button (click)="user.phone=PhoneNumberFormat(user.phone); user.phone2=PhoneNumberFormat(user.phone2); save(user); change=false;">수정</button>
                     </td>
                 </tr>
             </tbody>
         </ng-container>
-        <ng-container *ngFor="let item of list">
-            <tbody *ngIf="check===true">
+        <ng-container *ngFor="let item of list; index as i;">
+            <tbody *ngIf="check===true && i<200 && date_check===false && three_date_check===false && check_delete===false && cs_check===false && searchType!='내용'">
                 <tr>
-                    <td>{{item.state}}</td>
+                    <td *ngIf="progress==='진행요망' || progress==='수시확인'" style="color: red; width: 10px; padding: 0">
+                        {{i+1}}<br>
+                    </td>
                     <td>
-                        {{item.createdAt | date : 'MM-dd'}}/
+                        {{item.state}}<br>
+                    </td>
+                    <td>
+                        {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                        <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                            {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                        </span>
                     </td>
                     <td class="short">{{item.city}}</td>
                     <td class="short">{{item.hole}}</td>
-                    <td>{{item.phone}}</td>
-                    <td>{{item.give}}</td>
-                    <td>{{item.take}}</td>
+                    <td>
+                        {{item.phone}}<br>
+                        {{item.phone2}}
+                    </td>
+                    <td>
+                        {{item.give}}<br>
+                        <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                            ({{item.giveName}})
+                        </span>
+                    </td>
+                    <td>
+                        {{item.take}}<br>
+                        <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                            ({{item.takeName}})
+                        </span>
+                    </td>
                     <td class="short">{{item.level}}</td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                     </td>
                     <td>
-                        <textarea [(ngModel)]="item.memo" (ngModelChange)="save(item)"></textarea>
+                        <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
                     </td>
                     <td class="short">{{item.come}}</td>
                     <td class="short">{{item.first}}</td>
@@ -224,43 +389,79 @@
                         <button (click)="user=item; change=true;">-</button>
                     </td>
                     <td class="short">
-                        <button (click)="delete(item);">-</button>
+                        <button (click)="delete_request(item);">-</button>
                     </td>
                 </tr>
                 <tr *ngIf="item.id===user.id && change===true">
+                    <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
                     <td>
                         <select [(ngModel)]="user.state">
-                            <option value="진행중(1~4급)">진행중(1~4급)</option>
-                            <option value="등급신청중">등급신청중</option>
-                            <option value="완료 & 5급">완료 & 5급</option>
+                            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
+                            <option value="가족_등급신청중">가족_등급신청중</option>
+                            <option value="가족_완료">가족_완료</option>
+                            <option value="가족_5급">가족_5급</option>
+                            <option value="가족_서비스시작">가족_서비스시작</option>
+                            <option value="일반_구인요청">일반_구인요청</option>
+                            <option value="일반_구직문의">일반_구직문의</option>
+                            <option value="일반_소개">일반_소개</option>
+                            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
+                            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
                             <option value="부재 & 통화요망">부재 & 통화요망</option>
-                            <option value="서비스 시작">서비스 시작</option>
+                            <option value="종료/보류">종료/보류</option>
+                            <option value="기타/복지용구">기타/복지용구</option>
+                            <option value="홈페이지 예약">홈페이지 예약</option>
                         </select>
                     </td>
                     <td>
                         <label>현재 진행상황<br>
                             <select [(ngModel)]="user.progress">
-                                <option value="">종료</option>
-                                <option value="수시확인">수시확인</option>
                                 <option value="진행요망">진행요망</option>
                                 <option value="진행중">진행중</option>
+                                <option value="수시확인">수시확인</option>
+                                <option value="보류">보류</option>
+                                <option value="">종료</option>
                             </select>
                         </label>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.city">
+                        <select [(ngModel)]="user.city">
+                            <option value="강원">강원</option>
+                            <option value="경기">경기</option>
+                            <option value="경남">경남</option>
+                            <option value="경북">경북</option>
+                            <option value="광주">광주</option>
+                            <option value="대구">대구</option>
+                            <option value="대전">대전</option>
+                            <option value="부산">부산</option>
+                            <option value="서울">서울</option>
+                            <option value="세종">세종</option>
+                            <option value="울산">울산</option>
+                            <option value="인천">인천</option>
+                            <option value="전남">전남</option>
+                            <option value="전북">전북</option>
+                            <option value="제주">제주</option>
+                            <option value="충남">충남</option>
+                            <option value="충북">충북</option>
+                        </select>
                     </td>
                     <td>
                         <input [(ngModel)]="user.hole">
                     </td>
                     <td>
-                        <input style="width: 100px" [(ngModel)]="user.phone">
+                        <input style="width: 100px" [(ngModel)]="user.phone"><br>
+                        <input style="width: 100px" [(ngModel)]="user.phone2">
                     </td>
                     <td>
-                        <input [(ngModel)]="user.give">
+                        <input [(ngModel)]="user.give"><br>
+                        <label>성함<br>
+                            <input [(ngModel)]="user.giveName">
+                        </label>
                     </td>
                     <td>
-                        <input style="width: 100px" [(ngModel)]="user.take">
+                        <input style="width: 100px" [(ngModel)]="user.take"><br>
+                        <label>성함<br>
+                            <input [(ngModel)]="user.takeName">
+                        </label>
                     </td>
                     <td>
                         <input [(ngModel)]="user.level">
@@ -269,13 +470,19 @@
                         <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
                     </td>
                     <td>
-                        <textarea [(ngModel)]="user.memo"></textarea>
+                        <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
                     </td>
                     <td>
                         <input [(ngModel)]="user.come">
                     </td>
                     <td>
-                        <input [(ngModel)]="user.first">
+                        <select [(ngModel)]="user.first">
+                            <option value="김세진">김세진</option>
+                            <option value="이건희">이건희</option>
+                            <option value="이세은">이세은</option>
+                            <option value="임규경">임규경</option>
+                            <option value="전아영">전아영</option>
+                        </select>
                     </td>
                     <td>
                         <input [(ngModel)]="user.start">
@@ -284,11 +491,526 @@
                         <input [(ngModel)]="user.end">
                     </td>
                     <td>
-                        <button (click)="save(user); change=false;">저장하기</button>
+                        <button (click)="user.phone=PhoneNumberFormat(user.phone); user.phone2=PhoneNumberFormat(user.phone2); save(user); change=false;">수정</button>
                     </td>
                 </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngFor="let item of list;">
+            <tbody *ngIf="check===true && date_check===false && three_date_check===false && check_delete===false && cs_check===false && searchType==='내용'">
+            <tr>
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>
+                    {{item.state}}<br>
+                </td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                        </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    {{item.phone}}<br>
+                    {{item.phone2}}
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                            ({{item.giveName}})
+                        </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                            ({{item.takeName}})
+                        </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
+                </td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+            </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngFor="let item of list; index as i;">
+            <tbody *ngIf="date_check===true && i<500 && calDateBetweenAandB(item)">
+            <tr>
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>{{item.state}}</td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                    </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    <span *ngIf="item.phone!==''&&item.phone!==null">{{phoneCheck(item.phone)}}<br></span>
+                    <span *ngIf="item.phone2!==''&&item.phone2!==null">{{phoneCheck(item.phone2)}}</span>
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                        ({{item.giveName}})
+                    </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                        ({{item.takeName}})
+                    </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
+                </td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+            </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngFor="let item of list; index as i;">
+            <tbody *ngIf="three_date_check===true && nowDateBetweenAandB(item)">
+            <tr>
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>{{item.state}}</td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                    </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    <span *ngIf="item.phone!==''&&item.phone!==null">{{item.phone}}<br></span>
+                    <span *ngIf="item.phone2!==''&&item.phone2!==null">{{item.phone2}}</span>
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                        ({{item.giveName}})
+                    </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                        ({{item.takeName}})
+                    </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
+                </td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+                <td class="short">
+                    <button (click)="user=item; change=true;">-</button>
+                </td>
+                <td class="short">
+                    <button (click)="delete_request(item);">-</button>
+                </td>
+            </tr>
+            <tr *ngIf="item.id===user.id && change===true">
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>
+                    <select [(ngModel)]="user.state">
+                        <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
+                        <option value="가족_등급신청중">가족_등급신청중</option>
+                        <option value="가족_완료">가족_완료</option>
+                        <option value="가족_5급">가족_5급</option>
+                        <option value="가족_서비스시작">가족_서비스시작</option>
+                        <option value="일반_구인요청">일반_구인요청</option>
+                        <option value="일반_구직문의">일반_구직문의</option>
+                        <option value="일반_소개">일반_소개</option>
+                        <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
+                        <option value="기타_등급신청 문의">기타_등급신청 문의</option>
+                        <option value="부재 & 통화요망">부재 & 통화요망</option>
+                        <option value="종료/보류">종료/보류</option>
+                        <option value="기타/복지용구">기타/복지용구</option>
+                        <option value="홈페이지 예약">홈페이지 예약</option>
+                    </select>
+                </td>
+                <td>
+                    <label>현재 진행상황<br>
+                        <select [(ngModel)]="user.progress">
+                            <option value="진행요망">진행요망</option>
+                            <option value="진행중">진행중</option>
+                            <option value="수시확인">수시확인</option>
+                            <option value="보류">보류</option>
+                            <option value="">종료</option>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <select [(ngModel)]="user.city">
+                        <option value="강원">강원</option>
+                        <option value="경기">경기</option>
+                        <option value="경남">경남</option>
+                        <option value="경북">경북</option>
+                        <option value="광주">광주</option>
+                        <option value="대구">대구</option>
+                        <option value="대전">대전</option>
+                        <option value="부산">부산</option>
+                        <option value="서울">서울</option>
+                        <option value="세종">세종</option>
+                        <option value="울산">울산</option>
+                        <option value="인천">인천</option>
+                        <option value="전남">전남</option>
+                        <option value="전북">전북</option>
+                        <option value="제주">제주</option>
+                        <option value="충남">충남</option>
+                        <option value="충북">충북</option>
+                    </select>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.hole">
+                </td>
+                <td>
+                    <input style="width: 100px" [(ngModel)]="user.phone"><br>
+                    <input style="width: 100px" [(ngModel)]="user.phone2">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.give"><br>
+                    <label>성함<br>
+                        <input [(ngModel)]="user.giveName">
+                    </label>
+                </td>
+                <td>
+                    <input style="width: 100px" [(ngModel)]="user.take"><br>
+                    <label>성함<br>
+                        <input [(ngModel)]="user.takeName">
+                    </label>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.level">
+                </td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.come">
+                </td>
+                <td>
+                    <select [(ngModel)]="user.first">
+                        <option value="김세진">김세진</option>
+                        <option value="이건희">이건희</option>
+                        <option value="이세은">이세은</option>
+                        <option value="임규경">임규경</option>
+                        <option value="전아영">전아영</option>
+                    </select>
+                </td>
+                <td>
+                    <input [(ngModel)]="user.start">
+                </td>
+                <td>
+                    <input [(ngModel)]="user.end">
+                </td>
+                <td>
+                    <button (click)="user.phone=PhoneNumberFormat(user.phone); user.phone2=PhoneNumberFormat(user.phone2); save(user); change=false;">수정</button>
+                </td>
+            </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngFor="let item of list; index as i;">
+            <tbody *ngIf="cs_check===true && i<100 && item.csComplete===true">
+            <tr>
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>{{item.state}}</td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                    </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    <span *ngIf="item.phone!==''&&item.phone!==null">{{phoneCheck(item.phone)}}<br></span>
+                    <span *ngIf="item.phone2!==''&&item.phone2!==null">{{phoneCheck(item.phone2)}}</span>
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                        ({{item.giveName}})
+                    </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                        ({{item.takeName}})
+                    </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
+                </td>
+                <td class="short" >
+                    <input type="checkbox" class="short" [(ngModel)]="item.csComplete" (ngModelChange)="save(item)">
+                </td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+            </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngFor="let item of list; index as i;">
+            <tbody *ngIf="check_delete===true && i<100 && item.deleteReason!=='' && item.deleteReason!==null">
+            <tr>
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>{{item.state}}</td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                    </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    {{item.phone}}<br>
+                    {{item.phone2}}
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                        ({{item.giveName}})
+                    </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                        ({{item.takeName}})
+                    </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>
+                    <textarea style="width: 50px; color: red" [(ngModel)]="item.deleteReason"></textarea>
+                </td>
+                <td>
+                    <textarea [(ngModel)]="item.memo" (ngModelChange)="time_update(item); save(item)"></textarea>
+                </td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+                <td class="short"></td>
+                <td class="short">
+                    <button (click)="delete(item);">-</button>
+                </td>
+            </tr>
+            </tbody>
+        </ng-container>
+        <ng-container *ngIf="all_date===true">
+            <tbody *ngFor="let item of meta_data?.content">
+            <tr *ngIf="item.id">
+                <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
+                <td>{{item.state}}</td>
+                <td>
+                    {{item.createdAt | date : 'MM-dd HH:mm'}}<br>
+                    <span *ngIf="item.lastModifiedDate!=null && item.lastModifiedDate!=''">
+                            <span style="color: red">최근상담</span><br>
+                        {{item.lastModifiedDate | date : 'MM-dd HH:mm'}}
+                        </span>
+                </td>
+                <td class="short">{{item.city}}</td>
+                <td class="short">{{item.hole}}</td>
+                <td>
+                    {{item.phone}}<br>
+                    {{item.phone2}}
+                </td>
+                <td>
+                    {{item.give}}<br>
+                    <span *ngIf="item.giveName!=='' && item.giveName!==null">
+                            ({{item.giveName}})
+                        </span>
+                </td>
+                <td>
+                    {{item.take}}<br>
+                    <span *ngIf="item.takeName!=='' && item.takeName!==null">
+                            ({{item.takeName}})
+                        </span>
+                </td>
+                <td class="short">{{item.level}}</td>
+                <td>{{item.now}}</td>
+                <td>{{item.memo}}</td>
+                <td class="short">{{item.come}}</td>
+                <td class="short">{{item.first}}</td>
+                <td class="short">{{item.start}}</td>
+                <td class="short">{{item.end}}</td>
+            </tr>
             </tbody>
         </ng-container>
     </table>
-    <at-pagination (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
+    <button (click)="download(table)">다운로드</button>
+    <button (click)="checkAdmin()">관리자</button>
+    <at-pagination *ngIf="check===false" (pageChange)="load($event)" [pageable]="data?.pageable" [size]="data?.totalPages"></at-pagination>
+</div>
+
+<div *ngIf="statistics === true;" class="container" style="width: 95%; padding: 0;">
+    <h2 style="text-align: center; padding-bottom: 50px;">고객 누적데이터</h2>
+    <button style="float: right" (click)="statistics=false; load(0);">상담</button>
+    <ng-container *ngIf="meta()===true">
+        <div style="width: 15%; float: left">
+            <p>항목 : 콜수<span style="font-size: 15px">(서비스 시작 수)</span></p>
+            <p>총 콜수: {{calls}}({{all_family_survice}})</p>
+            <p>재 콜수: {{recalls}}({{recalls_survice}})</p>
+            <p>유튜브: {{youtube}}({{youtube_survice}})</p>
+            <p>인터넷: {{internet}}({{internet_survice}})</p>
+            <p>전단지: {{leaflet}}({{leaflet_survice}})</p>
+            <p>소개: {{introduction}}({{introduction_survice}})</p>
+            <p>네이버: {{naver}}({{naver_survice}})</p>
+            <p>홈페이지: {{homepage}}({{homepage_survice}})</p>
+            <p>카톡: {{katalk}}({{katalk_survice}})</p>
+            <p>굿닥: {{gooddak}}({{gooddak_survice}})</p>
+            <p>에리치: {{erich}}({{erich_survice}})</p>
+            <p>네이버 기사: {{article}}({{article_survice}})</p>
+            <p>블로그: {{blog}}({{blog_survice}})</p>
+            <p>다음: {{daum}}({{daum_survice}})</p>
+            <p>공단 안내장: {{corporation}}({{corporation_survice}})</p>
+            <p>삽지: {{feed_paper}}({{feed_paper_survice}})</p>
+            <p>나머지: {{etc}}({{etc_survice}})</p>
+        </div>
+        <div style="width: 15%; float: left">
+            <p>지역  : 콜수<span style="font-size: 15px">(전단지 콜수-섭 시작 수)</span></p>
+            <p>경기도: {{gyeonggi}}({{gyeonggi_leaflet}}-{{gyeonggi_leaflet_survice}})</p>
+            <p>서울: {{seoul}}({{seoul_leaflet}}-{{seoul_leaflet_survice}})</p>
+            <p>부산: {{busan}}({{busan_leaflet}}-{{busan_leaflet_survice}})</p>
+            <p>인천: {{incheon}}({{incheon_leaflet}}-{{incheon_leaflet_survice}})</p>
+            <p>경남: {{gyeongnam}}({{gyeongnam_leaflet}}-{{gyeongnam_leaflet_survice}})</p>
+            <p>대구: {{daegu}}({{daegu_leaflet}}-{{daegu_leaflet_survice}})</p>
+            <p>경북: {{gyeongbuk}}({{gyeongbuk_leaflet}}-{{gyeongbuk_leaflet_survice}})</p>
+            <p>대전: {{daejeon}}({{daejeon_leaflet}}-{{daejeon_leaflet_survice}})</p>
+            <p>전북: {{junbuk}}({{junbuk_leaflet}}-{{junbuk_leaflet_survice}})</p>
+            <p>전남: {{junnam}}({{junnam_leaflet}}-{{junnam_leaflet_survice}})</p>
+            <p>광주: {{gwangju}}({{gwangju_leaflet}}-{{gwangju_leaflet_survice}})</p>
+            <p>충남: {{chungnam}}({{chungnam_leaflet}}-{{chungnam_leaflet_survice}})</p>
+            <p>강원도: {{gangwon}}({{gangwon_leaflet}}-{{gangwon_leaflet_survice}})</p>
+            <p>충북: {{chungbuk}}({{chungbuk_leaflet}}-{{chungbuk_leaflet_survice}})</p>
+            <p>울산: {{ulsan}}({{ulsan_leaflet}}-{{ulsan_leaflet_survice}})</p>
+            <p>제주도: {{jeju}}({{jeju_leaflet}}-{{jeju_leaflet_survice}})</p>
+            <p>? : {{etc_city}}({{etc_city_leaflet}}-{{etc_city_leaflet_survice}})</p>
+        </div>
+        <div style="width: 25%; float: left">
+            <p>총 가족_진행중(1~4급): {{all_family_progress}}</p>
+            <p>총 가족_등급신청중: {{all_family_application}}</p>
+            <p>총 가족_완료: {{all_family_end}}</p>
+            <p>총 가족_5급: {{all_family_level5}}</p>
+            <p>총 가족_서비스시작: {{all_family_survice}}</p>
+            <p style="font-size: 7px">
+                이건희: {{all_survice_lee}}, 김세진: {{all_survice_kim}}, 전아영: {{all_survice_ayoung}}, 임규경: {{all_survice_gyugyeong}}, 이세은: {{all_survice_seeun}}, 그 외: {{all_survice_etc}}
+            </p>
+            <p>총 일반_구인요청: {{all_visit_jobOffer}}</p>
+            <p>총 일반_구직문의: {{all_visit_job}}</p>
+            <p>총 일반_소개: {{all_visit_inside}}</p>
+            <p>총 기타_자격증 / 교육원 문의: {{all_etc_certificate}}</p>
+            <p>총 기타_등급신청 문의: {{all_etc_levelApplication}}</p>
+            <p>총 부재 & 통화요망: {{all_absence}}</p>
+            <p>총 종료/보류: {{all_end}}</p>
+            <p>총 기타/복지용구: {{all_walfare}}</p>
+            <p>서비스 시작 평균: {{(avg_survice/date_survice + 1).toFixed(2)}}일</p>
+            <p style="font-size: 7px">
+                총원: {{avg_survice_all}}명, 5일이내: {{avg_survice_5}}명, 10일이내: {{avg_survice_10}}명, 15일이내: {{avg_survice_15}}명, 20일이내: {{avg_survice_20}}명
+                <br>25일이내: {{avg_survice_25}}명, 30일이내: {{avg_survice_30}}명, 35일이내: {{avg_survice_35}}명, 40일이내: {{avg_survice_40}}명, 40일초과: {{avg_survice_40up}}명
+            </p>
+            <p>최근 일주일 서비스 시작 평균: {{(avg_survice_week/date_survice_week + 1).toFixed(2)}}일</p>
+            <p style="font-size: 7px">
+                총원: {{avg_survice_week_all}}명, 5일이내: {{avg_survice_week_5}}명, 10일이내: {{avg_survice_week_10}}명, 15일이내: {{avg_survice_week_15}}명, 20일이내: {{avg_survice_week_20}}명
+                <br>25일이내: {{avg_survice_week_25}}명, 30일이내: {{avg_survice_week_30}}명, 35일이내: {{avg_survice_week_35}}명, 40일이내: {{avg_survice_week_40}}명, 40일초과: {{avg_survice_week_40up}}명</p><br>
+            <p>총 이건희: {{all_lee}}</p>
+            <p>총 김세진: {{all_kim}}</p>
+            <p>총 전아영: {{all_ayoung}}</p>
+            <p>총 임규경: {{all_gyugyeong}}</p>
+            <p>총 이세은: {{all_seeun}}</p>
+        </div>
+        <div style="width: 15%; float: left">
+            <p>오늘 콜: {{today_call}}</p>
+            <p>가족_진행중(1~4급): {{call_family_progress}}</p>
+            <p>가족_등급신청중: {{call_family_application}}</p>
+            <p>가족_완료: {{call_family_end}}</p>
+            <p>가족_5급: {{call_family_level5}}</p>
+            <p>가족_서비스시작: {{call_family_survice}}</p>
+            <p>일반_구인요청: {{call_visit_jobOffer}}</p>
+            <p>일반_구직문의: {{call_visit_job}}</p>
+            <p>일반_소개: {{call_visit_inside}}</p>
+            <p>기타_자격증/교육원 문의: {{call_etc_certificate}}</p>
+            <p>기타_등급신청 문의: {{call_etc_levelApplication}}</p>
+            <p>부재 & 통화요망: {{call_absence}}</p>
+            <p>종료/보류: {{call_end}}</p>
+            <p>기타/복지용구: {{call_walfare}}</p>
+            <p>홈페이지 예약: {{call_homepage}}</p>
+            <p>서류 작업중: {{call_document}}</p>
+            <p>추후연락: {{call_after}}</p><br>
+            <p>이건희: {{call_lee}}</p>
+            <p style="font-size: 7px">진행중: {{call_lee_progress}}, 완료: {{call_lee_end}}, 부재: {{call_lee_absence}}, 기타: {{call_lee_etc}}</p>
+            <p>김세진: {{call_kim}}</p>
+            <p style="font-size: 7px">진행중: {{call_kim_progress}}, 완료: {{call_kim_end}}, 부재: {{call_kim_absence}}, 기타: {{call_kim_etc}}</p>
+            <p>전아영: {{call_ayoung}}</p>
+            <p style="font-size: 7px">진행중: {{call_ayoung_progress}}, 완료: {{call_ayoung_end}}, 부재: {{call_ayoung_absence}}, 기타: {{call_ayoung_etc}}</p>
+            <p>임규경: {{call_gyugyeong}}</p>
+            <p style="font-size: 7px">진행중: {{call_gyugyeong_progress}}, 완료: {{call_gyugyeong_end}}, 부재: {{call_gyugyeong_absence}}, 기타: {{call_gyugyeong_etc}}</p>
+            <p>이세은: {{call_seeun}}</p>
+            <p style="font-size: 7px">진행중: {{call_seeun_progress}}, 완료: {{call_seeun_end}}, 부재: {{call_seeun_absence}}, 기타: {{call_seeun_etc}}</p>
+            <p>그 외: {{call_etcPerson}}</p>
+        </div>
+        <div style="width: 10%; float: left">
+            <p>신규 콜: {{today_newcall}}</p>
+            <p>리 콜: {{today_recall}}</p><br>
+            <p>유튜브 유입: {{today_youtube}}</p>
+            <p>인터넷 유입: {{today_internet}}</p>
+            <p>네이버 유입: {{today_naver}}</p>
+            <p>전단지 유입: {{today_leafpaper}}</p>
+            <p>홈페이지 유입: {{today_homepage}}</p>
+            <p>그 외 유입: {{today_etc}}</p>
+            <p>유입 모름: {{today_unknowun}}</p>
+        </div>
+
+        <div style="width: 15%; float: left">
+            <label>날 선택:
+                <input type="date" style="width: 50%" [(ngModel)]="search_day">
+                <button (click)="search_data()">확인</button>
+            </label><br>
+
+            <p>신규 콜: {{search_newcall}}</p>
+            <p>유튜브 유입: {{search_youtube}}</p>
+            <p>인터넷 유입: {{search_internet}}</p>
+            <p>네이버 유입: {{search_naver}}</p>
+            <p>전단지 유입: {{search_leafpaper}}</p>
+            <p>홈페이지 유입: {{search_homepage}}</p>
+            <p>그 외 유입: {{search_etc}}</p>
+            <p>유입 모름: {{search_unknowun}}</p>
+        </div>
+    </ng-container>
 </div>
