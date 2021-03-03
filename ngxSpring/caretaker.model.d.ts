@@ -1,25 +1,24 @@
 /* tslint:disable */
 
-export interface Caregiver extends CreateTable {
+export interface Caretaker extends CreateTable {
     name: string;
-    year: string;
+    takeName: string;
     city: string;
     ward: string;
-    time: string;
-    hopeArea: string;
-    phone: string;
-    career: string;
-    etc: string;
-    certificate: string;
-    weekend: string;
-    man: boolean;
     address: string;
+    sex: boolean;
+    year: string;
+    level: string;
+    inmate: string;
+    time: string;
+    diaper: boolean;
+    houseSize: string;
+    phone: string;
+    etc: string;
+    man: boolean;
     pet: string;
     writer: string;
-    work: boolean;
     moveIn: boolean;
-    dementia: boolean;
-    personality: string;
 }
 
 export interface Page<T> extends Slice<T> {

@@ -5,45 +5,17 @@
     <button style="margin-left: 10px" (click)="getStateList('진행중(1~4급)'); three_date_check=true; state='';">3일지남</button>
     <label style="padding-left: 20px">상태 :
         <select [(ngModel)]="state" (change)="getState(state); three_date_check=false; date='';">
-            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
-            <option value="가족_등급신청중">가족_등급신청중</option>
-            <option value="가족_완료">가족_완료</option>
-            <option value="가족_5급">가족_5급</option>
-            <option value="가족_서비스시작">가족_서비스시작</option>
-            <option value="일반_구인요청">일반_구인요청</option>
-            <option value="일반_구직문의">일반_구직문의</option>
-            <option value="일반_소개">일반_소개</option>
-            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
-            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
-            <option value="부재 & 통화요망">부재 & 통화요망</option>
-            <option value="종료/보류">종료/보류</option>
-            <option value="기타/복지용구">기타/복지용구</option>
-            <option value="홈페이지 예약">홈페이지 예약</option>
+            <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
         </select>
     </label>
     <label style="padding-left: 20px">진행상황 :
         <select [(ngModel)]="progress" (change)="getProgress(progress);">
-            <option value="진행요망">진행요망</option>
-            <option value="진행중">진행중</option>
-            <option value="수시확인">수시확인</option>
-            <option value="보류">보류</option>
+            <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
         </select>
     </label>
     <label  style="padding-left: 200px;">
         <select [(ngModel)]="searchType">
-            <option value="통합">통합</option>
-            <option value="도.시/군">도.시/군</option>
-            <option value="구">구</option>
-            <option value="번호">번호</option>
-            <option value="보호자">보호자</option>
-            <option value="대상자">대상자</option>
-            <option value="등급">등급</option>
-            <option value="현재상황">현재상황</option>
-            <option value="상담내용">상담내용</option>
-            <option value="유입">유입</option>
-            <option value="상담자">상담자</option>
-            <option value="시작날">시작날</option>
-            <option value="계약날">계약날</option>
+            <option *ngFor="let list of searchType_list" [ngValue]="list">{{list}}</option>
         </select>
         검색 :
         <input type="text" style="width: 200px" [(ngModel)]="search" (keyup.enter)="getSearch(searchType, search);">
@@ -57,8 +29,8 @@
             <th *ngIf="(progress==='진행요망' || progress==='수시확인')" style="width: 10px; padding: 0">순번</th>
             <th>상태</th>
             <th>첫 상담</th>
-            <th class="short">도.시/군</th>
-            <th class="short">구</th>
+            <th class="short">시/도</th>
+            <th class="short">시/군/구</th>
             <th style="width: 50px">번호</th>
             <th>보호자</th>
             <th>대상자</th>
@@ -78,56 +50,28 @@
                 <td *ngIf="(progress==='진행요망' || progress==='수시확인')"></td>
                 <td>
                     <select [(ngModel)]="user.state">
-                        <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
-                        <option value="가족_등급신청중">가족_등급신청중</option>
-                        <option value="가족_완료">가족_완료</option>
-                        <option value="가족_5급">가족_5급</option>
-                        <option value="가족_서비스시작">가족_서비스시작</option>
-                        <option value="일반_구인요청">일반_구인요청</option>
-                        <option value="일반_구직문의">일반_구직문의</option>
-                        <option value="일반_소개">일반_소개</option>
-                        <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
-                        <option value="기타_등급신청 문의">기타_등급신청 문의</option>
-                        <option value="부재 & 통화요망">부재 & 통화요망</option>
-                        <option value="종료/보류">종료/보류</option>
-                        <option value="기타/복지용구">기타/복지용구</option>
-                        <option value="홈페이지 예약">홈페이지 예약</option>
+                        <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
                     </select>
                 </td>
                 <td>
                     <label>현재 진행상황<br>
                         <select [(ngModel)]="user.progress">
-                            <option value="진행요망">진행요망</option>
-                            <option value="진행중">진행중</option>
-                            <option value="수시확인">수시확인</option>
-                            <option value="보류">보류</option>
+                            <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
                             <option value="">종료</option>
                         </select>
                     </label>
                 </td>
                 <td>
-                    <select [(ngModel)]="user.city">
-                        <option value="강원">강원</option>
-                        <option value="경기">경기</option>
-                        <option value="경남">경남</option>
-                        <option value="경북">경북</option>
-                        <option value="광주">광주</option>
-                        <option value="대구">대구</option>
-                        <option value="대전">대전</option>
-                        <option value="부산">부산</option>
-                        <option value="서울">서울</option>
-                        <option value="세종">세종</option>
-                        <option value="울산">울산</option>
-                        <option value="인천">인천</option>
-                        <option value="전남">전남</option>
-                        <option value="전북">전북</option>
-                        <option value="제주">제주</option>
-                        <option value="충남">충남</option>
-                        <option value="충북">충북</option>
+                    <select [(ngModel)]="user.city" (ngModelChange)="select_ward()">
+                        <option value="">시/도 선택</option>
+                        <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
                     </select>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.hole">
+                    <select [(ngModel)]="user.hole">
+                        <option value="">시/군/구 선택</option>
+                        <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                    </select>
                 </td>
                 <td>
                     <input style="width: 100px" [(ngModel)]="user.phone"><br>
@@ -157,22 +101,12 @@
                 <td>
                     <select [(ngModel)]="user.come">
                         <option value="">유입모름</option>
-                        <option value="유튜브">유튜브</option>
-                        <option value="인터넷">인터넷</option>
-                        <option value="전단지">전단지</option>
-                        <option value="홈페이지">홈페이지</option>
-                        <option value="네이버">네이버</option>
-                        <option value="카톡">카톡</option>
-                        <option value="기타">기타</option>
+                        <option *ngFor="let list of inflow_list" [ngValue]="list">{{list}}</option>
                     </select>
                 </td>
                 <td>
                     <select [(ngModel)]="user.first">
-                        <option value="김세진">김세진</option>
-                        <option value="이건희">이건희</option>
-                        <option value="이세은">이세은</option>
-                        <option value="임규경">임규경</option>
-                        <option value="전아영">전아영</option>
+                        <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
                     </select>
                 </td>
                 <td>
@@ -230,7 +164,7 @@
                     <td class="short">{{item.start}}</td>
                     <td class="short">{{item.end}}</td>
                     <td class="short">
-                        <button (click)="user=item; change=true;">-</button>
+                        <button (click)="user=item; change=true; select_ward()">-</button>
                     </td>
                     <td class="short">
                         <button (click)="delete_request(item);">-</button>
@@ -240,56 +174,28 @@
                     <td *ngIf="(progress==='진행요망' || progress==='수시확인')"></td>
                     <td>
                         <select [(ngModel)]="user.state">
-                            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
-                            <option value="가족_등급신청중">가족_등급신청중</option>
-                            <option value="가족_완료">가족_완료</option>
-                            <option value="가족_5급">가족_5급</option>
-                            <option value="가족_서비스시작">가족_서비스시작</option>
-                            <option value="일반_구인요청">일반_구인요청</option>
-                            <option value="일반_구직문의">일반_구직문의</option>
-                            <option value="일반_소개">일반_소개</option>
-                            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
-                            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
-                            <option value="부재 & 통화요망">부재 & 통화요망</option>
-                            <option value="종료/보류">종료/보류</option>
-                            <option value="기타/복지용구">기타/복지용구</option>
-                            <option value="홈페이지 예약">홈페이지 예약</option>
+                            <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
                         </select>
                     </td>
                     <td>
                         <label>현재 진행상황<br>
                             <select [(ngModel)]="user.progress">
-                                <option value="진행요망">진행요망</option>
-                                <option value="진행중">진행중</option>
-                                <option value="수시확인">수시확인</option>
-                                <option value="보류">보류</option>
+                                <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
                                 <option value="">종료</option>
                             </select>
                         </label>
                     </td>
                     <td>
-                        <select [(ngModel)]="user.city">
-                            <option value="강원">강원</option>
-                            <option value="경기">경기</option>
-                            <option value="경남">경남</option>
-                            <option value="경북">경북</option>
-                            <option value="광주">광주</option>
-                            <option value="대구">대구</option>
-                            <option value="대전">대전</option>
-                            <option value="부산">부산</option>
-                            <option value="서울">서울</option>
-                            <option value="세종">세종</option>
-                            <option value="울산">울산</option>
-                            <option value="인천">인천</option>
-                            <option value="전남">전남</option>
-                            <option value="전북">전북</option>
-                            <option value="제주">제주</option>
-                            <option value="충남">충남</option>
-                            <option value="충북">충북</option>
+                        <select [(ngModel)]="user.city" (ngModelChange)="select_ward()">
+                            <option value="">시/도 선택</option>
+                            <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
                         </select>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.hole">
+                        <select [(ngModel)]="user.hole">
+                            <option value="">시/군/구 선택</option>
+                            <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                        </select>
                     </td>
                     <td>
                         <input style="width: 100px" [(ngModel)]="user.phone"><br>
@@ -317,15 +223,14 @@
                         <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.come">
+                        <select [(ngModel)]="user.come">
+                            <option value="">유입모름</option>
+                            <option *ngFor="let list of inflow_list" [ngValue]="list">{{list}}</option>
+                        </select>
                     </td>
                     <td>
                         <select [(ngModel)]="user.first">
-                            <option value="김세진">김세진</option>
-                            <option value="이건희">이건희</option>
-                            <option value="이세은">이세은</option>
-                            <option value="임규경">임규경</option>
-                            <option value="전아영">전아영</option>
+                            <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
                         </select>
                     </td>
                     <td>
@@ -386,7 +291,7 @@
                     <td class="short">{{item.start}}</td>
                     <td class="short">{{item.end}}</td>
                     <td class="short">
-                        <button (click)="user=item; change=true;">-</button>
+                        <button (click)="user=item; change=true; select_ward();">-</button>
                     </td>
                     <td class="short">
                         <button (click)="delete_request(item);">-</button>
@@ -396,56 +301,28 @@
                     <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
                     <td>
                         <select [(ngModel)]="user.state">
-                            <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
-                            <option value="가족_등급신청중">가족_등급신청중</option>
-                            <option value="가족_완료">가족_완료</option>
-                            <option value="가족_5급">가족_5급</option>
-                            <option value="가족_서비스시작">가족_서비스시작</option>
-                            <option value="일반_구인요청">일반_구인요청</option>
-                            <option value="일반_구직문의">일반_구직문의</option>
-                            <option value="일반_소개">일반_소개</option>
-                            <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
-                            <option value="기타_등급신청 문의">기타_등급신청 문의</option>
-                            <option value="부재 & 통화요망">부재 & 통화요망</option>
-                            <option value="종료/보류">종료/보류</option>
-                            <option value="기타/복지용구">기타/복지용구</option>
-                            <option value="홈페이지 예약">홈페이지 예약</option>
+                            <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
                         </select>
                     </td>
                     <td>
                         <label>현재 진행상황<br>
                             <select [(ngModel)]="user.progress">
-                                <option value="진행요망">진행요망</option>
-                                <option value="진행중">진행중</option>
-                                <option value="수시확인">수시확인</option>
-                                <option value="보류">보류</option>
+                                <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
                                 <option value="">종료</option>
                             </select>
                         </label>
                     </td>
                     <td>
-                        <select [(ngModel)]="user.city">
-                            <option value="강원">강원</option>
-                            <option value="경기">경기</option>
-                            <option value="경남">경남</option>
-                            <option value="경북">경북</option>
-                            <option value="광주">광주</option>
-                            <option value="대구">대구</option>
-                            <option value="대전">대전</option>
-                            <option value="부산">부산</option>
-                            <option value="서울">서울</option>
-                            <option value="세종">세종</option>
-                            <option value="울산">울산</option>
-                            <option value="인천">인천</option>
-                            <option value="전남">전남</option>
-                            <option value="전북">전북</option>
-                            <option value="제주">제주</option>
-                            <option value="충남">충남</option>
-                            <option value="충북">충북</option>
+                        <select [(ngModel)]="user.city" (ngModelChange)="select_ward()">
+                            <option value="">시/도 선택</option>
+                            <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
                         </select>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.hole">
+                        <select [(ngModel)]="user.hole">
+                            <option value="">시/군/구 선택</option>
+                            <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                        </select>
                     </td>
                     <td>
                         <input style="width: 100px" [(ngModel)]="user.phone"><br>
@@ -473,15 +350,14 @@
                         <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.come">
+                        <select [(ngModel)]="user.come">
+                            <option value="">유입모름</option>
+                            <option *ngFor="let list of inflow_list" [ngValue]="list">{{list}}</option>
+                        </select>
                     </td>
                     <td>
                         <select [(ngModel)]="user.first">
-                            <option value="김세진">김세진</option>
-                            <option value="이건희">이건희</option>
-                            <option value="이세은">이세은</option>
-                            <option value="임규경">임규경</option>
-                            <option value="전아영">전아영</option>
+                            <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
                         </select>
                     </td>
                     <td>
@@ -628,7 +504,7 @@
                 <td class="short">{{item.start}}</td>
                 <td class="short">{{item.end}}</td>
                 <td class="short">
-                    <button (click)="user=item; change=true;">-</button>
+                    <button (click)="user=item; change=true; select_ward();">-</button>
                 </td>
                 <td class="short">
                     <button (click)="delete_request(item);">-</button>
@@ -638,56 +514,28 @@
                 <td *ngIf="progress==='진행요망' || progress==='수시확인'"></td>
                 <td>
                     <select [(ngModel)]="user.state">
-                        <option value="가족_진행중(1~4급)">가족_진행중(1~4급)</option>
-                        <option value="가족_등급신청중">가족_등급신청중</option>
-                        <option value="가족_완료">가족_완료</option>
-                        <option value="가족_5급">가족_5급</option>
-                        <option value="가족_서비스시작">가족_서비스시작</option>
-                        <option value="일반_구인요청">일반_구인요청</option>
-                        <option value="일반_구직문의">일반_구직문의</option>
-                        <option value="일반_소개">일반_소개</option>
-                        <option value="기타_자격증 / 교육원 문의">기타_자격증 / 교육원 문의</option>
-                        <option value="기타_등급신청 문의">기타_등급신청 문의</option>
-                        <option value="부재 & 통화요망">부재 & 통화요망</option>
-                        <option value="종료/보류">종료/보류</option>
-                        <option value="기타/복지용구">기타/복지용구</option>
-                        <option value="홈페이지 예약">홈페이지 예약</option>
+                        <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
                     </select>
                 </td>
                 <td>
                     <label>현재 진행상황<br>
                         <select [(ngModel)]="user.progress">
-                            <option value="진행요망">진행요망</option>
-                            <option value="진행중">진행중</option>
-                            <option value="수시확인">수시확인</option>
-                            <option value="보류">보류</option>
+                            <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
                             <option value="">종료</option>
                         </select>
                     </label>
                 </td>
                 <td>
-                    <select [(ngModel)]="user.city">
-                        <option value="강원">강원</option>
-                        <option value="경기">경기</option>
-                        <option value="경남">경남</option>
-                        <option value="경북">경북</option>
-                        <option value="광주">광주</option>
-                        <option value="대구">대구</option>
-                        <option value="대전">대전</option>
-                        <option value="부산">부산</option>
-                        <option value="서울">서울</option>
-                        <option value="세종">세종</option>
-                        <option value="울산">울산</option>
-                        <option value="인천">인천</option>
-                        <option value="전남">전남</option>
-                        <option value="전북">전북</option>
-                        <option value="제주">제주</option>
-                        <option value="충남">충남</option>
-                        <option value="충북">충북</option>
+                    <select [(ngModel)]="user.city" (ngModelChange)="select_ward()">
+                        <option value="">시/도 선택</option>
+                        <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
                     </select>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.hole">
+                    <select [(ngModel)]="user.hole">
+                        <option value="">시/군/구 선택</option>
+                        <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                    </select>
                 </td>
                 <td>
                     <input style="width: 100px" [(ngModel)]="user.phone"><br>
@@ -715,15 +563,14 @@
                     <textarea [(ngModel)]="user.memo" (ngModelChange)="time_update(user)"></textarea>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.come">
+                    <select [(ngModel)]="user.come">
+                        <option value="">유입모름</option>
+                        <option *ngFor="let list of inflow_list" [ngValue]="list">{{list}}</option>
+                    </select>
                 </td>
                 <td>
                     <select [(ngModel)]="user.first">
-                        <option value="김세진">김세진</option>
-                        <option value="이건희">이건희</option>
-                        <option value="이세은">이세은</option>
-                        <option value="임규경">임규경</option>
-                        <option value="전아영">전아영</option>
+                        <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
                     </select>
                 </td>
                 <td>
@@ -905,23 +752,23 @@
         </div>
         <div style="width: 15%; float: left">
             <p>지역  : 콜수<span style="font-size: 15px">(전단지 콜수-섭 시작 수)</span></p>
-            <p>경기도: {{gyeonggi}}({{gyeonggi_leaflet}}-{{gyeonggi_leaflet_survice}})</p>
-            <p>서울: {{seoul}}({{seoul_leaflet}}-{{seoul_leaflet_survice}})</p>
-            <p>부산: {{busan}}({{busan_leaflet}}-{{busan_leaflet_survice}})</p>
-            <p>인천: {{incheon}}({{incheon_leaflet}}-{{incheon_leaflet_survice}})</p>
-            <p>경남: {{gyeongnam}}({{gyeongnam_leaflet}}-{{gyeongnam_leaflet_survice}})</p>
-            <p>대구: {{daegu}}({{daegu_leaflet}}-{{daegu_leaflet_survice}})</p>
-            <p>경북: {{gyeongbuk}}({{gyeongbuk_leaflet}}-{{gyeongbuk_leaflet_survice}})</p>
-            <p>대전: {{daejeon}}({{daejeon_leaflet}}-{{daejeon_leaflet_survice}})</p>
-            <p>전북: {{junbuk}}({{junbuk_leaflet}}-{{junbuk_leaflet_survice}})</p>
-            <p>전남: {{junnam}}({{junnam_leaflet}}-{{junnam_leaflet_survice}})</p>
-            <p>광주: {{gwangju}}({{gwangju_leaflet}}-{{gwangju_leaflet_survice}})</p>
-            <p>충남: {{chungnam}}({{chungnam_leaflet}}-{{chungnam_leaflet_survice}})</p>
-            <p>강원도: {{gangwon}}({{gangwon_leaflet}}-{{gangwon_leaflet_survice}})</p>
-            <p>충북: {{chungbuk}}({{chungbuk_leaflet}}-{{chungbuk_leaflet_survice}})</p>
-            <p>울산: {{ulsan}}({{ulsan_leaflet}}-{{ulsan_leaflet_survice}})</p>
-            <p>제주도: {{jeju}}({{jeju_leaflet}}-{{jeju_leaflet_survice}})</p>
-            <p>? : {{etc_city}}({{etc_city_leaflet}}-{{etc_city_leaflet_survice}})</p>
+            <p>경기도: {{gyeonggi_call}}({{gyeonggi_leaflet}}-{{gyeonggi_leaflet_survice}})</p>
+            <p>서울: {{seoul_call}}({{seoul_leaflet}}-{{seoul_leaflet_survice}})</p>
+            <p>부산: {{busan_call}}({{busan_leaflet}}-{{busan_leaflet_survice}})</p>
+            <p>인천: {{incheon_call}}({{incheon_leaflet}}-{{incheon_leaflet_survice}})</p>
+            <p>경남: {{gyeongnam_call}}({{gyeongnam_leaflet}}-{{gyeongnam_leaflet_survice}})</p>
+            <p>대구: {{daegu_call}}({{daegu_leaflet}}-{{daegu_leaflet_survice}})</p>
+            <p>경북: {{gyeongbuk_call}}({{gyeongbuk_leaflet}}-{{gyeongbuk_leaflet_survice}})</p>
+            <p>대전: {{daejeon_call}}({{daejeon_leaflet}}-{{daejeon_leaflet_survice}})</p>
+            <p>전북: {{junbuk_call}}({{junbuk_leaflet}}-{{junbuk_leaflet_survice}})</p>
+            <p>전남: {{junnam_call}}({{junnam_leaflet}}-{{junnam_leaflet_survice}})</p>
+            <p>광주: {{gwangju_call}}({{gwangju_leaflet}}-{{gwangju_leaflet_survice}})</p>
+            <p>충남: {{chungnam_call}}({{chungnam_leaflet}}-{{chungnam_leaflet_survice}})</p>
+            <p>강원도: {{gangwon_call}}({{gangwon_leaflet}}-{{gangwon_leaflet_survice}})</p>
+            <p>충북: {{chungbuk_call}}({{chungbuk_leaflet}}-{{chungbuk_leaflet_survice}})</p>
+            <p>울산: {{ulsan_call}}({{ulsan_leaflet}}-{{ulsan_leaflet_survice}})</p>
+            <p>제주도: {{jeju_call}}({{jeju_leaflet}}-{{jeju_leaflet_survice}})</p>
+            <p>? : {{etc_city_call}}({{etc_city_leaflet}}-{{etc_city_leaflet_survice}})</p>
         </div>
         <div style="width: 25%; float: left">
             <p>총 가족_진행중(1~4급): {{all_family_progress}}</p>

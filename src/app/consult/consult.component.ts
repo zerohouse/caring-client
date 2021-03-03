@@ -42,12 +42,35 @@ export class ConsultListComponent implements OnInit {
         firstOrder: false,
     };
     state: string;
+    state_list: string[] = [
+        "가족_진행중(1~4급)", "가족_등급신청중", "가족_완료",
+        "가족_5급", "가족_서비스시작", "일반_구인요청",
+        "일반_구직문의", "일반_소개", "기타_자격증 / 교육원 문의",
+        "기타_등급신청 문의", "부재 & 통화요망", "종료/보류",
+        "기타/복지용구", "홈페이지 예약"
+    ];
     progress: string;
+    progress_list: string[] = ["진행요망", "진행중",
+        "수시확인", "보류"
+    ];
     search: string;
     memo: string;
     date: string;
     searchType: string = '통합';
+    searchType_list: string[] = [
+        "통합", "시/도", "시/군/구", "번호",
+        "보호자", "대상자", "등급", "현재상황",
+        "상담내용", "유입", "상담자", "시작날",
+        "계약날"
+    ];
     searchOn: string = '기본';
+    inflow_list: string[] = [
+        "유튜브", "인터넷", "전단지", "홈페이지",
+        "네이버", "카톡", "메리츠", "기타"
+    ];
+    counselor_list: string[] = [
+        "김세진", "이건희", "이세은", "임규경", "전아영"
+    ];
     statistics: boolean = false;
     contract: boolean = false;
     saves: boolean = false;
@@ -59,10 +82,27 @@ export class ConsultListComponent implements OnInit {
     change: boolean = false;
     admin: boolean = false;
     check_delete: boolean = false;
-    all_check: boolean = true;
-    message_all_check: boolean = true;
     all_date: boolean = false;
     phone_check: boolean = false;
+    city: string[] = ["강원","경기","경남","경북","광주","대구","대전","부산","서울","세종","울산","인천","전남","전북","제주","충남","충북"];
+    ward: string[];
+    gangwon: string[] = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
+    gyeonggi: string[] = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+    gyeongnam: string[] = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
+    gyeongbuk: string[] = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
+    gwangju: string[] = ["광산구","남구","동구","북구","서구"];
+    daegu: string[] = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
+    daejeon: string[] = ["대덕구","동구","서구","유성구","중구"];
+    busan: string[] = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
+    seoul: string[] = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+    sejong: string[] = ["세종"];
+    incheon: string[] = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+    ulsan: string[] = ["남구","동구","북구","중구","울주군"];
+    chungbuk: string[] = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
+    chungnam: string[] = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","당진군","부여군","서천군","연기군","예산군","청양군","태안군","홍성군"];
+    junbuk: string[] = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군"];
+    junnam: string[] = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+    jeju: string[] = ["서귀포시","제주시","남제주군","북제주군"];
 
     calls: number;
     recalls: number;
@@ -97,23 +137,23 @@ export class ConsultListComponent implements OnInit {
     katalk_survice: number;
     feed_paper_survice: number;
     etc_survice: number;
-    seoul: number;
-    gyeonggi: number;
-    incheon: number;
-    gangwon: number;
-    chungbuk: number;
-    chungnam: number;
-    gyeongbuk: number;
-    gyeongnam: number;
-    junbuk: number;
-    junnam: number;
-    daejeon: number;
-    daegu: number;
-    gwangju: number;
-    busan: number;
-    ulsan: number;
-    jeju: number;
-    etc_city: number;
+    seoul_call: number;
+    gyeonggi_call: number;
+    incheon_call: number;
+    gangwon_call: number;
+    chungbuk_call: number;
+    chungnam_call: number;
+    gyeongbuk_call: number;
+    gyeongnam_call: number;
+    junbuk_call: number;
+    junnam_call: number;
+    daejeon_call: number;
+    daegu_call: number;
+    gwangju_call: number;
+    busan_call: number;
+    ulsan_call: number;
+    jeju_call: number;
+    etc_city_call: number;
     seoul_leaflet: number;
     gyeonggi_leaflet: number;
     incheon_leaflet: number;
@@ -260,37 +300,6 @@ export class ConsultListComponent implements OnInit {
     call_seeun_etc: number;
     call_etcPerson: number;
 
-    con1: number;
-    con2: number;
-    con3: number;
-    con4: number;
-    con5: number;
-    con6: number;
-    con7: number;
-    con8: number;
-    con9: number;
-    con10: number;
-    con11: number;
-    con12: number;
-    con13: number;
-    con14: number;
-    con15: number;
-    con16: number;
-    con17: number;
-    con18: number;
-    con19: number;
-    con20: number;
-    con21: number;
-    con22: number;
-    con23: number;
-    con24: number;
-    con25: number;
-    con26: number;
-    con27: number;
-    con28: number;
-    con29: number;
-    con30: number;
-    con31: number;
     conDate: string = '';
     conList: boolean = false;
 
@@ -316,9 +325,9 @@ export class ConsultListComponent implements OnInit {
         }else if(this.searchOn==='검색'){
             if(this.searchType==='통합'){
                 this.api.consult.getSearchConsult(this.search, $event, 7).subscribe( data => this.data = data );
-            } else if(this.searchType==='도.시/군'){
+            } else if(this.searchType==='시/도'){
                 this.api.consult.getSearchCityConsult(this.search, $event, 7).subscribe( data => this.data = data );
-            } else if(this.searchType==='구'){
+            } else if(this.searchType==='시/군/구'){
                 this.api.consult.getSearchHoleConsult(this.search, $event, 7).subscribe( data => this.data = data );
             } else if(this.searchType==='번호'){
                 if(this.search.length>=1){
@@ -364,6 +373,44 @@ export class ConsultListComponent implements OnInit {
         }
     }
 
+    select_ward(){
+        if(this.user.city==='강원'){
+            this.ward=this.gangwon;
+        } else if(this.user.city==='경기'){
+            this.ward=this.gyeonggi;
+        } else if(this.user.city==='경남'){
+            this.ward=this.gyeongnam;
+        } else if(this.user.city==='경북'){
+            this.ward=this.gyeongbuk;
+        } else if(this.user.city==='광주'){
+            this.ward=this.gwangju;
+        } else if(this.user.city==='대구'){
+            this.ward=this.daegu;
+        } else if(this.user.city==='대전'){
+            this.ward=this.daejeon;
+        } else if(this.user.city==='부산'){
+            this.ward=this.busan;
+        } else if(this.user.city==='서울'){
+            this.ward=this.seoul;
+        } else if(this.user.city==='세종'){
+            this.ward=this.sejong;
+        } else if(this.user.city==='울산'){
+            this.ward=this.ulsan;
+        } else if(this.user.city==='인천'){
+            this.ward=this.incheon;
+        } else if(this.user.city==='전남'){
+            this.ward=this.junnam;
+        } else if(this.user.city==='전북'){
+            this.ward=this.junbuk;
+        } else if(this.user.city==='제주'){
+            this.ward=this.jeju;
+        } else if(this.user.city==='충남'){
+            this.ward=this.chungnam;
+        } else if(this.user.city==='충북'){
+            this.ward=this.chungbuk;
+        }
+    }
+
     delete(item: Consult) {
         if (!confirm("삭제 요청을 허가 하시겠습니까?")) {
             item.deleteReason = '';
@@ -390,9 +437,9 @@ export class ConsultListComponent implements OnInit {
     getSearch(searchType: string, search: string){
         if(searchType==='통합'){
             this.api.consult.getSearchConsult(search, 0, 7).subscribe( data => this.data = data );
-        } else if(searchType==='도.시/군'){
+        } else if(searchType==='시/도'){
             this.api.consult.getSearchCityConsult(search, 0, 7).subscribe( data => this.data = data );
-        } else if(searchType==='구'){
+        } else if(searchType==='시/군/구'){
             this.api.consult.getSearchHoleConsult(search, 0, 7).subscribe( data => this.data = data );
         } else if(searchType==='번호'){
             if(search.length>=1){
@@ -617,23 +664,23 @@ export class ConsultListComponent implements OnInit {
         this.katalk_survice = 0;
         this.feed_paper_survice = 0;
         this.etc_survice = 0;
-        this.seoul = 0;
-        this.gyeonggi = 0;
-        this.incheon = 0;
-        this.gangwon = 0;
-        this.chungbuk = 0;
-        this.chungnam = 0;
-        this.gyeongbuk = 0;
-        this.gyeongnam = 0;
-        this.junbuk = 0;
-        this.junnam = 0;
-        this.daejeon = 0;
-        this.daegu = 0;
-        this.gwangju = 0;
-        this.busan = 0;
-        this.ulsan = 0;
-        this.jeju = 0;
-        this.etc_city = 0;
+        this.seoul_call = 0;
+        this.gyeonggi_call = 0;
+        this.incheon_call = 0;
+        this.gangwon_call = 0;
+        this.chungbuk_call = 0;
+        this.chungnam_call = 0;
+        this.gyeongbuk_call = 0;
+        this.gyeongnam_call = 0;
+        this.junbuk_call = 0;
+        this.junnam_call = 0;
+        this.daejeon_call = 0;
+        this.daegu_call = 0;
+        this.gwangju_call = 0;
+        this.busan_call = 0;
+        this.ulsan_call = 0;
+        this.jeju_call = 0;
+        this.etc_city_call = 0;
         this.seoul_leaflet = 0;
         this.gyeonggi_leaflet = 0;
         this.incheon_leaflet = 0;
@@ -920,39 +967,39 @@ export class ConsultListComponent implements OnInit {
                 }
 
                 if (this.meta_data.content[i].city === '서울') {
-                    this.seoul++;
+                    this.seoul_call++;
                 } else if (this.meta_data.content[i].city === '경기도') {
-                    this.gyeonggi++;
+                    this.gyeonggi_call++;
                 } else if (this.meta_data.content[i].city === '인천') {
-                    this.incheon++;
+                    this.incheon_call++;
                 } else if (this.meta_data.content[i].city === '강원도') {
-                    this.gangwon++;
+                    this.gangwon_call++;
                 } else if (this.meta_data.content[i].city === '충북') {
-                    this.chungbuk++;
+                    this.chungbuk_call++;
                 } else if (this.meta_data.content[i].city === '충남') {
-                    this.chungnam++;
+                    this.chungnam_call++;
                 } else if (this.meta_data.content[i].city === '경북') {
-                    this.gyeongbuk++;
+                    this.gyeongbuk_call++;
                 } else if (this.meta_data.content[i].city === '경남') {
-                    this.gyeongnam++;
+                    this.gyeongnam_call++;
                 } else if (this.meta_data.content[i].city === '전북') {
-                    this.junbuk++;
+                    this.junbuk_call++;
                 } else if (this.meta_data.content[i].city === '전남') {
-                    this.junnam++;
+                    this.junnam_call++;
                 } else if (this.meta_data.content[i].city === '대전') {
-                    this.daejeon++;
+                    this.daejeon_call++;
                 } else if (this.meta_data.content[i].city === '대구') {
-                    this.daegu++;
+                    this.daegu_call++;
                 } else if (this.meta_data.content[i].city === '광주') {
-                    this.gwangju++;
+                    this.gwangju_call++;
                 } else if (this.meta_data.content[i].city === '부산') {
-                    this.busan++;
+                    this.busan_call++;
                 } else if (this.meta_data.content[i].city === '울산') {
-                    this.ulsan++;
+                    this.ulsan_call++;
                 } else if (this.meta_data.content[i].city === '제주도') {
-                    this.jeju++;
+                    this.jeju_call++;
                 } else {
-                    this.etc_city++;
+                    this.etc_city_call++;
                 }
 
                 if (this.meta_data.content[i].state === '가족_진행중(1~4급)') {
@@ -1533,102 +1580,5 @@ export class ConsultListComponent implements OnInit {
 
         return phone.toString().replace(phoneReplace, '');
 
-    }
-
-    contrac(): boolean{
-        this.con1 = 0;
-        this.con2 = 0;
-        this.con3 = 0;
-        this.con4 = 0;
-        this.con5 = 0;
-        this.con6 = 0;
-        this.con7 = 0;
-        this.con8 = 0;
-        this.con9 = 0;
-        this.con10 = 0;
-        this.con11 = 0;
-        this.con12 = 0;
-        this.con13 = 0;
-        this.con14 = 0;
-        this.con15 = 0;
-        this.con16 = 0;
-        this.con17 = 0;
-        this.con18 = 0;
-        this.con19 = 0;
-        this.con20 = 0;
-        this.con21 = 0;
-        this.con22 = 0;
-        this.con23 = 0;
-        this.con24 = 0;
-        this.con25 = 0;
-        this.con26 = 0;
-        this.con27 = 0;
-        this.con28 = 0;
-        this.con29 = 0;
-        this.con30 = 0;
-        this.con31 = 0;
-
-        for (let i=0;i<this.list.length;i++){
-            if(this.list[i].end==='2/1'){
-                this.con1++;
-            } else if(this.list[i].end==='2/2'){
-                this.con2++;
-            } else if(this.list[i].end==='2/2'){
-                this.con2++;
-            } else if(this.list[i].end==='2/3'){
-                this.con3++;
-            } else if(this.list[i].end==='2/4'){
-                this.con4++;
-            } else if(this.list[i].end==='2/5'){
-                this.con5++;
-            } else if(this.list[i].end==='2/6'){
-                this.con6++;
-            } else if(this.list[i].end==='2/7'){
-                this.con7++;
-            } else if(this.list[i].end==='2/8'){
-                this.con8++;
-            } else if(this.list[i].end==='2/9'){
-                this.con9++;
-            } else if(this.list[i].end==='2/10'){
-                this.con10++;
-            } else if(this.list[i].end==='2/11'){
-                this.con11++;
-            } else if(this.list[i].end==='2/12'){
-                this.con12++;
-            } else if(this.list[i].end==='2/13'){
-                this.con13++;
-            } else if(this.list[i].end==='2/14'){
-                this.con14++;
-            } else if(this.list[i].end==='2/15'){
-                this.con15++;
-            } else if(this.list[i].end==='2/16'){
-                this.con16++;
-            } else if(this.list[i].end==='2/17'){
-                this.con17++;
-            } else if(this.list[i].end==='2/18'){
-                this.con18++;
-            } else if(this.list[i].end==='2/19'){
-                this.con19++;
-            } else if(this.list[i].end==='2/20'){
-                this.con20++;
-            } else if(this.list[i].end==='2/21'){
-                this.con21++;
-            } else if(this.list[i].end==='2/22'){
-                this.con22++;
-            } else if(this.list[i].end==='2/23'){
-                this.con23++;
-            } else if(this.list[i].end==='2/24'){
-                this.con24++;
-            } else if(this.list[i].end==='2/25'){
-                this.con25++;
-            } else if(this.list[i].end==='2/26'){
-                this.con26++;
-            } else if(this.list[i].end==='2/27'){
-                this.con27++;
-            } else if(this.list[i].end==='2/28'){
-                this.con28++;
-            }
-        }
-        return true;
     }
 }

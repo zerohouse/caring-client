@@ -9,7 +9,6 @@ import {ConsultListComponent} from "./consult/consult.component";
 import {Yt_mainComponent} from "./yt_main/yt_main.component";
 import {CaregiverListComponent} from "./caregiver-list/caregiver-list.component";
 
-
 const routes: Routes = [
     {path: '', component: MainComponent},
     {path: 'list', component: ReserveListComponent, canActivate: [ReserveListGuardGuard]},

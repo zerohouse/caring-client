@@ -3,25 +3,18 @@
 </div>
 
 <div *ngIf="giver_save===true || giver_choice===true" class="container" style="width: 90%; padding-left: 100px;">
-    <table class="table" #table>
+    <table *ngIf="giver_save===true || giver_choice===true" class="table" #table>
         <thead>
             <th>이름</th>
             <th>출생년도</th>
-            <th>시.도</th>
-            <th>군.구</th>
+            <th>시/도</th>
+            <th>시/군/구</th>
             <th>상세주소</th>
             <th>희망지역</th>
             <th>가능시간</th>
             <th>번호</th>
             <th>경력</th>
-            <th>기타</th>
-            <th>자격증</th>
-            <th>애완동물</th>
-            <th>주말가능<br>여부</th>
-            <th style="width: 30px">근무가능<br>여부</th>
-            <th style="width: 30px">남자가능<br>여부</th>
-            <th style="width: 30px">입주</th>
-            <th style="width: 30px">치매교육</th>
+            <th>성격</th>
         </thead>
         <tbody>
             <tr>
@@ -32,28 +25,16 @@
                     <input [(ngModel)]="giver.year">
                 </td>
                 <td>
-                    <select [(ngModel)]="giver.city">
-                        <option value="강원">강원</option>
-                        <option value="경기">경기</option>
-                        <option value="경남">경남</option>
-                        <option value="경북">경북</option>
-                        <option value="광주">광주</option>
-                        <option value="대구">대구</option>
-                        <option value="대전">대전</option>
-                        <option value="부산">부산</option>
-                        <option value="서울">서울</option>
-                        <option value="세종">세종</option>
-                        <option value="울산">울산</option>
-                        <option value="인천">인천</option>
-                        <option value="전남">전남</option>
-                        <option value="전북">전북</option>
-                        <option value="제주">제주</option>
-                        <option value="충남">충남</option>
-                        <option value="충북">충북</option>
+                    <select [(ngModel)]="giver.city" (ngModelChange)="select_ward()">
+                        <option value="">시/도 선택</option>
+                        <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
                     </select>
                 </td>
                 <td>
-                    <input [(ngModel)]="giver.ward">
+                    <select [(ngModel)]="giver.ward">
+                        <option value="">시/군/구 선택</option>
+                        <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                    </select>
                 </td>
                 <td>
                     <textarea [(ngModel)]="giver.address"></textarea>
@@ -70,6 +51,26 @@
                 <td>
                     <input [(ngModel)]="giver.career">
                 </td>
+                <td>
+                    <textarea [(ngModel)]="giver.personality"></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>기타 (자격증, 성별, 특이사항 등)</th>
+            <th>자격증</th>
+            <th>애완동물</th>
+            <th>주말가능<br>여부</th>
+            <th style="width: 30px">근무가능<br>여부</th>
+            <th style="width: 30px">남자가능<br>여부</th>
+            <th style="width: 30px">입주</th>
+            <th style="width: 30px">치매교육</th>
+            <th>작성자</th>
+        </thead>
+        <tbody>
+            <tr>
                 <td>
                     <textarea [(ngModel)]="giver.etc"></textarea>
                 </td>
@@ -101,12 +102,157 @@
                     <input type="checkbox" [(ngModel)]="giver.dementia">
                 </td>
                 <td>
+                    <select [(ngModel)]="giver.writer">
+                        <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
+                    </select>
+                </td>
+                <td>
                     <button (click)="giver.phone=PhoneNumberFormat(giver.phone); save(giver); ngOnInit(); giver_save=false; giver_choice=false">저장하기</button>
                     <button *ngIf="giver_choice===true" (click)="delete(giver); ngOnInit(); giver_save=false; giver_choice=false">삭제하기</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+<!--    <table *ngIf="taker_save===true || taker_choice===true" class="table" #table>-->
+<!--        <thead>-->
+<!--            <th>보호자 이름<br>수급자 이름</th>-->
+<!--            <th>시.도</th>-->
+<!--            <th>군.구</th>-->
+<!--            <th>상세주소</th>-->
+<!--            <th>등급</th>-->
+<!--            <th>성별</th>-->
+<!--            <th>기저귀 착용여부</th>-->
+<!--            <th>번호</th>-->
+<!--            <th>경력</th>-->
+<!--            <th>기타</th>-->
+<!--            <th>자격증</th>-->
+<!--            <th>애완동물</th>-->
+<!--            <th>주말가능<br>여부</th>-->
+<!--            <th style="width: 30px">근무가능<br>여부</th>-->
+<!--            <th style="width: 30px">남자가능<br>여부</th>-->
+<!--            <th style="width: 30px">입주</th>-->
+<!--            <th style="width: 30px">치매교육</th>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.name">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <select [(ngModel)]="giver.city">-->
+<!--                    <option value="강원">강원</option>-->
+<!--                    <option value="경기">경기</option>-->
+<!--                    <option value="경남">경남</option>-->
+<!--                    <option value="경북">경북</option>-->
+<!--                    <option value="광주">광주</option>-->
+<!--                    <option value="대구">대구</option>-->
+<!--                    <option value="대전">대전</option>-->
+<!--                    <option value="부산">부산</option>-->
+<!--                    <option value="서울">서울</option>-->
+<!--                    <option value="세종">세종</option>-->
+<!--                    <option value="울산">울산</option>-->
+<!--                    <option value="인천">인천</option>-->
+<!--                    <option value="전남">전남</option>-->
+<!--                    <option value="전북">전북</option>-->
+<!--                    <option value="제주">제주</option>-->
+<!--                    <option value="충남">충남</option>-->
+<!--                    <option value="충북">충북</option>-->
+<!--                </select>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <textarea [(ngModel)]="giver.address"></textarea>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.hopeArea">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.time">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input style="width: 75%" [(ngModel)]="giver.phone">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.career">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <textarea [(ngModel)]="giver.etc"></textarea>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.certificate">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <select [(ngModel)]="giver.pet">-->
+<!--                    <option value="O">O</option>-->
+<!--                    <option value="X">X</option>-->
+<!--                    <option value="작은개">작은개</option>-->
+<!--                    <option value="큰개">큰개</option>-->
+<!--                    <option value="고양이">고양이</option>-->
+<!--                </select>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input [(ngModel)]="giver.weekend">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input type="checkbox" [(ngModel)]="giver.work">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input type="checkbox" [(ngModel)]="giver.man">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input type="checkbox" [(ngModel)]="giver.moveIn">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <input type="checkbox" [(ngModel)]="giver.dementia">-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button (click)="giver.phone=PhoneNumberFormat(giver.phone); save(giver); ngOnInit(); giver_save=false; giver_choice=false">저장하기</button>-->
+<!--                <button *ngIf="giver_choice===true" (click)="delete(giver); ngOnInit(); giver_save=false; giver_choice=false">삭제하기</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+</div>
+
+<div class="container" style="width: 90%; padding-left: 100px;">
+    <table class="table" #table>
+        <thead>
+            <tr>
+                <th>첫 상담</th>
+                <th>시/도</th>
+                <th>시/군/구</th>
+                <th>번호</th>
+                <th>보호자</th>
+                <th>대상자</th>
+                <th>등급</th>
+                <th>현재상황</th>
+                <th>상담내용</th>
+                <th>첫상담</th>
+                <th>수급자 추가</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of visit_jobOffer?.content; index as i;">
+            <tr>
+                <td>{{item.createdAt | date : 'yyyy-MM-dd HH:mm'}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.hole}}</td>
+                <td>
+                    {{item.phone}}<br>
+                    {{item.phone2}}
+                </td>
+                <td>{{item.give}}</td>
+                <td>{{item.take}}</td>
+                <td>{{item.level}}</td>
+                <td>{{item.now}}</td>
+                <td>{{item.memo}}</td>
+                <td>{{item.first}}</td>
+                <td>
+                    <button>-</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <at-pagination (pageChange)="consult_load($event)" [pageable]="visit_jobOffer?.pageable" [size]="visit_jobOffer?.totalPages"></at-pagination>
 </div>
 
 <div class="container" style="float: left; padding-top: 50px; width: 40%; padding-left: 100px; padding-right: 0">
@@ -125,7 +271,7 @@
         <tr>
             <th>이름</th>
             <th>시.도</th>
-            <th>구</th>
+            <th>시/군/구</th>
             <th>상세주소</th>
             <th>근무시간</th>
             <th>요구사항</th>
@@ -133,14 +279,15 @@
         </thead>
         <ng-container>
             <tbody *ngFor="let item of taker_data?.content">
-            <tr *ngIf="item.id">
-
-            </tr>
+                <tr *ngIf="item.id">
+                    <td>{{item.name}}</td>
+                </tr>
             </tbody>
         </ng-container>
     </table>
     <at-pagination (pageChange)="taker_load($event)" [pageable]="taker_data?.pageable" [size]="taker_data?.totalPages"></at-pagination>
 </div>
+
 
 <div class="container" style="float: right; padding-top: 50px; width: 40%; padding-left: 0; padding-right: 100px">
     <button *ngIf="giver_save===false" style="width: 100%; font-size: 20px; background-color: lightsalmon" (click)="new_giver(); giver_save=true; giver_choice=false">요양보호사 추가</button>
@@ -157,19 +304,21 @@
         <thead>
         <tr>
             <th>이름</th>
-            <th>시.도</th>
-            <th>구</th>
+            <th>시/도</th>
+            <th>시/군/구</th>
             <th>상세주소</th>
+            <th>희망지역</th>
             <th>번호</th>
         </tr>
         </thead>
         <ng-container>
             <tbody *ngFor="let item of giver_data?.content">
-                <tr *ngIf="item.id" (click)="giver_choice=true; giver=item; giver_save=false">
+                <tr *ngIf="item.id" (click)="giver_choice=true; giver=item; giver_save=false; select_ward()">
                     <td>{{item.name}}</td>
                     <td>{{item.city}}</td>
                     <td>{{item.ward}}</td>
                     <td>{{item.address}}</td>
+                    <td>{{item.hopeArea}}</td>
                     <td>{{item.phone}}</td>
                 </tr>
             </tbody>

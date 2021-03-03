@@ -9,10 +9,17 @@ import {ConsultService} from "./consult.service";
 import {CountUpModule} from "ngx-countup";
 import {CaregiverController} from "./controllers/caregiver.controller";
 import {CaregiverService} from "./caregiver.service";
+import {CaretakerController} from "./controllers/caretaker.controller";
+import {CaretakerService} from "./caretaker.service";
 
 @NgModule({
   imports: [HttpClientModule, CountUpModule],
-  providers: [ApiService, ApiHttp, ReserveController, ConsultController, ConsultService, CaregiverController, CaregiverService]
+  providers: [
+      ApiService, ApiHttp, ReserveController,
+    ConsultController, ConsultService,
+    CaregiverController, CaregiverService,
+    CaretakerController, CaretakerService
+  ]
 })
 export class NgxSpringModule {
 }
