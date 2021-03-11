@@ -23,6 +23,21 @@ export interface Consult extends CreateTable {
     direct: boolean;
     csComplete: boolean;
     firstOrder: boolean;
+    minute: string;
+}
+
+export interface SejongMessaging extends CreateTable {
+    confirm: boolean;
+    tryCount: number;
+    friendsSend: string;
+    friendsTalkResult: string;
+    smsSend: string;
+    smsResult: string;
+    toNumber: string;
+    userId: number;
+    friendsTalkSuccess: boolean;
+    smsSuccess: boolean;
+    smsKey: string;
 }
 
 export interface Page<T> extends Slice<T> {

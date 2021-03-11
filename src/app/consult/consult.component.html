@@ -2,7 +2,7 @@
     <button (click)="saves=true; new();">새 상담 기록</button>
     <button (click)="searchOn='기본'; load(0); saves=false; check=false; message_send=false; cs_check=false; date_check=false; three_date_check=false; check_delete=false; all_date=false; state=''; progress=''; search=''">갱신</button>
     <a href="https://caring.co.kr/cg-list" target="_blank" style="margin-left: 200px;"><button style="cursor: pointer">요보사 리스트</button></a>
-    <button style="margin-left: 10px" (click)="getStateList('진행중(1~4급)'); three_date_check=true; state='';">3일지남</button>
+    <button style="margin-left: 10px" (click)="getStateList('가족_진행중(1~4급)'); three_date_check=true; state='';">3일지남</button>
     <label style="padding-left: 20px">상태 :
         <select [(ngModel)]="state" (change)="getState(state); three_date_check=false; date='';">
             <option *ngFor="let list of state_list" [ngValue]="list">{{list}}</option>
@@ -13,16 +13,17 @@
             <option *ngFor="let list of progress_list" [ngValue]="list">{{list}}</option>
         </select>
     </label>
-    <label  style="padding-left: 200px;">
+    <span *ngIf="homepage_reservation!==0" style="color: red; margin-left: 30px">홈페이지 예약 : {{homepage_reservation}}</span>
+    <label  style="float: right">
         <select [(ngModel)]="searchType">
             <option *ngFor="let list of searchType_list" [ngValue]="list">{{list}}</option>
         </select>
         검색 :
-        <input type="text" style="width: 200px" [(ngModel)]="search" (keyup.enter)="getSearch(searchType, search);">
+        <input type="text" style="width: 200px; margin-right: 100px" [(ngModel)]="search" (keyup.enter)="getSearch(searchType, search);">
+        <button (click)="statistics=true; all_date=false;">통계</button>
+        <button *ngIf="admin===true" (click)="getDeleteReason('');">삭제요청</button>
+        <button *ngIf="admin===true" (click)="all_date=true; check_delete=false; date_check=false; three_date_check=false; cs_check=false; check=true; state=''; progress=''; search=''; date='';">전체데이터</button>
     </label>
-    <button style="float: right" *ngIf="admin===true" (click)="getDeleteReason('');">삭제요청</button>
-    <button style="float: right" *ngIf="admin===true" (click)="all_date=true; check_delete=false; date_check=false; three_date_check=false; cs_check=false; check=true; state=''; progress=''; search=''; date='';">전체데이터</button>
-    <button style="float: right" (click)="statistics=true; all_date=false;">통계</button>
     <table class="table" #table>
         <thead>
         <tr>
@@ -90,7 +91,10 @@
                     </label>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.level">
+                    <input [(ngModel)]="user.level"><br>
+                    <select [(ngModel)]="user.minute">
+                        <option *ngFor="let list of time_list" [ngValue]="list">{{list}}</option>
+                    </select>
                 </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
@@ -152,7 +156,10 @@
                             ({{item.takeName}})
                         </span>
                     </td>
-                    <td class="short">{{item.level}}</td>
+                    <td class="short">
+                        {{item.level}}<br>
+                        {{item.minute}}
+                    </td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                     </td>
@@ -214,7 +221,10 @@
                         </label>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.level">
+                        <input [(ngModel)]="user.level"><br>
+                        <select [(ngModel)]="user.minute">
+                            <option *ngFor="let list of time_list" [ngValue]="list">{{list}}</option>
+                        </select>
                     </td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
@@ -279,7 +289,10 @@
                             ({{item.takeName}})
                         </span>
                     </td>
-                    <td class="short">{{item.level}}</td>
+                    <td class="short">
+                        {{item.level}}<br>
+                        {{item.minute}}
+                    </td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                     </td>
@@ -341,7 +354,10 @@
                         </label>
                     </td>
                     <td>
-                        <input [(ngModel)]="user.level">
+                        <input [(ngModel)]="user.level"><br>
+                        <select [(ngModel)]="user.minute">
+                            <option *ngFor="let list of time_list" [ngValue]="list">{{list}}</option>
+                        </select>
                     </td>
                     <td>
                         <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
@@ -404,7 +420,10 @@
                             ({{item.takeName}})
                         </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                 </td>
@@ -448,7 +467,10 @@
                         ({{item.takeName}})
                     </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                 </td>
@@ -492,7 +514,10 @@
                         ({{item.takeName}})
                     </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                 </td>
@@ -554,7 +579,10 @@
                     </label>
                 </td>
                 <td>
-                    <input [(ngModel)]="user.level">
+                    <input [(ngModel)]="user.level"><br>
+                    <select [(ngModel)]="user.minute">
+                        <option *ngFor="let list of time_list" [ngValue]="list">{{list}}</option>
+                    </select>
                 </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="user.now"></textarea>
@@ -615,7 +643,10 @@
                         ({{item.takeName}})
                     </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="item.now" (ngModelChange)="save(item)"></textarea>
                 </td>
@@ -662,7 +693,10 @@
                         ({{item.takeName}})
                     </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>
                     <textarea style="width: 50px; color: red" [(ngModel)]="item.deleteReason"></textarea>
                 </td>
@@ -710,7 +744,10 @@
                             ({{item.takeName}})
                         </span>
                 </td>
-                <td class="short">{{item.level}}</td>
+                <td class="short">
+                    {{item.level}}<br>
+                    {{item.minute}}
+                </td>
                 <td>{{item.now}}</td>
                 <td>{{item.memo}}</td>
                 <td class="short">{{item.come}}</td>
@@ -752,7 +789,7 @@
         </div>
         <div style="width: 15%; float: left">
             <p>지역  : 콜수<span style="font-size: 15px">(전단지 콜수-섭 시작 수)</span></p>
-            <p>경기도: {{gyeonggi_call}}({{gyeonggi_leaflet}}-{{gyeonggi_leaflet_survice}})</p>
+            <p>경기: {{gyeonggi_call}}({{gyeonggi_leaflet}}-{{gyeonggi_leaflet_survice}})</p>
             <p>서울: {{seoul_call}}({{seoul_leaflet}}-{{seoul_leaflet_survice}})</p>
             <p>부산: {{busan_call}}({{busan_leaflet}}-{{busan_leaflet_survice}})</p>
             <p>인천: {{incheon_call}}({{incheon_leaflet}}-{{incheon_leaflet_survice}})</p>
@@ -764,10 +801,10 @@
             <p>전남: {{junnam_call}}({{junnam_leaflet}}-{{junnam_leaflet_survice}})</p>
             <p>광주: {{gwangju_call}}({{gwangju_leaflet}}-{{gwangju_leaflet_survice}})</p>
             <p>충남: {{chungnam_call}}({{chungnam_leaflet}}-{{chungnam_leaflet_survice}})</p>
-            <p>강원도: {{gangwon_call}}({{gangwon_leaflet}}-{{gangwon_leaflet_survice}})</p>
+            <p>강원: {{gangwon_call}}({{gangwon_leaflet}}-{{gangwon_leaflet_survice}})</p>
             <p>충북: {{chungbuk_call}}({{chungbuk_leaflet}}-{{chungbuk_leaflet_survice}})</p>
             <p>울산: {{ulsan_call}}({{ulsan_leaflet}}-{{ulsan_leaflet_survice}})</p>
-            <p>제주도: {{jeju_call}}({{jeju_leaflet}}-{{jeju_leaflet_survice}})</p>
+            <p>제주: {{jeju_call}}({{jeju_leaflet}}-{{jeju_leaflet_survice}})</p>
             <p>? : {{etc_city_call}}({{etc_city_leaflet}}-{{etc_city_leaflet_survice}})</p>
         </div>
         <div style="width: 25%; float: left">
@@ -818,8 +855,6 @@
             <p>종료/보류: {{call_end}}</p>
             <p>기타/복지용구: {{call_walfare}}</p>
             <p>홈페이지 예약: {{call_homepage}}</p>
-            <p>서류 작업중: {{call_document}}</p>
-            <p>추후연락: {{call_after}}</p><br>
             <p>이건희: {{call_lee}}</p>
             <p style="font-size: 7px">진행중: {{call_lee_progress}}, 완료: {{call_lee_end}}, 부재: {{call_lee_absence}}, 기타: {{call_lee_etc}}</p>
             <p>김세진: {{call_kim}}</p>
@@ -842,6 +877,10 @@
             <p>홈페이지 유입: {{today_homepage}}</p>
             <p>그 외 유입: {{today_etc}}</p>
             <p>유입 모름: {{today_unknowun}}</p>
+
+            <p style="margin-top: 150px">유의미한 콜: {{call_family_progress}}</p>
+            <p>서류 작업중: {{call_document}}</p>
+            <p>고민 후 연락: {{call_family_progress-call_document}}</p><br>
         </div>
 
         <div style="width: 15%; float: left">

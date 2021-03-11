@@ -4,6 +4,13 @@ table
   text-align: center
   font-size: 12px
 
+  textarea
+    font-size: 15px
+    resize: none
+    min-height: 40px
+    min-width: 400px
+
+
 td, th
   font-size: 15px
   vertical-align: middle
@@ -11,16 +18,35 @@ td, th
 
 input
   font-size: 15px
-  width: 50%
 
   &:focus
     border: 3px hotpink solid
 
+input[type="text"]
+  margin-right: 15px
+  size: 40px
+  width: 80px
+
+input[type="number"]
+  margin-right: 15px
+  size: 40px
+  width: 60px
+
+input[type="radio"]
+  width: 20px
+  &:focus
+    outline: 2px solid hotpink
+
 input[type="checkbox"]:focus
   outline: 2px solid hotpink
+  &:hover
+    cursor: pointer
 
-select:focus
-  outline: 2px solid hotpink
+select
+  margin-right: 15px
+  &:focus
+    outline: 2px solid hotpink
+
 
 button
   &:focus
@@ -34,7 +60,22 @@ textarea
   resize: none
   min-height: 80px
   width: 150px
+  margin-left: 30px
 
   &:focus
     border: 2px solid hotpink
 
+label
+  margin-left: 30px
+
+.btn_cg
+  margin-top: 30px
+  margin-left: 30px
+
+#matching
+  float: right
+  font-size: 20px
+  border-radius: 15px
+  background-color: hotpink
+  border: 1px solid hotpink
+  color: white

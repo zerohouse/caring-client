@@ -1,24 +1,36 @@
 /* tslint:disable */
 
 export interface Caretaker extends CreateTable {
-    name: string;
-    takeName: string;
+    protector: string;
+    taker: string;
+    phone: string;
+    gender: boolean;
+    age: number;
+    level: string;
     city: string;
     ward: string;
     address: string;
-    sex: boolean;
-    year: string;
-    level: string;
-    inmate: string;
-    time: string;
-    diaper: boolean;
+    active: string;
+    restroom: string;
+    diaper: string;
+    diaperText: string;
+    weight: number;
+    disease: string;
+    meal: string;
+    avoidFood: string;
+    recognition: string;
+    sexRelated: string;
     houseSize: string;
-    phone: string;
-    etc: string;
-    man: boolean;
+    inmate: string;
     pet: string;
+    nowCaregiver: string;
+    religion: string;
+    serviceTime: string;
+    interviewTime: string;
+    caregiverGender: string;
+    hopeService: string;
+    hopeCaregiver: string;
     writer: string;
-    moveIn: boolean;
 }
 
 export interface Page<T> extends Slice<T> {

@@ -69,6 +69,7 @@ export class CallFooterComponent implements OnInit {
             createdAt: null,
             lastModifiedDate: String(new Date().toISOString()),
             direct: false,
+            minute: '',
         }).subscribe(() => {
             alert('상담 예약이 되었습니다.');
             localStorage.setItem('reservedDate', String(new Date().getUTCDate()));

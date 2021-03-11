@@ -2,7 +2,7 @@
 
 export interface Caregiver extends CreateTable {
     name: string;
-    year: string;
+    year: number;
     city: string;
     ward: string;
     time: string;
@@ -20,6 +20,7 @@ export interface Caregiver extends CreateTable {
     moveIn: boolean;
     dementia: boolean;
     personality: string;
+    gender: boolean;
 }
 
 export interface Page<T> extends Slice<T> {

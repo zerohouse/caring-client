@@ -21,8 +21,8 @@ export class CaretakerController {
         return this.http.get<Page<Caretaker>>('/api/caretaker/list', {page: page, size: size});
     }
 
-    getSearchNameCaretaker(name: string, page?: number, size?: number): Observable<Page<Caretaker>> {
-        return this.http.get<Page<Caretaker>>('/api/caretaker/searchName', {name: name, page: page, size: size});
+    getSearchCaretaker(search: string, page?: number, size?: number): Observable<Page<Caretaker>> {
+        return this.http.get<Page<Caretaker>>('/api/caretaker/search', {search: search, page: page, size: size});
     }
 
     getSearchNumberCaretaker(phone: string, page?: number, size?: number): Observable<Page<Caretaker>> {

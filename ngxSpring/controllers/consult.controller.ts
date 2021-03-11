@@ -18,6 +18,18 @@ export class ConsultController {
     return this.http.get<Page<Consult>>('/api/consult/list', {page: page, size: size});
   }
 
+  getStateSearchConsult(state: string, search: string, page?: number, size?: number): Observable<Page<Consult>> {
+    return this.http.get<Page<Consult>>('/api/consult/stateSearch', {state: state, search: search, page: page, size: size});
+  }
+
+  getStateNowConsult(state: string, search: string, page?: number, size?: number): Observable<Page<Consult>> {
+    return this.http.get<Page<Consult>>('/api/consult/stateNow', {state: state, search: search, page: page, size: size});
+  }
+
+  getStateMemoConsult(state: string, search: string, page?: number, size?: number): Observable<Page<Consult>> {
+    return this.http.get<Page<Consult>>('/api/consult/stateMemo', {state: state, search: search, page: page, size: size});
+  }
+
   getSearchConsult(search: string, page?: number, size?: number): Observable<Page<Consult>> {
     return this.http.get<Page<Consult>>('/api/consult/search', {search: search, page: page, size: size});
   }
@@ -92,6 +104,10 @@ export class ConsultController {
 
   getSendConsult(direct: boolean): Observable<Consult[]> {
     return this.http.get<Consult[]>('/api/consult/send', {direct: direct});
+  }
+
+  getHomepageReservation(state: string): Observable<number>{
+    return this.http.get<number>('/api/consult/HRCount', {state: state});
   }
 
   getCsCompleteConsult(csComplete: boolean): Observable<Consult[]> {

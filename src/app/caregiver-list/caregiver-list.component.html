@@ -1,220 +1,9 @@
-<div class="container" style="width: 90%; padding: 30px 0 0 0">
-    <button (click)="giver_save=false; giver_choice=false; ngOnInit()">갱신</button>
+<div style="width: 90%; padding: 30px 0 0 100px">
+    <button (click)="giver_save=false; giver_choice=false; taker_save=false; taker_choice=false; statistics=false; ngOnInit()">갱신</button>
+    <button style="float: right" (click)="statistics=true; statistics_data_load(); statistics_start();">통계</button>
 </div>
 
-<div *ngIf="giver_save===true || giver_choice===true" class="container" style="width: 90%; padding-left: 100px;">
-    <table *ngIf="giver_save===true || giver_choice===true" class="table" #table>
-        <thead>
-            <th>이름</th>
-            <th>출생년도</th>
-            <th>시/도</th>
-            <th>시/군/구</th>
-            <th>상세주소</th>
-            <th>희망지역</th>
-            <th>가능시간</th>
-            <th>번호</th>
-            <th>경력</th>
-            <th>성격</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <input [(ngModel)]="giver.name">
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.year">
-                </td>
-                <td>
-                    <select [(ngModel)]="giver.city" (ngModelChange)="select_ward()">
-                        <option value="">시/도 선택</option>
-                        <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
-                    </select>
-                </td>
-                <td>
-                    <select [(ngModel)]="giver.ward">
-                        <option value="">시/군/구 선택</option>
-                        <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
-                    </select>
-                </td>
-                <td>
-                    <textarea [(ngModel)]="giver.address"></textarea>
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.hopeArea">
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.time">
-                </td>
-                <td>
-                    <input style="width: 75%" [(ngModel)]="giver.phone">
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.career">
-                </td>
-                <td>
-                    <textarea [(ngModel)]="giver.personality"></textarea>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table>
-        <thead>
-            <th>기타 (자격증, 성별, 특이사항 등)</th>
-            <th>자격증</th>
-            <th>애완동물</th>
-            <th>주말가능<br>여부</th>
-            <th style="width: 30px">근무가능<br>여부</th>
-            <th style="width: 30px">남자가능<br>여부</th>
-            <th style="width: 30px">입주</th>
-            <th style="width: 30px">치매교육</th>
-            <th>작성자</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <textarea [(ngModel)]="giver.etc"></textarea>
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.certificate">
-                </td>
-                <td>
-                    <select [(ngModel)]="giver.pet">
-                        <option value="O">O</option>
-                        <option value="X">X</option>
-                        <option value="작은개">작은개</option>
-                        <option value="큰개">큰개</option>
-                        <option value="고양이">고양이</option>
-                    </select>
-                </td>
-                <td>
-                    <input [(ngModel)]="giver.weekend">
-                </td>
-                <td>
-                    <input type="checkbox" [(ngModel)]="giver.work">
-                </td>
-                <td>
-                    <input type="checkbox" [(ngModel)]="giver.man">
-                </td>
-                <td>
-                    <input type="checkbox" [(ngModel)]="giver.moveIn">
-                </td>
-                <td>
-                    <input type="checkbox" [(ngModel)]="giver.dementia">
-                </td>
-                <td>
-                    <select [(ngModel)]="giver.writer">
-                        <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
-                    </select>
-                </td>
-                <td>
-                    <button (click)="giver.phone=PhoneNumberFormat(giver.phone); save(giver); ngOnInit(); giver_save=false; giver_choice=false">저장하기</button>
-                    <button *ngIf="giver_choice===true" (click)="delete(giver); ngOnInit(); giver_save=false; giver_choice=false">삭제하기</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-<!--    <table *ngIf="taker_save===true || taker_choice===true" class="table" #table>-->
-<!--        <thead>-->
-<!--            <th>보호자 이름<br>수급자 이름</th>-->
-<!--            <th>시.도</th>-->
-<!--            <th>군.구</th>-->
-<!--            <th>상세주소</th>-->
-<!--            <th>등급</th>-->
-<!--            <th>성별</th>-->
-<!--            <th>기저귀 착용여부</th>-->
-<!--            <th>번호</th>-->
-<!--            <th>경력</th>-->
-<!--            <th>기타</th>-->
-<!--            <th>자격증</th>-->
-<!--            <th>애완동물</th>-->
-<!--            <th>주말가능<br>여부</th>-->
-<!--            <th style="width: 30px">근무가능<br>여부</th>-->
-<!--            <th style="width: 30px">남자가능<br>여부</th>-->
-<!--            <th style="width: 30px">입주</th>-->
-<!--            <th style="width: 30px">치매교육</th>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.name">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <select [(ngModel)]="giver.city">-->
-<!--                    <option value="강원">강원</option>-->
-<!--                    <option value="경기">경기</option>-->
-<!--                    <option value="경남">경남</option>-->
-<!--                    <option value="경북">경북</option>-->
-<!--                    <option value="광주">광주</option>-->
-<!--                    <option value="대구">대구</option>-->
-<!--                    <option value="대전">대전</option>-->
-<!--                    <option value="부산">부산</option>-->
-<!--                    <option value="서울">서울</option>-->
-<!--                    <option value="세종">세종</option>-->
-<!--                    <option value="울산">울산</option>-->
-<!--                    <option value="인천">인천</option>-->
-<!--                    <option value="전남">전남</option>-->
-<!--                    <option value="전북">전북</option>-->
-<!--                    <option value="제주">제주</option>-->
-<!--                    <option value="충남">충남</option>-->
-<!--                    <option value="충북">충북</option>-->
-<!--                </select>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <textarea [(ngModel)]="giver.address"></textarea>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.hopeArea">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.time">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input style="width: 75%" [(ngModel)]="giver.phone">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.career">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <textarea [(ngModel)]="giver.etc"></textarea>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.certificate">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <select [(ngModel)]="giver.pet">-->
-<!--                    <option value="O">O</option>-->
-<!--                    <option value="X">X</option>-->
-<!--                    <option value="작은개">작은개</option>-->
-<!--                    <option value="큰개">큰개</option>-->
-<!--                    <option value="고양이">고양이</option>-->
-<!--                </select>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input [(ngModel)]="giver.weekend">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input type="checkbox" [(ngModel)]="giver.work">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input type="checkbox" [(ngModel)]="giver.man">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input type="checkbox" [(ngModel)]="giver.moveIn">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <input type="checkbox" [(ngModel)]="giver.dementia">-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <button (click)="giver.phone=PhoneNumberFormat(giver.phone); save(giver); ngOnInit(); giver_save=false; giver_choice=false">저장하기</button>-->
-<!--                <button *ngIf="giver_choice===true" (click)="delete(giver); ngOnInit(); giver_save=false; giver_choice=false">삭제하기</button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-</div>
-
-<div class="container" style="width: 90%; padding-left: 100px;">
+<div *ngIf="statistics===false" style="width: 90%; padding-left: 100px;">
     <table class="table" #table>
         <thead>
             <tr>
@@ -244,10 +33,12 @@
                 <td>{{item.take}}</td>
                 <td>{{item.level}}</td>
                 <td>{{item.now}}</td>
-                <td>{{item.memo}}</td>
+                <td>
+                    <textarea [(ngModel)]="item.memo"></textarea>
+                </td>
                 <td>{{item.first}}</td>
                 <td>
-                    <button>-</button>
+                    <button (click)="taker_add(item)">-</button>
                 </td>
             </tr>
         </tbody>
@@ -255,21 +46,228 @@
     <at-pagination (pageChange)="consult_load($event)" [pageable]="visit_jobOffer?.pageable" [size]="visit_jobOffer?.totalPages"></at-pagination>
 </div>
 
-<div class="container" style="float: left; padding-top: 50px; width: 40%; padding-left: 100px; padding-right: 0">
-    <button *ngIf="taker_save===false" style="width: 100%; font-size: 20px; background-color: lightsalmon" (click)="taker_save=true">수급자 추가</button>
+<div *ngIf="giver_save===true || giver_choice===true || taker_save===true || taker_choice===true && statistics===false" style="width: 90%;">
+    <div>
+        <div *ngIf="taker_choice===true || taker_save===true" style="margin-left: 100px; display: inline-block; width: 45%; border: 1px solid black">
+            <label>
+                보호자 : <input type="text" [(ngModel)]="taker.protector" placeholder="ex) 딸">
+                번호 : <input type="text" style="width: 160px" [(ngModel)]="taker.phone" placeholder="-없이 번호만">
+                수급자: <input type="text" [(ngModel)]="taker.taker" placeholder="ex) 엄마">
+                <button *ngIf="taker_choice===true" (click)="matching(taker.city, taker.ward); matching_start=true; city_ward_count()" id="matching">매칭</button>
+            </label><br>
+            <label>
+                어르신 성별 : 남 <input type="radio" [(ngModel)]="taker.gender" name="chk" [value]="true"> 여<input type="radio" [(ngModel)]="taker.gender" name="chk" [value]="false">
+                출생년도 : <input type="number" [(ngModel)]="taker.age"><span *ngIf="taker.age!==0">({{today_year-taker.age}}세)</span>
+                등급 :
+                <select [(ngModel)]="taker.level">
+                    <option *ngFor="let level of level" [ngValue]="level">{{level}}</option>
+                </select>
+            </label><br>
+            <label>시/도 :
+                <select [(ngModel)]="taker.city" (ngModelChange)="select_ward()">
+                    <option value="">시/도 선택</option>
+                    <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
+                </select>
+                시/군/구 :
+                <select [(ngModel)]="taker.ward">
+                    <option value="">시/군/구 선택</option>
+                    <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                </select>
+            </label><br>
+            <label>
+                상세주소 : <input type="text" style="width: 230px" [(ngModel)]="taker.address" placeholder="주소를 자세히 입력해주세요.">
+            </label><br>
+            <label>이동이나 앉기 :
+                <select [(ngModel)]="taker.active">
+                    <option *ngFor="let active of active" [ngValue]="active">{{active}}</option>
+                </select>
+                화장실 이용 :
+                <select [(ngModel)]="taker.restroom">
+                    <option *ngFor="let restroom of restroom" [ngValue]="restroom">{{restroom}}</option>
+                </select>
+            </label><br>
+            <label>
+                기저귀 착용여부 : 착용<input type="radio" [(ngModel)]="taker.diaper" name="diaper" [value]="'착용'">
+                미착용<input type="radio" [(ngModel)]="taker.diaper" name="diaper" [value]="'미착용'">
+                부분착용<input type="radio" [(ngModel)]="taker.diaper" name="diaper" [value]="'부분착용'">&ngsp;
+                <input type="text" *ngIf="taker.diaper==='부분착용'" style="width: 160px" [(ngModel)]="taker.diaperText">
+            </label><br>
+            <label>
+                어르신 몸무게 : <input type="number" [(ngModel)]="taker.weight">kg
+                <span style="margin-left: 30px">어르신 질병 : </span><input type="text" [(ngModel)]="taker.disease" style="width: 200px" placeholder="ex) 고혈압, 욕창 등">
+            </label><br>
+            <label>어르신 식사 :
+                <select [(ngModel)]="taker.meal">
+                    <option *ngFor="let eat of eat" [ngValue]="eat">{{eat}}</option>
+                </select>
+                조심해야 될 음식 : <input type="text" [(ngModel)]="taker.avoidFood" style="width: 200px" placeholder="ex) 고기, 땅콩, 복숭아 등">
+            </label><br>
+            <label>
+                어르신 인지상태 : <input type="text" [(ngModel)]="taker.recognition" style="width: 200px">
+                <span *ngIf="taker.gender===true">성관련해서 얌전하신가? : <input type="text" [(ngModel)]="taker.sexRelated"></span>
+            </label><br>
+            <label>
+                집 크기 : <input type="text" [(ngModel)]="taker.houseSize" placeholder="평수">
+                동거인 : <input type="text" [(ngModel)]="taker.inmate" placeholder="ex)아내">
+                반려동물 : <input type="text" [(ngModel)]="taker.pet">
+            </label><br>
+            <label>
+                현재 요양보호사 이용여부 : <input type="text" [(ngModel)]="taker.nowCaregiver">
+                종교 : <input type="text" [(ngModel)]="taker.religion">
+            </label><br>
+            <label>
+                서비스 시간 : <input type="text" [(ngModel)]="taker.serviceTime">
+                요양보호사 면접 가능시간 : <input type="text" [(ngModel)]="taker.interviewTime">
+            </label><br>
+            <label>
+                요양보호사 성별 :
+                <select [(ngModel)]="taker.caregiverGender">
+                    <option *ngFor="let gender of caregiver_gender" [ngValue]="gender">{{gender}}</option>
+                </select>
+            </label><br>
+            <label>
+                원하시거나 필요하신 서비스 : <br><textarea [(ngModel)]="taker.hopeService" style="width: 300px" placeholder="ex) 이동보조, 말벗, 주변정리, 식사보조, 목욕보조, 배변보조, 체위변경, 투약보조 등"></textarea>
+            </label><br>
+            <label>
+                추가로 요양보호사에게 바라는 것 또는 요양보호사상 : <br><textarea [(ngModel)]="taker.hopeCaregiver" style="width: 300px" placeholder="ex) 밝으신 분, 말 없으신 분 등"></textarea>
+            </label><br>
+            <label>
+                담당자 : <input type="text" [(ngModel)]="taker.writer">
+            </label><br>
+            <button class="btn_cg" (click)="taker.phone=PhoneNumberFormat(taker.phone); save_taker(taker); ngOnInit(); taker_save=false; taker_choice=false">저장하기</button>
+            <button class="btn_cg" *ngIf="taker_choice===true" (click)="delete_taker(taker); ngOnInit(); taker_save=false; taker_choice=false">삭제하기</button>
+            <button class="btn_cg" (click)="ngOnInit(); new_taker(); taker_save=false; taker_choice=false">취소</button>
+        </div>
+        <div *ngIf="taker_choice===true || giver_choice===true || giver_save===true" style="display: inline-block; position: relative; float: right; width: 40%;">
+            <span *ngIf="matching_start">{{taker.city}}: {{city_count}} {{taker.ward}}: {{ward_count}}</span>
+            <table *ngIf="taker_choice===true" class="table" #table>
+                <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>시/도</th>
+                    <th>시/군/구</th>
+                    <th>상세주소</th>
+                    <th>희망지역</th>
+                    <th>번호</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let item of matching_data?.content">
+                <tr *ngIf="item.id" (click)="giver_choice=true; giver=item; giver_save=false; select_ward()">
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.ward}}</td>
+                    <td>
+                        {{item.address}}<br>
+                        <span style="color: red">{{item.createdAt | date : 'yyyy-MM-dd HH:mm'}}</span>
+                    </td>
+                    <td>{{item.hopeArea}}</td>
+                    <td>{{item.phone}}</td>
+                </tr>
+                </tbody>
+                <button style="float: right" (click)="download(table)">다운로드</button>
+            </table>
+            <at-pagination *ngIf="taker_choice===true" (pageChange)="matching_load(taker.city, taker.ward, $event)" [pageable]="matching_data?.pageable" [size]="matching_data?.totalPages"></at-pagination>
+            <div *ngIf="giver_choice===true || giver_save===true" style="display: inline-block; position: relative; width: 100%; border: 1px solid hotpink">
+                <label>
+                    이름 : <input type="text" [(ngModel)]="giver.name">
+                    출생년도 : <input type="text" [(ngModel)]="giver.year"><span *ngIf="giver.year!==0">({{today_year-giver.year}}세)</span>
+                    성별 : 여<input type="radio" [(ngModel)]="giver.gender" name="giver_gender" [value]="false"> 남<input type="radio" [(ngModel)]="giver.gender" name="giver_gender" [value]="true">
+                </label><br>
+                <label>시/도 :
+                    <select [(ngModel)]="giver.city" (ngModelChange)="select_ward()">
+                        <option value="">시/도 선택</option>
+                        <option *ngFor="let city of city" [ngValue]="city">{{city}}</option>
+                    </select>
+
+                    시/군/구 :
+                    <select [(ngModel)]="giver.ward">
+                        <option value="">시/군/구 선택</option>
+                        <option *ngFor="let ward of ward" [ngValue]="ward">{{ward}}</option>
+                    </select>
+                </label><br>
+                <label>
+                    상세주소 : <input type="text" style="width: 230px" [(ngModel)]="giver.address">
+                </label><br>
+                <label>
+                    희망지역 : <input type="text" style="width: 230px" [(ngModel)]="giver.hopeArea">
+                </label><br>
+                <label>
+                    번호 : <input type="text" style="width: 230px" [(ngModel)]="giver.phone" placeholder="-없이 번호만">
+                </label><br>
+                <label>
+                    경력 : <input type="text" [(ngModel)]="giver.career">
+                    성격 : <input type="text" style="width: 230px" [(ngModel)]="giver.personality">
+                </label><br>
+                <label>
+                    기타 (자격증, 특이사항 등) :<br>
+                    <textarea style="width: 300px" [(ngModel)]="giver.etc"></textarea>
+                </label><br>
+                <label>
+                    자격증 : <input type="text" [(ngModel)]="giver.certificate">
+                    애완동물 :
+                    <select [(ngModel)]="giver.pet">
+                        <option value="O">O</option>
+                        <option value="X">X</option>
+                        <option value="작은개">작은개</option>
+                        <option value="큰개">큰개</option>
+                        <option value="고양이">고양이</option>
+                    </select>
+                </label><br>
+                <label>
+                    근무 가능 시간
+                </label>
+                <button (click)="week_check('전체')">전체</button>
+                <button (click)="week_check('주말')">주말</button>
+                <button (click)="week_check('평일')">평일</button><br>
+                <label>
+                    <input type="checkbox" [(ngModel)]="check_week[0]">일
+                    <input type="checkbox" [(ngModel)]="check_week[1]">월
+                    <input type="checkbox" [(ngModel)]="check_week[2]">화
+                    <input type="checkbox" [(ngModel)]="check_week[3]">수
+                    <input type="checkbox" [(ngModel)]="check_week[4]">목
+                    <input type="checkbox" [(ngModel)]="check_week[5]">금
+                    <input type="checkbox" [(ngModel)]="check_week[6]">토
+                </label>
+                <button style="margin-left: 10px" *ngIf="week_true_check()" (click)="week_check('')">Χ</button><br>
+                <label>
+                    가능 시간: <input type="text" style="width: 160px" [(ngModel)]="giver.time">
+                </label><br>
+                <label>
+                    근무가능여부 : <input type="checkbox" [(ngModel)]="giver.work">
+                    남자가능여부 : <input type="checkbox" [(ngModel)]="giver.man">
+                    입주 : <input type="checkbox" [(ngModel)]="giver.moveIn">
+                    치매교육 : <input type="checkbox" [(ngModel)]="giver.dementia">
+                </label><br>
+                <label>
+                    작성자 :
+                    <select [(ngModel)]="giver.writer">
+                        <option *ngFor="let list of counselor_list" [ngValue]="list">{{list}}</option>
+                    </select>
+                </label><br>
+                <button class="btn_cg" (click)="giver.phone=PhoneNumberFormat(giver.phone); week_valueAdd(); save_giver(giver); ngOnInit(); giver_save=false; giver_choice=false">저장하기</button>
+                <button class="btn_cg" *ngIf="giver_choice===true" (click)="delete_giver(giver); ngOnInit(); giver_save=false; giver_choice=false">삭제하기</button>
+                <button class="btn_cg" (click)="ngOnInit(); new_giver(); giver_save=false; giver_choice=false">취소</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="statistics===false" style="float: left; padding-top: 50px; width: 40%; padding-left: 100px; padding-right: 0">
+    <button *ngIf="taker_save===false" style="width: 100%; font-size: 20px; background-color: lightsalmon" (click)="taker_save=true; taker_choice=false; new_taker()">수급자 추가</button>
     <label>
-        <select [(ngModel)]="searchType">
+        <select [(ngModel)]="searchType_taker">
+            <option value="통합">통합</option>
             <option value="번호">번호</option>
             <option value="지역">지역</option>
             <option value="이름">이름</option>
         </select>
         검색 :
-        <input type="text" style="width: 200px" [(ngModel)]="number" (keyup.enter)="getSearch(searchType, number);">
+        <input type="text" style="width: 200px" [(ngModel)]="search_text_taker" (keyup.enter)="getSearchTaker(searchType_taker, search_text_taker);">
     </label>
     <table class="table" #table>
         <thead>
         <tr>
-            <th>이름</th>
+            <th>번호</th>
             <th>시.도</th>
             <th>시/군/구</th>
             <th>상세주소</th>
@@ -279,8 +277,13 @@
         </thead>
         <ng-container>
             <tbody *ngFor="let item of taker_data?.content">
-                <tr *ngIf="item.id">
-                    <td>{{item.name}}</td>
+                <tr *ngIf="item.id" (click)="taker_choice=true; taker=item; taker_save=false; select_ward()">
+                    <td>{{item.phone}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.ward}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.serviceTime}}</td>
+                    <td>{{item.hopeService}}</td>
                 </tr>
             </tbody>
         </ng-container>
@@ -288,17 +291,17 @@
     <at-pagination (pageChange)="taker_load($event)" [pageable]="taker_data?.pageable" [size]="taker_data?.totalPages"></at-pagination>
 </div>
 
-
-<div class="container" style="float: right; padding-top: 50px; width: 40%; padding-left: 0; padding-right: 100px">
+<div *ngIf="statistics===false" style="float: right; padding-top: 50px; width: 40%; padding-right: 100px;">
     <button *ngIf="giver_save===false" style="width: 100%; font-size: 20px; background-color: lightsalmon" (click)="new_giver(); giver_save=true; giver_choice=false">요양보호사 추가</button>
     <label>
-        <select [(ngModel)]="searchType">
+        <select [(ngModel)]="searchType_giver">
+            <option value="통합">통합</option>
             <option value="번호">번호</option>
             <option value="지역">지역</option>
             <option value="이름">이름</option>
         </select>
         검색 :
-        <input type="text" style="width: 200px" [(ngModel)]="number" (keyup.enter)="getSearch(searchType, number);">
+        <input type="text" style="width: 200px" [(ngModel)]="search_text_giver" (keyup.enter)="getSearchGiver(searchType_giver, search_text_giver);">
     </label>
     <table class="table" #table>
         <thead>
@@ -313,11 +316,14 @@
         </thead>
         <ng-container>
             <tbody *ngFor="let item of giver_data?.content">
-                <tr *ngIf="item.id" (click)="giver_choice=true; giver=item; giver_save=false; select_ward()">
+                <tr *ngIf="item.id" (click)="giver_choice=true; giver=item; giver_save=false; select_ward(); week_checkAdd(item)">
                     <td>{{item.name}}</td>
                     <td>{{item.city}}</td>
                     <td>{{item.ward}}</td>
-                    <td>{{item.address}}</td>
+                    <td>
+                        {{item.address}}<br>
+                        <span style="color: red">{{item.createdAt | date : 'yyyy-MM-dd HH:mm'}}</span>
+                    </td>
                     <td>{{item.hopeArea}}</td>
                     <td>{{item.phone}}</td>
                 </tr>
@@ -327,3 +333,305 @@
     <at-pagination (pageChange)="giver_load($event)" [pageable]="giver_data?.pageable" [size]="giver_data?.totalPages"></at-pagination>
 </div>
 
+<div *ngIf="statistics===true;" style="padding-left: 100px">
+    <p>총원: {{giver_count}}</p>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.seoul!==0">서울: {{statistics_city.seoul}}</p>
+        <span *ngIf="statistics_ward.seoul_gangnam!==0">강남구: {{statistics_ward.seoul_gangnam}}<br></span>
+        <span *ngIf="statistics_ward.seoul_seocho!==0">서초구: {{statistics_ward.seoul_seocho}}<br></span>
+        <span *ngIf="statistics_ward.seoul_songpa!==0">송파구: {{statistics_ward.seoul_songpa}}<br></span>
+        <span *ngIf="statistics_ward.seoul_nowon!==0">노원구: {{statistics_ward.seoul_nowon}}<br></span>
+        <span *ngIf="statistics_ward.seoul_gangseo!==0">강서구: {{statistics_ward.seoul_gangseo}}<br></span>
+        <span *ngIf="statistics_ward.seoul_gwanag!==0">관악구: {{statistics_ward.seoul_gwanag}}<br></span>
+        <span *ngIf="statistics_ward.seoul_dongjag!==0">동작구: {{statistics_ward.seoul_dongjag}}<br></span>
+        <span *ngIf="statistics_ward.seoul_guro!==0">구로구: {{statistics_ward.seoul_guro}}<br></span>
+        <span *ngIf="statistics_ward.seoul_seongbug!==0">성북구: {{statistics_ward.seoul_seongbug}}<br></span>
+        <span *ngIf="statistics_ward.seoul_gangdong!==0">강동구: {{statistics_ward.seoul_gangdong}}<br></span>
+        <span *ngIf="statistics_ward.seoul_yangcheon!==0">양천구: {{statistics_ward.seoul_yangcheon}}<br></span>
+        <span *ngIf="statistics_ward.seoul_eunpyeong!==0">은평구: {{statistics_ward.seoul_eunpyeong}}<br></span>
+        <span *ngIf="statistics_ward.seoul_jungrang!==0">중랑구: {{statistics_ward.seoul_jungrang}}<br></span>
+        <span *ngIf="statistics_ward.seoul_dobong!==0">도봉구: {{statistics_ward.seoul_dobong}}<br></span>
+        <span *ngIf="statistics_ward.seoul_mapo!==0">마포구: {{statistics_ward.seoul_mapo}}<br></span>
+        <span *ngIf="statistics_ward.seoul_gwangjin!==0">광진구: {{statistics_ward.seoul_gwangjin}}<br></span>
+        <span *ngIf="statistics_ward.seoul_seongdong!==0">성동구: {{statistics_ward.seoul_seongdong}}<br></span>
+        <span *ngIf="statistics_ward.seoul_yeongdeungpo!==0">영등포구: {{statistics_ward.seoul_yeongdeungpo}}<br></span>
+        <span *ngIf="statistics_ward.seoul_gangbug!==0">강북구: {{statistics_ward.seoul_gangbug}}<br></span>
+        <span *ngIf="statistics_ward.seoul_yongsan!==0">용산구: {{statistics_ward.seoul_yongsan}}<br></span>
+        <span *ngIf="statistics_ward.seoul_geumcheon!==0">금천구: {{statistics_ward.seoul_geumcheon}}<br></span>
+        <span *ngIf="statistics_ward.seoul_dongdaemun!==0">동대문구: {{statistics_ward.seoul_dongdaemun}}<br></span>
+        <span *ngIf="statistics_ward.seoul_seodaemun!==0">서대문구: {{statistics_ward.seoul_seodaemun}}<br></span>
+        <span *ngIf="statistics_ward.seoul_jung!==0">중구: {{statistics_ward.seoul_jung}}<br></span>
+        <span *ngIf="statistics_ward.seoul_jongro!==0">종로구: {{statistics_ward.seoul_jongro}}<br></span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.gyeonggi!==0">경기: {{statistics_city.gyeonggi}}</p>
+        <span *ngIf="statistics_ward.gyeonggi_bucheon!==0">부천시: {{statistics_ward.gyeonggi_bucheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_suwon!==0">수원시: {{statistics_ward.gyeonggi_suwon}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_namyangju!==0">남양주시: {{statistics_ward.gyeonggi_namyangju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_goyang!==0">고양시: {{statistics_ward.gyeonggi_goyang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_ansan!==0">안산시: {{statistics_ward.gyeonggi_ansan}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_anyang!==0">안양시: {{statistics_ward.gyeonggi_anyang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_seongnam!==0">성남시: {{statistics_ward.gyeonggi_seongnam}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_yongin!==0">용인시: {{statistics_ward.gyeonggi_yongin}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_uijeongbu!==0">의정부시: {{statistics_ward.gyeonggi_uijeongbu}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_paju!==0">파주시: {{statistics_ward.gyeonggi_paju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_pyeongtaeg!==0">평택시: {{statistics_ward.gyeonggi_pyeongtaeg}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_gimpo!==0">김포시: {{statistics_ward.gyeonggi_gimpo}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_hwaseong!==0">화성시: {{statistics_ward.gyeonggi_hwaseong}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_siheung!==0">시흥시: {{statistics_ward.gyeonggi_siheung}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_gwangju!==0">광주시: {{statistics_ward.gyeonggi_gwangju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_gwangmyeong!==0">광명시: {{statistics_ward.gyeonggi_gwangmyeong}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_hanam!==0">하남시: {{statistics_ward.gyeonggi_hanam}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_guri!==0">구리시: {{statistics_ward.gyeonggi_guri}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_gunpo!==0">군포시: {{statistics_ward.gyeonggi_gunpo}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_osan!==0">오산시: {{statistics_ward.gyeonggi_osan}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_yangju!==0">양주시: {{statistics_ward.gyeonggi_yangju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_gapyeong!==0">가평군: {{statistics_ward.gyeonggi_gapyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_dongducheon!==0">동두천시: {{statistics_ward.gyeonggi_dongducheon}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_pocheon!==0">포천시: {{statistics_ward.gyeonggi_pocheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_icheon!==0">이천시: {{statistics_ward.gyeonggi_icheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_yangpyeong!==0">양평군: {{statistics_ward.gyeonggi_yangpyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_yeoju!==0">여주군: {{statistics_ward.gyeonggi_yeoju}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_gwacheon!==0">과천시: {{statistics_ward.gyeonggi_gwacheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_anseong!==0">안성시: {{statistics_ward.gyeonggi_anseong}}<br></span>
+        <span *ngIf="statistics_ward.gyeonggi_uiwang!==0">의왕시: {{statistics_ward.gyeonggi_uiwang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeonggi_yeoncheon!==0">연천군: {{statistics_ward.gyeonggi_yeoncheon}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.incheon!==0">인천: {{statistics_city.incheon}}</p>
+        <span *ngIf="statistics_ward.incheon_wast!==0">서구: {{statistics_ward.incheon_wast}}<br></span>
+        <span *ngIf="statistics_ward.incheon_gyeyang!==0">계양구: {{statistics_ward.incheon_gyeyang}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_namdong!==0">남동구: {{statistics_ward.incheon_namdong}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_bupyeong!==0">부평구: {{statistics_ward.incheon_bupyeong}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_michuhol!==0">미추홀구: {{statistics_ward.incheon_michuhol}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_jung!==0">중구: {{statistics_ward.incheon_jung}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_yeonsu!==0">연수구: {{statistics_ward.incheon_yeonsu}}<br> </span>
+        <span *ngIf="statistics_ward.incheon_east!==0">동구: {{statistics_ward.incheon_east}}<br></span>
+        <span *ngIf="statistics_ward.incheon_ganghwa!==0">강화군: {{statistics_ward.incheon_ganghwa}}<br></span>
+        <span *ngIf="statistics_ward.incheon_ongjin!==0">옹진군: {{statistics_ward.incheon_ongjin}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.busan!==0">부산: {{statistics_city.busan}}</p>
+        <span *ngIf="statistics_ward.busan_north!==0">북구: {{statistics_ward.busan_north}}<br> </span>
+        <span *ngIf="statistics_ward.busan_saha!==0">사하구: {{statistics_ward.busan_saha}}<br></span>
+        <span *ngIf="statistics_ward.busan_south!==0">남구: {{statistics_ward.busan_south}}<br></span>
+        <span *ngIf="statistics_ward.busan_haeundae!==0">해운대구: {{statistics_ward.busan_haeundae}}<br></span>
+        <span *ngIf="statistics_ward.busan_sasang!==0">사상구: {{statistics_ward.busan_sasang}}<br> </span>
+        <span *ngIf="statistics_ward.busan_geumjeong!==0">금정구: {{statistics_ward.busan_geumjeong}}<br> </span>
+        <span *ngIf="statistics_ward.busan_suyeong!==0">수영구: {{statistics_ward.busan_suyeong}}<br> </span>
+        <span *ngIf="statistics_ward.busan_yeonje!==0">연제구: {{statistics_ward.busan_yeonje}}<br></span>
+        <span *ngIf="statistics_ward.busan_gangseo!==0">강서구: {{statistics_ward.busan_gangseo}}<br> </span>
+        <span *ngIf="statistics_ward.busan_dongrae!==0">동래구: {{statistics_ward.busan_dongrae}}<br> </span>
+        <span *ngIf="statistics_ward.busan_east!==0">동구: {{statistics_ward.busan_east}}<br> </span>
+        <span *ngIf="statistics_ward.busan_busanjin!==0">부산진구: {{statistics_ward.busan_busanjin}}<br></span>
+        <span *ngIf="statistics_ward.busan_wast!==0">서구: {{statistics_ward.busan_wast}}<br> </span>
+        <span *ngIf="statistics_ward.busan_yeongdo!==0">영도구: {{statistics_ward.busan_yeongdo}}<br> </span>
+        <span *ngIf="statistics_ward.busan_jung!==0">중구: {{statistics_ward.busan_jung}}<br> </span>
+        <span *ngIf="statistics_ward.busan_gijang!==0">기장군: {{statistics_ward.busan_gijang}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.gyeongnam!==0">경남: {{statistics_city.gyeongnam}}</p>
+        <span *ngIf="statistics_ward.gyeongnam_changwon!==0">창원시: {{statistics_ward.gyeongnam_changwon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_gimhae!==0">김해시: {{statistics_ward.gyeongnam_gimhae}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_geoje!==0">거제시: {{statistics_ward.gyeongnam_geoje}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_yangsan!==0">양산시: {{statistics_ward.gyeongnam_yangsan}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_milyang!==0">밀양시: {{statistics_ward.gyeongnam_milyang}}<br></span>
+        <span *ngIf="statistics_ward.gyeongnam_sacheon!==0">사천시: {{statistics_ward.gyeongnam_sacheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_jinju!==0">진주시: {{statistics_ward.gyeongnam_jinju}}<br></span>
+        <span *ngIf="statistics_ward.gyeongnam_tongyeong!==0">통영시: {{statistics_ward.gyeongnam_tongyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_geochang!==0">거창군: {{statistics_ward.gyeongnam_geochang}}<br></span>
+        <span *ngIf="statistics_ward.gyeongnam_goseong!==0">고성군: {{statistics_ward.gyeongnam_goseong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_namhae!==0">남해군: {{statistics_ward.gyeongnam_namhae}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_sancheong!==0">산청군: {{statistics_ward.gyeongnam_sancheong}}<br></span>
+        <span *ngIf="statistics_ward.gyeongnam_uilyeong!==0">의령군: {{statistics_ward.gyeongnam_uilyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_changnyeong!==0">창녕군: {{statistics_ward.gyeongnam_changnyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_hadong!==0">하동군: {{statistics_ward.gyeongnam_hadong}}<br></span>
+        <span *ngIf="statistics_ward.gyeongnam_haman!==0">함안군: {{statistics_ward.gyeongnam_haman}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_hamyang!==0">함양군: {{statistics_ward.gyeongnam_hamyang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongnam_habcheon!==0">합천군: {{statistics_ward.gyeongnam_habcheon}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.daejeon!==0">대전: {{statistics_city.daejeon}}</p>
+        <span *ngIf="statistics_ward.daejeon_wast!==0">서구: {{statistics_ward.daejeon_wast}}<br></span>
+        <span *ngIf="statistics_ward.daejeon_daedeog!==0">대덕구: {{statistics_ward.daejeon_daedeog}}<br> </span>
+        <span *ngIf="statistics_ward.daejeon_yuseong!==0">유성구: {{statistics_ward.daejeon_yuseong}}<br> </span>
+        <span *ngIf="statistics_ward.daejeon_jung!==0">중구: {{statistics_ward.daejeon_jung}}<br></span>
+        <span *ngIf="statistics_ward.daejeon_east!==0">동구: {{statistics_ward.daejeon_east}}<br></span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.daegu!==0">대구: {{statistics_city.daegu}}</p>
+        <span *ngIf="statistics_ward.daegu_north!==0">북구: {{statistics_ward.daegu_north}}<br> </span>
+        <span *ngIf="statistics_ward.daegu_east!==0">동구: {{statistics_ward.daegu_east}}<br></span>
+        <span *ngIf="statistics_ward.daegu_wast!==0">서구: {{statistics_ward.daegu_wast}}<br> </span>
+        <span *ngIf="statistics_ward.daegu_dalseo!==0">달서구: {{statistics_ward.daegu_dalseo}}<br> </span>
+        <span *ngIf="statistics_ward.daegu_suseong!==0">수성구: {{statistics_ward.daegu_suseong}}<br></span>
+        <span *ngIf="statistics_ward.daegu_jung!==0">중구: {{statistics_ward.daegu_jung}}<br> </span>
+        <span *ngIf="statistics_ward.daegu_dalseong!==0">달성군: {{statistics_ward.daegu_dalseong}}<br></span>
+        <span *ngIf="statistics_ward.daegu_south!==0">남구: {{statistics_ward.daegu_south}}<br> </span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.gyeongbuk!==0">경북: {{statistics_city.gyeongbuk}}</p>
+        <span *ngIf="statistics_ward.gyeongbuk_gumi!==0">구미시: {{statistics_ward.gyeongbuk_gumi}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_andong!==0">안동시: {{statistics_ward.gyeongbuk_andong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_pohang!==0">포항시: {{statistics_ward.gyeongbuk_pohang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_gyeongju!==0">경주시: {{statistics_ward.gyeongbuk_gyeongju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_gimcheon!==0">김천시: {{statistics_ward.gyeongbuk_gimcheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_mungyeong!==0">문경시: {{statistics_ward.gyeongbuk_mungyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_sangju!==0">상주시: {{statistics_ward.gyeongbuk_sangju}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_gyeongsan!==0">경산시: {{statistics_ward.gyeongbuk_gyeongsan}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_yeongju!==0">영주시: {{statistics_ward.gyeongbuk_yeongju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_yeongcheon!==0">영천시: {{statistics_ward.gyeongbuk_yeongcheon}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_golyeong!==0">고령군: {{statistics_ward.gyeongbuk_golyeong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_gunwi!==0">군위군: {{statistics_ward.gyeongbuk_gunwi}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_bonghwa!==0">봉화군: {{statistics_ward.gyeongbuk_bonghwa}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_seongju!==0">성주군: {{statistics_ward.gyeongbuk_seongju}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_yeongdeog!==0">영덕군: {{statistics_ward.gyeongbuk_yeongdeog}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_yeongyang!==0">영양군: {{statistics_ward.gyeongbuk_yeongyang}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_yeongcheon!==0">예천군: {{statistics_ward.gyeongbuk_yeongcheon}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_ulleung!==0">울릉군: {{statistics_ward.gyeongbuk_ulleung}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_uljin!==0">울진군: {{statistics_ward.gyeongbuk_uljin}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_uiseong!==0">의성군: {{statistics_ward.gyeongbuk_uiseong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_cheongdo!==0">청도군: {{statistics_ward.gyeongbuk_cheongdo}}<br></span>
+        <span *ngIf="statistics_ward.gyeongbuk_cheongsong!==0">청송군: {{statistics_ward.gyeongbuk_cheongsong}}<br> </span>
+        <span *ngIf="statistics_ward.gyeongbuk_chilgog!==0">칠곡군: {{statistics_ward.gyeongbuk_chilgog}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.junbuk!==0">전북: {{statistics_city.junbuk}}</p>
+        <span *ngIf="statistics_ward.junbuk_jeonju!==0">전주시: {{statistics_ward.junbuk_jeonju}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_igsan!==0">익산시: {{statistics_ward.junbuk_igsan}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_gunsan!==0">군산시: {{statistics_ward.junbuk_gunsan}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_gimje!==0">김제시: {{statistics_ward.junbuk_gimje}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_namwon!==0">남원시: {{statistics_ward.junbuk_namwon}}<br></span>
+        <span *ngIf="statistics_ward.junbuk_jeongeub!==0">정읍시: {{statistics_ward.junbuk_jeongeub}}<br></span>
+        <span *ngIf="statistics_ward.junbuk_gochang!==0">고창군: {{statistics_ward.junbuk_gochang}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_muju!==0">무주군: {{statistics_ward.junbuk_muju}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_buan!==0">부안군: {{statistics_ward.junbuk_buan}}<br></span>
+        <span *ngIf="statistics_ward.junbuk_sunchang!==0">순창군: {{statistics_ward.junbuk_sunchang}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_wanju!==0">완주군: {{statistics_ward.junbuk_wanju}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_imsil!==0">임실군: {{statistics_ward.junbuk_imsil}}<br></span>
+        <span *ngIf="statistics_ward.junbuk_jangsu!==0">장수군: {{statistics_ward.junbuk_jangsu}}<br> </span>
+        <span *ngIf="statistics_ward.junbuk_jinan!==0">진안군: {{statistics_ward.junbuk_jinan}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.chungnam!==0">충남: {{statistics_city.chungnam}}</p>
+        <span *ngIf="statistics_ward.chungnam_cheonan!==0">천안시: {{statistics_ward.chungnam_cheonan}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_buyeo!==0">부여군: {{statistics_ward.chungnam_buyeo}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_hongseong!==0">홍성군: {{statistics_ward.chungnam_hongseong}}<br></span>
+        <span *ngIf="statistics_ward.chungnam_gyeryong!==0">계룡시: {{statistics_ward.chungnam_gyeryong}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_gongju!==0">공주시: {{statistics_ward.chungnam_gongju}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_nonsan!==0">논산시: {{statistics_ward.chungnam_nonsan}}<br></span>
+        <span *ngIf="statistics_ward.chungnam_dangjin!==0">당진시: {{statistics_ward.chungnam_dangjin}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_boryeong!==0">보령시: {{statistics_ward.chungnam_boryeong}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_seosan!==0">서산시: {{statistics_ward.chungnam_seosan}}<br></span>
+        <span *ngIf="statistics_ward.chungnam_asan!==0">아산시: {{statistics_ward.chungnam_asan}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_geumsan!==0">금산군: {{statistics_ward.chungnam_geumsan}}<br></span>
+        <span *ngIf="statistics_ward.chungnam_seocheon!==0">서천군: {{statistics_ward.chungnam_seocheon}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_yesan!==0">예산군: {{statistics_ward.chungnam_yesan}}<br></span>
+        <span *ngIf="statistics_ward.chungnam_cheongyang!==0">청양군: {{statistics_ward.chungnam_cheongyang}}<br> </span>
+        <span *ngIf="statistics_ward.chungnam_taean!==0">태안군: {{statistics_ward.chungnam_taean}}<br> </span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.gwangju!==0">광주: {{statistics_city.gwangju}}</p>
+        <span *ngIf="statistics_ward.gwangju_north!==0">북구: {{statistics_ward.gwangju_north}}<br> </span>
+        <span *ngIf="statistics_ward.gwangju_gwangsan!==0">광산구: {{statistics_ward.gwangju_gwangsan}}<br> </span>
+        <span *ngIf="statistics_ward.gwangju_wast!==0">서구: {{statistics_ward.gwangju_wast}}</span>
+        <span *ngIf="statistics_ward.gwangju_south!==0">남구: {{statistics_ward.gwangju_south}}<br> </span>
+        <span *ngIf="statistics_ward.gwangju_east!==0">동구: {{statistics_ward.gwangju_east}}<br></span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.ulsan!==0">울산: {{statistics_city.ulsan}}</p>
+        <span *ngIf="statistics_ward.ulsan_south!==0">남구: {{statistics_ward.ulsan_south}}<br> </span>
+        <span *ngIf="statistics_ward.ulsan_north!==0">북구: {{statistics_ward.ulsan_north}}<br></span>
+        <span *ngIf="statistics_ward.ulsan_ulju!==0">울주군: {{statistics_ward.ulsan_ulju}}<br></span>
+        <span *ngIf="statistics_ward.ulsan_east!==0">동구: {{statistics_ward.ulsan_east}}<br> </span>
+        <span *ngIf="statistics_ward.ulsan_jung!==0">중구: {{statistics_ward.ulsan_jung}}<br> </span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.gangwon!==0">강원: {{statistics_city.gangwon}}</p>
+        <span *ngIf="statistics_ward.gangwon_wonju!==0">원주시: {{statistics_ward.gangwon_wonju}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_gangneung!==0">강릉시: {{statistics_ward.gangwon_gangneung}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_donghae!==0">동해시: {{statistics_ward.gangwon_donghae}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_samcheok!==0">삼척시: {{statistics_ward.gangwon_samcheok}}<br></span>
+        <span *ngIf="statistics_ward.gangwon_sokcho!==0">속초시: {{statistics_ward.gangwon_sokcho}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_chuncheon!==0">춘천시: {{statistics_ward.gangwon_chuncheon}}<br></span>
+        <span *ngIf="statistics_ward.gangwon_taebaek!==0">태백시: {{statistics_ward.gangwon_taebaek}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_goseong!==0">고성군: {{statistics_ward.gangwon_goseong}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_yanggu!==0">양구군: {{statistics_ward.gangwon_yanggu}}<br></span>
+        <span *ngIf="statistics_ward.gangwon_yangyang!==0">양양군: {{statistics_ward.gangwon_yangyang}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_yeongwol!==0">영월군: {{statistics_ward.gangwon_yeongwol}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_inje!==0">인제군: {{statistics_ward.gangwon_inje}}<br></span>
+        <span *ngIf="statistics_ward.gangwon_jeongseon!==0">정선군: {{statistics_ward.gangwon_jeongseon}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_cheorwon!==0">철원군: {{statistics_ward.gangwon_cheorwon}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_pyeongchang!==0">평창군: {{statistics_ward.gangwon_pyeongchang}}<br></span>
+        <span *ngIf="statistics_ward.gangwon_hongcheon!==0">홍천군: {{statistics_ward.gangwon_hongcheon}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_hwacheon!==0">화천군: {{statistics_ward.gangwon_hwacheon}}<br> </span>
+        <span *ngIf="statistics_ward.gangwon_hoengseong!==0">횡성군: {{statistics_ward.gangwon_hoengseong}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.chungbuk!==0">충북: {{statistics_city.chungbuk}}</p>
+        <span *ngIf="statistics_ward.chungbuk_jecheon!==0">제천시: {{statistics_ward.chungbuk_jecheon}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_cheongju!==0">청주시: {{statistics_ward.chungbuk_cheongju}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_chungju!==0">충주시: {{statistics_ward.chungbuk_chungju}}<br></span>
+        <span *ngIf="statistics_ward.chungbuk_goesan!==0">괴산군: {{statistics_ward.chungbuk_goesan}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_danyang!==0">단양군: {{statistics_ward.chungbuk_danyang}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_boeun!==0">보은군: {{statistics_ward.chungbuk_boeun}}<br></span>
+        <span *ngIf="statistics_ward.chungbuk_yeongdong!==0">영동군: {{statistics_ward.chungbuk_yeongdong}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_ogcheon!==0">옥천군: {{statistics_ward.chungbuk_ogcheon}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_eumseong!==0">음성군: {{statistics_ward.chungbuk_eumseong}}<br></span>
+        <span *ngIf="statistics_ward.chungbuk_jeungpyeong!==0">증평군: {{statistics_ward.chungbuk_jeungpyeong}}<br> </span>
+        <span *ngIf="statistics_ward.chungbuk_jincheon!==0">진천군: {{statistics_ward.chungbuk_jincheon}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.junnam!==0">전남: {{statistics_city.junnam}}</p>
+        <span *ngIf="statistics_ward.junnam_gwangyang!==0">광양시: {{statistics_ward.junnam_gwangyang}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_naju!==0">나주시: {{statistics_ward.junnam_naju}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_mokpo!==0">목포시: {{statistics_ward.junnam_mokpo}}<br></span>
+        <span *ngIf="statistics_ward.junnam_suncheon!==0">순천시: {{statistics_ward.junnam_suncheon}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_yeosu!==0">여수시: {{statistics_ward.junnam_yeosu}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_gangjin!==0">강진군: {{statistics_ward.junnam_gangjin}}<br></span>
+        <span *ngIf="statistics_ward.junnam_goheung!==0">고흥군: {{statistics_ward.junnam_goheung}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_gogseong!==0">곡성군: {{statistics_ward.junnam_gogseong}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_gurye!==0">구례군: {{statistics_ward.junnam_gurye}}<br></span>
+        <span *ngIf="statistics_ward.junnam_damyang!==0">담양군: {{statistics_ward.junnam_damyang}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_muangun!==0">무안군: {{statistics_ward.junnam_muangun}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_boseong!==0">보성군: {{statistics_ward.junnam_boseong}}<br></span>
+        <span *ngIf="statistics_ward.junnam_sinan!==0">신안군: {{statistics_ward.junnam_sinan}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_yeonggwang!==0">영광군: {{statistics_ward.junnam_yeonggwang}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_yeongam!==0">영암군: {{statistics_ward.junnam_yeongam}}<br></span>
+        <span *ngIf="statistics_ward.junnam_wando!==0">완도군: {{statistics_ward.junnam_wando}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_jangseong!==0">장성군: {{statistics_ward.junnam_jangseong}}<br></span>
+        <span *ngIf="statistics_ward.junnam_jangheung!==0">장흥군: {{statistics_ward.junnam_jangheung}}<br></span>
+        <span *ngIf="statistics_ward.junnam_jindo!==0">진도군: {{statistics_ward.junnam_jindo}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_hampyeong!==0">함평군: {{statistics_ward.junnam_hampyeong}}<br> </span>
+        <span *ngIf="statistics_ward.junnam_haenam!==0">해남군: {{statistics_ward.junnam_haenam}}<br></span>
+        <span *ngIf="statistics_ward.junnam_hwasun!==0">화순군: {{statistics_ward.junnam_hwasun}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.jeju!==0">제주: {{statistics_city.jeju}}</p>
+        <span *ngIf="statistics_ward.jeju_seogwipo!==0">서귀포시: {{statistics_ward.jeju_seogwipo}}<br> </span>
+        <span *ngIf="statistics_ward.jeju_jeju!==0">제주시: {{statistics_ward.jeju_jeju}}</span>
+    </div>
+    <div style="width: 100px; float: left; ">
+        <p *ngIf="statistics_city.sejong!==0">세종: {{statistics_city.sejong}}</p>
+        <span *ngIf="statistics_ward.sejong_jochiwon!==0">조치원읍: {{statistics_ward.sejong_jochiwon}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_geumnam!==0">금남면: {{statistics_ward.sejong_geumnam}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_bugang!==0">부강면: {{statistics_ward.sejong_bugang}}<br></span>
+        <span *ngIf="statistics_ward.sejong_sojeong!==0">소정면: {{statistics_ward.sejong_sojeong}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_yeongi!==0">연기면: {{statistics_ward.sejong_yeongi}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_yeondong!==0">연동면: {{statistics_ward.sejong_yeondong}}<br></span>
+        <span *ngIf="statistics_ward.sejong_yeonseo!==0">연서면: {{statistics_ward.sejong_yeonseo}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_janggun!==0">장군면: {{statistics_ward.sejong_janggun}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_jeondong!==0">전동면: {{statistics_ward.sejong_jeondong}}<br></span>
+        <span *ngIf="statistics_ward.sejong_jeonui!==0">전의면: {{statistics_ward.sejong_jeonui}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_goun!==0">고운동: {{statistics_ward.sejong_goun}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_dajeong!==0">다정동: {{statistics_ward.sejong_dajeong}}<br></span>
+        <span *ngIf="statistics_ward.sejong_daepyeong!==0">대평동: {{statistics_ward.sejong_daepyeong}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_dodam!==0">도담동: {{statistics_ward.sejong_dodam}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_boram!==0">보람동: {{statistics_ward.sejong_boram}}<br></span>
+        <span *ngIf="statistics_ward.sejong_saerom!==0">새롬동: {{statistics_ward.sejong_saerom}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_sodam!==0">소담동: {{statistics_ward.sejong_sodam}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_areum!==0">아름동: {{statistics_ward.sejong_areum}}<br></span>
+        <span *ngIf="statistics_ward.sejong_jongchon!==0">종촌동: {{statistics_ward.sejong_jongchon}}<br> </span>
+        <span *ngIf="statistics_ward.sejong_hansol!==0">한솔동: {{statistics_ward.sejong_hansol}}</span>
+    </div>
+</div>
